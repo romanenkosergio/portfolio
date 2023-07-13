@@ -1,0 +1,161 @@
+@use "sass:math";
+
+$grid-breakpoints: (
+  $small '(max-width: #{$grid-medium - 1})',
+  $medium '(min-width: #{$grid-medium}) and (max-width: #{$grid-large - 1})',
+  $medium-down '(max-width: #{$grid-large - 1})',
+  $medium-up '(min-width: #{$grid-medium})',
+  $large '(min-width: #{$grid-large}) and (max-width: #{$grid-widescreen - 1})',
+  $large-down '(max-width: #{$grid-widescreen - 1})',
+  $large-up '(min-width: #{$grid-large})',
+  $large-xl-up '(min-width: #{$grid-xl-large})',
+  $widescreen '(min-width: #{$grid-widescreen})',
+  $ios5 '(min-device-width: 320px) and (max-device-height: 568px) and (-webkit-device-pixel-ratio: 2)', /* iPhone 5 */
+  $ios6 '(min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2)', /* iPhone 6, 6s, 7, 8 */
+  $ios6plus '(min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 3)', /* iPhone 6+, 6s+, 7+, 8+ */
+  $iosX '(min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3)', /* iPhone X , XS, 11 Pro  */
+  $iosXR '(min-device-width : 414px) and (max-device-height : 896px) and (-webkit-device-pixel-ratio : 2)', /* iPhone XR, 11  */
+  $iosMax '(min-device-width : 414px) and (max-device-height : 896px) and (-webkit-device-pixel-ratio : 3)', /* iPhone XS Max, 11 Pro Max  */
+);
+
+@mixin media-query($media-query) {
+  $breakpoint-found: false;
+
+  @each $breakpoint in $grid-breakpoints {
+    $name: nth($breakpoint, 1);
+    $declaration: nth($breakpoint, 2);
+
+    @if $media-query == $name and $declaration {
+      $breakpoint-found: true;
+
+      @media only screen and #{$declaration} {
+        @content;
+      }
+    }
+  }
+
+  @if $breakpoint-found == false {
+    @warn 'Breakpoint "#{$media-query}" does not exist';
+  }
+}
+
+$fonts-sizing: (
+  'head' rem(62),
+  'subhead' rem(32),
+  'title' rem(24),
+  'body' rem(18),
+  'lable' rem(16),
+  'code' rem(14)
+);
+
+@mixin font($font) {
+  $font-found: false;
+  @each $font-name, $font-size in $fonts-sizing {
+    @debug $font-size;
+    @if $font == $font-name {
+      $font-found: true;
+      font-size: $font-size;
+    }
+  }
+}
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center-column {
+  @include flex-center;
+  flex-direction: column;
+}
+
+@mixin flex-center-vert {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center-horiz {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-center-between($align:true) {
+  display: flex;
+  justify-content: space-between;
+  @if ($align == true) {
+    align-items: center;
+  }
+}
+
+@mixin flex-row($align:flex-start, $justify:flex-start) {
+  display: flex;
+  flex-direction: row;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin transition($type:all, $time: .5s, $animation: ease) {
+  transition: $type $time $animation;
+}
+
+@mixin z-index($index) {
+  z-index: z-index($index);
+}
+
+// Keyframes
+
+@keyframes accordion-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    max-height: none;
+  }
+}
+
+@keyframes accordion-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    max-height: none;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    max-height: 0;
+  }
+}
+
+.animate-in {
+  animation-name: accordion-in;
+  animation-duration: 0.65s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: 0s;
+}
+
+.animate-out {
+  animation-name: accordion-out;
+  animation-duration: 0.65s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: 0s;
+}

@@ -1,0 +1,104 @@
+// Colors
+
+$white: #FFFFFF;
+
+// Primary
+$primary-1: #01080E;
+$primary-2: #011627;
+$primary-3: #011221;
+$primary-4: #0C1616;
+$primary-5: #011423;
+$primary-6: #02121B;
+$primary-7: #1C2B3A;
+$primary-7-hover: #263B50;
+$primary-8: #465E77;
+
+// Secondary
+$secondary-1: #607B96;
+$secondary-2: #3C9D93;
+$secondary-3: #4D5BCE;
+$secondary-4: $white;
+
+// Accent
+$accent-1: #FEA55F;
+$accent-2: #43D9AD;
+$accent-3: #E99287;
+$accent-4: #C98BDF;
+$accent-1-hover: #FFAC6B;
+
+
+// Lines
+$line: #1E2D3D;
+
+// Gradients
+$gradient-1: $secondary-3;
+$gradient-2: $accent-2;
+$game-gradient-1: #175553;
+$game-gradient-2: $gradient-2;
+
+// Text
+$text-1: #E5E9F0;
+
+// Funtions
+
+/* Other styles */
+$transition: .3s;
+$radius: 4px;
+$animation: ease;
+
+$z-indexes: (
+  relative,
+  dropdown,
+  modal,
+  extra
+);
+
+@function z-index($element, $list:"") {
+  @if $list == "" {
+    $list: $z-indexes;
+  }
+
+  $z-index: index($list, $element);
+
+  @if $z-index {
+    @return $z-index;
+  }
+
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+  @return null;
+}
+
+/* media queries */
+
+$grid-medium: 750px;
+$grid-large: 992px;
+$grid-xl-large: 1200px;
+$grid-widescreen: 1400px;
+$grid-gutter: 30px;
+$grid-gutter-mobile: 22px;
+
+$small: 'small'; // only screen and (max-width: 749px)
+$medium: 'medium'; // only screen and (min-width: 750px) and (max-width: 991px)
+$medium-down: 'medium-down'; // only screen and (max-width: 991px)
+$medium-up: 'medium-up'; // only screen and (min-width: 750px)
+$large: 'large'; // only screen and (min-width: 992px) and (max-width: 1399px)
+$large-down: 'large-down'; // only screen and (max-width: 1399px)
+$large-up: 'large-up'; // only screen and (min-width: 992px)
+$large-xl-up: 'large-xl-up'; // only screen and (min-width: 1200px)
+$widescreen: 'widescreen';
+$ios5: 'ios5';
+$ios6: 'ios6';
+$ios6plus: 'ios6plus';
+$iosX: 'iosX';
+$iosXR: 'iosXR';
+$iosMax: 'iosMax';
+
+$border-radius: 8px;
+
+/* Fonts */
+$fontFamily: 'FiraCodeRetina', sans-serif;
+$html-font-size: 16;
+
+@function rem($pxValue) {
+  @return calc($pxValue / $html-font-size) + rem;
+}

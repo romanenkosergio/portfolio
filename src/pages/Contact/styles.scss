@@ -1,0 +1,49 @@
+@import 'src/assets/styles/helpers';
+
+.contact {
+  min-height: inherit;
+  @include flex;
+  &__content {
+    flex: 1;
+  }
+  &__container {
+    @include flex;
+    height: calc(100% - 41px);
+  }
+  &__left, &__right {
+    width: 50%;
+    @include flex-center-horiz;
+    padding-top: 120px;
+  }
+  &__left {
+    border-right: 1px solid $line;
+  }
+  &__code-editor {
+
+  }
+}
+
+.contact-drawer {
+  min-height: inherit;
+  &__content {
+    @include flex-column;
+    gap: 10px;
+    a {
+      @include flex-center-vert;
+      @include transition;
+      .icon {
+        margin-right: 10px;
+      }
+      &:hover {
+        color: $secondary-4;
+      }
+    }
+  }
+}
+
+.contact-form {
+  @include flex-column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 372px;
+}

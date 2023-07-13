@@ -1,0 +1,136 @@
+@import 'src/assets/styles/helpers';
+
+.snake-game {
+  width: 510px;
+  height: 475px;
+  border-radius: $border-radius;
+  border: 1px solid $primary-4;
+  background: linear-gradient(154deg, rgba($game-gradient-1, 0.70) 0%, rgba($game-gradient-2, 0.09) 100%);
+  box-shadow: 0 2px 0 0 rgba(255, 255, 255, 0.30) inset;
+  backdrop-filter: blur(32px);
+  position: relative;
+  &__bg {
+    position: absolute;
+  }
+  &__container, &__content {
+    width: inherit;
+    height: inherit;
+  }
+  &__content {
+    position: relative;
+    padding: 35px 30px;
+    @include flex;
+    gap: 24px;
+    .bolt {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+    }
+    .bolt-up-left, .bolt-up-right {
+      top: 12px;
+    }
+    .bolt-up-left {
+      left: 12px;
+    }
+    .bolt-up-right {
+      right: 12px;
+    }
+    .bolt-down-left, .bolt-down-right {
+      bottom: 12px;
+    }
+    .bolt-down-left {
+      left: 12px;
+    }
+    .bolt-down-right {
+      right: 12px;
+    }
+  }
+  &__left {
+    width: 240px;
+    height: 100%;
+    background: rgba($primary-5, 0.84);
+    box-shadow: 1px 5px 11px 0 rgba($primary-6, 0.71) inset;
+    border-radius: $border-radius;
+    position: relative;
+  }
+  &__right {
+    @include flex-column;
+  }
+  &__food {
+    margin-top: 20px;
+    p {
+      @include font(code);
+      color: $secondary-4;
+    }
+  }
+  &__button {
+    margin-top: auto;
+    width: fit-content;
+    margin-left: auto;
+  }
+}
+
+.snake-game-rules {
+  border-radius: $border-radius;
+  background: rgba($primary-5, 0.19);
+  padding: 15px 12px;
+  p {
+    @include font(code);
+    color: $secondary-4;
+  }
+  &__keyboard {
+    margin-top: 15px;
+    @include flex-column;
+    gap: 5px;
+  }
+  &__keyboard-row {
+    @include flex-center;
+    gap: 5px;
+  }
+  &__key {
+    * {
+      @include transition;
+    }
+    &--active {
+      path {
+        fill: $primary-4;
+      }
+      rect {
+        fill: $secondary-4;
+      }
+    }
+  }
+}
+
+.snake-game-food {
+  &__items {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 20px);
+    grid-gap: 7px;
+  }
+  &__item {
+    &--done {
+      opacity: .3;
+    }
+  }
+}
+
+.snake-game-top-bg {
+  width: 454px;
+  height: 492px;
+  background: url("../../assets/svg/game/green-bg.svg") no-repeat center center;
+  transform: rotate(-94.305deg);
+  filter: blur(87px);
+  left: -50px;
+  top: -125px;
+}
+.snake-game-down-bg {
+  width: 454px;
+  height: 492px;
+  background: url("../../assets/svg/game/blue-bg.svg") no-repeat center center;
+  transform: rotate(13.508deg);
+  filter: blur(87px);
+  right: -90px;
+  bottom: -90px;
+}

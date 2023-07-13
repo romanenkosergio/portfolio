@@ -1,0 +1,39 @@
+@import 'src/assets/styles/helpers';
+
+.button {
+  padding: 10px 14px;
+  @include flex-center;
+  border-radius: $border-radius;
+  border: 1px solid transparent;
+  @include transition;
+
+  &--default {
+    background: $primary-7;
+    &:hover {
+      background: $primary-7-hover;
+    }
+  }
+
+  &--primary {
+    background: $accent-1;
+    &:hover {
+      background: $accent-1-hover;
+    }
+    span {
+      color: $primary-1;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    border-color: $secondary-4;
+    &:hover {
+      border-color: rgba($secondary-4, .5);
+    }
+  }
+
+  &__text {
+    @include font(code);
+    color: $secondary-4;
+  }
+}

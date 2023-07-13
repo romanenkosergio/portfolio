@@ -1,0 +1,39 @@
+@import 'src/assets/styles/helpers';
+
+.accordion {
+  overflow: hidden;
+  &:not(:first-child) {
+    border-top: 1px solid $line;
+  }
+  &__header {
+    padding: 10px 22px;
+    border-bottom: 1px solid $line;
+    @include flex-center-vert;
+    cursor: pointer;
+  }
+  &__icon {
+    display: inline-block;
+    margin-right: 10px;
+    @include transition(transform, .65s, ease-in-out);
+    transform: rotate(-90deg);
+    &--open {
+      transform: none;
+    }
+  }
+  &__title {
+    @include font(lable);
+  }
+  &__content {
+    max-height: none;
+    overflow: hidden;
+    transition: max-height 1s;
+    $this: &;
+    &--collapsed {
+      max-height: 0;
+      transition: max-height 1s;
+    }
+  }
+  &__childs {
+    padding: 22px;
+  }
+}

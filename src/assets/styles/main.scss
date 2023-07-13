@@ -1,0 +1,85 @@
+// Reset Default Styles
+@use 'scss-reset/reset';
+// Import Fonts
+@import "fonts";
+// Import Helpers
+@import "helpers";
+
+* {
+  box-sizing: border-box;
+  font-family: $fontFamily !important;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  background: $primary-2;
+  color: $secondary-1;
+  @include font(body);
+}
+
+main {
+  min-height: calc(100vh - 106px);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.comment {
+  color: $secondary-1;
+  @include font(lable);
+}
+
+// Styles for js code
+
+.js {
+  @include font(label);
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+.js-name {
+  color: $secondary-3;
+}
+
+.js-var {
+  color: $accent-2;
+}
+
+.js-math {
+  color: $secondary-4;
+}
+
+.js-value {
+  color: $accent-3;
+}
+
+// Icon
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: $secondary-1;
+  @include transition;
+}
+
+// Drawer
+.drawer {
+  width: 20%;
+  border-right: 1px solid $line;
+}
+
+// Page content
+.page-content {
+  border-top: 1px solid $line;
+  width: 100%;
+}

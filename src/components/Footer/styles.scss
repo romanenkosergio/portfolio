@@ -1,0 +1,43 @@
+@import 'src/assets/styles/helpers';
+
+.footer {
+  border-top: 1px solid $line;
+  height: 50px;
+  @include flex-center-vert;
+  &__text {
+    margin-right: 18px;
+    padding-left: 22px;
+  }
+}
+
+.footer-socials {
+  flex: 1;
+  @include flex-center;
+  &__item {
+    @include flex-center;
+    padding: 11px 14px;
+    opacity: .4;
+    @include transition;
+    border-right: 1px solid $line;
+    &:first-child, &:last-child {
+      border-left: 1px solid $line;
+    }
+    &:last-child {
+      margin-left: auto;
+    }
+    svg {
+      fill: $secondary-1;
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+    a {
+      @include flex-center-vert;
+      span {
+        margin-right: 5px;
+        @include font('label')
+      }
+    }
+  }
+}

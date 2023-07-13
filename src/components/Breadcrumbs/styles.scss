@@ -1,0 +1,19 @@
+@import 'src/assets/styles/helpers';
+
+.breadcrumbs {
+  padding: 10px 22px;
+  border-right: 1px solid $line;
+  @include flex-center-vert;
+  width: fit-content;
+  &__items {
+    @include font(lable);
+  }
+  &__close {
+    margin-left: 40px;
+    cursor: pointer;
+    @include transition;
+    &:hover {
+      fill: $secondary-4;
+    }
+  }
+}
