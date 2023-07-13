@@ -29,7 +29,7 @@ jobs:
       - name: Deploy React to GitHub Pages
         # You may pin to the exact commit or the version.
         # uses: bitovi/github-actions-react-to-ghp@1782b3410beca05fb72bd089e5620790c0c4d883
-        uses: bitovi/github-actions-react-to-ghp@v1.2.0
+        uses: bitovi/github-actions-react-to-ghp@1782b3410beca05fb72bd089e5620790c0c4d883
         with:
           # Specifies if this action should checkout the code
           checkout: true
