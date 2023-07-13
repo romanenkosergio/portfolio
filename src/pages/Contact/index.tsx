@@ -52,9 +52,7 @@ button.addEventListener('click', () => {
     fetch('https://github.com/robertreinhart/cors-proxy-share', {
       method: 'POST',
       headers: {
-        'Accept-Charset': 'utf-8',
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({...data, 'my-url': 'https://public.herotofu.com/v1/0144ac90-2167-11ee-b40c-935120402012\''})
     }).then(res => {
