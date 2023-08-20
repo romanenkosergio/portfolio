@@ -1,0 +1,37 @@
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "parser": "typescript",
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "editorconfig": true,
+  "overrides": [
+    {
+      "files": "*.tsx",
+      "options": {
+        "parser": "typescript",
+        "plugins": [
+          "@trivago/prettier-plugin-sort-imports"
+        ]
+      }
+    }
+  ],
+  "importOrder": [
+    "react",
+    "<THIRD_PARTY_MODULES>",
+    "layouts",
+    "(pages|components)",
+    "(types|store|helpers|hooks|utils)",
+    "^(image|svg)",
+    "^[./styles.scss]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderIgnore": [
+    "node_modules"
+  ]
+}

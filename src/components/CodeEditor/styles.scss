@@ -53,7 +53,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #797979;
+  color: $secondary-1 !important;
 }
 
 .token.selector,
@@ -88,7 +88,7 @@ pre[class*="language-"] {
 }
 
 .token.property {
-  color: #5565E8 !important;
+  color: $accent-6 !important;
 }
 
 .token.regex {
@@ -101,7 +101,7 @@ pre[class*="language-"] {
 
 .token.function,
 .token.constant {
-  color: #5565E8 !important;
+  color: $accent-6 !important;
 }
 
 .token.variable {
@@ -155,7 +155,7 @@ pre {
 .code-line {
   display: block;
   border-left: 4px solid rgba(0, 0, 0, 0); /* Set placeholder for highlight accent border color to transparent */
-  color: #5565E8;
+  color: $accent-6;
 }
 
 .code-line.inserted {
@@ -177,7 +177,7 @@ pre {
   display: inline-block;
   width: 2rem;
   text-align: right;
-  margin-right: 40px;
+  margin-right: 30px;
   margin-left: -8px;
   color: $secondary-1;
   content: attr(line);

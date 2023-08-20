@@ -7,7 +7,7 @@ import { ICodeEditorProps } from "./types";
 
 import "./styles.scss";
 
-const CodeEditor: FC<ICodeEditorProps> = ({code}) => {
+const CodeEditor: FC<ICodeEditorProps> = ({code, fontSize= 18, backgroundColor = "#011627"}) => {
   return (
     <Code
       className="contact__code-editor"
@@ -19,8 +19,8 @@ const CodeEditor: FC<ICodeEditorProps> = ({code}) => {
         [rehypePrism, {ignoreMissing: true, showLineNumbers: true}]
       ]}
       style={{
-        fontSize: 18,
-        backgroundColor: "#011627", // $primary-2
+        fontSize,
+        backgroundColor,
       }}
     />
   );

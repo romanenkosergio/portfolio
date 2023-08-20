@@ -1,0 +1,140 @@
+@import 'src/assets/styles/helpers';
+
+.about {
+  max-height: inherit;
+  height: inherit;
+  @include flex;
+  scrollbar-width: thin;
+  ::-webkit-scrollbar {
+    height: 0; /* height of horizontal scrollbar ← You're missing this */
+    width: 10px; /* width of vertical scrollbar */
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $secondary-1;
+  }
+  &__content {
+    flex: 1;
+  }
+  &__container {
+    @include flex;
+    height: calc(100% - 41px);
+  }
+  &__left, &__right {
+    width: 50%;
+    padding: 20px 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &__left {
+    border-right: 1px solid $line;
+  }
+
+  &__right-content {
+    margin-top: 58px;
+    @include flex-column;
+    gap: 30px;
+  }
+}
+
+.about-drawer {
+  max-height: inherit;
+  @include flex;
+  &__left {
+    padding: 17px 24px;
+    border-right: 1px solid $line;
+    @include flex-column;
+    gap: 33px;
+  }
+  &__right {
+    width: 82%;
+    span {
+      @include font(label);
+    }
+  }
+  &__item {
+    &, svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  &__item-icon {
+    cursor: pointer;
+    opacity: .4;
+    @include transition;
+    &--active {
+      opacity: 1;
+    }
+  }
+  &__content {
+    @include flex-column;
+    gap: 10px;
+    a {
+      @include flex-center-vert;
+      @include transition;
+      .icon {
+        margin-right: 10px;
+      }
+      &:hover {
+        color: $secondary-4;
+      }
+    }
+  }
+}
+
+.about-drawer-right {
+  $this: &;
+  &__item {
+    margin-left: 20px;
+    position: relative;
+  }
+  &__item-title, &__body-item {
+    @include font(label);
+    @include flex-center-vert;
+    gap: 10px;
+    cursor: pointer;
+  }
+  &__item-title {
+    span {
+      @include transition;
+    }
+    &--active {
+      color: $secondary-4;
+    }
+    &--opened {
+      span {
+        color: $secondary-4;
+      }
+      #{$this}__item-arrow {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  &__item-arrow {
+    position: absolute;
+    left: -25px;
+    top: -5px;
+    width: 28px;
+    height: 28px;
+    @include transition;
+  }
+  &__body {
+    max-height: 0;
+    overflow: hidden;
+    @include transition;
+    &--opened {
+      max-height: none;
+    }
+  }
+  &__body-content {
+    @include flex-column;
+    gap: 10px;
+    padding-top: 10px;
+  }
+  &__body-item {
+    &--active {
+      color: $secondary-4;
+    }
+  }
+}

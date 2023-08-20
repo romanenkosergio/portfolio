@@ -2,11 +2,15 @@
 
 .breadcrumbs {
   padding: 10px 22px;
+  height: 41px;
   border-right: 1px solid $line;
   @include flex-center-vert;
   width: fit-content;
+  &--no-border {
+    border-right: none;
+  }
   &__items {
-    @include font(lable);
+    @include font(label);
   }
   &__close {
     margin-left: 40px;

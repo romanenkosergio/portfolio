@@ -1,0 +1,76 @@
+@import 'src/assets/styles/helpers';
+
+.projects {
+  max-height: inherit;
+  height: inherit;
+  @include flex;
+  scrollbar-width: thin;
+  ::-webkit-scrollbar {
+    height: 0; /* height of horizontal scrollbar ← You're missing this */
+    width: 10px; /* width of vertical scrollbar */
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $secondary-1;
+  }
+  &__content {
+    flex: 1;
+  }
+  &__container {
+    @include flex;
+    height: calc(100% - 41px);
+  }
+  &__items {
+    padding: 5vh  10%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-gap: 50px 40px;
+    overflow-y: auto;
+    height: inherit;
+  }
+}
+
+.projects-technologies {
+  @include flex-column;
+  gap: 16px;
+}
+
+.projects-item {
+  &__title {
+    font-weight: 600;
+    color: $accent-6;
+    span {
+      font-weight: 450;
+      color: $secondary-1;
+    }
+  }
+  &__card {
+    border-radius: 15px;
+    border: 1px solid $line;
+    background: $primary-3;
+    margin-top: 15px;
+    overflow: hidden;
+  }
+  &__image {
+    width: 100%;
+    height: 145px;
+    border-bottom: 1px solid $line;
+  }
+  &__card-content {
+    padding: 24px 30px 30px;
+  }
+  &__technologies {
+    border: 1px solid $accent-6;
+    padding: 5px;
+    @include font(small);
+    display: inline-block;
+    margin-bottom: 10px;
+    color: $accent-6;
+    text-transform: lowercase;
+    border-radius: 4px;
+  }
+  &__button {
+    margin-top: 20px;
+  }
+}

@@ -6,3 +6,4 @@ export {default as Game} from './Game';
 export {default as Accordion} from './Accordion';
 export {default as Breadcrumbs} from './Breadcrumbs';
 export {default as CodeEditor} from './CodeEditor';
+export {default as CustomGist} from './CustomGist';

@@ -1,3 +1,4 @@
 export interface IBreadcrumbsProps {
- items: string | string[];
+  items: string | string[];
+  clearTechnologies?: () => void;
 }

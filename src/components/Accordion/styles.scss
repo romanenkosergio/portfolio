@@ -10,6 +10,7 @@
     border-bottom: 1px solid $line;
     @include flex-center-vert;
     cursor: pointer;
+    color: $secondary-4;
   }
   &__icon {
     display: inline-block;
@@ -21,7 +22,7 @@
     }
   }
   &__title {
-    @include font(lable);
+    @include font(label);
   }
   &__content {
     max-height: none;

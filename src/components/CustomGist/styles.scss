@@ -1,0 +1,91 @@
+@import 'src/assets/styles/helpers';
+
+.gist {
+  &__header {
+    @include flex-center-between;
+  }
+
+  &__header-left {
+    @include flex;
+    gap: 10px;
+  }
+
+  &__header-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__header-info {
+    @include flex-column;
+  }
+
+  &__header-info-name {
+    @include font(code);
+    color: $accent-6;
+    margin-bottom: 2px;
+  }
+
+  &__header-right {
+    @include flex;
+    gap: 18px;
+    @include font(code);
+  }
+
+  &__header-info-date {
+    @include font(small);
+  }
+  &__header-details, &__header-stars {
+    @include flex-center-vert;
+    gap: 5px;
+  }
+
+  &__header-details {
+    position: relative;
+    &--hover {
+      cursor: pointer;
+      &:hover {
+        .gist__header-description {
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  &__header-description {
+    @include font(small);
+    padding: 10px;
+    border-radius: $border-radius;
+    background: $primary-3;
+    width: max-content;
+    max-width: 300px;
+    position: absolute;
+    top: -100%;
+    transform: translate(-40%, -100%);
+    @include transition;
+    opacity: 0;
+    z-index: -1;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 10px 0 10px;
+      border-color: $primary-3 transparent transparent transparent;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__content {
+    margin-top: 12px;
+    border-radius: $border-radius * 2; // 16px
+    border: 1px solid $line;
+    background: $primary-3;
+    padding: 24px 30px;
+  }
+}

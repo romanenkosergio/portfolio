@@ -1,7 +1,7 @@
 @import 'src/assets/styles/helpers';
 
 .contact {
-  min-height: inherit;
+  max-height: inherit;
   @include flex;
   &__content {
     flex: 1;
@@ -18,13 +18,10 @@
   &__left {
     border-right: 1px solid $line;
   }
-  &__code-editor {
-
-  }
 }
 
 .contact-drawer {
-  min-height: inherit;
+  max-height: inherit;
   &__content {
     @include flex-column;
     gap: 10px;

@@ -1,9 +1,13 @@
-import React, { FC } from "react";
-import { RiFacebookFill, RiGithubFill, RiTwitterFill, RiLinkedinFill } from "react-icons/ri";
+import React, { FC } from 'react';
+import {
+  RiFacebookFill,
+  RiGithubFill,
+  RiLinkedinFill,
+  RiTwitterFill,
+} from 'react-icons/ri';
 
-import { IFooterProps } from "./types";
-
-import "./styles.scss";
+import './styles.scss';
+import { IFooterProps } from './types';
 
 const Footer: FC<IFooterProps> = () => {
   return (
@@ -12,23 +16,38 @@ const Footer: FC<IFooterProps> = () => {
       <div className="footer-socials">
         <div className="footer-socials__item">
           <a href="#">
-            <RiTwitterFill size={24}/>
+            <RiTwitterFill size={24} />
           </a>
         </div>
         <div className="footer-socials__item">
-          <a href="#">
-            <RiFacebookFill size={24}/>
+          <a
+            href="https://www.linkedin.com/in/romanenkosergio/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook Account"
+          >
+            <RiFacebookFill size={24} />
           </a>
         </div>
         <div className="footer-socials__item">
-          <a href="#">
-            <RiLinkedinFill size={24}/>
+          <a
+            href="https://www.linkedin.com/in/romanenkosergio/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn Account"
+          >
+            <RiLinkedinFill size={24} />
           </a>
         </div>
         <div className="footer-socials__item">
-          <a href="#">
+          <a
+            href="https://github.com/romanenkosergio"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Github Account"
+          >
             <span>@romanenkosergio</span>
-            <RiGithubFill size={24}/>
+            <RiGithubFill size={24} />
           </a>
         </div>
       </div>

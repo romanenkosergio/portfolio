@@ -11,6 +11,8 @@
       "image/*": ["./assets/images/*"],
       "svg/*": ["./assets/svg/*"],
       "hooks/*": ["./hooks/*"],
+      "types/*": ["./types/*"],
+      "store/*": ["./store/*"],
       "helpers/*": ["./helpers/*"]
     }
   }

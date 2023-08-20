@@ -44,8 +44,9 @@ $fonts-sizing: (
   'subhead' rem(32),
   'title' rem(24),
   'body' rem(18),
-  'lable' rem(16),
-  'code' rem(14)
+  'label' rem(16),
+  'code' rem(14),
+  'small' rem(12)
 );
 
 @mixin font($font) {

@@ -5,7 +5,7 @@
   @include flex-column;
   gap: 10px;
   &__text {
-    @include font(lable);
+    @include font(label);
   }
 }
 
@@ -18,7 +18,7 @@
   color: $primary-8;
   padding: 8.5px 15px;
   resize: none;
-  @include font(lable);
+  @include font(label);
   @include transition;
   &:focus {
     box-shadow: 0 0 0 2px rgba($secondary-1, .3);
