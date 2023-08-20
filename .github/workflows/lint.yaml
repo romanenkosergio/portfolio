@@ -3,10 +3,20 @@ name: Lint
 on: [push]
 
 jobs:
-  eslint:
-    runs-on: ubuntu-latest
+  lint:
+    name: Lint
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node_version: [16]
+
     steps:
       - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.2
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
         with:
-          files: src/
+          node_version: ${{ matrix.node_version }}
+
+      - name: run Lint
+        run: |
+          yarn lint
