@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# My Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains my personal portfolio website built using React and TypeScript.
 
-## Available Scripts
+## About the Project
 
-In the project directory, you can run:
+My portfolio showcases my skills and works in the field of web development. It includes sections dedicated to my
+experience, projects, contact information, and additional details.
 
-### `npm start`
+## Installation and Running
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone the repository to your local machine:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   ```bash
+   git clone https://github.com/romanenkosergio/portfolio.git
+    ```
 
-### `npm test`
+2. Navigate to the project folder:
+   ```bash 
+   cd portfolio
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Install the dependencies:
+    ```bash
+    yarn
+    ```
 
-### `npm run build`
+4. Start the application:
+    ```bash
+    yarn start
+    ```
+The application will be running at http://localhost:3000.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React:** The application is built using the React library, providing scalability and a component-based approach to development.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **TypeScript:** The project is entirely written in TypeScript, enhancing code readability and providing static typing.
 
-### `npm run eject`
+- **Components:** All components are divided into separate files for better organization and code reuse.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **CSS Modules:** Component styles are organized using CSS Modules for style isolation and avoiding conflicts.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Roadmap
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project serves as my personal portfolio, and I plan to continually improve it by adding new sections, projects, and technologies. Your suggestions and feedback are always welcome!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contact Me
 
-## Learn More
+- Email: [sergromanenko97@gmail.com](mailto:sergromanenko97@gmail.com)
+- GitHub: [github.com/romanenkosergio](https://github.com/romanenkosergio)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
