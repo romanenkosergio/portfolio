@@ -1,22 +1,35 @@
-name: Lint
+name: ESLint Check
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   lint:
-    name: Lint
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node_version: [16]
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          node_version: ${{ matrix.node_version }}
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: run Lint
-        run: |
-          yarn lint
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # Замените на желаемую версию Node.js
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run ESLint
+      run: npx eslint src
+
+    - name: Check for ESLint errors
+      run: |
+        eslint_exit_code=$?
+        if [ $eslint_exit_code -eq 0 ]; then
+          echo "ESLint check passed"
+        else
+          echo "ESLint check failed"
+          exit 1
+        fi
