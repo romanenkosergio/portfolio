@@ -40,8 +40,13 @@ const Home: FC = () => {
                 <span className="js js-math">=</span>
                 <span className="js js-value">
                   “
-                  <a href="" target="_blank" rel="noopener noreferrer">
-                    https://github.com/example/url
+                  <a
+                    href="https://github.com/romanenkosergio"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Github Account"
+                  >
+                    https://github.com/romanenkosergio
                   </a>
                   ”
                 </span>

@@ -18,7 +18,7 @@ const App: FC = () => {
 
   useEffect(() => {
     fetchContentfulData();
-  }, []);
+  }, [fetchContentfulData]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(

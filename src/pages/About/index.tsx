@@ -30,19 +30,19 @@ const About = () => {
 
   useEffect(() => {
     fetchGithubData();
-  }, []);
+  }, [fetchGithubData]);
 
   const RenderItems = useMemo(() => {
     const items: IDrawerItems[] = [
-      { icon: RiInformationFill, name: TAB_TYPE.PERSONAL_INFO },
-      { icon: RiTerminalBoxFill, name: TAB_TYPE.PROFESSIONAL_INFO },
-      { icon: RiGamepadFill, name: TAB_TYPE.HOBBIES },
+      { Icon: RiInformationFill, name: TAB_TYPE.PERSONAL_INFO },
+      { Icon: RiTerminalBoxFill, name: TAB_TYPE.PROFESSIONAL_INFO },
+      { Icon: RiGamepadFill, name: TAB_TYPE.HOBBIES },
     ];
     return (
       <>
         {items.map((Item, index) => (
           <div className="about-drawer__item" key={index}>
-            <Item.icon
+            <Item.Icon
               onClick={() => setActiveTab(Item.name)}
               className={`about-drawer__item-icon ${
                 activeTab === Item.name ? 'about-drawer__item-icon--active' : ''
