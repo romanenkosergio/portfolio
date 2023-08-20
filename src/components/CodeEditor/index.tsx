@@ -1,13 +1,17 @@
-import React, { FC } from "react";
-import Code from "@uiw/react-textarea-code-editor";
-import rehypePrism from "rehype-prism-plus";
-import rehypeRewrite from "rehype-rewrite";
+import Code from '@uiw/react-textarea-code-editor';
+import React, { FC } from 'react';
 
-import { ICodeEditorProps } from "./types";
+import rehypePrism from 'rehype-prism-plus';
 
-import "./styles.scss";
+import { ICodeEditorProps } from './types';
 
-const CodeEditor: FC<ICodeEditorProps> = ({code, fontSize= 18, backgroundColor = "#011627"}) => {
+import './styles.scss';
+
+const CodeEditor: FC<ICodeEditorProps> = ({
+  code,
+  fontSize = 18,
+  backgroundColor = '#011627',
+}) => {
   return (
     <Code
       className="contact__code-editor"
@@ -16,7 +20,7 @@ const CodeEditor: FC<ICodeEditorProps> = ({code, fontSize= 18, backgroundColor =
       disabled={true}
       padding={0}
       rehypePlugins={[
-        [rehypePrism, {ignoreMissing: true, showLineNumbers: true}]
+        [rehypePrism, { ignoreMissing: true, showLineNumbers: true }],
       ]}
       style={{
         fontSize,

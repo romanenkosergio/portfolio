@@ -6,8 +6,9 @@ import {
   RiTwitterFill,
 } from 'react-icons/ri';
 
-import './styles.scss';
 import { IFooterProps } from './types';
+
+import './styles.scss';
 
 const Footer: FC<IFooterProps> = () => {
   return (
@@ -15,13 +16,18 @@ const Footer: FC<IFooterProps> = () => {
       <span className="footer__text">Find me in:</span>
       <div className="footer-socials">
         <div className="footer-socials__item">
-          <a href="#">
+          <a
+            href="https://twitter.com/romanenkosergio"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Twitter Account"
+          >
             <RiTwitterFill size={24} />
           </a>
         </div>
         <div className="footer-socials__item">
           <a
-            href="https://www.linkedin.com/in/romanenkosergio/"
+            href="https://www.facebook.com/romanenkosergio"
             target="_blank"
             rel="noreferrer"
             aria-label="Facebook Account"

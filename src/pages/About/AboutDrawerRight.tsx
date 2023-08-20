@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react';
+import React, { FC, useCallback, useEffect, useMemo } from 'react';
 import {
   RiArrowDropRightLine,
   RiFolder3Fill,
@@ -19,25 +19,31 @@ const AboutDrawerRight: FC<IAboutDrawerRightProps> = ({
   setActiveInfo,
   activeInfo,
 }) => {
-  const updateActiveInfo = (info: string) => {
-    setActiveInfo(info);
-  };
+  const updateActiveInfo = useCallback(
+    (info: string) => {
+      setActiveInfo(info);
+    },
+    [setActiveInfo]
+  );
 
-  const updateOpenedTabs = (tab: IAboutMeInfo) => {
-    if (tab?.children) {
-      setOpenedTab(tab.title);
-      if (openedTab !== tab.title) {
-        updateActiveInfo(tab.children[0]);
+  const updateOpenedTabs = useCallback(
+    (tab: IAboutMeInfo) => {
+      if (tab?.children) {
+        setOpenedTab(tab.title);
+        if (openedTab !== tab.title) {
+          updateActiveInfo(tab.children[0]);
+        }
+      } else {
+        updateActiveInfo(tab.title);
+        setOpenedTab('');
       }
-    } else {
-      updateActiveInfo(tab.title);
-      setOpenedTab('');
-    }
-  };
+    },
+    [openedTab, setOpenedTab, updateActiveInfo]
+  );
 
   useEffect(() => {
     updateOpenedTabs(ABOUT_ME_INFO[activeTab][0]);
-  }, [activeTab]);
+  }, [activeTab, updateOpenedTabs]);
 
   const RenderInfo = useMemo(() => {
     const currentInfoBlock: IAboutMeInfo[] = ABOUT_ME_INFO[activeTab];
@@ -103,7 +109,7 @@ const AboutDrawerRight: FC<IAboutDrawerRightProps> = ({
         ))}
       </>
     );
-  }, [activeTab, openedTab, activeInfo]);
+  }, [activeTab, openedTab, activeInfo, updateOpenedTabs, updateActiveInfo]);
 
   return (
     <div className="about-drawer__right about-drawer-right">
