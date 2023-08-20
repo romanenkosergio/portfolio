@@ -2,7 +2,17 @@
 
 .contact {
   max-height: inherit;
+  height: inherit;
   @include flex;
+  scrollbar-width: thin;
+  ::-webkit-scrollbar {
+    height: 0; /* height of horizontal scrollbar ← You're missing this */
+    width: 10px; /* width of vertical scrollbar */
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $secondary-1;
+  }
   &__content {
     flex: 1;
   }
@@ -14,6 +24,7 @@
     width: 50%;
     @include flex-center-horiz;
     padding-top: 120px;
+    overflow-y: scroll;
   }
   &__left {
     border-right: 1px solid $line;
@@ -43,4 +54,26 @@
   align-items: flex-start;
   gap: 24px;
   width: 372px;
+}
+
+.contact-thanks {
+  border: 1px solid $line;
+  border-radius: 15px;
+  padding: 20px;
+  height: fit-content;
+  margin: auto;
+  box-shadow: 0 0 4px 4px rgba($line, .4);
+  text-align: center;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  background: $accent-2 !important;
+  color: $secondary-4;
+  border: 1px solid $line;
+  @include font(code);
+  border-radius: $border-radius;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }

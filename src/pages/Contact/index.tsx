@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
-import { RiExternalLinkFill, RiMailFill, RiPhoneFill } from 'react-icons/ri';
+import {
+  RiExternalLinkFill,
+  RiMailCheckFill,
+  RiMailFill,
+  RiPhoneFill,
+} from 'react-icons/ri';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Accordion, Breadcrumbs, Button, CodeEditor } from 'components';
 import { Input, Label, TextArea } from 'components/Form';
@@ -16,8 +23,8 @@ const Contact = () => {
     watch,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IFormData>();
-
   const [code, setCode] =
     useState(`const button = document.querySelector('#sendBtn');
 
@@ -57,11 +64,19 @@ button.addEventListener('click', () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    }).then(res => {
-      console.log(res);
-    });
+    })
+      .then(() => {
+        toast.success('Message sent successfully!', {
+          icon: RiMailCheckFill,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .finally(() => {
+        reset();
+      });
   });
-
   return (
     <>
       <Helmet>
@@ -109,6 +124,19 @@ button.addEventListener('click', () => {
         <div className="contact__content">
           <Breadcrumbs items="contacts" />
           <div className="contact__container page-content">
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+              closeButton={false}
+            />
             <div className="contact__left">
               <form action="" className="contact-form" onSubmit={onSubmit}>
                 <Label label={'_name'}>
