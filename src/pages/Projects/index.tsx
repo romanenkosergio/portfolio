@@ -5,8 +5,8 @@ import { Accordion, Breadcrumbs } from 'components';
 import ProjectItem from 'pages/Projects/ProjectItem';
 import ProjectsTechnologies from 'pages/Projects/ProjectsTechnologies';
 
-import { IContentfulProjectData } from 'hooks/useContentful';
 import { useContentfulStore } from 'store';
+import { IContentfulProjectData } from 'store/useContentfulStore';
 
 import './styles.scss';
 
