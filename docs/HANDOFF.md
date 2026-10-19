@@ -16,7 +16,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Next
 
-- PLAN 1.4 (deps + common-next), 1.5, then phase 2. Next decision number: D4.
+- Aligning with common-next, one PR per PLAN item 1.4 → 1.14 in order, merged by the agent after `code-reviewer`. Next decision number: D7.
 
 ## Environment
 
