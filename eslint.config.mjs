@@ -42,6 +42,13 @@ export default [
   ...nextTypescript,
   prettierConfig,
   { ignores: IGNORE_PATTERNS },
+  // No inline escape hatch: an exception lives in eslint/pending.config.mjs or nowhere (D5).
+  {
+    linterOptions: {
+      noInlineConfig: true,
+      reportUnusedDisableDirectives: "error"
+    }
+  },
 
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat["jsx-runtime"],

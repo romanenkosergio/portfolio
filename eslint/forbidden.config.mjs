@@ -90,7 +90,8 @@ export const configSyntaxConfig = {
 };
 
 export const importShapeConfig = {
-  files: SRC,
+  // Routes in app/ reach slices the same way src/ does: through the public API.
+  files: SRC_AND_ROUTES,
   rules: {
     "no-restricted-imports": ["error", { patterns: IMPORT_SHAPE_PATTERNS }],
     // Boundaries skips a dependency it cannot resolve, which would turn a typo

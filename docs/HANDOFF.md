@@ -16,7 +16,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Next
 
-- Aligning with common-next, one PR per PLAN item 1.4 → 1.14 in order, merged by the agent after `code-reviewer`. Next decision number: D9. shadcn (1.15) goes right after 1.8; then phase 3 (redesign, D8).
+- Aligning with common-next, one PR per PLAN item 1.4 → 1.14 in order, merged by the agent after `code-reviewer`. Next decision number: D10. shadcn (1.15) goes right after 1.8; then phase 3 (redesign, D8).
 
 ## Environment
 

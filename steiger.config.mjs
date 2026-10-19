@@ -47,5 +47,12 @@ export default defineConfig([
     rules: {
       "fsd/segments-by-purpose": "off"
     }
+  },
+  {
+    // As in common-next: it would forbid the segment barrels ESLint's public-API pattern allows;
+    // one rule answers that question, and it is the ESLint one (eslint/forbidden.config.mjs).
+    rules: {
+      "fsd/no-public-api-sidestep": "off"
+    }
   }
 ]);
