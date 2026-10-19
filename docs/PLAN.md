@@ -4,14 +4,13 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.4, 1.6–1.11, 1.15
+Done: 1.1–1.4, 1.6–1.11, 1.15, 1.16
 
 ## Phase 1 — tooling
 
 - [ ] 1.12 jest 30 + RTL + jest-axe, coverage floor in `gate` and the deploy (D6)
 - [ ] 1.13 Playwright + axe against `out/` (incl. a `/portfolio` basePath build), separate CI job, not blocking the deploy (D6)
 - [ ] 1.14 size-limit on `out/`, jscpd, egress check, gitleaks, meta referrer/CSP (D6)
-- [ ] 1.16 `shadcn/no-restyle` live: Icon/NavLink/Button variants for the treatments call sites add (pending.config.mjs lists the files), then drop the entry
 - [ ] 1.5 Repository private? GitHub Pages from a private repo needs GitHub Pro (owner)
 
 ## Phase 3 — redesign with motion (D8; Figma in AGENTS.md)

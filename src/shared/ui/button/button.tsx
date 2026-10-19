@@ -9,9 +9,10 @@ const Button = ({
   className,
   textClassName,
   variant,
+  concealed,
   ...rest
 }: IButtonProps) => {
-  const buttonClassName = cn(buttonVariants({ variant }), className);
+  const buttonClassName = cn(buttonVariants({ variant, concealed }), className);
   const label = (
     <span className={cn(buttonTextVariants({ variant }), textClassName)}>
       {text}

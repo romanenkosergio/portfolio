@@ -8,9 +8,10 @@ export const buttonVariants = cva(
         primary: "bg-bg-1 desktop:hover:bg-bg-1-hover",
         default: "bg-bg-2 desktop:hover:bg-bg-2-hover",
         ghost: "bg-transparent border-white desktop:hover:border-white/50"
-      }
+      },
+      concealed: { true: "-z-1 opacity-0", false: "" }
     },
-    defaultVariants: { variant: "default" }
+    defaultVariants: { variant: "default", concealed: false }
   }
 );
 

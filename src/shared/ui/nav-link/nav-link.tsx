@@ -35,10 +35,14 @@ const NavLink = ({
   const pathname = usePathname();
 
   const linkClassName = cn(
-    "text-white desktop:border-b-3 desktop:border-b-transparent desktop:text-secondary-1 max-desktop:aria-[current]:text-accent-1",
+    "desktop:border-b-3 desktop:border-b-transparent desktop:text-secondary-1 max-desktop:aria-[current]:text-accent-1",
     isSidebar
-      ? activeClass || "desktop:aria-[current]:text-accent-2"
+      ? [
+          "gap-2 text-secondary-1",
+          activeClass || "desktop:aria-[current]:text-accent-2"
+        ]
       : [
+          "text-white",
           activeClass || "desktop:aria-[current]:border-b-accent-1",
           "desktop:aria-[current]:text-white"
         ],

@@ -28,7 +28,9 @@ const Footer: FC = () => {
             </span>
             <Icon
               name={item.icon}
-              className="h-6 w-6 text-secondary-1 desktop:group-hover:text-white"
+              className="h-6 w-6"
+              tone="muted"
+              hover="lightOnDesktop"
             />
           </a>
         ))}

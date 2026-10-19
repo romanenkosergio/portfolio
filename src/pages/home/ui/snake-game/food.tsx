@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { useTranslations } from "next-intl";
 
-import { cn } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
 import { FOOD_TOTAL } from "@/pages/home/config";
@@ -21,10 +20,9 @@ const Food: FC = () => {
           <Icon
             name="game/food"
             key={`score-${idx}`}
-            className={cn(
-              "h-5 w-5 transition-all duration-300 ease-in-out",
-              idx >= foodLeft && "opacity-30"
-            )}
+            className="h-5 w-5"
+            motion="smooth"
+            faded={idx >= foodLeft}
           />
         ))}
       </div>
