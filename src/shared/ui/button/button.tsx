@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
@@ -50,7 +51,7 @@ const Button: FC<IButtonProps> = ({
 
   return href ? (
     <LinkComponent
-      href={href as string}
+      href={href as Route}
       title={title || undefined}
       className={buttonClassName}
       target={target}

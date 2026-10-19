@@ -4,12 +4,11 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.3
+Done: 1.1–1.4
 
 ## Phase 1 — tooling
 
-- [ ] 1.4 Next 16, React 19.3, tailwind-merge 3, Tailwind 4.x; SVGR → `turbopack.rules`; `typedRoutes`; tsconfig per the kit (common-next)
-- [ ] 1.6 Kit ESLint/Prettier/steiger toolchain (`eslint/` composition, boundaries 6, react-hooks 7); `eslint/pending.config.mjs` names the PR that clears each entry (D5); drop FlatCompat, `@feature-sliced/eslint-config`, local-rules, ts-node
+- [ ] 1.6 Kit ESLint/Prettier/steiger toolchain (`eslint/` composition, boundaries 6, react-hooks 7); `eslint/pending.config.mjs` names the PR that clears each entry (D5); drop FlatCompat, `@feature-sliced/eslint-config`, local-rules
 - [ ] 1.7 Re-sort Tailwind classes (prettier-plugin-tailwindcss 0.8, `tailwindStylesheet`) — formatting only
 - [ ] 1.8 `shared`: `cn` + `cva` Button, static icon registry, NavLink `aria-current`, delete dead code (modal, unused hooks, consts), fix `BASE_URL`
 - [ ] 1.9 `widgets/layout-shell` (skip link, landmarks) instead of `src/app/providers`; `lang`, no zoom lock; Burger as a `<button>`; typed `[type]` params + guard; relative intra-slice imports; sidebar dedupe

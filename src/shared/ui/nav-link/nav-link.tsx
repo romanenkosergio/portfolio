@@ -1,8 +1,9 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnchorHTMLAttributes, FC } from "react";
+import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { INavLinkProps } from "./nav-link.types";
 
@@ -18,9 +19,7 @@ const NavLink: FC<INavLinkProps> = ({
   ...props
 }) => {
   const pathname = usePathname();
-  const isActive = exact
-    ? pathname === href
-    : pathname?.startsWith(href as string);
+  const isActive = exact ? pathname === href : pathname?.startsWith(href);
 
   const currentClassName = `desktop:text-secondary-1 
   max-desktop:[&.active]:text-accent-1 
@@ -38,22 +37,32 @@ ${
   ${isSidebar ? "sidebar" : ""}
 `;
 
-  const Tag = isExternal ? "a" : Link;
+  const linkClassName = twMerge(currentClassName, className);
 
-  const externalProps: AnchorHTMLAttributes<HTMLAnchorElement> = isExternal
-    ? { target: "_blank", rel: "noopener noreferrer" }
-    : {};
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkClassName}
+        {...props}
+        title={title}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
-    <Tag
-      href={href as string}
-      {...(isExternal ? externalProps : {})}
-      className={twMerge(currentClassName, className)}
+    <Link
+      href={href as Route}
+      className={linkClassName}
       {...props}
       title={title}
     >
       {children}
-    </Tag>
+    </Link>
   );
 };
 
