@@ -1,4 +1,4 @@
-import { ComponentProps, FC, SVGProps } from "react";
+import type { ComponentProps, FC, SVGProps } from "react";
 
 // A file name under public/assets/icons/<folder>, without ".svg".
 export type IconName = string;

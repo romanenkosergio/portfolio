@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import Navigation from "@/widgets/header/ui/navigation";
 
 const Burger = () => {

@@ -1,6 +1,7 @@
-import { FC } from "react";
+import type { FC } from "react";
+
 import { AboutMeSidebar } from "./about-me-sidebar";
-import { ISidebarProps } from "./sidebar.types";
+import type { ISidebarProps } from "./sidebar.types";
 
 const Sidebar: FC<ISidebarProps> = ({ type, subType }) => {
   return (

@@ -1,6 +1,8 @@
-import { FC } from "react";
+import type { FC } from "react";
+
 import { Icon } from "@/shared/ui";
-import { ISidebarContentItemProps } from "./sidebar-content-item.types";
+
+import type { ISidebarContentItemProps } from "./sidebar-content-item.types";
 
 const SidebarContentItem: FC<ISidebarContentItemProps> = ({
   title,

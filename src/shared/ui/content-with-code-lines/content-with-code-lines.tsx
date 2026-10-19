@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { IContentWithCodeLinesProps } from "./content-with-code-lines.types";
+import type { FC } from "react";
+
+import type { IContentWithCodeLinesProps } from "./content-with-code-lines.types";
 
 const ContentWithCodeLines: FC<IContentWithCodeLinesProps> = ({ content }) => {
   const lines = content.split("\n");

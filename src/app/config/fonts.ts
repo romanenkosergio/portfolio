@@ -1,4 +1,5 @@
 import { Fira_Code } from "next/font/google";
+
 import { twMerge } from "tailwind-merge";
 
 // Define the fonts here

@@ -1,9 +1,14 @@
 "use client";
 
-import { FC, useMemo } from "react";
+import type { FC } from "react";
+import { useMemo } from "react";
+
 import { Icon } from "@/shared/ui";
-import { Direction, useSnakeStore } from "../../model";
-import { IKeyboardArrowProps } from "./keyboard-arrow.types";
+
+import type { Direction } from "../../model";
+import { useSnakeStore } from "../../model";
+
+import type { IKeyboardArrowProps } from "./keyboard-arrow.types";
 
 const arrowPositions: Record<Direction, string> = {
   "DOWN": "rotate-180",

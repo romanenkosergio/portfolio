@@ -1,103 +1,62 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { fixupPluginRules } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import nextPlugin from "@next/eslint-plugin-next";
-import tsParser from "@typescript-eslint/parser";
-import jsxA11Y from "eslint-plugin-jsx-a11y";
-import localRules from "eslint-plugin-local-rules";
-import react from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
-import unusedImports from "eslint-plugin-unused-imports";
-import globals from "globals";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
+import prettierConfig from "eslint-config-prettier/flat";
+import prettierPlugin from "eslint-plugin-prettier";
+import reactPlugin from "eslint-plugin-react";
 
-// Constants
-const currentFileName = fileURLToPath(import.meta.url);
-const currentDirName = path.dirname(currentFileName);
+import {
+  architectureConfig,
+  consoleAllowedConfig,
+  forbiddenConfigs,
+  javascriptConfig,
+  pendingConfigs,
+  scriptsConfig,
+  typescriptConfig
+} from "./eslint/index.mjs";
+
+/**
+ * A thin composition, and nothing else: every rule body lives in a named export
+ * under `eslint/`. There is no warning tier (D5). Rules that still fail on
+ * existing code are switched off per file in `eslint/pending.config.mjs`, each
+ * entry naming the PLAN item that clears it — it comes last so it can win.
+ */
 
 const IGNORE_PATTERNS = [
-  ".next/**",
-  "out/**",
+  "**/node_modules/**",
+  "**/.next/**",
+  "**/out/**",
+  "**/build/**",
+  "**/dist/**",
+  "**/coverage/**",
+  "**/*.config.{js,mjs,ts}",
   "public/scripts/**.js",
-  "**/*.spec.ts",
-  "**/react-email-starter",
-  "src/shared/api/*.ts",
-  "**/locales"
+
+  // The root `pages/` directory holds a README and nothing else. It exists so
+  // that Next binds the Pages Router beside `app/` instead of mistaking the FSD
+  // `src/pages` layer for it.
+  "pages/**"
 ];
 
-const pluginsConfig = {
-  "@next/next": nextPlugin,
-  "local-rules": localRules,
-  react,
-  "jsx-a11y": jsxA11Y,
-  "react-hooks": fixupPluginRules(reactHooks),
-  "unused-imports": unusedImports
-};
-
-const prettierConfig = {
-  "prettier/prettier": ["error", { tabWidth: 2, useTabs: false }],
-  "comma-dangle": [
-    "warn",
-    {
-      arrays: "never",
-      objects: "never",
-      imports: "never",
-      exports: "never",
-      functions: "never"
-    }
-  ]
-};
-
-const eslintCompatibility = new FlatCompat({
-  baseDirectory: currentDirName,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all
-});
-
-// ESLint Configuration
 export default [
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  prettierConfig,
   { ignores: IGNORE_PATTERNS },
-  { files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"] },
-  ...eslintCompatibility.extends(
-    "plugin:react/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
-    "plugin:local-rules/all",
-    "@feature-sliced"
-  ),
-  {
-    plugins: pluginsConfig,
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser
-      },
-      parser: tsParser,
-      ecmaVersion: "latest",
-      sourceType: "module",
-      parserOptions: { ecmaFeatures: { jsx: true } }
-    },
-    settings: {
-      "import/resolver": {
-        typescript: { alwaysTryTypes: true }
-      }
-    },
-    rules: {
-      ...nextPlugin.configs.recommended.rules,
-      ...prettierConfig,
-      "import/no-internal-modules": "off",
-      "local-rules/require-title": "error",
-      "import/extensions": "off",
-      "react/react-in-jsx-scope": "off",
-      "react/jsx-no-useless-fragment": "warn",
-      camelcase: "off",
-      "no-unused-vars": "off",
-      quotes: ["error", "double"],
-      "react/jsx-curly-brace-presence": [
-        "error",
-        { props: "never", children: "ignore" }
-      ]
-    }
-  }
+
+  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat["jsx-runtime"],
+  { plugins: { prettier: prettierPlugin } },
+
+  javascriptConfig,
+  typescriptConfig,
+
+  architectureConfig,
+  ...forbiddenConfigs,
+
+  consoleAllowedConfig,
+  scriptsConfig,
+
+  // shadcn lint config (PLAN 1.15) plugs in here.
+
+  ...pendingConfigs
 ];

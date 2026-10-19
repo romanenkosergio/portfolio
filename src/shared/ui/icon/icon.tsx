@@ -1,7 +1,9 @@
-import { FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
+
 import { twMerge } from "tailwind-merge";
 
-import { IIconProps, SVGComponent } from "./icon.types";
+import type { IIconProps, SVGComponent } from "./icon.types";
 
 const Icon: FC<IIconProps> = ({
   name,

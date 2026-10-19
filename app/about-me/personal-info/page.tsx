@@ -1,5 +1,7 @@
+import type { FC } from "react";
+
 import { permanentRedirect } from "next/navigation";
-import { FC } from "react";
+
 import { E_ROUTES } from "@/shared/config";
 
 const About: FC = () => {

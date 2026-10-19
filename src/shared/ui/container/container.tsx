@@ -1,7 +1,8 @@
-import { FC } from "react";
+import type { FC } from "react";
+
 import { twMerge } from "tailwind-merge";
 
-import { IContainerProps } from "./container.types";
+import type { IContainerProps } from "./container.types";
 
 const Container: FC<IContainerProps> = ({ children, className }) => {
   const classes = twMerge("container", className);

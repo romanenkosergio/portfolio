@@ -1,8 +1,11 @@
+import type { FC } from "react";
+
 import Link from "next/link";
-import { FC } from "react";
+
+import { E_ROUTES } from "@/shared/config";
 
 import Navigation from "@/widgets/header/ui/navigation";
-import { E_ROUTES } from "@/shared/config";
+
 import Burger from "./burger";
 
 const Header: FC = () => {

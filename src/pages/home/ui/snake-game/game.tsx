@@ -1,10 +1,14 @@
 "use client";
 
+import type { FC } from "react";
+
 import Image from "next/image";
-import { FC } from "react";
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from "@/pages/home/config";
+
 import { BASE_PATH } from "@/shared/config";
 import { Button, E_BUTTON_VARIANT } from "@/shared/ui";
+
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from "@/pages/home/config";
+
 import { useGame } from "../../lib";
 
 const Game: FC = () => {

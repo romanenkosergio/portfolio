@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect, useRef, useState } from "react";
 
-import {
+import type {
   IOriginalStyle,
   IUseScrollLockOptions,
   IUseScrollLockReturn

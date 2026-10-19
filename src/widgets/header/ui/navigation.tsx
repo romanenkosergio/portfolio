@@ -1,7 +1,10 @@
-import { FC } from "react";
+import type { FC } from "react";
+
 import { NavLink } from "@/shared/ui";
+
 import { NAV_ITEMS } from "../config";
-import { INavigationProps } from "./navigation.types";
+
+import type { INavigationProps } from "./navigation.types";
 
 const Navigation: FC<INavigationProps> = ({
   className,

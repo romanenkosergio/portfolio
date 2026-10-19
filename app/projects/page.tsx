@@ -1,5 +1,7 @@
-import { Metadata, ResolvedMetadata } from "next";
-import { FC } from "react";
+import type { FC } from "react";
+
+import type { Metadata, ResolvedMetadata } from "next";
+
 import { HomeView } from "@/pages/home";
 
 export async function generateMetadata(

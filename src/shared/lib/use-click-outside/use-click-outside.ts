@@ -1,8 +1,9 @@
 "use client";
 
-import { RefObject, useEffect } from "react";
+import type { RefObject } from "react";
+import { useEffect } from "react";
 
-import { UserEventType } from "./use-click-outside.types";
+import type { UserEventType } from "./use-click-outside.types";
 
 // Helper function to determine if the event target is outside the provided refs
 const isEventOutsideRef = <T extends HTMLElement>(

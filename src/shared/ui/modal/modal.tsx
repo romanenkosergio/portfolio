@@ -1,11 +1,13 @@
 "use client";
 
-import { FC, useCallback, useEffect, useRef } from "react";
+import type { FC } from "react";
+import { useCallback, useEffect, useRef } from "react";
+
 import { twMerge } from "tailwind-merge";
 
 import { useScrollLock } from "@/shared/lib";
 
-import { IModalProps } from "./modal.types";
+import type { IModalProps } from "./modal.types";
 
 const Modal: FC<IModalProps> = ({ onClose, children, className, isOpen }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
