@@ -7,6 +7,11 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Current state (2026-10-19)
 
+- About content (bio, skills, experience) rewritten from the owner's CV in en/uk/ru; `interests` unchanged. Years of
+  experience are never written: `{years, plural, …}` in messages, `yearsSince(CAREER_START)` (`shared/config`, May 2017)
+  passed by `about-view.tsx` at build time — the number refreshes with each deploy. The CV PDF is local only
+  (`docs/serhii-romanenko-cv.pdf`, excluded via `.git/info/exclude`; it has a phone number — never commit it).
+- Pages deploy only on the owner's request (D11): `gh workflow run pages.yml --ref main`.
 - PLAN 1.11 done (next-intl 4, en/uk/ru): routes are `app/[locale]/…` (`dynamicParams = false`, `generateStaticParams`
   over `LOCALES`; `[type]` pages locales × types). Every layout/page/`generateMetadata` starts with
   `resolveLocale(params)` (`src/app/lib`: validates, `setRequestLocale`). `src/shared/i18n`: `routing`, `Locale`,
@@ -41,7 +46,7 @@ path, title?})` adds canonical, hreflang + x-default. Header has a shadcn `Selec
 
 ## Next
 
-- Translate `messages/uk.json` and `messages/ru.json` (copywriter) → 1.16 → 1.12–1.14 → phase 3 redesign.
+- 1.16 → 1.12–1.14 → phase 3 redesign.
   Each PR clears its «PLAN 1.x» entries in `eslint/pending.config.mjs`. Next decision number: D13.
 
 ## Environment
