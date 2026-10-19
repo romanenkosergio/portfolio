@@ -1,7 +1,10 @@
+import { GITHUB_URL } from "@/shared/config";
 import type { IconName } from "@/shared/ui";
 
+type SocialKey = "linkedin" | "twitter" | "medium" | "github";
+
 interface ISocial {
-  title: string;
+  titleKey: SocialKey;
   href: string;
   icon: IconName;
   label?: string;
@@ -9,24 +12,24 @@ interface ISocial {
 
 export const SOCIALS: ISocial[] = [
   {
-    title: "LinkedIn",
+    titleKey: "linkedin",
     href: "https://www.linkedin.com/in/romanenkosergio/",
     icon: "footer/linkedin"
   },
 
   {
-    title: "Twitter",
+    titleKey: "twitter",
     href: "https://x.com/romanenkosergio",
     icon: "footer/twitter"
   },
   {
-    title: "Medium",
+    titleKey: "medium",
     href: "https://medium.com/@romanenkosergio",
     icon: "footer/medium"
   },
   {
-    title: "GitHub",
-    href: "https://github.com/romanenkosergio",
+    titleKey: "github",
+    href: GITHUB_URL,
     icon: "footer/github",
     label: "@romanenkosergio"
   }

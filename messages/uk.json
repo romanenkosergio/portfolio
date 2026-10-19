@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "appName": "Сергій Романенко",
+    "appDescription": "Портфоліо фронтенд-розробника: проєкти, досвід і контакти.",
+    "ogTitle": "Ласкаво просимо до мого портфоліо",
+    "ogDescription": "Перегляньте мої проєкти, дізнайтеся більше про мене та напишіть мені."
+  },
+  "layout": {
+    "skipToContent": "Перейти до вмісту"
+  },
+  "header": {
+    "brand": "serhii-romanenko",
+    "homeTitle": "На головну",
+    "openMenu": "Відкрити меню",
+    "closeMenu": "Закрити меню",
+    "nav": {
+      "hello": {
+        "label": "_hello",
+        "title": "На головну"
+      },
+      "aboutMe": {
+        "label": "_about-me",
+        "title": "Більше про мене"
+      },
+      "projects": {
+        "label": "_projects",
+        "title": "Мої проєкти"
+      },
+      "contactMe": {
+        "label": "_contact-me",
+        "title": "Зв’язатися зі мною"
+      }
+    }
+  },
+  "languageSwitcher": {
+    "label": "Мова"
+  },
+  "footer": {
+    "findMeIn": "Мене можна знайти тут:",
+    "socials": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "medium": "Medium",
+      "github": "GitHub"
+    }
+  },
+  "home": {
+    "greeting": "Привіт, я",
+    "name": "Сергій Романенко",
+    "role": "> Фронтенд-розробник",
+    "hint": "// пройди гру, щоб продовжити",
+    "constKeyword": "const",
+    "linkName": "githubLink",
+    "assign": "=",
+    "linkTitle": "GitHub"
+  },
+  "game": {
+    "title": "Гра «Змійка»",
+    "instructions": "Натисніть Start, потім керуйте змійкою стрілками або W, A, S, D, поки поле у фокусі. З’їжте {total} шматочків їжі, щоб виграти.",
+    "progress": "З’їдено {eaten} з {total}",
+    "won": "Чудово! Ви виграли.",
+    "lost": "Гру закінчено.",
+    "foodAlt": "їжа",
+    "wellDone": "Чудово!",
+    "gameOver": "Гру закінчено!",
+    "startGame": "start-game",
+    "playAgain": "play-again",
+    "startAgain": "start-again",
+    "next": "next",
+    "skip": "skip",
+    "aboutMeTitle": "Про мене",
+    "foodLeft": "// залишилось їжі",
+    "useKeyboard": "// користуйся клавіатурою",
+    "arrowsToPlay": "// грай стрілками",
+    "moveUp": "Вгору",
+    "moveDown": "Вниз",
+    "moveLeft": "Вліво",
+    "moveRight": "Вправо"
+  },
+  "about": {
+    "types": {
+      "bio": "bio",
+      "interests": "interests",
+      "skills": "skills",
+      "experience": "experience"
+    },
+    "content": {
+      "bio": "/**\n * Про мене\n * Якщо спитати мене, що таке лідерство в IT, \n * я скажу: це можливості, гнучкість і ріст. \n * Лідерство — це створити середовище, де команда \n * розвивається, береться за складні задачі й \n * впроваджує нове, а результат відчувають \n * бізнес, клієнт і самі люди.\n *\n * Сім років у фронтенд-розробці я ріс від інженера \n * до тімліда: вів команди крізь складні етапи, \n * покращував робочі процеси й допомагав людям \n * розкривати потенціал. Мені подобається \n * допомагати, пропонувати ідеї та оптимізувати \n * процеси, щоб команди були самостійнішими \n * й орієнтованими на результат.\n *\n * Зараз, як Frontend Team Lead, моя головна мета — \n * вибудувати процеси та рамки, у яких команда \n * працює самостійно й ефективно навіть за мінімальної \n * моєї участі. Паралельно я розвиваю культуру \n * постійного вдосконалення та росту.\n */",
+      "interests": "/**\n * Інтереси\n * Я проактивна людина, орієнтована на ріст. \n * Люблю розв’язувати складні задачі та будувати \n * співпрацю в командах. Переконаний, що підтримуюче \n * середовище, яке дає людям силу діяти, — запорука \n * успіху і в житті, і в роботі.\n *\n * Мій фокус — постійний саморозвиток, інновації \n * та гнучкість. Мені подобаються складні проблеми, \n * нові технології й творчі рішення, до яких я \n * заохочую команду.\n *\n * Я ціную відкрите спілкування, довіру й прозорість \n * і дбаю про атмосферу, де кожен може запропонувати \n * ідею та рости.\n *\n * Мене рухають цікавість, любов до роботи, що має \n * вплив, і бажання змінювати речі на краще — \n * і як лідера, і як людини.\n */",
+      "skills": "/**\n * Навички\n * Впевнено володію сучасною фронтенд-розробкою \n * (TypeScript, React, Next.js).\n *\n * Досвід зі станом застосунку (Zustand, Redux) \n * та UI-бібліотеками (TailwindCSS тощо).\n *\n * Будую оптимізовані й масштабовані архітектури \n * для корпоративних проєктів.\n *\n * Міцна база: чистий код, компонентний підхід, \n * оптимізація продуктивності.\n *\n * Багатий досвід упровадження та підтримки \n * архітектури FSD (Feature-Sliced Design).\n *\n * Працював із CI/CD-пайплайнами та системами \n * контролю версій (Git, GitHub Actions).\n * Знаю фреймворки для тестування (Jest, React Testing Library).\n *\n * Знайомий із серверним рендерингом (SSR), \n * інтеграцією API (REST, GraphQL) і мікросервісами.\n *\n * Ефективно співпрацюю в проєктах за методологіями \n * Agile/Scrum.\n */",
+      "experience": "/**\n * Досвід\n * Маю 5 років досвіду у веброзробці\n * lorem ipsum dolor sit amet, \n * consectetur adipiscing elit, sed do eiusmod\n * tempor incididunt ut labore et dolore\n * magna aliqua. Ut enim ad minim veniam,\n * quis nostrud exercitation ullamco laboris\n * nisi ut aliquip ex ea commodo consequat.\n * Duis aute irure dolor in reprehenderit in\n *\n * Duis aute irure dolor in reprehenderit in\n * voluptate velit esse cillum dolore eu fugiat \n * nulla pariatur. Excepteur sint occaecat \n * officia deserunt mollit anim id est laborum.\n */"
+    }
+  },
+  "hobbies": {
+    "placeholder": "AboutMeHobbies"
+  },
+  "sidebar": {
+    "sections": {
+      "personalInfo": "Особисте",
+      "professionalInfo": "Професійне",
+      "hobbies": "Хобі"
+    },
+    "groups": {
+      "personalInfo": "personal-info",
+      "professionalInfo": "professional-info",
+      "contacts": "contacts"
+    },
+    "items": {
+      "bio": "bio",
+      "interests": "interests",
+      "skills": "skills",
+      "experience": "experience"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "description": "Такої сторінки не існує.",
+    "backHome": "На головну"
+  },
+  "root": {
+    "continue": "Перейти на сайт",
+    "title": "Перенаправлення"
+  },
+  "titles": {
+    "home": "Ласкаво просимо до мого портфоліо",
+    "aboutMe": "Про мене",
+    "bio": "Біографія",
+    "interests": "Інтереси",
+    "skills": "Навички",
+    "experience": "Досвід",
+    "hobbies": "Хобі",
+    "projects": "Проєкти",
+    "contact": "Зв’язатися зі мною"
+  }
+}

@@ -1,8 +1,6 @@
 import type { AnchorHTMLAttributes } from "react";
 
-import type { LinkProps } from "next/link";
-
-import type { Route } from "next";
+import type { E_ROUTES } from "@/shared/config";
 
 interface INavLinkBaseProps extends Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -13,9 +11,9 @@ interface INavLinkBaseProps extends Omit<
   activeClass?: string;
 }
 
-interface INavLinkInternalProps<T extends string>
-  extends INavLinkBaseProps, Omit<LinkProps<string>, "href"> {
-  href: Route<T>;
+// An internal href is a known route without its locale prefix; the i18n Link adds it.
+interface INavLinkInternalProps extends INavLinkBaseProps {
+  href: E_ROUTES;
   isExternal?: false;
 }
 
@@ -24,6 +22,4 @@ interface INavLinkExternalProps extends INavLinkBaseProps {
   isExternal: true;
 }
 
-// `Route<T>` (not bare `Route`) so typed-routes also accepts the dynamic leaves (/about-me/personal-info/bio).
-export type INavLinkProps<T extends string = string> =
-  INavLinkInternalProps<T> | INavLinkExternalProps;
+export type INavLinkProps = INavLinkInternalProps | INavLinkExternalProps;

@@ -1,16 +1,18 @@
 import type { FC } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { cn } from "@/shared/lib";
 import { Button } from "@/shared/ui";
 
 import type { GameStatus } from "@/pages/home/model";
 
 const startLabels = {
-  idle: "start-game",
-  playing: "start-game",
-  win: "play-again",
-  lose: "start-again"
-};
+  idle: "startGame",
+  playing: "startGame",
+  win: "playAgain",
+  lose: "startAgain"
+} as const;
 
 interface IGameOverlayProps {
   status: GameStatus;
@@ -19,6 +21,7 @@ interface IGameOverlayProps {
 
 /** Start button and round result; inert (out of the tab order) while a round runs. */
 const GameOverlay: FC<IGameOverlayProps> = ({ status, onStart }) => {
+  const t = useTranslations("game");
   const isPlaying = status === "playing";
   const isOver = status === "win" || status === "lose";
 
@@ -37,12 +40,12 @@ const GameOverlay: FC<IGameOverlayProps> = ({ status, onStart }) => {
             status === "win" ? "text-accent-2" : "text-accent-1"
           )}
         >
-          {status === "win" ? "Well Done!" : "Game over!"}
+          {status === "win" ? t("wellDone") : t("gameOver")}
         </p>
       )}
       <Button
         className={cn(isPlaying && "-z-1 opacity-0")}
-        text={startLabels[status]}
+        text={t(startLabels[status])}
         onClick={onStart}
         variant={isOver ? "ghost" : "primary"}
       />

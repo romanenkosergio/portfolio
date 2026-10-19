@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { cn } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
@@ -16,6 +18,7 @@ const BLOB =
   "pointer-events-none absolute h-123 w-113.5 rounded-full opacity-40 blur-[87px]";
 
 const SnakeGame: FC = () => {
+  const t = useTranslations("game");
   return (
     <div className="relative hidden desktop:block">
       <div
@@ -36,10 +39,10 @@ const SnakeGame: FC = () => {
           <div className="flex flex-col">
             <div className="h-35.5 w-45.25 rounded-lg bg-primary-5/19 px-3 py-4">
               <p className="text-sm leading-4.5 text-white">
-                {"//"} use keyboard
+                {t("useKeyboard")}
               </p>
               <p className="text-sm leading-4.5 text-white">
-                {"//"} arrows to play
+                {t("arrowsToPlay")}
               </p>
               <div className="mt-4 flex flex-col gap-1.25">
                 <div className="flex w-full items-center justify-center">

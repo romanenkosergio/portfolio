@@ -2,8 +2,11 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { cn } from "@/shared/lib";
 
+import LanguageSwitcher from "./language-switcher";
 import Navigation from "./navigation";
 
 const BAR_CLASSES = [
@@ -13,6 +16,7 @@ const BAR_CLASSES = [
 ];
 
 const Burger = () => {
+  const t = useTranslations("header");
   const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -40,7 +44,7 @@ const Burger = () => {
         type="button"
         aria-expanded={isOpen}
         aria-controls={menuId}
-        aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-label={isOpen ? t("closeMenu") : t("openMenu")}
         className="flex cursor-pointer flex-col gap-1 desktop:hidden"
         onClick={() => setIsOpen(open => !open)}
       >
@@ -70,6 +74,7 @@ const Burger = () => {
           onClick={closeMenu}
           isMobile
         />
+        <LanguageSwitcher className="p-4.5 text-secondary-1 desktop:hidden" />
       </div>
     </>
   );

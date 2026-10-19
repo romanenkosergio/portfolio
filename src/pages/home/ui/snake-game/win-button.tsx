@@ -2,18 +2,21 @@
 
 import type { FC } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { E_ROUTES } from "@/shared/config";
 import { Button } from "@/shared/ui";
 
 import { selectIsWin, useSnakeStore } from "@/pages/home/model";
 
 const WinButton: FC = () => {
+  const t = useTranslations("game");
   const isVin = useSnakeStore(selectIsWin);
   return (
     <Button
       href={E_ROUTES.ABOUT_ME}
-      title="About me"
-      text={isVin ? "next" : "skip"}
+      title={t("aboutMeTitle")}
+      text={isVin ? t("next") : t("skip")}
       variant="ghost"
       className="mt-auto ml-auto"
     />

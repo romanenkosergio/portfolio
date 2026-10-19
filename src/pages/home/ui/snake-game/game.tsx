@@ -5,6 +5,8 @@ import { useId } from "react";
 
 import Image from "next/image";
 
+import { useTranslations } from "next-intl";
+
 import { BASE_PATH } from "@/shared/config";
 
 import {
@@ -23,6 +25,7 @@ import {
 import GameOverlay from "./game-overlay";
 
 const Game: FC = () => {
+  const t = useTranslations("game");
   const { canvasRef, foodRef, boardRef, onStartGame, onKeyDown } = useGame();
   const status = useSnakeStore(selectStatus);
   const foodLeft = useSnakeStore(selectFoodLeft);
@@ -30,9 +33,9 @@ const Game: FC = () => {
 
   const announcement = {
     idle: "",
-    playing: `${FOOD_TOTAL - foodLeft} of ${FOOD_TOTAL} food eaten`,
-    win: "Well done! You won.",
-    lose: "Game over."
+    playing: t("progress", { eaten: FOOD_TOTAL - foodLeft, total: FOOD_TOTAL }),
+    win: t("won"),
+    lose: t("lost")
   }[status];
 
   return (
@@ -42,14 +45,13 @@ const Game: FC = () => {
       id={BOARD_ID}
       role="application"
       tabIndex={0}
-      aria-label="Snake game"
+      aria-label={t("title")}
       aria-describedby={instructionsId}
       onKeyDown={onKeyDown}
       className="relative rounded-lg"
     >
       <p id={instructionsId} className="sr-only">
-        Press Start, then steer the snake with the arrow keys or W, A, S, D
-        while this board has focus. Eat {FOOD_TOTAL} pieces of food to win.
+        {t("instructions", { total: FOOD_TOTAL })}
       </p>
       <p role="status" aria-live="polite" className="sr-only">
         {announcement}
@@ -59,8 +61,8 @@ const Game: FC = () => {
         width={24}
         height={24}
         src={`${BASE_PATH}/assets/icons/game/food.svg`}
-        alt="food"
-        title="food"
+        alt={t("foodAlt")}
+        title={t("foodAlt")}
         aria-hidden="true"
         className="absolute opacity-0"
       />

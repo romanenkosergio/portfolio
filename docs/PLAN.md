@@ -4,11 +4,10 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.4, 1.6–1.10, 1.15
+Done: 1.1–1.4, 1.6–1.11, 1.15
 
 ## Phase 1 — tooling
 
-- [ ] 1.11 next-intl en (default) / uk / ru with static export: `/[locale]/…`, root → `/en/`, copy in `messages/`, `jsx-no-literals` (D4)
 - [ ] 1.12 jest 30 + RTL + jest-axe, coverage floor in `gate` and the deploy (D6)
 - [ ] 1.13 Playwright + axe against `out/` (incl. a `/portfolio` basePath build), separate CI job, not blocking the deploy (D6)
 - [ ] 1.14 size-limit on `out/`, jscpd, egress check, gitleaks, meta referrer/CSP (D6)
