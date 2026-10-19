@@ -4,7 +4,7 @@ import React, { FC, PropsWithChildren } from "react";
 import { fonts } from "@/app/config";
 import { generateIcons } from "@/app/lib";
 import { ContentProvider } from "@/app/providers";
-import { APP_CONFIG } from "@/shared/config";
+import { APP_CONFIG, BASE_PATH } from "@/shared/config";
 import "@/app/styles";
 
 export function generateMetadata(): Metadata {
@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
       description: "Explore my projects, learn about me, and get in touch.\n",
       url: "/",
       type: "website",
-      images: "/assets/images/meta-picture.png"
+      images: `${BASE_PATH}/assets/images/meta-picture.png`
     },
     alternates: {
       canonical: "/"

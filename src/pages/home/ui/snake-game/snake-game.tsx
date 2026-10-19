@@ -1,15 +1,24 @@
 import Image from "next/image";
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import { BOLTS } from "@/pages/home/config";
+import { BASE_PATH } from "@/shared/config";
 import { Icon } from "@/shared/ui";
 import Food from "./food";
 import Game from "./game";
 import KeyboardArrow from "./keyboard-arrow";
 import WinButton from "./win-button";
 
+// The URL carries the GitHub Pages base path, so it is passed in as a CSS variable.
+const GAME_BG = {
+  "--game-bg": `url(${BASE_PATH}/assets/images/game-block-bg.png)`
+} as CSSProperties;
+
 const SnakeGame: FC = () => {
   return (
-    <div className="border-primary-4 desktop:bg-[url(/assets/images/game-block-bg.png)] relative h-118.75 w-127.5 rounded-lg border shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] backdrop-blur-[32px]">
+    <div
+      style={GAME_BG}
+      className="border-primary-4 desktop:bg-(image:--game-bg) relative h-118.75 w-127.5 rounded-lg border shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] backdrop-blur-[32px]"
+    >
       <div className="relative z-10 flex h-full gap-6 px-7.5 py-8.5">
         <Game />
         <div className="flex flex-col">
@@ -33,7 +42,7 @@ const SnakeGame: FC = () => {
       </div>
       <div className="absolute -top-31 -left-12.5 z-1 h-185.5 max-h-[calc(100dvh-111px)] w-195">
         <Image
-          src="/assets/images/snake_bg.png"
+          src={`${BASE_PATH}/assets/images/snake_bg.png`}
           alt="game background"
           title="game background"
           fill
