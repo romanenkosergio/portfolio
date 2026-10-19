@@ -11,9 +11,9 @@ import { selectFoodLeft, useSnakeStore } from "@/pages/home/model";
 const Food: FC = () => {
   const foodLeft = useSnakeStore(selectFoodLeft);
   return (
-    <div className="mt-5">
-      <span className="text-sm text-white">{"//"} food left</span>
-      <div className="mt-4.5 grid w-33 grid-cols-5 gap-2">
+    <div className="mt-5 px-3">
+      <span className="text-sm leading-4.5 text-white">{"//"} food left</span>
+      <div className="mt-2.75 grid w-33 grid-cols-5 gap-2">
         {Array.from({ length: FOOD_TOTAL }).map((_, idx: number) => (
           <Icon
             name="game/food"

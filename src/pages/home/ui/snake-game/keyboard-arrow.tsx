@@ -43,7 +43,7 @@ const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
         document.getElementById(BOARD_ID)?.focus();
       }}
       className={cn(
-        "flex h-7 w-12.5 items-center justify-center rounded-lg border border-line transition-all duration-300 ease-in-out",
+        "flex h-7.25 w-12.25 items-center justify-center rounded-lg border border-line transition-all duration-300 ease-in-out",
         isActive ? "bg-white" : "bg-primary-6"
       )}
     >

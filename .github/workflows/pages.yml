@@ -1,9 +1,8 @@
 # Builds the static export (next.config.ts `output: "export"`) and publishes it to GitHub Pages.
 name: Pages
 
+# Manual only (D11): the owner asks for a deploy, then `gh workflow run pages.yml --ref main`.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

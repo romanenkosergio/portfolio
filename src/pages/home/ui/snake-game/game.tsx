@@ -69,7 +69,7 @@ const Game: FC = () => {
         width={`${CANVAS_WIDTH}px`}
         height={`${CANVAS_HEIGHT}px`}
         aria-hidden="true"
-        className="relative flex h-full w-60 items-center justify-center rounded-lg bg-primary-2/84"
+        className="relative flex h-full w-60 items-center justify-center rounded-lg bg-primary-2/84 shadow-[inset_1px_5px_11px_rgba(2,18,27,0.71)]"
       />
       <GameOverlay status={status} onStart={onStartGame} />
     </div>
