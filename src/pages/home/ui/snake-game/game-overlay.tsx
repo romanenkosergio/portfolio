@@ -29,7 +29,7 @@ const GameOverlay: FC<IGameOverlayProps> = ({ status, onStart }) => {
     <div
       inert={isPlaying}
       className={cn(
-        "absolute bottom-13.5 left-1/2 flex w-full -translate-x-1/2 flex-col items-center",
+        "absolute bottom-13.5 left-1/2 flex w-full -translate-x-1/2 flex-col items-center transition-opacity duration-300 ease-in-out",
         isPlaying && "-z-1 opacity-0"
       )}
     >

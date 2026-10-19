@@ -122,12 +122,12 @@
   button > *,
   details,
   details > * {
-    @apply cursor-pointer transition-all duration-300 ease-in-out;
+    @apply cursor-pointer transition-[color,background-color,border-color,outline-color,fill,stroke] duration-300 ease-in-out;
   }
 
   *::before,
   *::after {
-    @apply transition-all duration-300 ease-in-out;
+    @apply transition-[color,background-color,border-color,outline-color,fill,stroke] duration-300 ease-in-out;
   }
 
   * {

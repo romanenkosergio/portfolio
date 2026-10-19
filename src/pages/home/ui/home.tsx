@@ -30,7 +30,7 @@ const HomeView: FC = () => {
                 title={t("linkTitle")}
                 rel="nofollow noreferrer"
                 target="_blank"
-                className="relative mt-2.5 text-accent-1 underline-offset-4 desktop:before:absolute desktop:before:bottom-0 desktop:before:left-0 desktop:before:block desktop:before:h-0.25 desktop:before:w-full desktop:before:bg-accent-1 desktop:before:opacity-0 desktop:before:content-[''] desktop:hover:before:opacity-90"
+                className="relative mt-2.5 text-accent-1 underline-offset-4 desktop:before:absolute desktop:before:bottom-0 desktop:before:left-0 desktop:before:block desktop:before:h-0.25 desktop:before:w-full desktop:before:bg-accent-1 desktop:before:opacity-0 desktop:before:transition-opacity desktop:before:duration-300 desktop:before:ease-in-out desktop:before:content-[''] desktop:hover:before:opacity-90"
                 href={GITHUB_URL}
               >
                 {GITHUB_LINK_TEXT}

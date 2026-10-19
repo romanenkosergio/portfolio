@@ -21,7 +21,6 @@ const Food: FC = () => {
             name="game/food"
             key={`score-${idx}`}
             className="h-5 w-5"
-            motion="smooth"
             faded={idx >= foodLeft}
           />
         ))}

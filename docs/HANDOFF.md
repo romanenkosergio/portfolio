@@ -12,7 +12,10 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
   passed by `about-view.tsx` at build time — the number refreshes with each deploy. The CV PDF is local only
   (`docs/serhii-romanenko-cv.pdf`, excluded via `.git/info/exclude`; it has a phone number — never commit it).
 - PLAN 1.16 done: `shadcn/no-restyle` live everywhere, `pending.config.mjs` empty. Treatments are variants: Icon
-  (`icon-variants.ts`: tone, hover, motion, faded), Button `concealed`, NavLink sidebar adds `gap-2`/`text-secondary-1`.
+  (`icon-variants.ts`), Button `concealed`, NavLink `variant`.
+- Variants reworked for phase 3 motion: CSS transitions are colour-only (global rule in `styles.css`); opacity/transform
+  transitions are explicit local classes (burger bars, menu panel, food dots, home link underline, Button opacity/visibility).
+  Icon: `tone` inherit/muted/active + `interactive`; `onClick` renders a `<button>` with `label`; NavLink `variant` header/sidebar.
 - Pages deploy only on the owner's request (D11): `gh workflow run pages.yml --ref main`.
 - PLAN 1.11 done (next-intl 4, en/uk/ru): routes are `app/[locale]/…` (`dynamicParams = false`, `generateStaticParams`
   over `LOCALES`; `[type]` pages locales × types). Every layout/page/`generateMetadata` starts with
@@ -48,7 +51,7 @@ path, title?})` adds canonical, hreflang + x-default. Header has a shadcn `Selec
 
 ## Next
 
-- 1.12 → 1.13 → 1.14 → phase 3 redesign.
+- 1.14 → phase 3 (3.1 …) → phase 2 → tests last (1.12, 1.13).
   A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D13.
 
 ## Environment

@@ -53,7 +53,7 @@ const Burger = () => {
             key={className}
             aria-hidden="true"
             className={cn(
-              "h-0.5 w-4.5 transform bg-secondary-1 transition-transform duration-300 ease-in-out",
+              "h-0.5 w-4.5 transform bg-secondary-1 transition-[transform,translate,rotate,opacity] duration-300 ease-in-out",
               isOpen ? className : index === 1 && "opacity-100"
             )}
           />

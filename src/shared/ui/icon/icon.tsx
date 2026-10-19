@@ -12,20 +12,36 @@ const Icon: FC<IIconProps> = ({
   className,
   svgClass,
   tone,
-  hover,
-  motion,
+  interactive,
   faded,
   onClick,
+  label,
   ...props
 }) => {
   const Svg = ICONS[name];
+  const svg = (
+    <Svg {...props} className={cn("max-h-full max-w-full", svgClass)} />
+  );
+  const classes = cn(iconVariants({ tone, interactive, faded }), className);
+
+  // A clickable icon is a real button with a name; a plain one is decoration.
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        aria-label={label}
+        title={label}
+        onClick={onClick}
+        className={cn(classes, "cursor-pointer")}
+      >
+        {svg}
+      </button>
+    );
+  }
 
   return (
-    <Tag
-      onClick={onClick}
-      className={cn(iconVariants({ tone, hover, motion, faded }), className)}
-    >
-      <Svg {...props} className={cn("max-h-full max-w-full", svgClass)} />
+    <Tag aria-hidden="true" className={classes}>
+      {svg}
     </Tag>
   );
 };

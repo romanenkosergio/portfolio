@@ -12,10 +12,25 @@ export type SVGIcon = SVGProps<SVGSVGElement>;
 
 export type SVGComponent = FC<SVGIcon>;
 
-export interface IIconProps
-  extends ComponentProps<"svg">, VariantProps<typeof iconVariants> {
+interface IIconBaseProps
+  extends
+    Omit<ComponentProps<"svg">, "onClick">,
+    VariantProps<typeof iconVariants> {
   name: IconName;
-  onClick?: () => void;
   svgClass?: string;
-  Tag?: "div" | "span" | "button";
+  Tag?: "div" | "span";
 }
+
+// With onClick the icon renders a <button>, which needs an accessible name.
+interface IIconClickableProps extends Omit<IIconBaseProps, "Tag"> {
+  Tag?: undefined;
+  onClick: () => void;
+  label: string;
+}
+
+interface IIconDecorativeProps extends IIconBaseProps {
+  onClick?: undefined;
+  label?: undefined;
+}
+
+export type IIconProps = IIconClickableProps | IIconDecorativeProps;

@@ -10,22 +10,15 @@ const ContentLink: FC<IContentLinkProps> = ({ item }) => {
   const t = useTranslations("sidebar.items");
   const title = item.titleKey ? t(item.titleKey) : item.title;
   const linkProps = {
-    isSidebar: true,
+    variant: "sidebar",
     title,
     className: "group flex cursor-pointer items-center",
     activeClass: item.activeClass
   } as const;
   const children = (
     <>
-      <Icon
-        name={item.icon || "markdown"}
-        className="h-3.5 w-4"
-        motion="colors"
-        hover="light"
-      />
-      <span className="text-sm transition-colors duration-300 ease-in group-hover:text-white">
-        {title}
-      </span>
+      <Icon name={item.icon || "markdown"} className="h-3.5 w-4" interactive />
+      <span className="text-sm desktop:group-hover:text-white">{title}</span>
     </>
   );
 

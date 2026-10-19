@@ -3,6 +3,7 @@
 import { Link, usePathname } from "@/shared/i18n";
 import { cn } from "@/shared/lib";
 
+import { navLinkActiveClass, navLinkVariants } from "./nav-link-variants";
 import type { INavLinkProps } from "./nav-link.types";
 
 // `trailingSlash: true` makes usePathname() return "/contact/" while hrefs are "/contact"; the
@@ -28,24 +29,15 @@ const NavLink = ({
   exact = true,
   children,
   className,
-  isSidebar = false,
+  variant = "header",
   activeClass,
   ...props
 }: INavLinkProps) => {
   const pathname = usePathname();
 
   const linkClassName = cn(
-    "desktop:border-b-3 desktop:border-b-transparent desktop:text-secondary-1 max-desktop:aria-[current]:text-accent-1",
-    isSidebar
-      ? [
-          "gap-2 text-secondary-1",
-          activeClass || "desktop:aria-[current]:text-accent-2"
-        ]
-      : [
-          "text-white",
-          activeClass || "desktop:aria-[current]:border-b-accent-1",
-          "desktop:aria-[current]:text-white"
-        ],
+    navLinkVariants({ variant }),
+    activeClass || navLinkActiveClass[variant],
     className
   );
 

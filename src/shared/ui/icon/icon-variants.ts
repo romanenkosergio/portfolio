@@ -2,30 +2,20 @@ import { cva } from "class-variance-authority";
 
 export const iconVariants = cva("inline-block select-none", {
   variants: {
-    // Resting colour; "inherit" leaves it to the parent.
+    // Role of the icon: follow the parent, rest muted, or sit on an active (light) surface.
     tone: {
       inherit: "",
       muted: "text-secondary-1",
-      light: "text-white",
-      dark: "text-primary-6"
+      active: "text-primary-6"
     },
-    // Colour while the surrounding `group` is hovered.
-    hover: {
-      none: "",
-      light: "group-hover:text-white",
-      lightOnDesktop: "desktop:group-hover:text-white"
-    },
-    motion: {
-      none: "",
-      smooth: "transition-all duration-300 ease-in-out",
-      colors: "transition-colors duration-300 ease-in"
-    },
-    faded: { true: "opacity-30", false: "" }
+    // Turns white while the surrounding `group` is hovered (desktop only, like Button).
+    interactive: { true: "desktop:group-hover:text-white", false: "" },
+    // Dimmed state, only for icons that pass it; both states carry the opacity transition so the
+    // fade runs either way. Not for GSAP-driven icons (leave `faded` unset there).
+    faded: {
+      true: "opacity-30 transition-[color,opacity] duration-300 ease-in-out",
+      false: "opacity-100 transition-[color,opacity] duration-300 ease-in-out"
+    }
   },
-  defaultVariants: {
-    tone: "inherit",
-    hover: "none",
-    motion: "none",
-    faded: false
-  }
+  defaultVariants: { tone: "inherit", interactive: false }
 });
