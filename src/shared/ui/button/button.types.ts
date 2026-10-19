@@ -23,7 +23,7 @@ interface IButtonAsInternalLink<T extends string> extends IBaseButtonProps {
   href: Route<T>;
   title: string;
   target?: HTMLAttributeAnchorTarget;
-  onClick?: () => void;
+  onClick?: never;
   isExternalLink?: false;
 }
 
@@ -31,7 +31,7 @@ interface IButtonAsExternalLink extends IBaseButtonProps {
   href: string;
   title: string;
   target?: HTMLAttributeAnchorTarget;
-  onClick?: () => void;
+  onClick?: never;
   isExternalLink: true;
 }
 

@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 import { Icon } from "@/shared/ui";
 
-import { SOCIALS } from "@/widgets/footer/config";
+import { SOCIALS } from "../config";
 
 const Footer: FC = () => {
   return (

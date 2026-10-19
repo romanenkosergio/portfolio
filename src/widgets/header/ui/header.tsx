@@ -4,9 +4,8 @@ import Link from "next/link";
 
 import { E_ROUTES } from "@/shared/config";
 
-import Navigation from "@/widgets/header/ui/navigation";
-
 import Burger from "./burger";
+import Navigation from "./navigation";
 
 const Header: FC = () => {
   return (
@@ -20,7 +19,7 @@ const Header: FC = () => {
       </Link>
       <Navigation
         className="hidden w-full desktop:flex"
-        linkClassName="px-6 last:ml-auto border-l border-l-line desktop:py-4.5 nth-3:border-r nth-3:border-r-line hover:not-aria-[current=page]:text-white"
+        linkClassName="px-6 last:ml-auto border-l border-l-line desktop:py-4.5 nth-3:border-r nth-3:border-r-line hover:not-aria-[current]:text-white"
       />
       <Burger />
     </header>

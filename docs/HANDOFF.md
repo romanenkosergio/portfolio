@@ -10,17 +10,20 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 - Repo `git@github.com-personal:romanenkosergio/portfolio.git`, `main` protected (PR required, 0 approvals;
   the agent merges with squash after `code-reviewer`, owner's ruling). Pages deploys on push to `main`:
   https://romanenkosergio.github.io/portfolio/ (static export, D3).
-- Aligning with common-next (PLAN 1.x): merged #6 base path, #7 Next 16 / React 19.3, #8 design + GSAP skills
-  (phase 3, D8), #9 kit lint toolchain (D5, D9; `eslint/pending.config.mjs` holds the rest), #10 class re-sort,
-  #11 `shared` refactor (cn/cva, icon registry D10, NavLink active state).
-- `yarn typecheck` runs `next typegen` first: `next-env.d.ts` and route types are git-ignored, and CI's
-  typecheck failed on SVG imports after #11 (the hotfix PR; verify the Pages run is green).
+- PLAN 1.9 done: `widgets/layout-shell` (skip link, `<main id="main">`; header/footer arrive as props because
+  widgets cannot import widgets, `app/layout.tsx` composes them), `lang="en"`, no zoom lock, Burger as a
+  `<button>`, typed `[type]` params + `notFound()` guard (`pages/about`), `aria-current` page/true with
+  `aria-[current]:` variants, `ContentLink` split out, `pageMetadata` helper + shared `OPEN_GRAPH` (per-page
+  canonical/og:url; root layout carries no url/canonical), global `:focus-visible` accent outline.
+- `next dev` logs a "missing param in generateStaticParams" error for an unknown `[type]` with
+  `output: export` — expected; the build gives 404.
+- `yarn typecheck` runs `next typegen` first (`next-env.d.ts`, route types are git-ignored).
 - Agents: implement with `frontend-implementer`, then `code-reviewer` + `visual-checker` in parallel; they share
   the one checkout — never run two `next dev`/builds on the same port, give each its own port.
 
 ## Next
 
-- PLAN 1.9 → 1.10 → 1.15 (shadcn, D7) → 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 → phase 3 redesign.
+- PLAN 1.10 → 1.15 (shadcn, D7) → 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 → phase 3 redesign.
   Each PR clears its «PLAN 1.x» entries in `eslint/pending.config.mjs`. Next decision number: D11.
 
 ## Environment

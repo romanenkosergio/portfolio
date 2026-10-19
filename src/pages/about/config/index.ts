@@ -90,7 +90,14 @@ export const EXPERIENCE_CONTENT = `/**
  * officia deserunt mollit anim id est laborum.
  */`;
 
-export const ABOUT_CONTENT: Record<string, string> = {
+export const PERSONAL_INFO_TYPES = ["bio", "interests"] as const;
+export const PROFESSIONAL_INFO_TYPES = ["skills", "experience"] as const;
+
+export type PersonalInfoType = (typeof PERSONAL_INFO_TYPES)[number];
+export type ProfessionalInfoType = (typeof PROFESSIONAL_INFO_TYPES)[number];
+export type AboutType = PersonalInfoType | ProfessionalInfoType;
+
+export const ABOUT_CONTENT: Record<AboutType, string> = {
   bio: BIO_CONTENT,
   interests: INTERESTS_CONTENT,
   skills: SKILLS_CONTENT,
