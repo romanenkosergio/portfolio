@@ -6,22 +6,12 @@ const nextConfig: NextConfig = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
   trailingSlash: true,
   images: { unoptimized: true },
-  webpack(config) {
-    const fileLoaderRule = config.module.rules.find((rule: any) =>
-      rule.test?.test?.(".svg")
-    );
-
-    config.module.rules.push(
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/
-      },
-      {
-        test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
-        use: [
+  typedRoutes: true,
+  // SVGs import as React components (SVGR) under Turbopack, the default bundler since Next 16.
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: [
           {
             loader: "@svgr/webpack",
             options: {
@@ -41,10 +31,10 @@ const nextConfig: NextConfig = {
               }
             }
           }
-        ]
+        ],
+        as: "*.js"
       }
-    );
-    return config;
+    }
   }
 };
 

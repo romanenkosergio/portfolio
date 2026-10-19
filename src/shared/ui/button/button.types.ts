@@ -1,4 +1,3 @@
-import type { LinkProps } from "next/link";
 import { ButtonHTMLAttributes, HTMLAttributeAnchorTarget } from "react";
 
 export enum E_BUTTON_VARIANT {
@@ -24,7 +23,7 @@ interface IButtonAsButton
 }
 
 interface IButtonAsLink extends IBaseButtonProps {
-  href: LinkProps["href"];
+  href: string;
   title: string;
   target?: HTMLAttributeAnchorTarget;
   onClick?: () => void;

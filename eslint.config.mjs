@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import nextPlugin from "@next/eslint-plugin-next";
 import tsParser from "@typescript-eslint/parser";
 import jsxA11Y from "eslint-plugin-jsx-a11y";
 import localRules from "eslint-plugin-local-rules";
@@ -26,6 +27,7 @@ const IGNORE_PATTERNS = [
 ];
 
 const pluginsConfig = {
+  "@next/next": nextPlugin,
   "local-rules": localRules,
   react,
   "jsx-a11y": jsxA11Y,
@@ -61,7 +63,6 @@ export default [
     "plugin:react/recommended",
     "prettier",
     "plugin:prettier/recommended",
-    "plugin:@next/next/recommended",
     "plugin:local-rules/all",
     "@feature-sliced"
   ),
@@ -83,6 +84,7 @@ export default [
       }
     },
     rules: {
+      ...nextPlugin.configs.recommended.rules,
       ...prettierConfig,
       "import/no-internal-modules": "off",
       "local-rules/require-title": "error",
