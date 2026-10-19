@@ -60,7 +60,7 @@ Run `yarn gate` before calling a task done. Never `--no-verify`.
   pre-push: `yarn gate:push`, or for text-only pushes (`docs/**`, root `*.md`) Prettier only
   (`scripts/pre-push-scope.sh`).
 - Remote `git@github.com-personal:romanenkosergio/portfolio.git` (personal SSH alias), default branch `main`.
-  A push to `main` deploys GitHub Pages (`.github/workflows/pages.yml`, static export, D3).
+  GitHub Pages deploys only on the owner's request: `gh workflow run pages.yml --ref main` (manual trigger, D11; static export, D3).
 - Branch from a fresh `origin/main`, never from an unmerged branch; open the PR right after the push.
 
 ## Context economy

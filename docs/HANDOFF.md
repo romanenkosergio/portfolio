@@ -8,7 +8,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 ## Current state (2026-10-19)
 
 - Repo `git@github.com-personal:romanenkosergio/portfolio.git`, `main` protected (PR required, 0 approvals;
-  the agent merges with squash after `code-reviewer` once the owner says «да» for that PR — auto mode blocks it otherwise). Pages deploys on push to `main`:
+  the agent merges with squash after `code-reviewer` once the owner says «да» for that PR — auto mode blocks it otherwise). Pages deploys only when the owner asks (`gh workflow run pages.yml --ref main`, D11):
   https://romanenkosergio.github.io/portfolio/ (static export, D3).
 - PLAN 1.10 done: `pages/home/model/snake.ts` is the pure snake engine (`createInitialState`, `startGame`,
   `step(state, random)`, `turn`, `placeFood`); `snake-store.ts` is the Zustand store (game state + `start/tick/steer`)
@@ -31,7 +31,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 ## Next
 
 - PLAN 1.15 (shadcn, D7) → 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 → phase 3 redesign.
-  Each PR clears its «PLAN 1.x» entries in `eslint/pending.config.mjs`. Next decision number: D11.
+  Each PR clears its «PLAN 1.x» entries in `eslint/pending.config.mjs`. Next decision number: D12.
 
 ## Environment
 
