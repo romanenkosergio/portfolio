@@ -7,37 +7,6 @@
 
 const off = rules => Object.fromEntries(rules.map(rule => [rule, "off"]));
 export const pendingConfigs = [
-  // PLAN 1.9 — app/widgets/routes/a11y: layout-shell, Burger as a button, typed route params, relative intra-slice imports, sidebar dedupe
-  {
-    files: ["app/layout.tsx"],
-    rules: off(["jsx-a11y/html-has-lang"])
-  },
-  // PLAN 1.9 — app/widgets/routes/a11y: layout-shell, Burger as a button, typed route params, relative intra-slice imports, sidebar dedupe
-  {
-    files: ["src/app/providers/content-provider/content-provider.tsx"],
-    rules: off(["boundaries/dependencies"])
-  },
-  // PLAN 1.9 — app/widgets/routes/a11y: layout-shell, Burger as a button, typed route params, relative intra-slice imports, sidebar dedupe
-  {
-    files: [
-      "src/widgets/content-layout/ui/sidebar/about-me-sidebar/about-me-sidebar.tsx"
-    ],
-    rules: off(["max-lines-per-function"])
-  },
-  // PLAN 1.9 — app/widgets/routes/a11y: layout-shell, Burger as a button, typed route params, relative intra-slice imports, sidebar dedupe
-  {
-    files: ["src/widgets/header/ui/burger.tsx"],
-    rules: off([
-      "jsx-a11y/click-events-have-key-events",
-      "jsx-a11y/no-static-element-interactions",
-      "no-restricted-imports"
-    ])
-  },
-  // PLAN 1.9 — app/widgets/routes/a11y: layout-shell, Burger as a button, typed route params, relative intra-slice imports, sidebar dedupe
-  {
-    files: ["src/widgets/header/ui/header.tsx"],
-    rules: off(["no-restricted-imports"])
-  },
   // PLAN 1.10 — home/snake: pure snake model, store selectors, React Compiler, focusable game
   {
     files: ["src/pages/home/lib/use-game.ts"],
@@ -88,7 +57,8 @@ export const pendingConfigs = [
     files: [
       "src/pages/home/ui/home.tsx",
       "src/pages/home/ui/snake-game/snake-game.tsx",
-      "src/widgets/header/ui/header.tsx"
+      "src/widgets/header/ui/header.tsx",
+      "src/widgets/layout-shell/ui/layout-shell.tsx"
     ],
     rules: off(["project/no-literal-copy", "react/jsx-no-literals"])
   },

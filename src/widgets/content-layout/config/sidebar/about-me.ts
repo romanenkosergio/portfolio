@@ -13,19 +13,19 @@ export const ABOUT_ME_NAVIGATION: IAboutMeSidebarItem[] = [
     icon: "sidebar/personal-info",
     title: "Personal Info",
     href: E_ROUTES.ABOUT_PERSONAL,
-    activeClass: "desktop:aria-[current=page]:text-accent-2"
+    activeClass: "desktop:aria-[current]:text-accent-2"
   },
   {
     icon: "sidebar/professional-info",
     title: "Professional Info",
     href: E_ROUTES.ABOUT_PROFESSIONAL,
-    activeClass: "desktop:aria-[current=page]:text-accent-3"
+    activeClass: "desktop:aria-[current]:text-accent-3"
   },
   {
     icon: "sidebar/hobbies",
     title: "Hobbies",
     href: E_ROUTES.ABOUT_HOBBIES,
-    activeClass: "desktop:aria-[current=page]:text-accent-4"
+    activeClass: "desktop:aria-[current]:text-accent-4"
   }
 ];
 
@@ -60,12 +60,12 @@ export const ABOUT_ME_PERSONAL_ITEMS: IAboutItem[] = [
       {
         title: "bio",
         href: E_ROUTES.ABOUT_PERSONAL_BIO,
-        activeClass: "desktop:aria-[current=page]:text-accent-2"
+        activeClass: "desktop:aria-[current]:text-accent-2"
       },
       {
         title: "interests",
         href: E_ROUTES.ABOUT_PERSONAL_INTERESTS,
-        activeClass: "desktop:aria-[current=page]:text-accent-1"
+        activeClass: "desktop:aria-[current]:text-accent-1"
       }
     ]
   },
@@ -94,12 +94,12 @@ export const ABOUT_ME_PROFESSIONAL_ITEMS: IAboutItem[] = [
       {
         title: "skills",
         href: E_ROUTES.ABOUT_PROFESSIONAL_SKILLS,
-        activeClass: "desktop:aria-[current=page]:text-accent-2"
+        activeClass: "desktop:aria-[current]:text-accent-2"
       },
       {
         title: "experience",
         href: E_ROUTES.ABOUT_PROFESSIONAL_EXPERIENCE,
-        activeClass: "desktop:aria-[current=page]:text-accent-1"
+        activeClass: "desktop:aria-[current]:text-accent-1"
       }
     ]
   },

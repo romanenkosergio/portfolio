@@ -1,12 +1,15 @@
 import type { FC, PropsWithChildren } from "react";
 
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 
-import { APP_CONFIG } from "@/shared/config";
+import { APP_CONFIG, OPEN_GRAPH } from "@/shared/config";
+
+import { Footer } from "@/widgets/footer";
+import { Header } from "@/widgets/header";
+import { LayoutShell } from "@/widgets/layout-shell";
 
 import { fonts } from "@/app/config";
 import { generateIcons } from "@/app/lib";
-import { ContentProvider } from "@/app/providers";
 import "@/app/styles";
 
 export function generateMetadata(): Metadata {
@@ -15,32 +18,19 @@ export function generateMetadata(): Metadata {
     title: "Romanenko Serii",
     description:
       "Discover my professional portfolio, projects, and contact information.\n",
-    openGraph: {
-      title: "Welcome to My Portfolio",
-      description: "Explore my projects, learn about me, and get in touch.\n",
-      url: "/",
-      type: "website",
-      images: "/assets/images/meta-picture.png"
-    },
-    alternates: {
-      canonical: "/"
-    },
+    openGraph: OPEN_GRAPH,
     icons: generateIcons()
   };
 }
 
-export const viewport: Viewport = {
-  minimumScale: 1,
-  maximumScale: 1,
-  userScalable: false
-};
-
 const Layout: FC<PropsWithChildren> = async ({ children }) => {
   return (
-    <html className={fonts}>
+    <html lang="en" className={fonts}>
       <head />
       <body>
-        <ContentProvider>{children}</ContentProvider>
+        <LayoutShell header={<Header />} footer={<Footer />}>
+          {children}
+        </LayoutShell>
       </body>
     </html>
   );

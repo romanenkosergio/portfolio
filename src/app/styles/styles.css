@@ -49,6 +49,10 @@
 }
 
 @layer components {
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-1;
+  }
+
   a,
   button,
   a > *,

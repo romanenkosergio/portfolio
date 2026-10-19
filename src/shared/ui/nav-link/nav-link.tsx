@@ -11,12 +11,18 @@ import type { INavLinkProps } from "./nav-link.types";
 const trimSlash = (path: string): string =>
   path.length > 1 ? path.replace(/\/+$/, "") : path;
 
-const isLinkActive = (pathname: string, href: string, exact: boolean) => {
+// "page" only for the link to the current page, "true" for an ancestor of it (non-exact links).
+const getAriaCurrent = (
+  pathname: string,
+  href: string,
+  exact: boolean
+): "page" | "true" | undefined => {
   const current = trimSlash(pathname);
   const target = trimSlash(href);
-  return exact
-    ? current === target
-    : current.startsWith(`${target}/`) || current === target;
+  if (current === target) {
+    return "page";
+  }
+  return !exact && current.startsWith(`${target}/`) ? "true" : undefined;
 };
 
 const NavLink = <T extends string>({
@@ -30,12 +36,12 @@ const NavLink = <T extends string>({
   const pathname = usePathname();
 
   const linkClassName = cn(
-    "text-white desktop:border-b-3 desktop:border-b-transparent desktop:text-secondary-1 max-desktop:aria-[current=page]:text-accent-1",
+    "text-white desktop:border-b-3 desktop:border-b-transparent desktop:text-secondary-1 max-desktop:aria-[current]:text-accent-1",
     isSidebar
-      ? activeClass || "desktop:aria-[current=page]:text-accent-2"
+      ? activeClass || "desktop:aria-[current]:text-accent-2"
       : [
-          activeClass || "desktop:aria-[current=page]:border-b-accent-1",
-          "desktop:aria-[current=page]:text-white"
+          activeClass || "desktop:aria-[current]:border-b-accent-1",
+          "desktop:aria-[current]:text-white"
         ],
     className
   );
@@ -58,9 +64,7 @@ const NavLink = <T extends string>({
     <Link
       {...linkProps}
       className={linkClassName}
-      aria-current={
-        isLinkActive(pathname ?? "", props.href, exact) ? "page" : undefined
-      }
+      aria-current={getAriaCurrent(pathname ?? "", props.href, exact)}
     >
       {children}
     </Link>
