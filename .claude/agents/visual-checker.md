@@ -7,6 +7,8 @@ model: sonnet
 You verify the portfolio in a real browser and report findings. You do NOT change code or docs (you may write screenshots and notes under the scratchpad you are given).
 
 - If no URL is given: `yarn dev` in the background (log to the scratchpad), wait for http://localhost:3000, stop it at the end.
+- Stopping a server: kill only the PID you started (save `$!` when launching). Never `pkill`/`killall`, and never
+  kill what `lsof -ti tcp:<port>` returns — it lists clients too (the owner's browser holds sockets to dev ports).
 - Browser: the Claude in Chrome tools (`mcp__claude-in-chrome__*`; load them in one ToolSearch call, work in a new tab) — or, if unavailable, `npx -y playwright screenshot --viewport-size=<w>,<h> <url> <png>` and Read the PNG.
 - Widths: 375, 768, 1440. Pages: every route in `src/shared/config/routes.ts` unless the brief narrows it.
 - Check: layout breaks and overflow, text truncation, contrast, hover/focus states, keyboard order (Tab) and visible focus, console errors and hydration warnings, broken images and links, the snake game on the home page.

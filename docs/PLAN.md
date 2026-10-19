@@ -8,8 +8,6 @@ Done: 1.1–1.4, 1.6–1.11, 1.15, 1.16
 
 ## Phase 1 — tooling
 
-- [ ] 1.12 jest 30 + RTL + jest-axe, coverage floor in `gate` and the deploy (D6)
-- [ ] 1.13 Playwright + axe against `out/` (incl. a `/portfolio` basePath build), separate CI job, not blocking the deploy (D6)
 - [ ] 1.14 size-limit on `out/`, jscpd, egress check, gitleaks, meta referrer/CSP (D6)
 - [ ] 1.5 Repository private? GitHub Pages from a private repo needs GitHub Pro (owner)
 
@@ -29,3 +27,8 @@ Done: 1.1–1.4, 1.6–1.11, 1.15, 1.16
 
 - [ ] 2.1 `/projects`: real page instead of `HomeView`
 - [ ] 2.2 `/contact`: real page instead of `HomeView`
+
+## Last — tests
+
+- [ ] 1.12 jest 30 + RTL + jest-axe, coverage floor in `gate` and the deploy (D6)
+- [ ] 1.13 Playwright + axe against `out/` (incl. a `/portfolio` basePath build), separate CI job, not blocking the deploy (D6)

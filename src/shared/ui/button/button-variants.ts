@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "flex items-center justify-center px-3.5 h-9.5 rounded-lg border border-transparent",
+  "flex items-center justify-center px-3.5 h-9.5 rounded-lg border border-transparent transition-[color,background-color,border-color,outline-color,opacity,visibility] duration-300 ease-in-out",
   {
     variants: {
       variant: {
@@ -9,7 +9,10 @@ export const buttonVariants = cva(
         default: "bg-bg-2 desktop:hover:bg-bg-2-hover",
         ghost: "bg-transparent border-white desktop:hover:border-white/50"
       },
-      concealed: { true: "-z-1 opacity-0", false: "" }
+      concealed: {
+        true: "pointer-events-none -z-1 invisible opacity-0",
+        false: ""
+      }
     },
     defaultVariants: { variant: "default", concealed: false }
   }

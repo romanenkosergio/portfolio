@@ -30,7 +30,7 @@ const Footer: FC = () => {
               name={item.icon}
               className="h-6 w-6"
               tone="muted"
-              hover="lightOnDesktop"
+              interactive
             />
           </a>
         ))}

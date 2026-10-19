@@ -33,7 +33,7 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
             href={item.href}
             title={t(`sections.${item.titleKey}`)}
             key={item.titleKey}
-            isSidebar
+            variant="sidebar"
             exact={false}
             activeClass={item.activeClass}
           >
