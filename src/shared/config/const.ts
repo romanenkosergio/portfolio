@@ -16,3 +16,6 @@ export const OPEN_GRAPH = {
   type: "website",
   images: "/assets/images/meta-picture.png"
 } as const;
+
+// First job in the CV; the years of experience in the about texts are counted from it.
+export const CAREER_START = new Date(2017, 4, 1);
