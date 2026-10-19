@@ -3,6 +3,7 @@ import {
   consoleAllowedConfig,
   javascriptConfig,
   scriptsConfig,
+  shadcnComponentsConfig,
   typescriptConfig
 } from "./base.config.mjs";
 import { forbiddenConfigs } from "./forbidden.config.mjs";
@@ -15,5 +16,6 @@ export {
   javascriptConfig,
   pendingConfigs,
   scriptsConfig,
+  shadcnComponentsConfig,
   typescriptConfig
 };

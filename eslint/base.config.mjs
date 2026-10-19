@@ -1,3 +1,4 @@
+import { plugin as shadcnLint } from "@shadcn/lint";
 import importPlugin from "eslint-plugin-import";
 import unusedImports from "eslint-plugin-unused-imports";
 import globals from "globals";
@@ -62,6 +63,9 @@ const UNUSED_VARS = [
 ];
 
 export const baseRules = {
+  // A consumer of `shared/ui` may position a component (layout) but not
+  // restyle it; `shadcnComponentsConfig` turns this off inside `shared/ui`.
+  "shadcn/no-restyle": ["error", { allow: ["layout"] }],
   "prettier/prettier": PRETTIER,
   "comma-dangle": [
     "error",
@@ -174,8 +178,8 @@ const languageOptions = {
 const plugins = {
   project: projectPlugin,
   "unused-imports": unusedImports,
-  import: importPlugin
-  // shadcn lint (`shadcn/no-restyle`) plugs in here with PLAN 1.15.
+  import: importPlugin,
+  shadcn: shadcnLint
 };
 
 const settings = { react: { version: "detect" } };
@@ -246,4 +250,10 @@ export const consoleAllowedConfig = {
   rules: {
     "no-console": "off"
   }
+};
+
+/** `yarn shadcn:add` drops component source into `shared/ui`; a component may restyle itself. */
+export const shadcnComponentsConfig = {
+  files: ["src/shared/ui/**/*.{ts,tsx}"],
+  rules: { "shadcn/no-restyle": "off" }
 };

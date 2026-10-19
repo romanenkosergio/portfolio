@@ -15,10 +15,10 @@ Feature-Sliced Design. One package, yarn.
   `forbidden.config.mjs` (`process.env` only in `src/shared/config`, public-API imports, copy literals, type safety),
   `rules/` (in-repo `project/*` rules; `require-title`: every `<a>`/`<Link>` needs `title` and content, every `<img>`/`<Image>` a `title`).
   `pending.config.mjs` switches off, per file, the rules existing code still fails; each entry names the PLAN item
-  (1.8–1.11) that deletes it. Never an `eslint-disable`; `lint:fix` handles import order, type imports, Prettier.
+  (1.8–1.11, 1.16) that deletes it. Never an `eslint-disable`; `lint:fix` handles import order, type imports, Prettier.
 - Static export only (GitHub Pages): no server code, API routes or `next/image` optimisation; a dynamic
   route needs `generateStaticParams`; a public asset URL is `${BASE_PATH}/assets/...`.
-- `shared`: `cn()` (`shared/lib/cn`, clsx + tailwind-merge) joins every class list; component variants are `cva` (`buttonVariants`, `VariantProps`); icons come from the typed registry `shared/ui/icon/icons.ts` (add an SVG there, `IconName` follows), D10.
+- `shared`: `cn()` (`shared/lib/cn`, clsx + tailwind-merge) joins every class list; component variants are `cva` (`buttonVariants`, `VariantProps`); icons come from the typed registry `shared/ui/icon/icons.ts` (add an SVG there, `IconName` follows), D10; shadcn components: `yarn shadcn:add <name>` (CLI + `scripts/shadcn-add.mjs` moves it to `shared/ui/<name>/` with `index.ts`; `shadcn/no-restyle` is off inside `shared/ui`; icons in them come from `lucide-react`, `--background`/`--primary`… map to palette tokens in `styles.css`), D7.
 - `public/assets/` — images and SVG icons (SVGs import as React components through SVGR, configured in `turbopack.rules`).
 - `docs/` — `PLAN.md` (open items), `HANDOFF.md` (where the work is), `DECISIONS.md` (`D###` rows).
 
