@@ -6,8 +6,8 @@ const ContentWithCodeLines: FC<IContentWithCodeLinesProps> = ({ content }) => {
   const lines = content.split("\n");
 
   return (
-    <div className="border-t-line flex w-full gap-10 border-t py-3.5 pl-9.5">
-      <div className="text-secondary-1 text-right">
+    <div className="flex w-full gap-10 border-t border-t-line py-3.5 pl-9.5">
+      <div className="text-right text-secondary-1">
         {lines.map((_, index) => (
           <div key={index} className="leading-6">
             {index + 1}

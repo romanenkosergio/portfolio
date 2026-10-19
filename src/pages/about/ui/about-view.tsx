@@ -9,7 +9,7 @@ import type { IAboutViewProps } from "./about-view.types";
 const AboutView: FC<IAboutViewProps> = ({ type }) => {
   return (
     <div className="flex w-full flex-col">
-      <p className="border-r-line text-secondary-1 w-fit border-r px-3.5 py-2.5">
+      <p className="w-fit border-r border-r-line px-3.5 py-2.5 text-secondary-1">
         {type}
       </p>
       <ContentWithCodeLines content={ABOUT_CONTENT[type]} />

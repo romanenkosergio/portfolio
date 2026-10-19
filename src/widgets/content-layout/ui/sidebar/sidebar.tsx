@@ -5,7 +5,7 @@ import type { ISidebarProps } from "./sidebar.types";
 
 const Sidebar: FC<ISidebarProps> = ({ type, subType }) => {
   return (
-    <div className="desktop:block desktop:w-83 desktop:border-r desktop:h-full desktop:border-r-line hidden flex-none">
+    <div className="hidden flex-none desktop:block desktop:h-full desktop:w-83 desktop:border-r desktop:border-r-line">
       {type === "about" && <AboutMeSidebar type={subType} />}
     </div>
   );

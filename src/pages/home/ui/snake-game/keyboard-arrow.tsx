@@ -27,7 +27,7 @@ const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
 
   return (
     <div
-      className={`border-line flex h-7 w-12.5 items-center justify-center rounded-lg border transition-all duration-300 ease-in-out ${isActive ? "bg-white" : "bg-primary-6"}`}
+      className={`flex h-7 w-12.5 items-center justify-center rounded-lg border border-line transition-all duration-300 ease-in-out ${isActive ? "bg-white" : "bg-primary-6"}`}
     >
       <Icon
         name="keyboard-arrow"
