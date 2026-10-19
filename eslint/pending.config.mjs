@@ -7,49 +7,6 @@
 
 const off = rules => Object.fromEntries(rules.map(rule => [rule, "off"]));
 export const pendingConfigs = [
-  // PLAN 1.8 — shared: dead code and hooks removed, Button/icon registry rewritten
-  {
-    files: [
-      "src/shared/lib/use-media-query/use-media-query.ts",
-      "src/shared/lib/use-window-size/use-window-size.ts"
-    ],
-    rules: off([
-      "react-hooks/exhaustive-deps",
-      "react-hooks/set-state-in-effect"
-    ])
-  },
-  // PLAN 1.8 — shared: dead code and hooks removed, Button/icon registry rewritten
-  {
-    files: ["src/shared/lib/use-scroll-lock/use-scroll-lock.ts"],
-    rules: off(["react-hooks/exhaustive-deps"])
-  },
-  // PLAN 1.8 — shared: dead code and hooks removed, Button/icon registry rewritten
-  {
-    files: ["src/shared/ui/container/container.types.ts"],
-    rules: off(["@typescript-eslint/no-empty-object-type"])
-  },
-  // PLAN 1.8 — shared: dead code and hooks removed, Button/icon registry rewritten
-  {
-    files: ["src/shared/ui/icon/icon.tsx"],
-    rules: off([
-      "@typescript-eslint/no-require-imports",
-      "@typescript-eslint/no-unused-vars",
-      "no-console"
-    ])
-  },
-  // PLAN 1.8 — shared: dead code and hooks removed, Button/icon registry rewritten
-  {
-    files: ["src/shared/ui/modal/modal.tsx"],
-    rules: off([
-      "jsx-a11y/click-events-have-key-events",
-      "jsx-a11y/no-static-element-interactions"
-    ])
-  },
-  // PLAN 1.9 — app/widgets/routes/a11y: layout-shell, Burger as a button, typed route params, relative intra-slice imports, sidebar dedupe
-  {
-    files: ["app/contact/page.tsx", "app/page.tsx", "app/projects/page.tsx"],
-    rules: off(["@typescript-eslint/no-explicit-any"])
-  },
   // PLAN 1.9 — app/widgets/routes/a11y: layout-shell, Burger as a button, typed route params, relative intra-slice imports, sidebar dedupe
   {
     files: ["app/layout.tsx"],

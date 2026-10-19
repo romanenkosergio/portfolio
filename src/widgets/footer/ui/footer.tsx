@@ -25,7 +25,6 @@ const Footer: FC = () => {
             </span>
             <Icon
               name={item.icon}
-              folder="footer"
               className="h-6 w-6 text-secondary-1 desktop:group-hover:text-white"
             />
           </a>

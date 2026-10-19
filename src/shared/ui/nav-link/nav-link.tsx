@@ -1,68 +1,67 @@
 "use client";
 
-import type { FC } from "react";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import type { Route } from "next";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/shared/lib";
 
 import type { INavLinkProps } from "./nav-link.types";
 
-const NavLink: FC<INavLinkProps> = ({
-  href,
+// `trailingSlash: true` makes usePathname() return "/contact/" while hrefs are "/contact".
+const trimSlash = (path: string): string =>
+  path.length > 1 ? path.replace(/\/+$/, "") : path;
+
+const isLinkActive = (pathname: string, href: string, exact: boolean) => {
+  const current = trimSlash(pathname);
+  const target = trimSlash(href);
+  return exact
+    ? current === target
+    : current.startsWith(`${target}/`) || current === target;
+};
+
+const NavLink = <T extends string>({
   exact = true,
   children,
   className,
-  title,
   isSidebar = false,
-  isExternal = false,
-  activeClass = undefined,
+  activeClass,
   ...props
-}) => {
+}: INavLinkProps<T>) => {
   const pathname = usePathname();
-  const isActive = exact ? pathname === href : pathname?.startsWith(href);
 
-  const currentClassName = `desktop:text-secondary-1 
-  max-desktop:[&.active]:text-accent-1 
-  desktop:border-b-3 
-  desktop:border-b-transparent 
-${
-  isSidebar
-    ? activeClass || "desktop:[&.active]:text-accent-2"
-    : twMerge(
-        activeClass || "desktop:[&.active]:border-b-accent-1",
-        "desktop:[&.active]:text-white"
-      )
-}  text-white 
-  ${isActive ? "active" : ""} 
-  ${isSidebar ? "sidebar" : ""}
-`;
+  const linkClassName = cn(
+    "text-white desktop:border-b-3 desktop:border-b-transparent desktop:text-secondary-1 max-desktop:aria-[current=page]:text-accent-1",
+    isSidebar
+      ? activeClass || "desktop:aria-[current=page]:text-accent-2"
+      : [
+          activeClass || "desktop:aria-[current=page]:border-b-accent-1",
+          "desktop:aria-[current=page]:text-white"
+        ],
+    className
+  );
 
-  const linkClassName = twMerge(currentClassName, className);
-
-  if (isExternal) {
+  if (props.isExternal) {
+    const { isExternal: _isExternal, ...anchorProps } = props;
     return (
       <a
-        href={href}
         target="_blank"
         rel="noopener noreferrer"
+        {...anchorProps}
         className={linkClassName}
-        {...props}
-        title={title}
       >
         {children}
       </a>
     );
   }
 
+  const { isExternal: _isExternal, ...linkProps } = props;
   return (
     <Link
-      href={href as Route}
+      {...linkProps}
       className={linkClassName}
-      {...props}
-      title={title}
+      aria-current={
+        isLinkActive(pathname ?? "", props.href, exact) ? "page" : undefined
+      }
     >
       {children}
     </Link>

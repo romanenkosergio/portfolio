@@ -5,7 +5,7 @@ import type { Metadata, ResolvedMetadata } from "next";
 import { HomeView } from "@/pages/home";
 
 export async function generateMetadata(
-  _: any,
+  _props: unknown,
   parent: Promise<ResolvedMetadata>
 ): Promise<Metadata> {
   return {

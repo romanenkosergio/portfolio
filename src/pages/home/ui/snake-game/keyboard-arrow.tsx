@@ -3,6 +3,7 @@
 import type { FC } from "react";
 import { useMemo } from "react";
 
+import { cn } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
 import type { Direction } from "../../model";
@@ -27,12 +28,18 @@ const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
 
   return (
     <div
-      className={`flex h-7 w-12.5 items-center justify-center rounded-lg border border-line transition-all duration-300 ease-in-out ${isActive ? "bg-white" : "bg-primary-6"}`}
+      className={cn(
+        "flex h-7 w-12.5 items-center justify-center rounded-lg border border-line transition-all duration-300 ease-in-out",
+        isActive ? "bg-white" : "bg-primary-6"
+      )}
     >
       <Icon
         name="keyboard-arrow"
         className={arrowPositions[direction]}
-        svgClass={`transition-all duration-300 ease-in-out ${isActive ? "text-primary-6" : "text-white"}`}
+        svgClass={cn(
+          "transition-all duration-300 ease-in-out",
+          isActive ? "text-primary-6" : "text-white"
+        )}
       />
     </div>
   );

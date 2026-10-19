@@ -18,6 +18,7 @@ Feature-Sliced Design. One package, yarn.
   (1.8–1.11) that deletes it. Never an `eslint-disable`; `lint:fix` handles import order, type imports, Prettier.
 - Static export only (GitHub Pages): no server code, API routes or `next/image` optimisation; a dynamic
   route needs `generateStaticParams`; a public asset URL is `${BASE_PATH}/assets/...`.
+- `shared`: `cn()` (`shared/lib/cn`, clsx + tailwind-merge) joins every class list; component variants are `cva` (`buttonVariants`, `VariantProps`); icons come from the typed registry `shared/ui/icon/icons.ts` (add an SVG there, `IconName` follows), D10.
 - `public/assets/` — images and SVG icons (SVGs import as React components through SVGR, configured in `turbopack.rules`).
 - `docs/` — `PLAN.md` (open items), `HANDOFF.md` (where the work is), `DECISIONS.md` (`D###` rows).
 

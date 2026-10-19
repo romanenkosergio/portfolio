@@ -1,7 +1,9 @@
+import type { IconName } from "@/shared/ui";
+
 interface ISocial {
   title: string;
   href: string;
-  icon: string;
+  icon: IconName;
   label?: string;
 }
 
@@ -9,23 +11,23 @@ export const SOCIALS: ISocial[] = [
   {
     title: "LinkedIn",
     href: "https://www.linkedin.com/in/romanenkosergio/",
-    icon: "linkedin"
+    icon: "footer/linkedin"
   },
 
   {
     title: "Twitter",
     href: "https://x.com/romanenkosergio",
-    icon: "twitter"
+    icon: "footer/twitter"
   },
   {
     title: "Medium",
     href: "https://medium.com/@romanenkosergio",
-    icon: "medium"
+    icon: "footer/medium"
   },
   {
     title: "GitHub",
     href: "https://github.com/romanenkosergio",
-    icon: "github",
+    icon: "footer/github",
     label: "@romanenkosergio"
   }
 ];

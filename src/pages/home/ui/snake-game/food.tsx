@@ -2,6 +2,7 @@
 
 import type { FC } from "react";
 
+import { cn } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
 import { useSnakeStore } from "../../model";
@@ -14,10 +15,12 @@ const Food: FC = () => {
       <div className="mt-4.5 grid w-33 grid-cols-5 gap-2">
         {Array.from({ length: 10 }).map((_, idx: number) => (
           <Icon
-            name="food"
-            folder="game"
+            name="game/food"
             key={`score-${idx}`}
-            className={`h-5 w-5 transition-all duration-300 ease-in-out ${idx >= score ? "opacity-30" : ""}`}
+            className={cn(
+              "h-5 w-5 transition-all duration-300 ease-in-out",
+              idx >= score && "opacity-30"
+            )}
           />
         ))}
       </div>
