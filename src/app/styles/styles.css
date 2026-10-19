@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   --breakpoint-tablet: 768px;
@@ -34,6 +35,67 @@
   --color-light: #e5e9f0;
 
   --font-fira: var(--font-fira-code);
+}
+
+/*
+  Careful: shadcn's bare `primary` (= accent-1, orange) is NOT the numbered
+  `primary-1..6` family (near-black backgrounds); `bg-primary` != `bg-primary-2`.
+
+  shadcn variables, one set: the site is dark-only (no .dark). Each maps to an
+  existing token via var(); nothing here repeats a hex value (D7).
+  Judgement calls: --primary is the orange accent (the one call-to-action
+  colour); --secondary/--muted/--card are the raised surfaces (bg-2, primary-3)
+  with secondary-1 as the muted text; --destructive reuses accent-3 (the only
+  red-ish token, no dedicated error colour exists); --ring is the focus outline
+  colour used in the base layer.
+*/
+:root {
+  --radius: 0.5rem;
+
+  --background: var(--color-primary-2);
+  --foreground: var(--color-light);
+  --card: var(--color-primary-3);
+  --card-foreground: var(--color-light);
+  --popover: var(--color-primary-3);
+  --popover-foreground: var(--color-light);
+  --primary: var(--color-accent-1);
+  --primary-foreground: var(--color-primary-1);
+  --secondary: var(--color-bg-2);
+  --secondary-foreground: var(--color-light);
+  --muted: var(--color-bg-2);
+  --muted-foreground: var(--color-secondary-1);
+  --accent: var(--color-bg-2-hover);
+  --accent-foreground: var(--color-light);
+  --destructive: var(--color-accent-3);
+  --border: var(--color-line);
+  --input: var(--color-line);
+  --ring: var(--color-accent-1);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
 @utility container {

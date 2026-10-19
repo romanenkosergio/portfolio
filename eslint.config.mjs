@@ -11,6 +11,7 @@ import {
   javascriptConfig,
   pendingConfigs,
   scriptsConfig,
+  shadcnComponentsConfig,
   typescriptConfig
 } from "./eslint/index.mjs";
 
@@ -63,7 +64,7 @@ export default [
   consoleAllowedConfig,
   scriptsConfig,
 
-  // shadcn lint config (PLAN 1.15) plugs in here.
+  shadcnComponentsConfig,
 
   ...pendingConfigs
 ];

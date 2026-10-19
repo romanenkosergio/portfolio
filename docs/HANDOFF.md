@@ -17,6 +17,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
   `role="application"` `tabIndex=0` with name, `aria-describedby` instructions, polite live region; arrows/WASD act only
   while it has focus; on-screen arrows are `<button>`s; the start overlay is `inert` during a round. `model/` cannot
   carry `"use client"` (directive-placement), cross-segment imports use `@/pages/home/<segment>`.
+- PLAN 1.15 done: shadcn (`components.json`, `yarn shadcn:add`, `@shadcn/lint`, `tw-animate-css`, `lucide-react`); `Separator` added as the proof, unused yet. Existing call sites that restyle Icon/NavLink/Button are in `pending.config.mjs` under PLAN 1.16.
 - Snake UI matched to Figma (measured in Figma's Design panel through Chrome, no login): CSS gradient + two blurred
   blobs instead of PNGs (`--color-game-glow`), board inner shadow, snake = 8px round stroke fading tail-ward to the board
   colour (opaque mix, transparent tail end; canvas at devicePixelRatio), skip always visible, game hidden below
@@ -30,7 +31,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Next
 
-- PLAN 1.15 (shadcn, D7) → 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 → phase 3 redesign.
+- PLAN 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 (1.16 anytime) → phase 3 redesign.
   Each PR clears its «PLAN 1.x» entries in `eslint/pending.config.mjs`. Next decision number: D12.
 
 ## Environment
