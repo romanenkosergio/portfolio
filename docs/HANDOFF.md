@@ -13,6 +13,8 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 - Aligning with common-next (PLAN 1.x): merged #6 base path, #7 Next 16 / React 19.3, #8 design + GSAP skills
   (phase 3, D8), #9 kit lint toolchain (D5, D9; `eslint/pending.config.mjs` holds the rest), #10 class re-sort,
   #11 `shared` refactor (cn/cva, icon registry D10, NavLink active state).
+- `yarn typecheck` runs `next typegen` first: `next-env.d.ts` and route types are git-ignored, and CI's
+  typecheck failed on SVG imports after #11 (the hotfix PR; verify the Pages run is green).
 - Agents: implement with `frontend-implementer`, then `code-reviewer` + `visual-checker` in parallel; they share
   the one checkout — never run two `next dev`/builds on the same port, give each its own port.
 

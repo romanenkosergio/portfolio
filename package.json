@@ -11,7 +11,7 @@
     "prepare": "husky",
     "format": "prettier --write . --cache --log-level=warn",
     "format:check": "prettier --check . --cache --log-level=warn",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen >/dev/null && tsc --noEmit",
     "fsd": "steiger ./src",
     "gate": "yarn format:check && yarn lint && yarn typecheck && yarn fsd",
     "gate:push": "yarn gate && yarn build"
