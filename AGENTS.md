@@ -18,6 +18,21 @@ Feature-Sliced Design. One package, yarn.
 Imports: `@/*` → `src/*`, `@/public/*` → `public/*`. Files and folders kebab-case; a component is
 `name/name.tsx` + `name.types.ts` + `index.ts`. Double quotes, no trailing commas (Prettier + ESLint).
 
+## Design
+
+- Reference, not a spec: Figma «Portfolio for Developers Concept V.2» — style guide
+  https://www.figma.com/design/JLXgoRLVLyZR49dIH5ABc1/?node-id=68-901, screens (desktop 1920, mobile 375)
+  https://www.figma.com/design/JLXgoRLVLyZR49dIH5ABc1/?node-id=0-1. The owner wants it better than the
+  reference, with far more motion (D8). Tokens live in `src/app/styles/styles.css` and match the style guide's colours (checked against node 68-901).
+- Motion: GSAP + `@gsap/react` (`useGSAP`, cleanup on unmount); transforms and opacity only; every animation
+  honours `prefers-reduced-motion` (`gsap.matchMedia()`); client components only where motion needs them.
+- Skills in `.claude/skills`: official GreenSock `gsap-*` (core, timeline, scrolltrigger, plugins, react,
+  performance, utils; MIT), and from common-next `frontend-design`, `scroll-experience`,
+  `fixing-motion-performance`, `baseline-ui`, `fixing-accessibility`. Their install commands say `npm` — use `yarn add`.
+- Where a skill disagrees, this file wins: GSAP is the only animation library (not `motion/react`, Framer Motion,
+  Lenis or Locomotive — use ScrollTrigger / ScrollSmoother); phase 3 counts as an explicit request for motion,
+  custom eases included; UI primitives come from shadcn (D7), not Base UI.
+
 ## Commands
 
 Node 24 (`nvm use`; the git hooks switch to it themselves), yarn only.
