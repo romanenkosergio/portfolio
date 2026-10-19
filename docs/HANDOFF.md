@@ -7,16 +7,19 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Current state (2026-10-19)
 
-- Agent tooling modelled on the party-game repo: `AGENTS.md`, `.claude/` (hooks, agents, `/sud`), Husky
-  hooks, `scripts/`, `yarn gate` (green).
-- Repo `git@github.com-personal:romanenkosergio/portfolio.git`, local author sergromanenko97@gmail.com.
-  The old CRA project on `main` was replaced by this one (owner, D2).
-- Static export for GitHub Pages (D3): `.github/workflows/pages.yml` on push to `main` →
-  https://romanenkosergio.github.io/portfolio/. Assets go through `BASE_PATH` (`@/shared/config`).
+- Repo `git@github.com-personal:romanenkosergio/portfolio.git`, `main` protected (PR required, 0 approvals;
+  the agent merges with squash after `code-reviewer`, owner's ruling). Pages deploys on push to `main`:
+  https://romanenkosergio.github.io/portfolio/ (static export, D3).
+- Aligning with common-next (PLAN 1.x): merged #6 base path, #7 Next 16 / React 19.3, #8 design + GSAP skills
+  (phase 3, D8), #9 kit lint toolchain (D5, D9; `eslint/pending.config.mjs` holds the rest), #10 class re-sort,
+  #11 `shared` refactor (cn/cva, icon registry D10, NavLink active state).
+- Agents: implement with `frontend-implementer`, then `code-reviewer` + `visual-checker` in parallel; they share
+  the one checkout — never run two `next dev`/builds on the same port, give each its own port.
 
 ## Next
 
-- Aligning with common-next, one PR per PLAN item 1.4 → 1.14 in order, merged by the agent after `code-reviewer`. Next decision number: D10. shadcn (1.15) goes right after 1.8; then phase 3 (redesign, D8).
+- PLAN 1.9 → 1.10 → 1.15 (shadcn, D7) → 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 → phase 3 redesign.
+  Each PR clears its «PLAN 1.x» entries in `eslint/pending.config.mjs`. Next decision number: D11.
 
 ## Environment
 

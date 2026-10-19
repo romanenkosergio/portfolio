@@ -42,13 +42,12 @@ const NavLink = <T extends string>({
 
   if (props.isExternal) {
     const { isExternal: _isExternal, ...anchorProps } = props;
+    // Only a web page opens in a new tab; mailto:/tel: hand off to an app.
+    const newTab = /^https?:/.test(anchorProps.href)
+      ? { target: "_blank", rel: "noopener noreferrer" }
+      : {};
     return (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        {...anchorProps}
-        className={linkClassName}
-      >
+      <a {...newTab} {...anchorProps} className={linkClassName}>
         {children}
       </a>
     );
