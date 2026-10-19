@@ -44,7 +44,7 @@ const GameOverlay: FC<IGameOverlayProps> = ({ status, onStart }) => {
         </p>
       )}
       <Button
-        className={cn(isPlaying && "-z-1 opacity-0")}
+        concealed={isPlaying}
         text={t(startLabels[status])}
         onClick={onStart}
         variant={isOver ? "ghost" : "primary"}

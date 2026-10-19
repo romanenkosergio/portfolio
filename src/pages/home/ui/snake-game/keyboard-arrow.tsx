@@ -53,10 +53,8 @@ const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
       <Icon
         name="keyboard-arrow"
         className={arrowPositions[direction]}
-        svgClass={cn(
-          "transition-all duration-300 ease-in-out",
-          isActive ? "text-primary-6" : "text-white"
-        )}
+        motion="smooth"
+        tone={isActive ? "dark" : "light"}
       />
     </button>
   );

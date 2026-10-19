@@ -12,14 +12,16 @@ const ContentLink: FC<IContentLinkProps> = ({ item }) => {
   const linkProps = {
     isSidebar: true,
     title,
-    className: "group flex cursor-pointer items-center gap-2 text-secondary-1",
+    className: "group flex cursor-pointer items-center",
     activeClass: item.activeClass
   } as const;
   const children = (
     <>
       <Icon
         name={item.icon || "markdown"}
-        className="h-3.5 w-4 transition-colors duration-300 ease-in group-hover:text-white"
+        className="h-3.5 w-4"
+        motion="colors"
+        hover="light"
       />
       <span className="text-sm transition-colors duration-300 ease-in group-hover:text-white">
         {title}
