@@ -8,9 +8,9 @@ Done: 1.1–1.4
 
 ## Phase 1 — tooling
 
-- [ ] 1.6 Kit ESLint/Prettier/steiger toolchain (`eslint/` composition, boundaries 6, react-hooks 7); `eslint/pending.config.mjs` names the PR that clears each entry (D5); drop FlatCompat, `@feature-sliced/eslint-config`, local-rules
+- [ ] 1.6 Kit ESLint/Prettier/steiger toolchain (`eslint/` composition, boundaries 6, react-hooks 7); `eslint/pending.config.mjs` names the PR that clears each entry (D5); drop FlatCompat, `eslint-config-next` stopgap (`@next/eslint-plugin-next` plugin), `settings.react.version: detect`, `@feature-sliced/eslint-config`, local-rules
 - [ ] 1.7 Re-sort Tailwind classes (prettier-plugin-tailwindcss 0.8, `tailwindStylesheet`) — formatting only
-- [ ] 1.8 `shared`: `cn` + `cva` Button, static icon registry, NavLink `aria-current`, delete dead code (modal, unused hooks, consts), fix `BASE_URL`
+- [ ] 1.8 `shared`: `cn` + `cva` Button, static icon registry, NavLink `aria-current`, delete dead code (modal, unused hooks, consts), fix `BASE_URL`; NavLink: internal `href` typed `Route` (no `as Route` cast), active match ignores the trailing slash (`exact` links are never active now)
 - [ ] 1.15 shadcn as in common-next: `components.json` (new-york, rsc, aliases `@/shared/ui`, `@/shared/lib`), `yarn shadcn:add` → `shared/ui/<name>/`, `@shadcn/lint` `no-restyle`, `tw-animate-css`, lucide; shadcn CSS variables mapped to the portfolio palette (D7)
 - [ ] 1.9 `widgets/layout-shell` (skip link, landmarks) instead of `src/app/providers`; `lang`, no zoom lock; Burger as a `<button>`; typed `[type]` params + guard; relative intra-slice imports; sidebar dedupe
 - [ ] 1.10 Home: pure snake model, store selectors, React Compiler on, focusable game
@@ -19,6 +19,16 @@ Done: 1.1–1.4
 - [ ] 1.13 Playwright + axe against `out/` (incl. a `/portfolio` basePath build), separate CI job, not blocking the deploy (D6)
 - [ ] 1.14 size-limit on `out/`, jscpd, egress check, gitleaks, meta referrer/CSP (D6)
 - [ ] 1.5 Repository private? GitHub Pages from a private repo needs GitHub Pro (owner)
+
+## Phase 3 — redesign with motion (D8; Figma in AGENTS.md)
+
+- [ ] 3.1 GSAP + `@gsap/react`, motion primitives in `shared` (reveal, stagger, text scramble/split, reduced-motion guard)
+- [ ] 3.2 Home: hero (typed/scrambled name, code-style intro), the snake game polished
+- [ ] 3.3 About: sidebar/explorer tree transitions, file tabs, code-lines content
+- [ ] 3.4 Projects: filter by tech with Flip transitions, project cards
+- [ ] 3.5 Contact: form with live code preview, success state
+- [ ] 3.6 Mobile (375) for every page, menu animation
+- [ ] 3.7 Motion performance and a11y pass (Lighthouse, reduced motion, keyboard)
 
 ## Phase 2 — content
 
