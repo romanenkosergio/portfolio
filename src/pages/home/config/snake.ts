@@ -33,3 +33,5 @@ export const INITIAL_SNAKE: [number, number][] = [
 ];
 export const INITIAL_FOOD: [number, number] = [14, 10];
 export const TIME_DELAY = 120;
+export const FOOD_TOTAL = 10;
+export const BOARD_ID = "snake-board";
