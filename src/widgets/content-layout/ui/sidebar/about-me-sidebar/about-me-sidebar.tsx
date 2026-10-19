@@ -15,7 +15,7 @@ import type { IAboutMeSidebarProps } from "./about-me-sidebar.types";
 const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
   return (
     <div className="flex h-full">
-      <div className="border-r-line flex h-full w-auto flex-col gap-8.5 border-r px-5.5 pt-4">
+      <div className="flex h-full w-auto flex-col gap-8.5 border-r border-r-line px-5.5 pt-4">
         {ABOUT_ME_NAVIGATION.map(item => (
           <NavLink
             href={item.href}
@@ -42,7 +42,7 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
                   isSidebar
                   href={contentItem.href}
                   title={contentItem.title}
-                  className="group text-secondary-1 flex cursor-pointer items-center gap-2"
+                  className="group flex cursor-pointer items-center gap-2 text-secondary-1"
                   key={contentItem.title}
                   activeClass={contentItem.activeClass}
                 >
@@ -69,7 +69,7 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
                   isSidebar
                   href={contentItem.href}
                   title={contentItem.title}
-                  className="group text-secondary-1 flex cursor-pointer items-center gap-2"
+                  className="group flex cursor-pointer items-center gap-2 text-secondary-1"
                   key={contentItem.title}
                   activeClass={contentItem.activeClass}
                 >

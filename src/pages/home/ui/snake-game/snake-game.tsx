@@ -21,12 +21,12 @@ const SnakeGame: FC = () => {
   return (
     <div
       style={GAME_BG}
-      className="border-primary-4 desktop:bg-(image:--game-bg) relative h-118.75 w-127.5 rounded-lg border shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] backdrop-blur-[32px]"
+      className="relative h-118.75 w-127.5 rounded-lg border border-primary-4 shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] backdrop-blur-[32px] desktop:bg-(image:--game-bg)"
     >
       <div className="relative z-10 flex h-full gap-6 px-7.5 py-8.5">
         <Game />
         <div className="flex flex-col">
-          <div className="bg-primary-5/19 w-45 rounded-lg px-3 py-4">
+          <div className="w-45 rounded-lg bg-primary-5/19 px-3 py-4">
             <p className="text-sm text-white">{"//"} use keyboard</p>
             <p className="text-sm text-white">{"//"} arrows to play</p>
             <div className="mt-4 flex flex-col gap-1">

@@ -74,6 +74,6 @@
   }
 
   body {
-    @apply bg-primary-2 flex h-dvh flex-col justify-between;
+    @apply flex h-dvh flex-col justify-between bg-primary-2;
   }
 }

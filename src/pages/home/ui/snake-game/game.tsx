@@ -36,14 +36,14 @@ const Game: FC = () => {
         ref={canvasRef}
         width={`${CANVAS_WIDTH}px`}
         height={`${CANVAS_HEIGHT}px`}
-        className="bg-primary-2/84 relative flex h-full w-60 items-center justify-center rounded-lg"
+        className="relative flex h-full w-60 items-center justify-center rounded-lg bg-primary-2/84"
       />
       <div
         className={`absolute bottom-13.5 left-1/2 flex w-full -translate-x-1/2 flex-col items-center ${isGameStart ? "-z-1 opacity-0" : ""}`}
       >
         {isGameOver && (
           <p
-            className={`bg-primary-2/90 mb-5 w-full rounded-lg py-3 text-center text-2xl uppercase ${gameStatus === "win" ? "text-accent-2" : "text-accent-1"}`}
+            className={`mb-5 w-full rounded-lg bg-primary-2/90 py-3 text-center text-2xl uppercase ${gameStatus === "win" ? "text-accent-2" : "text-accent-1"}`}
           >
             {gameStatus === "win" ? "Well Done!" : "Game over!"}
           </p>

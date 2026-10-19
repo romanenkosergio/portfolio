@@ -13,7 +13,7 @@ const SidebarContentItem: FC<ISidebarContentItemProps> = ({
   return (
     <div className={`flex w-full flex-col ${blockClass}`}>
       <div
-        className={`border-b-line flex items-center gap-3 border-b py-2.5 pl-3.5 ${className}`}
+        className={`flex items-center gap-3 border-b border-b-line py-2.5 pl-3.5 ${className}`}
       >
         <Icon name="arrow-down" />
         <span className="text-white">{title}</span>
