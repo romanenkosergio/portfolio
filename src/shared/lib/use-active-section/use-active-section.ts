@@ -1,6 +1,7 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const DEFAULT_THRESHOLD = [0, 0.1, 0.9, 1];
 const DEFAULT_ROOT_MARGIN = "-50% 0px -45% 0px";

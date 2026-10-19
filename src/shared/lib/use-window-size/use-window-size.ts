@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { IWindowSize } from "./use-window-size.types";
+
+import type { IWindowSize } from "./use-window-size.types";
 
 // Constants
 const INITIAL_WINDOW_SIZE: IWindowSize = { width: 0, height: 0 };

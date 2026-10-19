@@ -1,4 +1,4 @@
-import {
+import type {
   Icon,
   Icons,
   IconURL
@@ -7,11 +7,7 @@ import {
 import { BASE_PATH } from "@/shared/config";
 
 export const generateIcons = ():
-  | IconURL
-  | Icon[]
-  | Icons
-  | null
-  | undefined => [
+  IconURL | Icon[] | Icons | null | undefined => [
   { rel: "icon", url: `${BASE_PATH}/assets/icons/favicons/favicon.ico` },
   {
     rel: "icon",

@@ -1,7 +1,9 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface INavigationProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface INavigationProps extends DetailedHTMLProps<
+  HTMLAttributes<HTMLElement>,
+  HTMLElement
+> {
   linkClassName?: string;
   isMobile?: boolean;
 }

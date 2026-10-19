@@ -4,11 +4,10 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.4
+Done: 1.1–1.4, 1.6
 
 ## Phase 1 — tooling
 
-- [ ] 1.6 Kit ESLint/Prettier/steiger toolchain (`eslint/` composition, boundaries 6, react-hooks 7); `eslint/pending.config.mjs` names the PR that clears each entry (D5); drop FlatCompat, `eslint-config-next` stopgap (`@next/eslint-plugin-next` plugin), `settings.react.version: detect`, `@feature-sliced/eslint-config`, local-rules
 - [ ] 1.7 Re-sort Tailwind classes (prettier-plugin-tailwindcss 0.8, `tailwindStylesheet`) — formatting only
 - [ ] 1.8 `shared`: `cn` + `cva` Button, static icon registry, NavLink `aria-current`, delete dead code (modal, unused hooks, consts), fix `BASE_URL`; NavLink: internal `href` typed `Route` (no `as Route` cast), active match ignores the trailing slash (`exact` links are never active now)
 - [ ] 1.15 shadcn as in common-next: `components.json` (new-york, rsc, aliases `@/shared/ui`, `@/shared/lib`), `yarn shadcn:add` → `shared/ui/<name>/`, `@shadcn/lint` `no-restyle`, `tw-animate-css`, lucide; shadcn CSS variables mapped to the portfolio palette (D7)

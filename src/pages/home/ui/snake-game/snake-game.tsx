@@ -1,8 +1,12 @@
+import type { CSSProperties, FC } from "react";
+
 import Image from "next/image";
-import { CSSProperties, FC } from "react";
-import { BOLTS } from "@/pages/home/config";
+
 import { BASE_PATH } from "@/shared/config";
 import { Icon } from "@/shared/ui";
+
+import { BOLTS } from "@/pages/home/config";
+
 import Food from "./food";
 import Game from "./game";
 import KeyboardArrow from "./keyboard-arrow";

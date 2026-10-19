@@ -1,6 +1,8 @@
 "use client";
 
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import {
   CANVAS_HEIGHT,
   CANVAS_WIDTH,
@@ -10,6 +12,7 @@ import {
   TIME_DELAY
 } from "../config";
 import { useSnakeStore } from "../model";
+
 import useInterval from "./use-interval";
 
 type DirectionKey = "ArrowLeft" | "ArrowUp" | "ArrowRight" | "ArrowDown";
@@ -36,7 +39,7 @@ export const useGame = () => {
 
   // Отрисовка Canvas (змейки и еды)
   useEffect(() => {
-    let HtmlFood = document.getElementById("food") as HTMLCanvasElement;
+    const HtmlFood = document.getElementById("food") as HTMLCanvasElement;
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");

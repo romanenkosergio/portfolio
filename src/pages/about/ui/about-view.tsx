@@ -1,7 +1,10 @@
-import { FC } from "react";
-import { ABOUT_CONTENT } from "@/pages/about";
+import type { FC } from "react";
+
 import { ContentWithCodeLines } from "@/shared/ui";
-import { IAboutViewProps } from "./about-view.types";
+
+import { ABOUT_CONTENT } from "@/pages/about";
+
+import type { IAboutViewProps } from "./about-view.types";
 
 const AboutView: FC<IAboutViewProps> = ({ type }) => {
   return (

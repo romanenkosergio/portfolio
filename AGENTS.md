@@ -7,9 +7,15 @@ Feature-Sliced Design. One package, yarn.
 - `src/` — FSD layers, top to bottom: `app` (providers, fonts, global styles) → `pages` → `widgets` →
   `features` → `entities` → `shared` (ui kit, hooks in `lib`, `config`). A layer imports only from layers
   below; a slice is reached through its `index.ts` (public API; `shared` is exempt). Segments: `ui`,
-  `model`, `lib`, `config`, `api`. Checked by ESLint (`@feature-sliced`) and steiger (`yarn fsd`).
+  `model`, `lib`, `config`, `api`. Checked by ESLint (`boundaries/dependencies`) and steiger (`yarn fsd`).
 - `pages/` (root) — an empty Pages Router folder that stops Next from reading `src/pages` as routes; keep it.
-- `eslint-local-rules/` — `require-title`: every `<a>`/`<Link>` needs `title` and content, every `<img>`/`<Image>` a `title`.
+- `eslint/` — the lint rule set; `eslint.config.mjs` only composes it. No warn tier (D5): every rule is error or off.
+  `base.config.mjs` (clean-code ceilings: 60 lines/function, complexity 15, depth 4, 6 params; import order; a11y),
+  `architecture.config.mjs` + `layers.rules.mjs` (layers; `src/app` may import only `shared`),
+  `forbidden.config.mjs` (`process.env` only in `src/shared/config`, public-API imports, copy literals, type safety),
+  `rules/` (in-repo `project/*` rules; `require-title`: every `<a>`/`<Link>` needs `title` and content, every `<img>`/`<Image>` a `title`).
+  `pending.config.mjs` switches off, per file, the rules existing code still fails; each entry names the PLAN item
+  (1.8–1.11) that deletes it. Never an `eslint-disable`; `lint:fix` handles import order, type imports, Prettier.
 - Static export only (GitHub Pages): no server code, API routes or `next/image` optimisation; a dynamic
   route needs `generateStaticParams`; a public asset URL is `${BASE_PATH}/assets/...`.
 - `public/assets/` — images and SVG icons (SVGs import as React components through SVGR, configured in `turbopack.rules`).
@@ -38,7 +44,7 @@ Imports: `@/*` → `src/*`, `@/public/*` → `public/*`. Files and folders kebab
 Node 24 (`nvm use`; the git hooks switch to it themselves), yarn only.
 
 ```bash
-yarn dev            # steiger --watch + next dev
+yarn dev            # next dev
 yarn lint | lint:fix | format | format:check | typecheck | fsd
 yarn gate           # format:check + lint + typecheck + fsd
 yarn gate:push      # gate + next build (pre-push)

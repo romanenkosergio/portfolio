@@ -1,8 +1,12 @@
-import type { Route } from "next";
+import type { FC } from "react";
+
 import Link from "next/link";
-import { FC } from "react";
+
+import type { Route } from "next";
 import { twMerge } from "tailwind-merge";
-import { E_BUTTON_VARIANT, IButtonProps } from "./button.types";
+
+import type { IButtonProps } from "./button.types";
+import { E_BUTTON_VARIANT } from "./button.types";
 
 const buttonVariants = {
   [E_BUTTON_VARIANT.PRIMARY]: "bg-bg-1 desktop:hover:bg-bg-1-hover",

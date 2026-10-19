@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, HTMLAttributeAnchorTarget } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributeAnchorTarget } from "react";
 
 export enum E_BUTTON_VARIANT {
   PRIMARY = "primary",
@@ -15,8 +15,7 @@ interface IBaseButtonProps {
 }
 
 interface IButtonAsButton
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    IBaseButtonProps {
+  extends ButtonHTMLAttributes<HTMLButtonElement>, IBaseButtonProps {
   href?: never;
   target?: never;
   isExternalLink?: never;

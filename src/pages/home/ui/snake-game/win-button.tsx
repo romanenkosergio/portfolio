@@ -1,9 +1,11 @@
 "use client";
 
-import { FC } from "react";
-import { useSnakeStore } from "@/pages/home/model";
+import type { FC } from "react";
+
 import { E_ROUTES } from "@/shared/config";
 import { Button, E_BUTTON_VARIANT } from "@/shared/ui";
+
+import { useSnakeStore } from "@/pages/home/model";
 
 const WinButton: FC = () => {
   const { isVin } = useSnakeStore();

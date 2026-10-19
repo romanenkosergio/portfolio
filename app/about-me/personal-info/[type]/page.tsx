@@ -1,6 +1,8 @@
-import { ILayoutProps } from "@/app/model";
-import { AboutView } from "@/pages/about";
 import { ContentLayout } from "@/widgets/content-layout";
+
+import { AboutView } from "@/pages/about";
+
+import type { ILayoutProps } from "@/app/model";
 
 export const generateStaticParams = () => [
   { type: "bio" },

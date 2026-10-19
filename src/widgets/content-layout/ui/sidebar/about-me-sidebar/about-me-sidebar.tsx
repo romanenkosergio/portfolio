@@ -1,12 +1,16 @@
-import { FC } from "react";
+import type { FC } from "react";
+
+import { Icon, NavLink } from "@/shared/ui";
+
 import {
   ABOUT_ME_NAVIGATION,
   ABOUT_ME_PERSONAL_ITEMS,
   ABOUT_ME_PROFESSIONAL_ITEMS
 } from "@/widgets/content-layout/config";
-import { Icon, NavLink } from "@/shared/ui";
+
 import { SidebarContentItem } from "../sidebar-content-item";
-import { IAboutMeSidebarProps } from "./about-me-sidebar.types";
+
+import type { IAboutMeSidebarProps } from "./about-me-sidebar.types";
 
 const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
   return (

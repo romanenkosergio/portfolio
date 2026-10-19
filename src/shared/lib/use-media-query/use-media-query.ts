@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { IUseMediaQueryOptions } from "./use-media-query.types";
+import type { IUseMediaQueryOptions } from "./use-media-query.types";
 
 const IS_SSR = typeof window === "undefined";
 const MEDIA_QUERY_CHANGE_EVENT = "change";

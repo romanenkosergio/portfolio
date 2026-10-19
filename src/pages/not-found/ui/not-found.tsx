@@ -1,4 +1,5 @@
-import { FC } from "react";
+import type { FC } from "react";
+
 import { Container } from "@/shared/ui";
 
 const NotFound: FC = () => {

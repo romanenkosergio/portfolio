@@ -1,10 +1,12 @@
-import { Metadata, Viewport } from "next";
-import React, { FC, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
+
+import type { Metadata, Viewport } from "next";
+
+import { APP_CONFIG } from "@/shared/config";
 
 import { fonts } from "@/app/config";
 import { generateIcons } from "@/app/lib";
 import { ContentProvider } from "@/app/providers";
-import { APP_CONFIG } from "@/shared/config";
 import "@/app/styles";
 
 export function generateMetadata(): Metadata {

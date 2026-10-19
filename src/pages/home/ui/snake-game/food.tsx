@@ -1,7 +1,9 @@
 "use client";
 
-import { FC } from "react";
+import type { FC } from "react";
+
 import { Icon } from "@/shared/ui";
+
 import { useSnakeStore } from "../../model";
 
 const Food: FC = () => {

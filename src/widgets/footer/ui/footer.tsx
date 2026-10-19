@@ -1,7 +1,8 @@
-import { FC } from "react";
+import type { FC } from "react";
+
+import { Icon } from "@/shared/ui";
 
 import { SOCIALS } from "@/widgets/footer/config";
-import { Icon } from "@/shared/ui";
 
 const Footer: FC = () => {
   return (

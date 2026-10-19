@@ -1,5 +1,6 @@
-import { FC, PropsWithChildren } from "react";
-import { IContentLayoutProps } from "./content-layout.types";
+import type { FC, PropsWithChildren } from "react";
+
+import type { IContentLayoutProps } from "./content-layout.types";
 import { Sidebar } from "./sidebar";
 
 const ContentLayout: FC<PropsWithChildren<IContentLayoutProps>> = ({

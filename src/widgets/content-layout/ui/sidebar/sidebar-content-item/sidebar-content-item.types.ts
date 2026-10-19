@@ -1,7 +1,6 @@
-import { ComponentProps, ComponentPropsWithoutRef } from "react";
+import type { ComponentProps, ComponentPropsWithoutRef } from "react";
 
-export interface ISidebarContentItemProps
-  extends ComponentPropsWithoutRef<"div"> {
+export interface ISidebarContentItemProps extends ComponentPropsWithoutRef<"div"> {
   title: string;
   blockClass: ComponentProps<"div">["className"];
 }

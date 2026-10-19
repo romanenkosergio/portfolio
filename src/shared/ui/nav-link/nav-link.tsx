@@ -1,11 +1,14 @@
 "use client";
 
-import type { Route } from "next";
+import type { FC } from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FC } from "react";
+
+import type { Route } from "next";
 import { twMerge } from "tailwind-merge";
-import { INavLinkProps } from "./nav-link.types";
+
+import type { INavLinkProps } from "./nav-link.types";
 
 const NavLink: FC<INavLinkProps> = ({
   href,

@@ -1,6 +1,7 @@
 "use client";
 
-import { MouseEvent, useCallback } from "react";
+import type { MouseEvent } from "react";
+import { useCallback } from "react";
 
 const SMOOTH_SCROLL_OPTIONS: boolean | ScrollIntoViewOptions | undefined = {
   behavior: "smooth"

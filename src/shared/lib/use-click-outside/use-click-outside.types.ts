@@ -1,7 +1,2 @@
 export type UserEventType =
-  | "mousedown"
-  | "mouseup"
-  | "touchstart"
-  | "touchend"
-  | "focusin"
-  | "focusout";
+  "mousedown" | "mouseup" | "touchstart" | "touchend" | "focusin" | "focusout";
