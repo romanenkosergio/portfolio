@@ -1,5 +1,4 @@
 export * from "./button";
-export * from "./modal";
 export * from "./container";
 export * from "./icon";
 export * from "./nav-link";

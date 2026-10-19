@@ -1,42 +1,28 @@
 import type { FC } from "react";
-import { memo } from "react";
 
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/shared/lib";
 
-import type { IIconProps, SVGComponent } from "./icon.types";
+import type { IIconProps } from "./icon.types";
+import { ICONS } from "./icons";
 
 const Icon: FC<IIconProps> = ({
   name,
   Tag = "div",
-  folder = "",
   className,
   svgClass,
   onClick,
   ...props
 }) => {
-  let Svg: SVGComponent | null = null;
-  try {
-    Svg = require(
-      `@/public/assets/icons/${folder ? `${folder}/` : ""}${name}.svg`
-    ).default;
-  } catch (error) {
-    console.warn(`Icon ${name} not found`);
-  }
-
-  const svgClasses = twMerge("max-h-full max-w-full", svgClass);
+  const Svg = ICONS[name];
 
   return (
     <Tag
       onClick={onClick}
-      className={twMerge("inline-block select-none", className)}
+      className={cn("inline-block select-none", className)}
     >
-      {Svg ? (
-        <Svg {...props} className={svgClasses} />
-      ) : (
-        <div className="size-6 animate-pulse bg-gray-200" />
-      )}
+      <Svg {...props} className={cn("max-h-full max-w-full", svgClass)} />
     </Tag>
   );
 };
 
-export default memo(Icon);
+export default Icon;

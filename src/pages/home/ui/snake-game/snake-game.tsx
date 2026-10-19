@@ -3,6 +3,7 @@ import type { CSSProperties, FC } from "react";
 import Image from "next/image";
 
 import { BASE_PATH } from "@/shared/config";
+import { cn } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
 import { BOLTS } from "@/pages/home/config";
@@ -55,8 +56,7 @@ const SnakeGame: FC = () => {
       {BOLTS.map(item => (
         <Icon
           key={item.icon}
-          className={`absolute z-12 h-3.25 w-3.25 ${item.className} `}
-          folder="bolts"
+          className={cn("absolute z-12 h-3.25 w-3.25", item.className)}
           name={item.icon}
         />
       ))}

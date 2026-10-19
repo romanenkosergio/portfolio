@@ -1,23 +1,25 @@
+import type { IconName } from "@/shared/ui";
+
 interface IBoltItem {
-  icon: string;
+  icon: IconName;
   className: string;
 }
 
 export const BOLTS: IBoltItem[] = [
   {
-    icon: "bolt-up-left",
+    icon: "bolts/bolt-up-left",
     className: "top-4 left-4"
   },
   {
-    icon: "bolt-up-right",
+    icon: "bolts/bolt-up-right",
     className: "top-4 right-4"
   },
   {
-    icon: "bolt-down-left",
+    icon: "bolts/bolt-down-left",
     className: "bottom-4 left-4"
   },
   {
-    icon: "bolt-down-right",
+    icon: "bolts/bolt-down-right",
     className: "right-4 bottom-4"
   }
 ];

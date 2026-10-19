@@ -1,5 +1,5 @@
 import type { HTMLAttributes, PropsWithChildren, PropsWithoutRef } from "react";
 
-export interface IContainerProps extends PropsWithoutRef<
+export type IContainerProps = PropsWithoutRef<
   PropsWithChildren<HTMLAttributes<HTMLDivElement>>
-> {}
+>;

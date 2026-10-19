@@ -1,7 +1,8 @@
 import { E_ROUTES } from "@/shared/config";
+import type { IconName } from "@/shared/ui";
 
 interface IAboutMeSidebarItem {
-  icon: string;
+  icon: IconName;
   title: string;
   href: E_ROUTES;
   activeClass: string;
@@ -9,32 +10,43 @@ interface IAboutMeSidebarItem {
 
 export const ABOUT_ME_NAVIGATION: IAboutMeSidebarItem[] = [
   {
-    icon: "personal-info",
+    icon: "sidebar/personal-info",
     title: "Personal Info",
     href: E_ROUTES.ABOUT_PERSONAL,
-    activeClass: "desktop:[&.active]:text-accent-2"
+    activeClass: "desktop:aria-[current=page]:text-accent-2"
   },
   {
-    icon: "professional-info",
+    icon: "sidebar/professional-info",
     title: "Professional Info",
     href: E_ROUTES.ABOUT_PROFESSIONAL,
-    activeClass: "desktop:[&.active]:text-accent-3"
+    activeClass: "desktop:aria-[current=page]:text-accent-3"
   },
   {
-    icon: "hobbies",
+    icon: "sidebar/hobbies",
     title: "Hobbies",
     href: E_ROUTES.ABOUT_HOBBIES,
-    activeClass: "desktop:[&.active]:text-accent-4"
+    activeClass: "desktop:aria-[current=page]:text-accent-4"
   }
 ];
 
-interface IContentItem {
+interface IContentItemBase {
   title: string;
-  href: E_ROUTES | string;
-  icon?: string;
-  external?: boolean;
+  icon?: IconName;
   activeClass?: string;
 }
+
+interface IInternalContentItem extends IContentItemBase {
+  href: E_ROUTES;
+  external?: false;
+}
+
+// mailto: / tel: and other links that leave the site.
+interface IExternalContentItem extends IContentItemBase {
+  href: string;
+  external: true;
+}
+
+export type IContentItem = IInternalContentItem | IExternalContentItem;
 
 interface IAboutItem {
   title: string;
@@ -48,12 +60,12 @@ export const ABOUT_ME_PERSONAL_ITEMS: IAboutItem[] = [
       {
         title: "bio",
         href: E_ROUTES.ABOUT_PERSONAL_BIO,
-        activeClass: "desktop:[&.active]:text-accent-2"
+        activeClass: "desktop:aria-[current=page]:text-accent-2"
       },
       {
         title: "interests",
         href: E_ROUTES.ABOUT_PERSONAL_INTERESTS,
-        activeClass: "desktop:[&.active]:text-accent-1"
+        activeClass: "desktop:aria-[current=page]:text-accent-1"
       }
     ]
   },
@@ -82,12 +94,12 @@ export const ABOUT_ME_PROFESSIONAL_ITEMS: IAboutItem[] = [
       {
         title: "skills",
         href: E_ROUTES.ABOUT_PROFESSIONAL_SKILLS,
-        activeClass: "desktop:[&.active]:text-accent-2"
+        activeClass: "desktop:aria-[current=page]:text-accent-2"
       },
       {
         title: "experience",
         href: E_ROUTES.ABOUT_PROFESSIONAL_EXPERIENCE,
-        activeClass: "desktop:[&.active]:text-accent-1"
+        activeClass: "desktop:aria-[current=page]:text-accent-1"
       }
     ]
   },

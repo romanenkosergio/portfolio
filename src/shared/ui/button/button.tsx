@@ -1,72 +1,55 @@
-import type { FC } from "react";
-
 import Link from "next/link";
 
-import type { Route } from "next";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/shared/lib";
 
+import { buttonTextVariants, buttonVariants } from "./button-variants";
 import type { IButtonProps } from "./button.types";
-import { E_BUTTON_VARIANT } from "./button.types";
 
-const buttonVariants = {
-  [E_BUTTON_VARIANT.PRIMARY]: "bg-bg-1 desktop:hover:bg-bg-1-hover",
-  [E_BUTTON_VARIANT.DEFAULT]: "bg-bg-2 desktop:hover:bg-bg-2-hover",
-  [E_BUTTON_VARIANT.GHOST]:
-    "bg-transparent border-white desktop:hover:border-white/50"
-};
-
-const buttonTextVariants = {
-  [E_BUTTON_VARIANT.PRIMARY]: "text-primary-1",
-  [E_BUTTON_VARIANT.DEFAULT]: "text-white",
-  [E_BUTTON_VARIANT.GHOST]: "text-white"
-};
-
-const defaultButtonClass =
-  "flex items-center justify-center px-3.5 h-9.5 rounded-lg border border-transparent";
-
-const getLinkProps = (
-  isExternalLink: boolean
-): Record<string, string | boolean> =>
-  isExternalLink ? { rel: "noopener noreferrer" } : {};
-
-const Button: FC<IButtonProps> = ({
+const Button = <T extends string>({
   text,
-  href,
-  title,
-  className = "",
-  textClassName = "",
-  target,
-  variant = E_BUTTON_VARIANT.DEFAULT,
-  isExternalLink = false,
-  ...props
-}) => {
-  const buttonClassName = twMerge(
-    defaultButtonClass,
-    buttonVariants[variant],
-    className
-  );
-  const textClassNameMerged = twMerge(
-    buttonTextVariants[variant],
-    textClassName,
-    "text-sm leading-4.5"
+  className,
+  textClassName,
+  variant,
+  ...rest
+}: IButtonProps<T>) => {
+  const buttonClassName = cn(buttonVariants({ variant }), className);
+  const label = (
+    <span className={cn(buttonTextVariants({ variant }), textClassName)}>
+      {text}
+    </span>
   );
 
-  const LinkComponent = isExternalLink ? "a" : Link;
+  if (rest.href === undefined) {
+    return (
+      <button type="button" {...rest} className={buttonClassName}>
+        {label}
+      </button>
+    );
+  }
 
-  return href ? (
-    <LinkComponent
-      href={href as Route}
-      title={title || undefined}
+  if (rest.isExternalLink) {
+    return (
+      <a
+        href={rest.href}
+        title={rest.title}
+        className={buttonClassName}
+        target={rest.target}
+        rel="noopener noreferrer"
+      >
+        {label}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={rest.href}
+      title={rest.title}
       className={buttonClassName}
-      target={target}
-      {...getLinkProps(isExternalLink)}
+      target={rest.target}
     >
-      <span className={textClassNameMerged}>{text}</span>
-    </LinkComponent>
-  ) : (
-    <button {...props} className={buttonClassName}>
-      <span className={textClassNameMerged}>{text}</span>
-    </button>
+      {label}
+    </Link>
   );
 };
 

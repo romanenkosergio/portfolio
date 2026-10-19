@@ -3,7 +3,8 @@
 import type { FC } from "react";
 
 import { E_ROUTES } from "@/shared/config";
-import { Button, E_BUTTON_VARIANT } from "@/shared/ui";
+import { cn } from "@/shared/lib";
+import { Button } from "@/shared/ui";
 
 import { useSnakeStore } from "@/pages/home/model";
 
@@ -14,8 +15,8 @@ const WinButton: FC = () => {
       href={E_ROUTES.ABOUT_ME}
       title="About me"
       text={isVin ? "next" : "skip"}
-      variant={E_BUTTON_VARIANT.GHOST}
-      className={`mt-auto ml-auto ${isVin === null && "-z-1 opacity-0"}`}
+      variant="ghost"
+      className={cn("mt-auto ml-auto", isVin === null && "-z-1 opacity-0")}
     />
   );
 };

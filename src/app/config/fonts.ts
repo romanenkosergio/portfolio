@@ -1,6 +1,6 @@
 import { Fira_Code } from "next/font/google";
 
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/shared/lib";
 
 // Define the fonts here
 const firaCode = Fira_Code({
@@ -8,4 +8,4 @@ const firaCode = Fira_Code({
   subsets: ["latin"]
 });
 
-export const fonts = twMerge(firaCode.variable, "font-fira-code");
+export const fonts = cn(firaCode.variable, "font-fira-code");

@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import { cn } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
 import type { ISidebarContentItemProps } from "./sidebar-content-item.types";
@@ -11,9 +12,12 @@ const SidebarContentItem: FC<ISidebarContentItemProps> = ({
   blockClass
 }) => {
   return (
-    <div className={`flex w-full flex-col ${blockClass}`}>
+    <div className={cn("flex w-full flex-col", blockClass)}>
       <div
-        className={`flex items-center gap-3 border-b border-b-line py-2.5 pl-3.5 ${className}`}
+        className={cn(
+          "flex items-center gap-3 border-b border-b-line py-2.5 pl-3.5",
+          className
+        )}
       >
         <Icon name="arrow-down" />
         <span className="text-white">{title}</span>

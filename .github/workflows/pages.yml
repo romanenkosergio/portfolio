@@ -32,7 +32,6 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_DOMAIN: ${{ steps.pages.outputs.host }}${{ steps.pages.outputs.base_path }}
-          NEXT_PUBLIC_IS_PRODUCTION: "true"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

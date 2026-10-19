@@ -20,7 +20,7 @@ const Header: FC = () => {
       </Link>
       <Navigation
         className="hidden w-full desktop:flex"
-        linkClassName="px-6 last:ml-auto border-l border-l-line desktop:py-4.5 nth-3:border-r nth-3:border-r-line hover:not-[&.active]:text-white"
+        linkClassName="px-6 last:ml-auto border-l border-l-line desktop:py-4.5 nth-3:border-r nth-3:border-r-line hover:not-aria-[current=page]:text-white"
       />
       <Burger />
     </header>
