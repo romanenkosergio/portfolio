@@ -11,6 +11,7 @@ Done: 1.1–1.4
 - [ ] 1.6 Kit ESLint/Prettier/steiger toolchain (`eslint/` composition, boundaries 6, react-hooks 7); `eslint/pending.config.mjs` names the PR that clears each entry (D5); drop FlatCompat, `@feature-sliced/eslint-config`, local-rules
 - [ ] 1.7 Re-sort Tailwind classes (prettier-plugin-tailwindcss 0.8, `tailwindStylesheet`) — formatting only
 - [ ] 1.8 `shared`: `cn` + `cva` Button, static icon registry, NavLink `aria-current`, delete dead code (modal, unused hooks, consts), fix `BASE_URL`
+- [ ] 1.15 shadcn as in common-next: `components.json` (new-york, rsc, aliases `@/shared/ui`, `@/shared/lib`), `yarn shadcn:add` → `shared/ui/<name>/`, `@shadcn/lint` `no-restyle`, `tw-animate-css`, lucide; shadcn CSS variables mapped to the portfolio palette (D7)
 - [ ] 1.9 `widgets/layout-shell` (skip link, landmarks) instead of `src/app/providers`; `lang`, no zoom lock; Burger as a `<button>`; typed `[type]` params + guard; relative intra-slice imports; sidebar dedupe
 - [ ] 1.10 Home: pure snake model, store selectors, React Compiler on, focusable game
 - [ ] 1.11 next-intl en (default) / uk / ru with static export: `/[locale]/…`, root → `/en/`, copy in `messages/`, `jsx-no-literals` (D4)
