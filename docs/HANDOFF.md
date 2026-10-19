@@ -8,7 +8,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 ## Current state (2026-10-19)
 
 - Repo `git@github.com-personal:romanenkosergio/portfolio.git`, `main` protected (PR required, 0 approvals;
-  the agent merges with squash after `code-reviewer`, owner's ruling). Pages deploys on push to `main`:
+  the agent merges with squash after `code-reviewer` once the owner says «да» for that PR — auto mode blocks it otherwise). Pages deploys on push to `main`:
   https://romanenkosergio.github.io/portfolio/ (static export, D3).
 - PLAN 1.10 done: `pages/home/model/snake.ts` is the pure snake engine (`createInitialState`, `startGame`,
   `step(state, random)`, `turn`, `placeFood`); `snake-store.ts` is the Zustand store (game state + `start/tick/steer`)
@@ -17,6 +17,11 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
   `role="application"` `tabIndex=0` with name, `aria-describedby` instructions, polite live region; arrows/WASD act only
   while it has focus; on-screen arrows are `<button>`s; the start overlay is `inert` during a round. `model/` cannot
   carry `"use client"` (directive-placement), cross-segment imports use `@/pages/home/<segment>`.
+- Snake UI matched to Figma (measured in Figma's Design panel through Chrome, no login): CSS gradient + two blurred
+  blobs instead of PNGs (`--color-game-glow`), board inner shadow, snake = 8px round stroke fading tail-ward to the board
+  colour (opaque mix, transparent tail end; canvas at devicePixelRatio), skip always visible, game hidden below
+  `desktop` (Figma's 375 frame has none). Home section is `desktop:overflow-clip min-h-fit shrink-0` (blobs clipped,
+  panel never cut). Win state and hover states were not checked in a browser.
 - `next dev` logs a "missing param in generateStaticParams" error for an unknown `[type]` with
   `output: export` — expected; the build gives 404.
 - `yarn typecheck` runs `next typegen` first (`next-env.d.ts`, route types are git-ignored).

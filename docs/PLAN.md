@@ -22,7 +22,7 @@ Done: 1.1–1.4, 1.6–1.10
 - [ ] 3.3 About: sidebar/explorer tree transitions, file tabs, code-lines content
 - [ ] 3.4 Projects: filter by tech with Flip transitions, project cards
 - [ ] 3.5 Contact: form with live code preview, success state
-- [ ] 3.6 Mobile (375) for every page, menu animation; fix the home page horizontal scroll (1521 px at 1440) and the clipped game panel at 375; about sidebar unreachable at 375
+- [ ] 3.6 Mobile (375) for every page, menu animation; about sidebar unreachable at 375; the shell is fixed-height (`h-[calc(100dvh-90px)]` main), so below ~540 px tall the footer overlaps the content — let it grow (`min-h`)
 - [ ] 3.7 Motion performance and a11y pass (Lighthouse, reduced motion, keyboard)
 
 ## Phase 2 — content

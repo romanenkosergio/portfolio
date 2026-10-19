@@ -6,8 +6,8 @@ import { SnakeGame } from "./snake-game";
 
 const HomeView: FC = () => {
   return (
-    <section className="desktop:flex desktop:items-center">
-      <Container>
+    <section className="flex-1 overflow-x-clip desktop:flex desktop:min-h-fit desktop:shrink-0 desktop:items-center desktop:overflow-clip">
+      <Container className="desktop:w-full">
         <div className="desktop:flex desktop:items-center desktop:justify-between">
           <div className="text-white">
             <span className="text-lg text-light">Hi all. I am</span>
