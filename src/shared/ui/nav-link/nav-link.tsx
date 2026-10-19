@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
+import { Link, usePathname } from "@/shared/i18n";
 import { cn } from "@/shared/lib";
 
 import type { INavLinkProps } from "./nav-link.types";
 
-// `trailingSlash: true` makes usePathname() return "/contact/" while hrefs are "/contact".
+// `trailingSlash: true` makes usePathname() return "/contact/" while hrefs are "/contact"; the
+// i18n usePathname already drops the locale prefix, so both sides compare as "/contact".
 const trimSlash = (path: string): string =>
   path.length > 1 ? path.replace(/\/+$/, "") : path;
 
@@ -25,14 +24,14 @@ const getAriaCurrent = (
   return !exact && current.startsWith(`${target}/`) ? "true" : undefined;
 };
 
-const NavLink = <T extends string>({
+const NavLink = ({
   exact = true,
   children,
   className,
   isSidebar = false,
   activeClass,
   ...props
-}: INavLinkProps<T>) => {
+}: INavLinkProps) => {
   const pathname = usePathname();
 
   const linkClassName = cn(

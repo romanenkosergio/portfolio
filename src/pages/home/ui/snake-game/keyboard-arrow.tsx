@@ -2,6 +2,8 @@
 
 import type { FC } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { cn } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
@@ -22,22 +24,23 @@ const arrowPositions: Record<Direction, string> = {
   "RIGHT": "rotate-90"
 };
 
-const arrowLabels: Record<Direction, string> = {
-  UP: "Move up",
-  DOWN: "Move down",
-  LEFT: "Move left",
-  RIGHT: "Move right"
-};
+const arrowLabels = {
+  UP: "moveUp",
+  DOWN: "moveDown",
+  LEFT: "moveLeft",
+  RIGHT: "moveRight"
+} as const;
 
 const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
+  const t = useTranslations("game");
   const isActive = useSnakeStore(selectActiveArrow) === direction;
   const steer = useSnakeStore(selectSteer);
 
   return (
     <button
       type="button"
-      aria-label={arrowLabels[direction]}
-      title={arrowLabels[direction]}
+      aria-label={t(arrowLabels[direction])}
+      title={t(arrowLabels[direction])}
       onClick={() => {
         steer(direction);
         document.getElementById(BOARD_ID)?.focus();

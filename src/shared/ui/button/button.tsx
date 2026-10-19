@@ -1,17 +1,16 @@
-import Link from "next/link";
-
+import { Link } from "@/shared/i18n";
 import { cn } from "@/shared/lib";
 
 import { buttonTextVariants, buttonVariants } from "./button-variants";
 import type { IButtonProps } from "./button.types";
 
-const Button = <T extends string>({
+const Button = ({
   text,
   className,
   textClassName,
   variant,
   ...rest
-}: IButtonProps<T>) => {
+}: IButtonProps) => {
   const buttonClassName = cn(buttonVariants({ variant }), className);
   const label = (
     <span className={cn(buttonTextVariants({ variant }), textClassName)}>

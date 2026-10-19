@@ -13,19 +13,26 @@ import {
   isProfessionalInfoType
 } from "@/pages/about";
 
-import type { ILayoutProps } from "@/app/model";
+import { resolveLocale } from "@/app/lib";
+import type { ILocaleTypeProps } from "@/app/model";
 
+// Next merges the parent [locale] params, so only the types are listed.
 export const generateStaticParams = () =>
   PROFESSIONAL_INFO_TYPES.map(type => ({ type }));
 
 export async function generateMetadata({
   params
-}: ILayoutProps): Promise<Metadata> {
+}: ILocaleTypeProps): Promise<Metadata> {
+  const locale = await resolveLocale(params);
   const { type } = await params;
-  return pageMetadata(`${E_ROUTES.ABOUT_PROFESSIONAL}/${type}`);
+  return pageMetadata({
+    locale,
+    path: `${E_ROUTES.ABOUT_PROFESSIONAL}/${type}`
+  });
 }
 
-const ProfessionalItemInfo = async ({ params }: ILayoutProps) => {
+const ProfessionalItemInfo = async ({ params }: ILocaleTypeProps) => {
+  await resolveLocale(params);
   const { type } = await params;
   if (!isProfessionalInfoType(type)) {
     notFound();

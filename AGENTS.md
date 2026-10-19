@@ -3,7 +3,9 @@ Feature-Sliced Design. One package, yarn.
 
 ## Layout
 
-- `app/` — Next.js routes only: thin `page.tsx` files with `generateMetadata`, each renders a view from `src/pages`.
+- `app/` — Next.js routes only: thin `page.tsx` files with `generateMetadata`, each renders a view from `src/pages`. Every route is under `app/[locale]/` (en/uk/ru, D4); copy
+  never goes in JSX — it lives in `messages/<locale>.json` (`useTranslations` / `getTranslations`), typed by `i18n.d.ts`;
+  routing, `Link` and the router come from `shared/i18n`, never `next/link` / `next/navigation`.
 - `src/` — FSD layers, top to bottom: `app` (providers, fonts, global styles) → `pages` → `widgets` →
   `features` → `entities` → `shared` (ui kit, hooks in `lib`, `config`). A layer imports only from layers
   below; a slice is reached through its `index.ts` (public API; `shared` is exempt). Segments: `ui`,

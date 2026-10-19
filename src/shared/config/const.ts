@@ -8,10 +8,11 @@ export const APP_CONFIG = {
   BASE_URL: DOMAIN ? `https://${DOMAIN}` : "http://localhost:3000"
 };
 
-// Next replaces `openGraph` wholesale per page, so every page spreads this base first.
+export const GITHUB_URL = "https://github.com/romanenkosergio";
+
+// Next replaces `openGraph` wholesale per page, so every page spreads this base first
+// (its texts come from the `meta` messages).
 export const OPEN_GRAPH = {
-  title: "Welcome to My Portfolio",
-  description: "Explore my projects, learn about me, and get in touch.\n",
   type: "website",
   images: "/assets/images/meta-picture.png"
 } as const;

@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/shared/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   // A static export for GitHub Pages (.github/workflows/pages.yml): no server, no image optimiser.
@@ -7,6 +10,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   typedRoutes: true,
+  // The 404 for URLs outside every [locale]: there is no single root layout to compose it under.
+  experimental: { globalNotFound: true },
   // The React Compiler memoises components itself, so manual useMemo/useCallback are not needed.
   reactCompiler: true,
   // SVGs import as React components (SVGR) under Turbopack, the default bundler since Next 16.
@@ -40,4 +45,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

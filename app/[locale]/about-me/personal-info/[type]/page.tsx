@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import { E_ROUTES } from "@/shared/config";
 import { pageMetadata } from "@/shared/lib";
@@ -13,19 +14,28 @@ import {
   isPersonalInfoType
 } from "@/pages/about";
 
-import type { ILayoutProps } from "@/app/model";
+import { resolveLocale } from "@/app/lib";
+import type { ILocaleTypeProps } from "@/app/model";
 
+// Next merges the parent [locale] params, so only the types are listed.
 export const generateStaticParams = () =>
   PERSONAL_INFO_TYPES.map(type => ({ type }));
 
 export async function generateMetadata({
   params
-}: ILayoutProps): Promise<Metadata> {
+}: ILocaleTypeProps): Promise<Metadata> {
+  const locale = await resolveLocale(params);
   const { type } = await params;
-  return pageMetadata(`${E_ROUTES.ABOUT_PERSONAL}/${type}`);
+  const t = await getTranslations({ locale, namespace: "titles" });
+  return pageMetadata({
+    locale,
+    path: `${E_ROUTES.ABOUT_PERSONAL}/${type}`,
+    title: isPersonalInfoType(type) ? t(type) : undefined
+  });
 }
 
-const PersonalItemInfo = async ({ params }: ILayoutProps) => {
+const PersonalItemInfo = async ({ params }: ILocaleTypeProps) => {
+  await resolveLocale(params);
   const { type } = await params;
   if (!isPersonalInfoType(type)) {
     notFound();

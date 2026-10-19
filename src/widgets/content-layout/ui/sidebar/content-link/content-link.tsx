@@ -1,13 +1,17 @@
 import type { FC } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { Icon, NavLink } from "@/shared/ui";
 
 import type { IContentLinkProps } from "./content-link.types";
 
 const ContentLink: FC<IContentLinkProps> = ({ item }) => {
+  const t = useTranslations("sidebar.items");
+  const title = item.titleKey ? t(item.titleKey) : item.title;
   const linkProps = {
     isSidebar: true,
-    title: item.title,
+    title,
     className: "group flex cursor-pointer items-center gap-2 text-secondary-1",
     activeClass: item.activeClass
   } as const;
@@ -18,7 +22,7 @@ const ContentLink: FC<IContentLinkProps> = ({ item }) => {
         className="h-3.5 w-4 transition-colors duration-300 ease-in group-hover:text-white"
       />
       <span className="text-sm transition-colors duration-300 ease-in group-hover:text-white">
-        {item.title}
+        {title}
       </span>
     </>
   );

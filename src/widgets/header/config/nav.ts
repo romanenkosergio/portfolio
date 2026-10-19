@@ -1,35 +1,17 @@
 import { E_ROUTES } from "@/shared/config";
 
+export type NavKey = "hello" | "aboutMe" | "projects" | "contactMe";
+
 export interface INavItem {
-  label: string;
+  key: NavKey;
   href: E_ROUTES;
-  linkTitle: string;
   exact: boolean;
 }
 
+// Labels and link titles are the `header.nav.<key>` messages.
 export const NAV_ITEMS: INavItem[] = [
-  {
-    label: "_hello",
-    href: E_ROUTES.HOME,
-    linkTitle: "Go to Home",
-    exact: true
-  },
-  {
-    label: "_about-me",
-    href: E_ROUTES.ABOUT_ME,
-    linkTitle: "Learn more About Me",
-    exact: false
-  },
-  {
-    label: "_projects",
-    href: E_ROUTES.PROJECTS,
-    linkTitle: "Check out my Projects",
-    exact: true
-  },
-  {
-    label: "_contact-me",
-    href: E_ROUTES.CONTACT,
-    linkTitle: "Contact Me",
-    exact: true
-  }
+  { key: "hello", href: E_ROUTES.HOME, exact: true },
+  { key: "aboutMe", href: E_ROUTES.ABOUT_ME, exact: false },
+  { key: "projects", href: E_ROUTES.PROJECTS, exact: true },
+  { key: "contactMe", href: E_ROUTES.CONTACT, exact: true }
 ];

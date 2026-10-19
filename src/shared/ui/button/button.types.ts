@@ -1,7 +1,8 @@
 import type { ButtonHTMLAttributes, HTMLAttributeAnchorTarget } from "react";
 
 import type { VariantProps } from "class-variance-authority";
-import type { Route } from "next";
+
+import type { E_ROUTES } from "@/shared/config";
 
 import type { buttonVariants } from "./button-variants";
 
@@ -19,8 +20,8 @@ interface IButtonAsButton
   isExternalLink?: never;
 }
 
-interface IButtonAsInternalLink<T extends string> extends IBaseButtonProps {
-  href: Route<T>;
+interface IButtonAsInternalLink extends IBaseButtonProps {
+  href: E_ROUTES;
   title: string;
   target?: HTMLAttributeAnchorTarget;
   onClick?: never;
@@ -35,5 +36,5 @@ interface IButtonAsExternalLink extends IBaseButtonProps {
   isExternalLink: true;
 }
 
-export type IButtonProps<T extends string = string> =
-  IButtonAsButton | IButtonAsInternalLink<T> | IButtonAsExternalLink;
+export type IButtonProps =
+  IButtonAsButton | IButtonAsInternalLink | IButtonAsExternalLink;

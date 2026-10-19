@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { Icon, NavLink } from "@/shared/ui";
 
 import {
@@ -20,6 +22,7 @@ const SIDEBAR_ITEMS = {
 };
 
 const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
+  const t = useTranslations("sidebar");
   const items = SIDEBAR_ITEMS[type];
 
   return (
@@ -28,8 +31,8 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
         {ABOUT_ME_NAVIGATION.map(item => (
           <NavLink
             href={item.href}
-            title={item.title}
-            key={item.title}
+            title={t(`sections.${item.titleKey}`)}
+            key={item.titleKey}
             isSidebar
             exact={false}
             activeClass={item.activeClass}
@@ -41,12 +44,15 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
       <div className="w-full">
         {items.map(item => (
           <SidebarContentItem
-            title={item.title}
-            key={item.title}
+            title={t(`groups.${item.groupKey}`)}
+            key={item.groupKey}
             blockClass="first:border-b-line first:border-b"
           >
             {item.content.map(contentItem => (
-              <ContentLink key={contentItem.title} item={contentItem} />
+              <ContentLink
+                key={contentItem.titleKey ?? contentItem.title}
+                item={contentItem}
+              />
             ))}
           </SidebarContentItem>
         ))}
