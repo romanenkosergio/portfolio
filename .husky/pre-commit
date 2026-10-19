@@ -1,0 +1,31 @@
+# The address guard runs first: a commit cannot be un-made once it is written,
+# while a failed format check costs a second.
+sh scripts/commit-address.sh || exit 1
+
+. .husky/_node.sh
+
+# Each step runs quietly into one log; on failure the log's tail and the step's name are printed.
+LOG=$(mktemp) || exit 1
+# The log is removed on success and kept on failure, its path printed for a full read.
+ok=0
+trap '[ "$ok" -eq 1 ] && rm -f "$LOG"' EXIT
+step() {
+    name=$1
+    shift
+    rc=0
+    "$@" >>"$LOG" 2>&1 || rc=$?
+    [ "$rc" -eq 0 ] && return 0
+    tail -n 40 "$LOG"
+    echo "pre-commit FAILED: $name (rc=$rc), full log: $LOG"
+    exit "$rc"
+}
+
+step lint:fix yarn -s lint:fix
+step format yarn -s format
+step typecheck yarn -s typecheck
+step fsd yarn -s fsd
+
+# Re-stage only files that were already staged, so the hook never widens the commit.
+step restage sh -c "git diff --name-only --cached --diff-filter=ACMR | tr '\n' '\0' | xargs -0 git add --"
+ok=1
+echo "pre-commit OK"

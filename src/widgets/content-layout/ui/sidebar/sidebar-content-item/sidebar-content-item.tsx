@@ -1,0 +1,24 @@
+import { FC } from "react";
+import { Icon } from "@/shared/ui";
+import { ISidebarContentItemProps } from "./sidebar-content-item.types";
+
+const SidebarContentItem: FC<ISidebarContentItemProps> = ({
+  title,
+  children,
+  className,
+  blockClass
+}) => {
+  return (
+    <div className={`flex w-full flex-col ${blockClass}`}>
+      <div
+        className={`border-b-line flex items-center gap-3 border-b py-2.5 pl-3.5 ${className}`}
+      >
+        <Icon name="arrow-down" />
+        <span className="text-white">{title}</span>
+      </div>
+      <div className="flex flex-col gap-4 pt-4.5 pb-7.5 pl-3.5">{children}</div>
+    </div>
+  );
+};
+
+export default SidebarContentItem;

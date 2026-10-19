@@ -1,0 +1,8 @@
+node_modules/
+.next/
+out/
+build/
+yarn.lock
+.claude/
+.sud/
+docs/DECISIONS.md

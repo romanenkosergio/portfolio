@@ -1,0 +1,29 @@
+# The full gate once per push: format, lint, types, FSD (steiger) and `next build`.
+# A push of text only (docs, root *.md) gets Prettier instead: scripts/pre-push-scope.sh
+# exits 2 for anything else.
+# Output goes to one log; on failure its tail, the key errors and the step's name are printed.
+. .husky/_node.sh
+LOG=$(mktemp) || exit 1
+# The log is removed on success and kept on failure, its path printed for a full read.
+ok=0
+trap '[ "$ok" -eq 1 ] && rm -f "$LOG"' EXIT
+fail() {
+    tail -n 40 "$LOG"
+    grep -nE 'FAIL|ERR!|error' "$LOG" | tail -n 15
+    echo "pre-push FAILED: $1 (rc=$2), full log: $LOG"
+    exit "$2"
+}
+
+scope=0
+sh scripts/pre-push-scope.sh >>"$LOG" 2>&1 || scope=$?
+if [ "$scope" -ne 2 ]; then
+    [ "$scope" -eq 0 ] || fail text-only "$scope"
+    ok=1
+    echo "pre-push OK (text only)"
+    exit 0
+fi
+rc=0
+yarn -s gate:push >>"$LOG" 2>&1 || rc=$?
+[ "$rc" -eq 0 ] || fail gate:push "$rc"
+ok=1
+echo "pre-push OK"
