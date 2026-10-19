@@ -7,46 +7,12 @@
 
 const off = rules => Object.fromEntries(rules.map(rule => [rule, "off"]));
 export const pendingConfigs = [
-  // PLAN 1.10 — home/snake: pure snake model, store selectors, React Compiler, focusable game
-  {
-    files: ["src/pages/home/lib/use-game.ts"],
-    rules: off([
-      "max-lines-per-function",
-      "no-console",
-      "react-hooks/exhaustive-deps",
-      "react-hooks/immutability"
-    ])
-  },
-  // PLAN 1.10 — home/snake: pure snake model, store selectors, React Compiler, focusable game
-  {
-    files: ["src/pages/home/model/snake.ts"],
-    rules: off([
-      "@typescript-eslint/no-unused-vars",
-      "project/directive-placement"
-    ])
-  },
-  // PLAN 1.10 — home/snake: pure snake model, store selectors, React Compiler, focusable game
-  {
-    files: [
-      "src/pages/home/ui/snake-game/food.tsx",
-      "src/pages/home/ui/snake-game/keyboard-arrow.tsx",
-      "src/pages/home/ui/snake-game/keyboard-arrow.types.ts"
-    ],
-    rules: off(["no-restricted-imports"])
-  },
-  // PLAN 1.10 — home/snake: pure snake model, store selectors, React Compiler, focusable game
-  {
-    files: ["src/pages/home/ui/snake-game/game.tsx"],
-    rules: off([
-      "jsx-a11y/no-static-element-interactions",
-      "no-restricted-imports"
-    ])
-  },
   // PLAN 1.11 — next-intl copy moves to messages/, jsx-no-literals goes live
   {
     files: [
       "app/about-me/hobbies/page.tsx",
       "src/pages/home/ui/snake-game/food.tsx",
+      "src/pages/home/ui/snake-game/game.tsx",
       "src/pages/not-found/ui/not-found.tsx",
       "src/widgets/footer/ui/footer.tsx"
     ],
@@ -65,6 +31,7 @@ export const pendingConfigs = [
   // PLAN 1.11 — next-intl copy moves to messages/, jsx-no-literals goes live
   {
     files: [
+      "src/pages/home/ui/snake-game/game-overlay.tsx",
       "src/pages/home/ui/snake-game/game.tsx",
       "src/pages/home/ui/snake-game/win-button.tsx"
     ],

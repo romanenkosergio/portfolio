@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   typedRoutes: true,
+  // The React Compiler memoises components itself, so manual useMemo/useCallback are not needed.
+  reactCompiler: true,
   // SVGs import as React components (SVGR) under Turbopack, the default bundler since Next 16.
   turbopack: {
     rules: {

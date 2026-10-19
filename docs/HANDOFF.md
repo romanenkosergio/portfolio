@@ -10,11 +10,13 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 - Repo `git@github.com-personal:romanenkosergio/portfolio.git`, `main` protected (PR required, 0 approvals;
   the agent merges with squash after `code-reviewer`, owner's ruling). Pages deploys on push to `main`:
   https://romanenkosergio.github.io/portfolio/ (static export, D3).
-- PLAN 1.9 done: `widgets/layout-shell` (skip link, `<main id="main">`; header/footer arrive as props because
-  widgets cannot import widgets, `app/layout.tsx` composes them), `lang="en"`, no zoom lock, Burger as a
-  `<button>`, typed `[type]` params + `notFound()` guard (`pages/about`), `aria-current` page/true with
-  `aria-[current]:` variants, `ContentLink` split out, `pageMetadata` helper + shared `OPEN_GRAPH` (per-page
-  canonical/og:url; root layout carries no url/canonical), global `:focus-visible` accent outline.
+- PLAN 1.10 done: `pages/home/model/snake.ts` is the pure snake engine (`createInitialState`, `startGame`,
+  `step(state, random)`, `turn`, `placeFood`); `snake-store.ts` is the Zustand store (game state + `start/tick/steer`)
+  with named selectors, components subscribe through them. `lib/use-game.ts` is thin (interval, board keys, canvas
+  via `lib/draw-board.ts`). React Compiler is on (`reactCompiler: true` + `babel-plugin-react-compiler`). The board is
+  `role="application"` `tabIndex=0` with name, `aria-describedby` instructions, polite live region; arrows/WASD act only
+  while it has focus; on-screen arrows are `<button>`s; the start overlay is `inert` during a round. `model/` cannot
+  carry `"use client"` (directive-placement), cross-segment imports use `@/pages/home/<segment>`.
 - `next dev` logs a "missing param in generateStaticParams" error for an unknown `[type]` with
   `output: export` — expected; the build gives 404.
 - `yarn typecheck` runs `next typegen` first (`next-env.d.ts`, route types are git-ignored).
@@ -23,7 +25,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Next
 
-- PLAN 1.10 → 1.15 (shadcn, D7) → 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 → phase 3 redesign.
+- PLAN 1.15 (shadcn, D7) → 1.11 (next-intl en/uk/ru, D4) → 1.12–1.14 → phase 3 redesign.
   Each PR clears its «PLAN 1.x» entries in `eslint/pending.config.mjs`. Next decision number: D11.
 
 ## Environment

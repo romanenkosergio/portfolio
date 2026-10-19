@@ -6,10 +6,10 @@ import { E_ROUTES } from "@/shared/config";
 import { cn } from "@/shared/lib";
 import { Button } from "@/shared/ui";
 
-import { useSnakeStore } from "@/pages/home/model";
+import { selectIsWin, useSnakeStore } from "@/pages/home/model";
 
 const WinButton: FC = () => {
-  const { isVin } = useSnakeStore();
+  const isVin = useSnakeStore(selectIsWin);
   return (
     <Button
       href={E_ROUTES.ABOUT_ME}
