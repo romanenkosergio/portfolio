@@ -9,7 +9,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 - PLAN 1.14 done: `gate` adds `egress` (`scripts/egress-check.mjs`, allow-listed hosts with a reason, roots src/app/messages)
   and `dup` (jscpd, threshold 0; `app/[locale]/**/page.tsx` stubs ignored until they get real views); `gate:push` adds
-  `size` (size-limit on `out/_next/static`, JS 280 kB / CSS 10 kB gzip). gitleaks: `ci.yml` `secrets` job on PRs and in
+  `size` (size-limit on `out/_next/static`, JS 335 kB (D14) / CSS 10 kB gzip). gitleaks: `ci.yml` `secrets` job on PRs and in
   `pages.yml` before the gate. CSP + referrer are `<meta>` tags built in `shared/config/csp.ts` (dev adds `unsafe-eval`, `ws:`).
 - Repo stays public (D13, PLAN 1.5 closed).
 - About content (bio, skills, experience) rewritten from the owner's CV in en/uk/ru; `interests` unchanged. Years of
@@ -57,7 +57,7 @@ path, title?})` adds canonical, hreflang + x-default. Header has a shadcn `Selec
 ## Next
 
 - Phase 3 (3.1 …) → phase 2 → tests last (1.12, 1.13).
-  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D14.
+  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D15.
 
 ## Environment
 
