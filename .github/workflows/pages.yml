@@ -19,10 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: yarn
+      - name: Install gitleaks
+        run: |
+          GITLEAKS_VERSION=8.28.0
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" -o gitleaks.tar.gz
+          tar -xzf gitleaks.tar.gz gitleaks
+          sudo install -m 755 gitleaks /usr/local/bin/gitleaks
+      - run: gitleaks git --redact --verbose
       - id: pages
         uses: actions/configure-pages@v5
       - run: yarn install --frozen-lockfile
@@ -31,6 +40,7 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_DOMAIN: ${{ steps.pages.outputs.host }}${{ steps.pages.outputs.base_path }}
+      - run: yarn size
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

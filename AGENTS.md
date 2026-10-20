@@ -50,8 +50,8 @@ Node 24 (`nvm use`; the git hooks switch to it themselves), yarn only.
 ```bash
 yarn dev            # next dev
 yarn lint | lint:fix | format | format:check | typecheck | fsd
-yarn gate           # format:check + lint + typecheck + fsd
-yarn gate:push      # gate + next build (pre-push)
+yarn gate           # format:check + lint + typecheck + fsd + egress (allow-listed hosts) + dup (jscpd; route page.tsx stubs ignored)
+yarn gate:push      # gate + next build + size (size-limit on out/; pre-push)
 ```
 
 Run `yarn gate` before calling a task done. Never `--no-verify`.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+import { CSP, REFERRER_POLICY } from "@/shared/config";
 import { DEFAULT_LOCALE } from "@/shared/i18n";
 
 import { NotFound } from "@/pages/not-found";
@@ -13,7 +14,11 @@ export async function generateMetadata(): Promise<Metadata> {
     locale: DEFAULT_LOCALE,
     namespace: "meta"
   });
-  return { title: t("appName"), robots: { index: false } };
+  return {
+    title: t("appName"),
+    robots: { index: false },
+    referrer: REFERRER_POLICY
+  };
 }
 
 // A URL that matches no route (outside every locale): bypasses the layouts, so
@@ -21,6 +26,9 @@ export async function generateMetadata(): Promise<Metadata> {
 const GlobalNotFound = () => {
   return (
     <html lang={DEFAULT_LOCALE} className={fonts}>
+      <head>
+        <meta httpEquiv="Content-Security-Policy" content={CSP} />
+      </head>
       <body>
         <NotFound locale={DEFAULT_LOCALE} />
       </body>

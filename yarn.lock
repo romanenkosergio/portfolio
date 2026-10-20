@@ -2771,6 +2771,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/merge-streams/-/merge-streams-4.0.0.tgz#abb11d99aeb6d27f1b563c38147a72d50058e339"
   integrity sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==
 
+"@size-limit/file@^14.2.0":
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-14.2.0.tgz#c4e7e274e1565209a98535ce25caf398a4b5129b"
+  integrity sha512-ROqMjC8Pi/ogIIm79Y4u8YieXJb++MaZWbdv/am16l4cS9CxSUXmqP3igIXyv3gK3LMG6DkZdWSM5KVND2ug7g==
+
 "@svgr/babel-plugin-add-jsx-attribute@8.0.0":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-8.0.0.tgz#4001f5d5dd87fa13303e36ee106e3ff3a7eb8b22"
@@ -5933,6 +5938,60 @@ js-yaml@^4.3.2:
   dependencies:
     argparse "^2.0.1"
 
+jscpd-darwin-arm64@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-darwin-arm64/-/jscpd-darwin-arm64-5.4.1.tgz#2bf9b84285c60382a54fbf12cd0242ba27c4da63"
+  integrity sha512-LXHVeH60C9BsozcVIMPmXWvj97KqFKbCJYmYG4hDwfwIwS1kz+uF7yiObckP6h2xo12pD88nI4XjWTB5frjZUw==
+
+jscpd-darwin-x64@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-darwin-x64/-/jscpd-darwin-x64-5.4.1.tgz#eeda203eaa0c63e884a35f7147378588bef3fa50"
+  integrity sha512-Gqck4tcMZjv4IvYHU2Vcikb885zTADo5T/YfEqeu1i5W5tfFpLdViiTYrh5wbrW+uxBqC33gHpG1hy0xbGYknQ==
+
+jscpd-linux-arm64-gnu@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-linux-arm64-gnu/-/jscpd-linux-arm64-gnu-5.4.1.tgz#d337035aa61096995c5efac9bfe02944e3eefeae"
+  integrity sha512-XUYZJZVxSY7JIBEoyOOMTgvJwmymkns4wG55tu6I/vRKXnS5QtaTESQfRLt6xj1+62aflAvr01FAhPAy+du6tA==
+
+jscpd-linux-arm64-musl@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-linux-arm64-musl/-/jscpd-linux-arm64-musl-5.4.1.tgz#67bad741e0c91f009666cfd83cc066a069489f2d"
+  integrity sha512-h2sH8Bk++yBxWqq2QAy4fvPzXkw1vecDSyOmzLwPfnRQoQ2Q/EWxCNOrgJSb+SNMLWoHLLzfqx8m9wt2GG6a8w==
+
+jscpd-linux-x64-gnu@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-linux-x64-gnu/-/jscpd-linux-x64-gnu-5.4.1.tgz#73fac2c8238d8183ef06fe277ec005768b261b1a"
+  integrity sha512-UiC4YoGAVVLy6hPVz8A6cndo7W5br4FAO2hADnFeinhBPnXPu0QFh1q/s/8B3ldeQHQkpYd/l5cjqNBMrbm78w==
+
+jscpd-linux-x64-musl@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-linux-x64-musl/-/jscpd-linux-x64-musl-5.4.1.tgz#20773786df4216819f041d4ab4d1047277109725"
+  integrity sha512-toAafl5roqfFotPrDJNMY9noNVZ9dReBqcO/nT5pJ8+7aq+opbscaLUcV4+8jxTq5btUD6CiO72+Fu+TyUZv3Q==
+
+jscpd-windows-arm64-msvc@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-windows-arm64-msvc/-/jscpd-windows-arm64-msvc-5.4.1.tgz#d42bde86379c47e1da1ce7947da18c59e28acf8e"
+  integrity sha512-JLMga/NIwv/OPurPsXA2/d5OdWfdwrsBk2D4NhyKnrV/uNjo1BIi2zXztzDyTQVKMK/TEK6GPgLD143GG1fZ0A==
+
+jscpd-windows-x64-msvc@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd-windows-x64-msvc/-/jscpd-windows-x64-msvc-5.4.1.tgz#88b506c49456a3a1f7f16595d0f504dbd3b3b180"
+  integrity sha512-sN57Y9YP3ijrqc1IsWDceOFHUwbukg9/mU2NSDHTryKKc5CUvWz+o9GId8uKTiJIhkKfR/Ce5GKkCepTwB6kaw==
+
+jscpd@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/jscpd/-/jscpd-5.4.1.tgz#1240c61008a8a9aee8148a7d281780a280383674"
+  integrity sha512-afUt+LSQMmzSPYrWZlNGTwj8X4tmwVJbMNmr92qxPf4uUF/naLwG7SQyMPEZtrHqGgzGxmAzNjiwlVdjls2MyQ==
+  optionalDependencies:
+    jscpd-darwin-arm64 "5.4.1"
+    jscpd-darwin-x64 "5.4.1"
+    jscpd-linux-arm64-gnu "5.4.1"
+    jscpd-linux-arm64-musl "5.4.1"
+    jscpd-linux-x64-gnu "5.4.1"
+    jscpd-linux-x64-musl "5.4.1"
+    jscpd-windows-arm64-msvc "5.4.1"
+    jscpd-windows-x64-msvc "5.4.1"
+
 jsesc@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-3.1.0.tgz#74d335a234f67ed19907fdadfac7ccf9d409825d"
@@ -6119,6 +6178,11 @@ lightningcss@1.32.0:
     lightningcss-linux-x64-musl "1.32.0"
     lightningcss-win32-arm64-msvc "1.32.0"
     lightningcss-win32-x64-msvc "1.32.0"
+
+lilconfig@^3.1.3:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-3.1.4.tgz#d0b8ba64f16567774579b24a5e15e8bf997b4151"
+  integrity sha512-zJZyBmQhArDRefuWTypZxwDpFDIYmrj8ypSBvwGD5P13Y95s6DjzKgu4DVdGbeQa5PDEsAOCAPNk4X+QOR006w==
 
 lines-and-columns@^1.1.6:
   version "1.2.4"
@@ -6330,6 +6394,13 @@ nanoid@^3.3.20:
   version "3.3.20"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.20.tgz#dfd4444d85aa10111ef66ba85ed72e08ba0855d8"
   integrity sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==
+
+nanospinner@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/nanospinner/-/nanospinner-1.2.2.tgz#5a38f4410b5bf7a41585964bee74d32eab3e040b"
+  integrity sha512-Zt/AmG6qRU3e+WnzGGLuMCEAO/dAu45stNbHY223tUxldaDAeE+FxSPsd9Q+j+paejmm0ZbrNVs5Sraqy3dRxA==
+  dependencies:
+    picocolors "^1.1.1"
 
 napi-postinstall@^0.3.4:
   version "0.3.4"
@@ -7497,6 +7568,14 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
+
+size-limit@^14.2.0:
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-14.2.0.tgz#959a6f020871f7753f588fa19e96dfde4fc1bcec"
+  integrity sha512-/h8+T+2TxSdZhKRv70gtjAfMKK72p6+FEJMqEZHjzbLXfACF6esikRT8aHqmVLQvT+9lNlAa8GOAVFC3XeI1VA==
+  dependencies:
+    lilconfig "^3.1.3"
+    nanospinner "^1.2.2"
 
 slash@^5.1.0:
   version "5.1.0"

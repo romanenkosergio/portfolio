@@ -1,0 +1,3 @@
+# gitleaks (CI "secrets" job): the default rules, no allowances.
+[extend]
+useDefault = true
