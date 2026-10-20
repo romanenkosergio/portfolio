@@ -11,6 +11,7 @@ import {
 } from "@/pages/about/config";
 import { aboutTypeOf } from "@/pages/about/lib";
 import {
+  openTab,
   selectClose,
   selectOpen,
   selectTabs,
@@ -31,7 +32,8 @@ export const useTabs = (listRef: RefObject<HTMLUListElement | null>) => {
   const cancelExit = useRef<(() => void) | null>(null);
   const refocus = useRef(false);
   // Before the first effect the store is empty: the file on screen is the only tab.
-  const shown = tabs.length === 0 ? [current] : tabs;
+  // The current file shows as a tab before the open() effect adds it to the store.
+  const shown = openTab(tabs, current);
 
   useEffect(() => open(current), [current, open]);
 

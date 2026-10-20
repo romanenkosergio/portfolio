@@ -95,7 +95,9 @@ export const useSlideIndicator = (
         reduced: () => move(true)
       });
       // Resizes and late fonts move the item without a value change: follow, no slide.
+      let disposed = false;
       const follow = () => {
+        if (disposed) return;
         const to = measure(host, active, axis);
         if (!to || gsap.isTweening(bar)) return;
         last.current = to;
@@ -106,6 +108,7 @@ export const useSlideIndicator = (
       observer.observe(host);
       void document.fonts.ready.then(follow);
       return () => {
+        disposed = true;
         observer.disconnect();
         mm.revert();
       };
