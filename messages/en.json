@@ -82,13 +82,17 @@
       "bio": "bio",
       "interests": "interests",
       "skills": "skills",
-      "experience": "experience"
+      "experience": "experience",
+      "games": "games",
+      "learning": "learning"
     },
     "content": {
       "bio": "/**\n * About me\n * I’m a Frontend Lead at MetaProject. I build SaaS\n * products with React, Next.js and TypeScript.\n *\n * {years, plural, one {# year} other {# years}} in frontend. I started as an engineer\n * and grew into a team lead. I have shipped products\n * from MVP to production in startups and product teams,\n * and I have led the people who build them.\n *\n * What I care about: frontend architecture, developer\n * experience, performance and clean UI systems. I set\n * standards and workflows so a team can ship on its own.\n * I mentor through code review and design discussions.\n */",
-      "interests": "/**\n * Interests\n * I am a proactive and growth-oriented individual \n * who thrives on solving challenges and fostering \n * collaboration within teams. I strongly believe that \n * creating a supportive and empowering environment is \n * the key to success in both personal and professional life.\n *\n * My focus is on continuous self-improvement, innovation, \n * and adaptability. I enjoy tackling complex problems, \n * embracing new technologies, and encouraging my team to \n * explore creative solutions.\n *\n * I value open communication, trust, and transparency, and \n * I make it a priority to cultivate an atmosphere where \n * everyone feels encouraged to contribute ideas and grow.\n *\n * Ultimately, I am driven by curiosity, a passion for impactful \n * work, and a desire to make a meaningful difference both as \n * a leader and as an individual.\n */",
+      "interests": "/**\n * Interests\n * Tooling that removes setup work. Project templates,\n * internal CLIs and docs that let a new engineer ship\n * in the first week.\n *\n * Teaching. I lectured JavaScript and React, and I still\n * like explaining a hard idea until it becomes simple.\n *\n * Hiring and team process. I have run technical\n * interviews and I like building teams that stay\n * easy to join.\n *\n * Data on screen. Custom charts and visualizations,\n * where the interface has to make numbers readable.\n *\n * Automation. Small bots and integrations that take\n * repetitive work off people.\n */",
       "skills": "/**\n * Skills\n *\n * Frontend\n * React, Next.js, TypeScript, Redux Toolkit,\n * TanStack Query, Zustand, Tailwind\n *\n * Architecture\n * Frontend architecture, FSD (Feature-Sliced Design),\n * design systems, SSR, performance optimization\n *\n * Leadership\n * Team leadership, mentoring, hiring, code review\n *\n * Tools\n * AWS, CI/CD, Jest, GraphQL\n */",
-      "experience": "/**\n * Experience\n *\n * Frontend Lead — MetaProject\n * 11.2025 – now\n * Frontend architecture and standards for a SaaS platform;\n * joined as Front-End Developer in 07.2025.\n *\n * Frontend Team Lead — You are launched\n * 01.2024 – 06.2025\n * Led frontend for startup and SaaS products; built\n * internal tooling, docs and onboarding.\n *\n * Front-End Developer — DFINITY\n * 01.2023 – 07.2023\n * Web3 product pages, custom charts and visualizations.\n *\n * Frontend Lecturer — HILLEL IT SCHOOL\n * 01.2022 – 01.2023\n * Taught JavaScript and React to beginners.\n *\n * Front-End Developer — GoWombat\n * 03.2022 – 09.2022\n * React, Vue and Django client projects; mentored juniors.\n *\n * Development Team Lead — Fourmeta\n * 01.2020 – 03.2022\n * Shopify marketplaces. Promoted to Team Lead within\n * 4 months; ran interviews, reviews and project templates.\n *\n * Front-End Developer — EXSY\n * 09.2019 – 04.2020\n * React web apps with Redux and Material UI.\n *\n * Front-End Developer — HEXIDE DIGITAL\n * 05.2019 – 08.2019\n * Vue.js sites for clients.\n *\n * Front-End Developer — TURBOINSTA\n * 05.2017 – 04.2019\n * Company sites, CRM integrations, Telegram bots.\n */"
+      "experience": "/**\n * Experience\n *\n * Frontend Lead — MetaProject\n * 11.2025 – now\n * Frontend architecture and standards for a SaaS platform;\n * joined as Front-End Developer in 07.2025.\n *\n * Frontend Team Lead — You are launched\n * 01.2024 – 06.2025\n * Led frontend for startup and SaaS products; built\n * internal tooling, docs and onboarding.\n *\n * Front-End Developer — DFINITY\n * 01.2023 – 07.2023\n * Web3 product pages, custom charts and visualizations.\n *\n * Frontend Lecturer — HILLEL IT SCHOOL\n * 01.2022 – 01.2023\n * Taught JavaScript and React to beginners.\n *\n * Front-End Developer — GoWombat\n * 03.2022 – 09.2022\n * React, Vue and Django client projects; mentored juniors.\n *\n * Development Team Lead — Fourmeta\n * 01.2020 – 03.2022\n * Shopify marketplaces. Promoted to Team Lead within\n * 4 months; ran interviews, reviews and project templates.\n *\n * Front-End Developer — EXSY\n * 09.2019 – 04.2020\n * React web apps with Redux and Material UI.\n *\n * Front-End Developer — HEXIDE DIGITAL\n * 05.2019 – 08.2019\n * Vue.js sites for clients.\n *\n * Front-End Developer — TURBOINSTA\n * 05.2017 – 04.2019\n * Company sites, CRM integrations, Telegram bots.\n */",
+      "games": "/**\n * Games\n * I play World of Warcraft and whatever is new on\n * my PS5. I also like how games are built: a tight\n * loop of input, state and feedback is good practice\n * for frontend thinking.\n *\n * I am building two of my own:\n * Tiny Coop, a cozy idle desktop game about a hen,\n * made in Godot 4 and heading to Steam.\n * Dareboard, a party game app (truth or dare, never\n * have I ever, spin the bottle) in Expo and React\n * Native, coming to the App Store and Google Play.\n *\n * The snake on the home page is a small one: a pure\n * state engine, testable without a canvas.\n */",
+      "learning": "/**\n * Learning\n * I am self-taught. I learned frontend from\n * documentation, source code and real projects,\n * and I still learn the same way.\n *\n * Frontend changes fast, and so does the way teams\n * work. I try new ideas in small side projects\n * before they reach a team.\n *\n * This site is one of them: Feature-Sliced Design,\n * strict lint rules and a GSAP motion toolkit.\n *\n * Later I taught others: I lectured JavaScript and\n * React to students at Hillel IT School.\n */"
     },
     "tabs": {
       "close": "Close {name}",
@@ -108,9 +112,6 @@
       }
     }
   },
-  "hobbies": {
-    "placeholder": "AboutMeHobbies"
-  },
   "sidebar": {
     "sections": {
       "personalInfo": "Personal Info",
@@ -120,13 +121,16 @@
     "groups": {
       "personalInfo": "personal-info",
       "professionalInfo": "professional-info",
+      "hobbies": "hobbies",
       "contacts": "contacts"
     },
     "items": {
       "bio": "bio",
       "interests": "interests",
       "skills": "skills",
-      "experience": "experience"
+      "experience": "experience",
+      "games": "games",
+      "learning": "learning"
     }
   },
   "notFound": {
@@ -146,6 +150,8 @@
     "skills": "Skills",
     "experience": "Experience",
     "hobbies": "Hobbies",
+    "games": "Games",
+    "learning": "Learning",
     "projects": "Projects",
     "contact": "Contact me"
   }

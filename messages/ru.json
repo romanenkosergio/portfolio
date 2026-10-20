@@ -82,13 +82,17 @@
       "bio": "bio",
       "interests": "interests",
       "skills": "skills",
-      "experience": "experience"
+      "experience": "experience",
+      "games": "games",
+      "learning": "learning"
     },
     "content": {
       "bio": "/**\n * Обо мне\n * Я Frontend Lead в MetaProject. Делаю SaaS-продукты\n * на React, Next.js и TypeScript.\n *\n * {years, plural, one {# год} few {# года} many {# лет} other {# года}} во фронтенде. Начал инженером\n * и вырос до тимлида. Выводил продукты от MVP\n * до продакшена в стартапах и продуктовых командах\n * и вёл людей, которые их строят.\n *\n * Мне важны: архитектура фронтенда, опыт разработчика,\n * производительность и чистые UI-системы. Выстраиваю\n * стандарты и процессы, чтобы команда выпускала сама.\n * Менторю через код-ревью и обсуждения дизайна.\n */",
       "interests": "/**\n * Интересы\n * Я проактивный человек, нацеленный на рост. \n * Люблю решать сложные задачи и выстраивать \n * сотрудничество в командах. Убеждён, что поддерживающая \n * среда, дающая людям силу действовать, — залог \n * успеха и в жизни, и в работе.\n *\n * Мой фокус — постоянное саморазвитие, инновации \n * и гибкость. Мне нравятся сложные проблемы, \n * новые технологии и творческие решения, к которым я \n * подталкиваю команду.\n *\n * Я ценю открытое общение, доверие и прозрачность \n * и забочусь об атмосфере, где каждый может предложить \n * идею и расти.\n *\n * Меня движут любопытство, любовь к работе, которая \n * влияет на результат, и желание менять вещи к лучшему — \n * и как лидера, и как человека.\n */",
       "skills": "/**\n * Навыки\n *\n * Frontend\n * React, Next.js, TypeScript, Redux Toolkit,\n * TanStack Query, Zustand, Tailwind\n *\n * Архитектура\n * Архитектура фронтенда, FSD (Feature-Sliced Design),\n * дизайн-системы, SSR, оптимизация производительности\n *\n * Лидерство\n * Руководство командой, менторинг, найм, код-ревью\n *\n * Инструменты\n * AWS, CI/CD, Jest, GraphQL\n */",
-      "experience": "/**\n * Опыт\n *\n * Frontend Lead — MetaProject\n * 11.2025 – сейчас\n * Архитектура и стандарты фронтенда SaaS-платформы;\n * пришёл как Front-End Developer в 07.2025.\n *\n * Frontend Team Lead — You are launched\n * 01.2024 – 06.2025\n * Вёл фронтенд стартапов и SaaS-продуктов; сделал\n * внутренние инструменты, документацию и онбординг.\n *\n * Front-End Developer — DFINITY\n * 01.2023 – 07.2023\n * Страницы Web3-продуктов, собственные графики и визуализации.\n *\n * Frontend Lecturer — HILLEL IT SCHOOL\n * 01.2022 – 01.2023\n * Преподавал JavaScript и React начинающим.\n *\n * Front-End Developer — GoWombat\n * 03.2022 – 09.2022\n * Клиентские проекты на React, Vue и Django; менторил джунов.\n *\n * Development Team Lead — Fourmeta\n * 01.2020 – 03.2022\n * Shopify-маркетплейсы. За 4 месяца повышен до Team Lead;\n * интервью, код-ревью и шаблоны проектов.\n *\n * Front-End Developer — EXSY\n * 09.2019 – 04.2020\n * React-приложения с Redux и Material UI.\n *\n * Front-End Developer — HEXIDE DIGITAL\n * 05.2019 – 08.2019\n * Сайты для клиентов на Vue.js.\n *\n * Front-End Developer — TURBOINSTA\n * 05.2017 – 04.2019\n * Сайты компании, интеграции CRM, Telegram-боты.\n */"
+      "experience": "/**\n * Опыт\n *\n * Frontend Lead — MetaProject\n * 11.2025 – сейчас\n * Архитектура и стандарты фронтенда SaaS-платформы;\n * пришёл как Front-End Developer в 07.2025.\n *\n * Frontend Team Lead — You are launched\n * 01.2024 – 06.2025\n * Вёл фронтенд стартапов и SaaS-продуктов; сделал\n * внутренние инструменты, документацию и онбординг.\n *\n * Front-End Developer — DFINITY\n * 01.2023 – 07.2023\n * Страницы Web3-продуктов, собственные графики и визуализации.\n *\n * Frontend Lecturer — HILLEL IT SCHOOL\n * 01.2022 – 01.2023\n * Преподавал JavaScript и React начинающим.\n *\n * Front-End Developer — GoWombat\n * 03.2022 – 09.2022\n * Клиентские проекты на React, Vue и Django; менторил джунов.\n *\n * Development Team Lead — Fourmeta\n * 01.2020 – 03.2022\n * Shopify-маркетплейсы. За 4 месяца повышен до Team Lead;\n * интервью, код-ревью и шаблоны проектов.\n *\n * Front-End Developer — EXSY\n * 09.2019 – 04.2020\n * React-приложения с Redux и Material UI.\n *\n * Front-End Developer — HEXIDE DIGITAL\n * 05.2019 – 08.2019\n * Сайты для клиентов на Vue.js.\n *\n * Front-End Developer — TURBOINSTA\n * 05.2017 – 04.2019\n * Сайты компании, интеграции CRM, Telegram-боты.\n */",
+      "games": "/**\n * Games\n * I play World of Warcraft and whatever is new on\n * my PS5. I also like how games are built: a tight\n * loop of input, state and feedback is good practice\n * for frontend thinking.\n *\n * I am building two of my own:\n * Tiny Coop, a cozy idle desktop game about a hen,\n * made in Godot 4 and heading to Steam.\n * Dareboard, a party game app (truth or dare, never\n * have I ever, spin the bottle) in Expo and React\n * Native, coming to the App Store and Google Play.\n *\n * The snake on the home page is a small one: a pure\n * state engine, testable without a canvas.\n */",
+      "learning": "/**\n * Learning\n * I am self-taught. I learned frontend from\n * documentation, source code and real projects,\n * and I still learn the same way.\n *\n * Frontend changes fast, and so does the way teams\n * work. I try new ideas in small side projects\n * before they reach a team.\n *\n * This site is one of them: Feature-Sliced Design,\n * strict lint rules and a GSAP motion toolkit.\n *\n * Later I taught others: I lectured JavaScript and\n * React to students at Hillel IT School.\n */"
     },
     "tabs": {
       "close": "Close {name}",
@@ -108,9 +112,6 @@
       }
     }
   },
-  "hobbies": {
-    "placeholder": "AboutMeHobbies"
-  },
   "sidebar": {
     "sections": {
       "personalInfo": "Личное",
@@ -120,13 +121,16 @@
     "groups": {
       "personalInfo": "personal-info",
       "professionalInfo": "professional-info",
+      "hobbies": "hobbies",
       "contacts": "contacts"
     },
     "items": {
       "bio": "bio",
       "interests": "interests",
       "skills": "skills",
-      "experience": "experience"
+      "experience": "experience",
+      "games": "games",
+      "learning": "learning"
     }
   },
   "notFound": {
@@ -146,6 +150,8 @@
     "skills": "Навыки",
     "experience": "Опыт",
     "hobbies": "Хобби",
+    "games": "Games",
+    "learning": "Learning",
     "projects": "Проекты",
     "contact": "Связаться со мной"
   }

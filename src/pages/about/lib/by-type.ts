@@ -7,5 +7,7 @@ export const byType = <T>(
   bio: make("bio"),
   interests: make("interests"),
   skills: make("skills"),
-  experience: make("experience")
+  experience: make("experience"),
+  games: make("games"),
+  learning: make("learning")
 });

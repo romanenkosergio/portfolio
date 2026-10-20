@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Icon, NavLink } from "@/shared/ui";
 
 import {
+  ABOUT_ME_HOBBIES_ITEMS,
   ABOUT_ME_NAVIGATION,
   ABOUT_ME_PERSONAL_ITEMS,
   ABOUT_ME_PROFESSIONAL_ITEMS
@@ -18,7 +19,7 @@ import type { IAboutMeSidebarProps } from "./about-me-sidebar.types";
 const SIDEBAR_ITEMS = {
   "personal-info": ABOUT_ME_PERSONAL_ITEMS,
   "professional-info": ABOUT_ME_PROFESSIONAL_ITEMS,
-  "hobbies": []
+  "hobbies": ABOUT_ME_HOBBIES_ITEMS
 };
 
 const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
