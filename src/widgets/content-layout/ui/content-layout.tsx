@@ -9,7 +9,7 @@ const ContentLayout: FC<PropsWithChildren<IContentLayoutProps>> = ({
   children
 }) => {
   return (
-    <section className="flex h-full w-full">
+    <section className="flex h-full min-h-0 w-full min-w-0">
       <Sidebar type={type} subType={subType} />
       {children}
     </section>

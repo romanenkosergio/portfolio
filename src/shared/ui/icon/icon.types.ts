@@ -8,6 +8,8 @@ import type { ICONS } from "./icons";
 // "<file>" or "<folder>/<file>" under public/assets/icons, without ".svg".
 export type IconName = keyof typeof ICONS;
 
+export type IconTone = NonNullable<VariantProps<typeof iconVariants>["tone"]>;
+
 export type SVGIcon = SVGProps<SVGSVGElement>;
 
 export type SVGComponent = FC<SVGIcon>;

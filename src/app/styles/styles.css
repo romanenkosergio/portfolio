@@ -112,6 +112,12 @@
   }
 }
 
+/* Thin scrollbar of the about panes: a muted thumb on a transparent track. */
+@utility scrollbar-pane {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary-1) transparent;
+}
+
 @layer components {
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-accent-1;

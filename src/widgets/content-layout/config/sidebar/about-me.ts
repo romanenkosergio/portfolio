@@ -1,5 +1,5 @@
 import { E_ROUTES } from "@/shared/config";
-import type { IconName } from "@/shared/ui";
+import type { IconName, IconTone } from "@/shared/ui";
 
 export type SectionKey = "personalInfo" | "professionalInfo" | "hobbies";
 export type GroupKey = "personalInfo" | "professionalInfo" | "contacts";
@@ -10,36 +10,33 @@ interface IAboutMeSidebarItem {
   icon: IconName;
   titleKey: SectionKey;
   href: E_ROUTES;
-  activeClass: string;
 }
 
 export const ABOUT_ME_NAVIGATION: IAboutMeSidebarItem[] = [
   {
-    icon: "sidebar/personal-info",
-    titleKey: "personalInfo",
-    href: E_ROUTES.ABOUT_PERSONAL,
-    activeClass: "desktop:aria-[current]:text-accent-2"
-  },
-  {
     icon: "sidebar/professional-info",
     titleKey: "professionalInfo",
-    href: E_ROUTES.ABOUT_PROFESSIONAL,
-    activeClass: "desktop:aria-[current]:text-accent-3"
+    href: E_ROUTES.ABOUT_PROFESSIONAL
+  },
+  {
+    icon: "sidebar/personal-info",
+    titleKey: "personalInfo",
+    href: E_ROUTES.ABOUT_PERSONAL
   },
   {
     icon: "sidebar/hobbies",
     titleKey: "hobbies",
-    href: E_ROUTES.ABOUT_HOBBIES,
-    activeClass: "desktop:aria-[current]:text-accent-4"
+    href: E_ROUTES.ABOUT_HOBBIES
   }
 ];
 
 interface IContentItemBase {
   titleKey?: ItemKey;
-  /** Shown as is (an e-mail address, a phone number) when there is no `titleKey`. */
+  /** Shown as is (an e-mail address) when there is no `titleKey`. */
   title?: string;
   icon?: IconName;
-  activeClass?: string;
+  /** Colour of the folder icon; a file without one is a plain markdown file. */
+  tone?: IconTone;
 }
 
 interface IInternalContentItem extends IContentItemBase {
@@ -47,7 +44,7 @@ interface IInternalContentItem extends IContentItemBase {
   external?: false;
 }
 
-// mailto: / tel: and other links that leave the site.
+// mailto: and other links that leave the site.
 interface IExternalContentItem extends IContentItemBase {
   href: string;
   external: true;
@@ -60,6 +57,19 @@ interface IAboutItem {
   content: IContentItem[];
 }
 
+// The owner's phone number is not published here (it lives in the private CV only).
+const CONTACTS: IAboutItem = {
+  groupKey: "contacts",
+  content: [
+    {
+      title: "sergromanenko97@gmail.com",
+      href: "mailto:sergromanenko97@gmail.com",
+      icon: "mail",
+      external: true
+    }
+  ]
+};
+
 export const ABOUT_ME_PERSONAL_ITEMS: IAboutItem[] = [
   {
     groupKey: "personalInfo",
@@ -67,33 +77,20 @@ export const ABOUT_ME_PERSONAL_ITEMS: IAboutItem[] = [
       {
         titleKey: "bio",
         href: E_ROUTES.ABOUT_PERSONAL_BIO,
-        activeClass: "desktop:aria-[current]:text-accent-2"
+        icon: "folder",
+        tone: "rose"
       },
       {
         titleKey: "interests",
         href: E_ROUTES.ABOUT_PERSONAL_INTERESTS,
-        activeClass: "desktop:aria-[current]:text-accent-1"
+        icon: "folder",
+        tone: "mint"
       }
     ]
   },
-  {
-    groupKey: "contacts",
-    content: [
-      {
-        title: "sergromanenko97@gmail.com",
-        href: "mailto:sergromanenko97@gmail.com",
-        icon: "mail",
-        external: true
-      },
-      {
-        title: "+380731055010",
-        href: "tel:+380731055010",
-        external: true,
-        icon: "phone"
-      }
-    ]
-  }
+  CONTACTS
 ];
+
 export const ABOUT_ME_PROFESSIONAL_ITEMS: IAboutItem[] = [
   {
     groupKey: "professionalInfo",
@@ -101,30 +98,16 @@ export const ABOUT_ME_PROFESSIONAL_ITEMS: IAboutItem[] = [
       {
         titleKey: "skills",
         href: E_ROUTES.ABOUT_PROFESSIONAL_SKILLS,
-        activeClass: "desktop:aria-[current]:text-accent-2"
+        icon: "folder",
+        tone: "indigo"
       },
       {
         titleKey: "experience",
         href: E_ROUTES.ABOUT_PROFESSIONAL_EXPERIENCE,
-        activeClass: "desktop:aria-[current]:text-accent-1"
+        icon: "folder",
+        tone: "rose"
       }
     ]
   },
-  {
-    groupKey: "contacts",
-    content: [
-      {
-        title: "sergromanenko97@gmail.com",
-        href: "mailto:sergromanenko97@gmail.com",
-        icon: "mail",
-        external: true
-      },
-      {
-        title: "+380731055010",
-        href: "tel:+380731055010",
-        external: true,
-        icon: "phone"
-      }
-    ]
-  }
+  CONTACTS
 ];

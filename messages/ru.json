@@ -89,6 +89,23 @@
       "interests": "/**\n * Интересы\n * Я проактивный человек, нацеленный на рост. \n * Люблю решать сложные задачи и выстраивать \n * сотрудничество в командах. Убеждён, что поддерживающая \n * среда, дающая людям силу действовать, — залог \n * успеха и в жизни, и в работе.\n *\n * Мой фокус — постоянное саморазвитие, инновации \n * и гибкость. Мне нравятся сложные проблемы, \n * новые технологии и творческие решения, к которым я \n * подталкиваю команду.\n *\n * Я ценю открытое общение, доверие и прозрачность \n * и забочусь об атмосфере, где каждый может предложить \n * идею и расти.\n *\n * Меня движут любопытство, любовь к работе, которая \n * влияет на результат, и желание менять вещи к лучшему — \n * и как лидера, и как человека.\n */",
       "skills": "/**\n * Навыки\n *\n * Frontend\n * React, Next.js, TypeScript, Redux Toolkit,\n * TanStack Query, Zustand, Tailwind\n *\n * Архитектура\n * Архитектура фронтенда, FSD (Feature-Sliced Design),\n * дизайн-системы, SSR, оптимизация производительности\n *\n * Лидерство\n * Руководство командой, менторинг, найм, код-ревью\n *\n * Инструменты\n * AWS, CI/CD, Jest, GraphQL\n */",
       "experience": "/**\n * Опыт\n *\n * Frontend Lead — MetaProject\n * 11.2025 – сейчас\n * Архитектура и стандарты фронтенда SaaS-платформы;\n * пришёл как Front-End Developer в 07.2025.\n *\n * Frontend Team Lead — You are launched\n * 01.2024 – 06.2025\n * Вёл фронтенд стартапов и SaaS-продуктов; сделал\n * внутренние инструменты, документацию и онбординг.\n *\n * Front-End Developer — DFINITY\n * 01.2023 – 07.2023\n * Страницы Web3-продуктов, собственные графики и визуализации.\n *\n * Frontend Lecturer — HILLEL IT SCHOOL\n * 01.2022 – 01.2023\n * Преподавал JavaScript и React начинающим.\n *\n * Front-End Developer — GoWombat\n * 03.2022 – 09.2022\n * Клиентские проекты на React, Vue и Django; менторил джунов.\n *\n * Development Team Lead — Fourmeta\n * 01.2020 – 03.2022\n * Shopify-маркетплейсы. За 4 месяца повышен до Team Lead;\n * интервью, код-ревью и шаблоны проектов.\n *\n * Front-End Developer — EXSY\n * 09.2019 – 04.2020\n * React-приложения с Redux и Material UI.\n *\n * Front-End Developer — HEXIDE DIGITAL\n * 05.2019 – 08.2019\n * Сайты для клиентов на Vue.js.\n *\n * Front-End Developer — TURBOINSTA\n * 05.2017 – 04.2019\n * Сайты компании, интеграции CRM, Telegram-боты.\n */"
+    },
+    "tabs": {
+      "close": "Close {name}",
+      "label": "Open files"
+    },
+    "snippets": {
+      "title": "// Code snippet showcase:",
+      "details": "details",
+      "close": "Close details",
+      "items": {
+        "step": {
+          "details": "One tick of the snake engine: a pure function from the previous state to the next, so the game logic is testable without a canvas. It moves the head, grows on food and ends the round on a wall or self hit (the excerpt keeps the move and the eating)."
+        },
+        "keyToDirection": {
+          "details": "Maps a key press to a snake direction. Arrow keys and WASD both work, and shortcuts with Ctrl, Cmd or Alt held are ignored so the game never steals browser shortcuts."
+        }
+      }
     }
   },
   "hobbies": {
