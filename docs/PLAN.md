@@ -4,11 +4,10 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.11, 1.14–1.16
+Done: 1.1–1.11, 1.14–1.16, 3.1
 
 ## Phase 3 — redesign with motion (D8; Figma in AGENTS.md)
 
-- [ ] 3.1 GSAP + `@gsap/react`, motion primitives in `shared` (reveal, stagger, text scramble/split, reduced-motion guard)
 - [ ] 3.2 Home: hero (typed/scrambled name, code-style intro), the snake game polished
 - [ ] 3.3 About: sidebar/explorer tree transitions, file tabs, code-lines content
 - [ ] 3.4 Projects: filter by tech with Flip transitions, project cards; the real page (closes 2.1)
