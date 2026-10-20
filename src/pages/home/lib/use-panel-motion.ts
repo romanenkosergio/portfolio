@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import type { RefObject } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import {
+  DESKTOP_QUERY,
   DISTANCE,
   DRIFT,
   DURATION,
@@ -43,36 +45,48 @@ export const usePanelMotion = (
   scopeRef: RefObject<HTMLElement | null>,
   panelRef: RefObject<HTMLElement | null>
 ): void => {
+  // Set once the entrance has played (or reduced motion skipped it): it never replays.
+  const entered = useRef(false);
+
   useGSAP(
     () => {
       const scope = scopeRef.current;
       const panel = panelRef.current;
       if (!scope || !panel) return;
+      const enter = (): void => {
+        panel.removeAttribute(PENDING_ATTR);
+        if (entered.current) return;
+        gsap.from(panel, {
+          opacity: 0,
+          y: DISTANCE.y,
+          scale: SCALE.enter,
+          duration: DURATION.slow,
+          delay: HERO_DELAY.panel,
+          ease: EASE.out,
+          onComplete: () => {
+            entered.current = true;
+          }
+        });
+        gsap.from(BOLTS_SELECTOR, {
+          rotation: 360,
+          scale: 0,
+          opacity: 0,
+          duration: DURATION.slow,
+          delay: HERO_DELAY.bolts,
+          stagger: DURATION.fast / 3,
+          ease: EASE.out
+        });
+      };
       const mm = matchMotion(scope, {
+        condition: DESKTOP_QUERY,
         full: () => {
-          gsap.from(panel, {
-            opacity: 0,
-            y: DISTANCE.y,
-            scale: SCALE.enter,
-            duration: DURATION.slow,
-            delay: HERO_DELAY.panel,
-            ease: EASE.out
-          });
-          panel.removeAttribute(PENDING_ATTR);
-          gsap.from(BOLTS_SELECTOR, {
-            rotation: 360,
-            scale: 0,
-            opacity: 0,
-            duration: DURATION.slow,
-            delay: HERO_DELAY.bolts,
-            stagger: DURATION.fast / 3,
-            ease: EASE.out
-          });
+          enter();
           scope
             .querySelectorAll(BLOBS_SELECTOR)
             .forEach((blob, index) => drift(blob, index === 0 ? 1 : -1));
         },
         reduced: () => {
+          entered.current = true;
           panel.removeAttribute(PENDING_ATTR);
         }
       });

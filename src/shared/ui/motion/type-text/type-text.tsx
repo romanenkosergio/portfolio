@@ -23,6 +23,16 @@ import type { ITypeTextProps } from "./type-text.types";
 
 registerTypeText();
 
+/** Caret box at a char's right edge (or its left edge), as long as the char is tall. */
+const edgeOf = (
+  char: HTMLElement,
+  width = char.offsetWidth
+): gsap.TweenVars => ({
+  x: char.offsetLeft + width,
+  y: char.offsetTop,
+  height: char.offsetHeight
+});
+
 interface ITypingOptions {
   chars: HTMLElement[];
   caret: HTMLElement | null;
@@ -45,7 +55,8 @@ const typeChars = ({
 }: ITypingOptions): gsap.core.Timeline => {
   const timeline = gsap.timeline({ delay });
   gsap.set(chars, { opacity: 0 });
-  if (caret) gsap.set(caret, { opacity: 1, x: 0, y: 0 });
+  if (caret && chars[0])
+    gsap.set(caret, { opacity: 1, ...edgeOf(chars[0], 0) });
   const blink = caret
     ? gsap.to(caret, {
         opacity: 0,
@@ -60,11 +71,7 @@ const typeChars = ({
     const at = index / speed;
     timeline.set(char, { opacity: 1 }, at);
     if (caret) {
-      timeline.set(
-        caret,
-        { x: char.offsetLeft + char.offsetWidth, y: char.offsetTop },
-        at
-      );
+      timeline.set(caret, edgeOf(char), at);
     }
   });
   if (!caret || !blink) return timeline;
@@ -74,6 +81,20 @@ const typeChars = ({
     { opacity: 0, duration: DURATION.fast },
     `+=${TYPE.hold}`
   );
+};
+
+/** Caret box after the last line box of the unsplit text. */
+const endOf = (text: HTMLElement): gsap.TweenVars => {
+  const range = document.createRange();
+  range.selectNodeContents(text);
+  const last = Array.from(range.getClientRects()).at(-1);
+  if (!last) return { x: text.offsetWidth };
+  const origin = text.getBoundingClientRect();
+  return {
+    x: last.right - origin.left,
+    y: last.top - origin.top,
+    height: last.height
+  };
 };
 
 interface IPlayTyping extends Omit<ITypingOptions, "chars"> {
@@ -88,6 +109,7 @@ const playTyping = ({ host, text, ...options }: IPlayTyping): gsap.MatchMedia =>
       if (isAlreadyVisible(host)) return;
       const instance = SplitText.create(text, {
         type: "chars",
+        smartWrap: true,
         aria: "none",
         onSplit: self =>
           typeChars({ ...options, chars: self.chars as HTMLElement[] })
@@ -99,7 +121,7 @@ const playTyping = ({ host, text, ...options }: IPlayTyping): gsap.MatchMedia =>
       host.removeAttribute(PENDING_ATTR);
       const { caret, keepCaret } = options;
       if (caret && keepCaret) {
-        gsap.set(caret, { opacity: 1, x: text.offsetWidth });
+        gsap.set(caret, { opacity: 1, ...endOf(text) });
       }
     }
   });
@@ -157,7 +179,7 @@ const TypeText: FC<ITypeTextProps> = ({
         {caret && (
           <span
             ref={caretRef}
-            className="absolute top-0 left-0 h-full w-[0.55em] bg-current opacity-0"
+            className="absolute top-0 left-0 h-[1em] w-[0.55em] bg-current opacity-0"
           />
         )}
       </span>

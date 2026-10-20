@@ -63,7 +63,7 @@ const GameOverlay: FC<IGameOverlayProps> = ({ status, onStart }) => {
       });
       return () => mm.revert();
     },
-    { scope: ref, dependencies: [status] }
+    { scope: ref, dependencies: [status], revertOnUpdate: true }
   );
 
   return (

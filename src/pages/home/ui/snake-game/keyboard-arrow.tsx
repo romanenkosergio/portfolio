@@ -18,6 +18,7 @@ import {
 import { Icon } from "@/shared/ui";
 
 import { BOARD_ID } from "@/pages/home/config";
+import { useKeyPress } from "@/pages/home/lib";
 import type { Direction } from "@/pages/home/model";
 import {
   selectActiveArrow,
@@ -28,17 +29,6 @@ import {
 import type { IKeyboardArrowProps } from "./keyboard-arrow.types";
 
 registerMotion();
-
-const KEY_DIRECTIONS: Record<string, Direction> = {
-  arrowup: "UP",
-  arrowdown: "DOWN",
-  arrowleft: "LEFT",
-  arrowright: "RIGHT",
-  w: "UP",
-  s: "DOWN",
-  a: "LEFT",
-  d: "RIGHT"
-};
 
 const arrowPositions: Record<Direction, string> = {
   "DOWN": "rotate-180",
@@ -60,29 +50,28 @@ const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
   const steer = useSnakeStore(selectSteer);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // A key pressed while the board has focus presses its on-screen arrow.
+  // A board key that steers the game presses its on-screen arrow.
   useGSAP(
     (_, contextSafe) => {
       const button = buttonRef.current;
-      const board = document.getElementById(BOARD_ID);
-      if (!button || !board || !contextSafe) return;
+      if (!button || !contextSafe) return;
       const mm = matchMotion(button, {
         full: () => {
-          const press = contextSafe((event: KeyboardEvent) => {
-            if (KEY_DIRECTIONS[event.key.toLowerCase()] !== direction) return;
+          const press = contextSafe(() =>
             gsap.fromTo(
               button,
               { scale: SCALE.press },
               { scale: 1, duration: DURATION.fast, ease: EASE.soft }
-            );
+            )
+          );
+          return useKeyPress.subscribe(state => {
+            if (state.pressed?.direction === direction) press();
           });
-          board.addEventListener("keydown", press);
-          return () => board.removeEventListener("keydown", press);
         }
       });
       return () => mm.revert();
     },
-    { scope: buttonRef, dependencies: [direction] }
+    { scope: buttonRef, dependencies: [direction], revertOnUpdate: true }
   );
 
   return (

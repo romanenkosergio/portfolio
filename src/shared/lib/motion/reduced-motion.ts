@@ -12,6 +12,8 @@ interface IMotionVariants {
   full: MotionSetup;
   /** Instant or opacity-only version; defaults to doing nothing (content stays visible). */
   reduced?: MotionSetup;
+  /** Extra media condition both variants require, e.g. `(min-width: 1200px)`. */
+  condition?: string;
 }
 
 /**
@@ -22,10 +24,12 @@ interface IMotionVariants {
  */
 export const matchMotion = (
   scope: Element,
-  { full, reduced }: IMotionVariants
+  { full, reduced, condition }: IMotionVariants
 ): gsap.MatchMedia => {
   const mm = gsap.matchMedia(scope);
-  mm.add(QUERIES.full, full);
-  mm.add(QUERIES.reduced, () => reduced?.());
+  const query = (base: string): string =>
+    condition ? `${base} and ${condition}` : base;
+  mm.add(query(QUERIES.full), full);
+  mm.add(query(QUERIES.reduced), () => reduced?.());
   return mm;
 };

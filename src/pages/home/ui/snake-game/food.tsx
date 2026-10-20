@@ -48,7 +48,7 @@ const Food: FC = () => {
       });
       return () => mm.revert();
     },
-    { scope: gridRef, dependencies: [foodLeft] }
+    { scope: gridRef, dependencies: [foodLeft], revertOnUpdate: true }
   );
   return (
     <div className="mt-5 px-3">

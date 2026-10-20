@@ -2,7 +2,6 @@ import type { KeyboardEvent, RefObject } from "react";
 import { useEffect, useRef } from "react";
 
 import { TIME_DELAY } from "../config";
-import type { Direction } from "../model";
 import {
   selectDirection,
   selectFood,
@@ -16,18 +15,9 @@ import {
 } from "../model";
 
 import { drawBoard } from "./draw-board";
+import { useKeyPress } from "./key-press";
+import { keyToDirection } from "./key-to-direction";
 import useInterval from "./use-interval";
-
-const KEY_DIRECTIONS: Partial<Record<string, Direction>> = {
-  ArrowUp: "UP",
-  ArrowDown: "DOWN",
-  ArrowLeft: "LEFT",
-  ArrowRight: "RIGHT",
-  w: "UP",
-  s: "DOWN",
-  a: "LEFT",
-  d: "RIGHT"
-};
 
 interface IUseGame {
   canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -70,12 +60,12 @@ export const useGame = (): IUseGame => {
   };
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const next =
-      KEY_DIRECTIONS[event.key] ?? KEY_DIRECTIONS[event.key.toLowerCase()];
-    if (!next || event.metaKey || event.ctrlKey || event.altKey) return;
+    const next = keyToDirection(event);
+    if (!next) return;
     event.preventDefault();
     if (status !== "playing") return;
     steer(next);
+    useKeyPress.getState().press(next);
   };
 
   return { canvasRef, foodRef, boardRef, onStartGame, onKeyDown };
