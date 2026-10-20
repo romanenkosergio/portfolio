@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
 import { cn } from "@/shared/lib";
-import { Icon } from "@/shared/ui";
+import { TechIcon } from "@/shared/ui/tech-icon";
 
 import { TECHS } from "@/entities/project/config";
 
@@ -19,7 +19,7 @@ const TechBadge: FC<ITechBadgeProps> = ({ tech }) => {
         badge
       )}
     >
-      <Icon name={icon} className="size-4" />
+      <TechIcon name={icon} className="size-4" />
       <span className="sr-only">{label}</span>
     </li>
   );

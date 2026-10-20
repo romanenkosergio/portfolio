@@ -1,8 +1,12 @@
-import type { IProjectItem } from "@/entities/project";
+import type { Tech } from "@/entities/project/config";
 
-import type { IProjectsCopy } from "../projects-explorer/projects-explorer.types";
+import type {
+  IProjectSlot,
+  IProjectsCopy
+} from "../projects-explorer/projects-explorer.types";
 
 export interface IProjectsGridProps {
-  items: readonly IProjectItem[];
+  cards: readonly IProjectSlot[];
+  checked: readonly Tech[];
   copy: IProjectsCopy;
 }

@@ -13,7 +13,7 @@ const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
   const { slug, kind, stack, title, domain, role, summary } = project;
 
   return (
-    <article className="flex min-w-0 flex-col gap-3.5">
+    <article className="flex min-w-0 flex-1 flex-col gap-3.5">
       <h2 className="text-base font-normal text-secondary-1">
         <span className="font-bold text-secondary-3">{labels.number}</span>{" "}
         {labels.separator} {title}
