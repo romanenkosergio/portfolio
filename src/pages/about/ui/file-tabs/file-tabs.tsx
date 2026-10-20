@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import type { FC } from "react";
 
 import { Link, useRouter } from "@/shared/i18n";
+import { exitOut, registerMotion } from "@/shared/lib/motion";
 import { Icon } from "@/shared/ui";
 
 import {
@@ -20,6 +21,9 @@ import {
 } from "@/pages/about/model";
 
 import type { IFileTabsProps } from "./file-tabs.types";
+import { useTabMotion } from "./use-tab-motion";
+
+registerMotion();
 
 // The files opened during the visit; the one on screen is always among them.
 const FileTabs: FC<IFileTabsProps> = ({
@@ -33,26 +37,29 @@ const FileTabs: FC<IFileTabsProps> = ({
   const open = useTabsStore(selectOpen);
   const close = useTabsStore(selectClose);
 
-  useEffect(() => {
-    open(current);
-  }, [current, open]);
+  useEffect(() => open(current), [current, open]);
 
   const shown = openTab(tabs, current);
+  const { listRef, barRef } = useTabMotion(current, shown.length);
 
   const handleClose = (type: AboutType) => {
-    const next = close(type);
-    if (type === current) {
-      router.push(ABOUT_TYPE_ROUTES[next ?? DEFAULT_ABOUT_TYPE]);
-    }
+    const tab = listRef.current?.querySelector(`[data-tab="${type}"]`);
+    exitOut(tab ?? null, () => {
+      const next = close(type);
+      if (type === current) {
+        router.push(ABOUT_TYPE_ROUTES[next ?? DEFAULT_ABOUT_TYPE]);
+      }
+    });
   };
 
   return (
     <nav aria-label={navLabel} className="flex-none">
-      <ul className="flex h-10 border-b border-b-line">
+      <ul ref={listRef} className="relative flex h-10 border-b border-b-line">
         {shown.map(type => (
           <li
             key={type}
-            className="group flex items-center border-r border-b-2 border-r-line border-b-transparent text-secondary-1 has-[a[aria-current]]:border-b-accent-1 has-[a[aria-current]]:text-white"
+            data-tab={type}
+            className="group flex items-center border-r border-b-2 border-r-line border-b-transparent text-secondary-1 has-[a[aria-current]]:text-white"
           >
             <Link
               href={ABOUT_TYPE_ROUTES[type]}
@@ -73,6 +80,11 @@ const FileTabs: FC<IFileTabsProps> = ({
             )}
           </li>
         ))}
+        <li
+          ref={barRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-0 h-0.5 w-px bg-accent-1 opacity-0"
+        />
       </ul>
     </nav>
   );

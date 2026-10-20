@@ -12,6 +12,7 @@ import {
 } from "@/widgets/content-layout/config";
 
 import { ContentLink } from "../content-link";
+import { Rail } from "../rail";
 import { SidebarContentItem } from "../sidebar-content-item";
 
 import type { IAboutMeSidebarProps } from "./about-me-sidebar.types";
@@ -28,7 +29,7 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
 
   return (
     <div className="flex h-full">
-      <div className="flex h-full w-auto flex-col gap-10 border-r border-r-line px-5.5 pt-5">
+      <Rail section={type}>
         {ABOUT_ME_NAVIGATION.map(item => (
           <NavLink
             href={item.href}
@@ -40,7 +41,7 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
             <Icon name={item.icon} className="h-6 w-6" />
           </NavLink>
         ))}
-      </div>
+      </Rail>
       <div className="min-w-0 flex-1 overflow-y-auto">
         {items.map(item => (
           <SidebarContentItem

@@ -1,3 +1,4 @@
+export * from "./exit-out";
 export * from "./reduced-motion";
 export * from "./register";
 export * from "./register-scramble-text";
@@ -5,4 +6,7 @@ export * from "./register-split-text";
 export * from "./register-type-text";
 export * from "./reveal-in";
 export * from "./tokens";
+export * from "./use-fold";
+export * from "./use-lines-reveal";
 export * from "./use-reveal";
+export * from "./use-slide-indicator";
