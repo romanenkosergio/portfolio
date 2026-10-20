@@ -11,7 +11,7 @@ Done: 1.1–1.11, 1.14–1.16, 2.3, 3.1, 3.2
 Each page: markup and content first (2.x), then its motion (3.x). Copy via `copywriter`, en first.
 
 - [ ] 2.4 About content: `interests` rewritten (still the template's), `/about-me/hobbies` real page instead of the `placeholder`
-- [ ] 3.3 About motion: explorer tree expand/collapse, file tab switch, code lines reveal
+- [ ] 3.3 About motion: explorer tree expand/collapse, file tab switch, code lines reveal; opening «details» scrolls its note into view
 - [ ] 2.1 `/projects` markup + content: tech filter sidebar, card grid (image, `// _name`, text, view button); `project` entity; commercial projects from the CV only, NDA-safe per D16 (no client names, logos, screenshots, metrics; owner approves each card); abstract images
 - [ ] 3.4 Projects motion: filter with Flip transitions, card hover/entrance
 - [ ] 2.2 `/contact` markup + content: contacts sidebar (email, LinkedIn, GitHub; no phone), form name/email/message with validation, live code preview, success/error states; sends via Formspree or Web3Forms (owner, 2026-10-20; pick → D17, endpoint in `shared/config`, host in egress allow-list + CSP `connect-src`)
