@@ -144,3 +144,22 @@
     @apply flex h-dvh flex-col justify-between bg-primary-2;
   }
 }
+
+/*
+ * Motion primitives render `data-motion-pending` and GSAP removes it once it
+ * owns the initial state, so there is no flash between SSR paint and hydration.
+ * Hidden only when scripting is on; if the script never arrives, the keyframe
+ * reveals the content after 3s.
+ */
+@media (scripting: enabled) {
+  [data-motion-pending] {
+    opacity: 0;
+    animation: motion-failsafe 0s 3s forwards;
+  }
+}
+
+@keyframes motion-failsafe {
+  to {
+    opacity: 1;
+  }
+}
