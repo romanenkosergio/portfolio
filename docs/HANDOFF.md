@@ -7,9 +7,19 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Current state (2026-10-20)
 
+- PLAN 3.1 done: GSAP 3.15 + `@gsap/react`. `@/shared/lib/motion` (kept out of `shared/lib/index.ts`, so server code
+  never pulls gsap): `registerMotion()` registers useGSAP only, each primitive registers its own plugin (a page loads
+  only what it uses); no ScrollTrigger yet, `scroll` uses IntersectionObserver. Tokens `DURATION`, `EASE`, `STAGGER`,
+  `WAVE`, `SCRAMBLE_CHARS`; `matchMotion(scope, {full, reduced})` over `gsap.matchMedia()`.
+- Primitives come from `@/shared/ui/motion` only (not `shared/ui/index.ts`): `Reveal`, `Stagger`, `SplitReveal`,
+  `ScrambleText` (`as`, layout `className`). Hiding is `data-motion-pending`, opacity 0 under `@media (scripting:
+enabled)`, cleared in useGSAP, with a 3 s CSS fallback; an already-visible host skips its entrance. ScrambleText is
+  never hidden (h1/LCP): a per-char decode wave keeps the name readable, an inline-grid final-text copy keeps its box.
+  Split/Scramble render an `sr-only` copy and an `aria-hidden` animated span. The home hero is a proof; 3.2 redoes it.
+  Playwright checked reduced motion, JS-off, LCP = FCP, box stability. JS budget 335 kB (D14).
 - PLAN 1.14 done: `gate` adds `egress` (`scripts/egress-check.mjs`, allow-listed hosts with a reason, roots src/app/messages)
   and `dup` (jscpd, threshold 0; `app/[locale]/**/page.tsx` stubs ignored until they get real views); `gate:push` adds
-  `size` (size-limit on `out/_next/static`, JS 280 kB / CSS 10 kB gzip). gitleaks: `ci.yml` `secrets` job on PRs and in
+  `size` (size-limit on `out/_next/static`, JS 335 kB (D14) / CSS 10 kB gzip). gitleaks: `ci.yml` `secrets` job on PRs and in
   `pages.yml` before the gate. CSP + referrer are `<meta>` tags built in `shared/config/csp.ts` (dev adds `unsafe-eval`, `ws:`).
 - Repo stays public (D13, PLAN 1.5 closed).
 - About content (bio, skills, experience) rewritten from the owner's CV in en/uk/ru; `interests` unchanged. Years of
@@ -57,7 +67,7 @@ path, title?})` adds canonical, hreflang + x-default. Header has a shadcn `Selec
 ## Next
 
 - Phase 3 (3.1 …) → phase 2 → tests last (1.12, 1.13).
-  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D14.
+  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D15.
 
 ## Environment
 
