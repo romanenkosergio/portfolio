@@ -43,6 +43,7 @@ const ScrambleText: FC<IScrambleTextProps> = ({
         full: () => {
           const instance = SplitText.create(animated, {
             type: "chars",
+            smartWrap: true,
             aria: "none",
             onSplit: self => {
               const wave = gsap.timeline({ delay });

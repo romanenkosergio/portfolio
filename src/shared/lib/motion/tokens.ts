@@ -11,11 +11,14 @@ export const EASE = {
   soft: "power3.out",
   inOut: "power2.inOut",
   /** Stepped, like a blinking terminal cursor. */
-  type: "steps(12)"
+  type: "steps(12)",
+  /** One hard step: a caret or key flash that is on, then off. */
+  blink: "steps(1)",
+  loop: "sine.inOut"
 } as const;
 
 /** Offsets and gaps. */
-export const DISTANCE = { y: 24 } as const;
+export const DISTANCE = { y: 24, small: 12 } as const;
 export const STAGGER = { children: 0.12, chars: 0.03, words: 0.08 } as const;
 
 /** Characters the scramble effect cycles through: code punctuation and bits. */
@@ -29,3 +32,15 @@ export const SCROLL_MARGIN = "0px 0px -15% 0px";
 
 /** Set on a primitive until GSAP owns its initial state (see styles.css). */
 export const PENDING_ATTR = "data-motion-pending";
+
+/** `desktop` breakpoint as a media condition; keep in sync with `--breakpoint-desktop` in styles.css. */
+export const DESKTOP_QUERY = "(min-width: 1200px)";
+
+/** Typing: `speed` in chars per second, caret `blink` half-period and the `hold` before it leaves, in seconds. */
+export const TYPE = { speed: 30, blink: 0.5, hold: 0.35 } as const;
+
+/** Scale factors: panel entrance, food pop, key press. */
+export const SCALE = { enter: 0.96, pop: 1.4, press: 0.88 } as const;
+
+/** Ambient loops (glow blobs): half-cycle `duration` in seconds, drift in px and degrees. */
+export const DRIFT = { duration: 9, x: 28, y: 20, rotation: 10 } as const;

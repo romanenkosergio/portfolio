@@ -36,6 +36,8 @@ export const INITIAL_SNAKE: [number, number][] = [
   [9, 10]
 ];
 export const INITIAL_FOOD: [number, number] = [14, 10];
-export const TIME_DELAY = 120;
+// Tick in ms: a calm start, a little faster with each food eaten (200 → 155).
+export const TICK_START = 200;
+export const TICK_STEP = 5;
 export const FOOD_TOTAL = 10;
 export const BOARD_ID = "snake-board";

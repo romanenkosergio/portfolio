@@ -18,14 +18,25 @@ export interface IRevealInOptions {
 }
 
 /**
+ * The verdict is taken once per host, on the first run: React strict mode (and
+ * a dependency change) runs the effect again after the first run stripped the
+ * attribute, and a second look would read that as «already visible».
+ */
+const visibleAtStart = new WeakMap<HTMLElement, boolean>();
+
+/**
  * True when the host is already on screen although it is still pending (the
  * hiding CSS did not apply, or its 3 s failsafe fired): an entrance would
  * only hide it and replay. Then the caller just clears the attribute.
  */
 export const isAlreadyVisible = (host: HTMLElement): boolean => {
-  if (getComputedStyle(host).opacity === "0") return false;
-  host.removeAttribute(PENDING_ATTR);
-  return true;
+  let visible = visibleAtStart.get(host);
+  if (visible === undefined) {
+    visible = getComputedStyle(host).opacity !== "0";
+    visibleAtStart.set(host, visible);
+  }
+  if (visible) host.removeAttribute(PENDING_ATTR);
+  return visible;
 };
 
 /**

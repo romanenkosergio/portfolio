@@ -3,6 +3,7 @@
 
 @theme {
   --breakpoint-tablet: 768px;
+  /* Keep in sync with DESKTOP_QUERY (shared/lib/motion/tokens.ts) and the container @media below. */
   --breakpoint-desktop: 1200px;
 
   /*  Colors  */
