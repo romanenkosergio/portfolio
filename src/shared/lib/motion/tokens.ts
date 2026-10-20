@@ -33,7 +33,7 @@ export const SCROLL_MARGIN = "0px 0px -15% 0px";
 /** Set on a primitive until GSAP owns its initial state (see styles.css). */
 export const PENDING_ATTR = "data-motion-pending";
 
-/** `desktop` breakpoint (styles.css) as a media condition. */
+/** `desktop` breakpoint as a media condition; keep in sync with `--breakpoint-desktop` in styles.css. */
 export const DESKTOP_QUERY = "(min-width: 1200px)";
 
 /** Typing: `speed` in chars per second, caret `blink` half-period and the `hold` before it leaves, in seconds. */
