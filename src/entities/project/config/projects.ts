@@ -9,17 +9,17 @@ export const PROJECTS = [
     stack: ["react", "nextjs", "typescript"]
   },
   {
-    slug: "startup-products",
+    slug: "early-stage-products",
     kind: "commercial",
     stack: ["react", "nextjs", "typescript"]
   },
   {
-    slug: "web3-product-ui",
+    slug: "data-heavy-ui",
     kind: "commercial",
     stack: ["react", "typescript"]
   },
   {
-    slug: "shopify-marketplace",
+    slug: "ecommerce-platform",
     kind: "commercial",
     stack: ["react", "shopify", "liquid", "django"]
   },
@@ -29,12 +29,12 @@ export const PROJECTS = [
     stack: ["react", "vue", "django"]
   },
   {
-    slug: "crm-automation",
+    slug: "lead-automation",
     kind: "commercial",
     stack: ["javascript", "telegram", "sass", "gulp"]
   },
   {
-    slug: "vue-client-sites",
+    slug: "marketing-sites",
     kind: "commercial",
     stack: ["vue", "vuex", "sass", "webpack"]
   },
