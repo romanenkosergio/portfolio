@@ -16,7 +16,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 enabled)`, cleared in useGSAP, with a 3 s CSS fallback; an already-visible host skips its entrance. ScrambleText is
   never hidden (h1/LCP): a per-char decode wave keeps the name readable, an inline-grid final-text copy keeps its box.
   Split/Scramble render an `sr-only` copy and an `aria-hidden` animated span. The home hero is a proof; 3.2 redoes it.
-  Reduced motion and JS-off were checked by code only (browser tools can't emulate them). JS budget 335 kB (D14).
+  Playwright checked reduced motion, JS-off, LCP = FCP, box stability. JS budget 335 kB (D14).
 - PLAN 1.14 done: `gate` adds `egress` (`scripts/egress-check.mjs`, allow-listed hosts with a reason, roots src/app/messages)
   and `dup` (jscpd, threshold 0; `app/[locale]/**/page.tsx` stubs ignored until they get real views); `gate:push` adds
   `size` (size-limit on `out/_next/static`, JS 335 kB (D14) / CSS 10 kB gzip). gitleaks: `ci.yml` `secrets` job on PRs and in
