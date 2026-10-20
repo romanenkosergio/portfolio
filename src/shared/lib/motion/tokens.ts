@@ -1,5 +1,6 @@
 /** Durations in seconds, shared by every animation. */
 export const DURATION = {
+  quick: 0.2,
   fast: 0.3,
   base: 0.6,
   slow: 1
@@ -44,3 +45,9 @@ export const SCALE = { enter: 0.96, pop: 1.4, press: 0.88 } as const;
 
 /** Ambient loops (glow blobs): half-cycle `duration` in seconds, drift in px and degrees. */
 export const DRIFT = { duration: 9, x: 28, y: 20, rotation: 10 } as const;
+
+/** Shifts in the IDE-like chrome (explorer, tabs, code rows), px. */
+export const SHIFT = { row: 8, tab: 6, note: 8 } as const;
+
+/** Whole-set stagger budgets, s: a long list takes no longer than this to enter. */
+export const CAP = { files: 0.2, lines: 0.1 } as const;

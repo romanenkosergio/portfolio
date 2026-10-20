@@ -1,12 +1,21 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import type { FC } from "react";
 
 import { cn } from "@/shared/lib";
+import {
+  FOLD_ARROW,
+  FOLD_PANEL,
+  SHIFT,
+  registerMotion,
+  useFold
+} from "@/shared/lib/motion";
 import { Icon } from "@/shared/ui";
 
 import type { ISidebarContentItemProps } from "./sidebar-content-item.types";
+
+registerMotion();
 
 // A section of the explorer: its header folds the rows below it away.
 const SidebarContentItem: FC<ISidebarContentItemProps> = ({
@@ -17,9 +26,12 @@ const SidebarContentItem: FC<ISidebarContentItemProps> = ({
 }) => {
   const [open, setOpen] = useState(true);
   const listId = useId();
+  const ref = useRef<HTMLDivElement>(null);
+
+  useFold(ref, open, { children: true, x: -SHIFT.row });
 
   return (
-    <div className={cn("flex w-full flex-col", blockClass)}>
+    <div ref={ref} className={cn("flex w-full flex-col", blockClass)}>
       <button
         type="button"
         title={title}
@@ -31,12 +43,12 @@ const SidebarContentItem: FC<ISidebarContentItemProps> = ({
           className
         )}
       >
-        <Icon name="arrow-down" className={cn(!open && "-rotate-90")} />
+        <Icon name="arrow-down" {...{ [FOLD_ARROW]: "" }} />
         {title}
       </button>
       <div
         id={listId}
-        hidden={!open}
+        {...{ [FOLD_PANEL]: "" }}
         className="flex flex-col gap-2 pt-4.5 pb-7.5 pl-3.5"
       >
         {children}

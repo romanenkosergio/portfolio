@@ -6,8 +6,6 @@ import { getTranslations } from "next-intl/server";
 import { E_ROUTES } from "@/shared/config";
 import { pageMetadata } from "@/shared/lib";
 
-import { ContentLayout } from "@/widgets/content-layout";
-
 import {
   AboutView,
   PERSONAL_INFO_TYPES,
@@ -40,11 +38,7 @@ const PersonalItemInfo = async ({ params }: ILocaleTypeProps) => {
   if (!isPersonalInfoType(type)) {
     notFound();
   }
-  return (
-    <ContentLayout type="about" subType="personal-info">
-      <AboutView type={type} />
-    </ContentLayout>
-  );
+  return <AboutView type={type} />;
 };
 
 export default PersonalItemInfo;

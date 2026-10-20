@@ -33,3 +33,7 @@ export const matchMotion = (
   mm.add(query(QUERIES.reduced), () => reduced?.());
   return mm;
 };
+
+/** For one-off interactions outside `useGSAP` (an exit before removal): true when motion is reduced. */
+export const prefersReducedMotion = (): boolean =>
+  window.matchMedia(QUERIES.reduced).matches;

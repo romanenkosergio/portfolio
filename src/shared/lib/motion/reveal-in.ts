@@ -42,7 +42,7 @@ export const isAlreadyVisible = (host: HTMLElement): boolean => {
 /**
  * Fades (and lifts) `targets` in. `host` is the primitive's own element: it is
  * hidden by CSS while `data-motion-pending` is set, so the initial state is
- * applied here first and only then handed over. Reduced motion gets a plain fade.
+ * applied here first and only then handed over. Reduced motion shows the final state at once.
  */
 export const revealIn = (
   host: HTMLElement,
@@ -57,12 +57,17 @@ export const revealIn = (
   }: IRevealInOptions
 ): void | (() => void) => {
   if (isAlreadyVisible(host)) return;
+  // Reduced motion: the final state at once, no fade.
+  if (reduced) {
+    host.removeAttribute(PENDING_ATTR);
+    return;
+  }
   const tween = gsap.from(targets, {
     opacity: 0,
-    y: reduced ? 0 : y,
-    duration: reduced ? DURATION.fast : duration,
-    delay: reduced ? 0 : delay,
-    stagger: reduced ? 0 : stagger,
+    y,
+    duration,
+    delay,
+    stagger,
     ease: EASE.out,
     paused: scroll
   });
