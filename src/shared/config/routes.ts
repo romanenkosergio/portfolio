@@ -9,6 +9,8 @@ export const E_ROUTES = {
   ABOUT_PROFESSIONAL_SKILLS: "/about-me/professional-info/skills",
   ABOUT_PROFESSIONAL_EXPERIENCE: "/about-me/professional-info/experience",
   ABOUT_HOBBIES: "/about-me/hobbies",
+  ABOUT_HOBBIES_GAMES: "/about-me/hobbies/games",
+  ABOUT_HOBBIES_LEARNING: "/about-me/hobbies/learning",
   PROJECTS: "/projects",
   CONTACT: "/contact"
 } as const;

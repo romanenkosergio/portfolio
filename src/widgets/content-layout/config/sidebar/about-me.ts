@@ -2,8 +2,10 @@ import { E_ROUTES } from "@/shared/config";
 import type { IconName, IconTone } from "@/shared/ui";
 
 export type SectionKey = "personalInfo" | "professionalInfo" | "hobbies";
-export type GroupKey = "personalInfo" | "professionalInfo" | "contacts";
-export type ItemKey = "bio" | "interests" | "skills" | "experience";
+export type GroupKey =
+  "personalInfo" | "professionalInfo" | "hobbies" | "contacts";
+export type ItemKey =
+  "bio" | "interests" | "skills" | "experience" | "games" | "learning";
 
 // Titles are the `sidebar.sections|groups|items.<key>` messages.
 interface IAboutMeSidebarItem {
@@ -106,6 +108,27 @@ export const ABOUT_ME_PROFESSIONAL_ITEMS: IAboutItem[] = [
         href: E_ROUTES.ABOUT_PROFESSIONAL_EXPERIENCE,
         icon: "folder",
         tone: "rose"
+      }
+    ]
+  },
+  CONTACTS
+];
+
+export const ABOUT_ME_HOBBIES_ITEMS: IAboutItem[] = [
+  {
+    groupKey: "hobbies",
+    content: [
+      {
+        titleKey: "games",
+        href: E_ROUTES.ABOUT_HOBBIES_GAMES,
+        icon: "folder",
+        tone: "indigo"
+      },
+      {
+        titleKey: "learning",
+        href: E_ROUTES.ABOUT_HOBBIES_LEARNING,
+        icon: "folder",
+        tone: "mint"
       }
     ]
   },
