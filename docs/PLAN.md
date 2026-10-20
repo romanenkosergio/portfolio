@@ -4,16 +4,15 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.11, 1.14–1.16, 3.1, 3.2
+Done: 1.1–1.11, 1.14–1.16, 2.3, 3.1, 3.2
 
 ## Pages — markup, content, motion (D8; Figma in AGENTS.md)
 
 Each page: markup and content first (2.x), then its motion (3.x). Copy via `copywriter`, en first.
 
-- [ ] 2.3 About: markup per Figma — explorer tree (personal/professional/hobbies folders + contacts), file tabs, code-lines text with a line gutter, the right «code snippet showcase» column
 - [ ] 2.4 About content: `interests` rewritten (still the template's), `/about-me/hobbies` real page instead of the `placeholder`
 - [ ] 3.3 About motion: explorer tree expand/collapse, file tab switch, code lines reveal
-- [ ] 2.1 `/projects` markup + content: tech filter sidebar, card grid (image, `// _name`, text, view button); `project` entity; commercial projects from the CV only, NDA-safe per D16 (no client names, logos, screenshots, metrics; owner approves each card); neutral images
+- [ ] 2.1 `/projects` markup + content: tech filter sidebar, card grid (image, `// _name`, text, view button); `project` entity; commercial projects from the CV only, NDA-safe per D16 (no client names, logos, screenshots, metrics; owner approves each card); abstract images
 - [ ] 3.4 Projects motion: filter with Flip transitions, card hover/entrance
 - [ ] 2.2 `/contact` markup + content: contacts sidebar (email, LinkedIn, GitHub; no phone), form name/email/message with validation, live code preview, success/error states; sends via Formspree or Web3Forms (owner, 2026-10-20; pick → D17, endpoint in `shared/config`, host in egress allow-list + CSP `connect-src`)
 - [ ] 3.5 Contact motion: preview typing in sync with the form, submit/success transitions

@@ -7,6 +7,8 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Current state (2026-10-20)
 
+- PLAN 2.3 done: About markup per Figma (spec + screenshots were in a session scratchpad; Figma has only the personal-info desktop frame). Explorer in `widgets/content-layout` (rail: terminal/person/gamepad, folder tones rose/mint/indigo, contacts = email only — no phone on the site, owner 2026-10-20). File tabs: `pages/about/model/tabs-store.ts` (in-memory; close → left, else right, else bio; × hidden on the last tab). `ContentWithCodeLines` soft-wraps per logical line. Snippet showcase: `pages/about/config/snippets.ts` = verbatim excerpts of this repo (`// …` cuts), `yarn snippets` (in `gate`) checks them against their files; `shared/ui/code-block` = shiki `codeToTokens` at build, server-only, imported by path, never via the `shared/ui` barrel. CSS is at 9.75/10 kB.
+- `gh` for this repo: `GH_TOKEN=$(gh auth token -u romanenkosergio) gh …` (global gh stays the work account).
 - PLAN 3.2 done: home hero and snake polish. `TypeText` (`shared/ui/motion/type-text`): `caret`, `keepCaret` (default true; the hero passes false), `speed` in chars/s (default `TYPE.speed` 30), `delay`. Split-based primitives (`SplitReveal`, `ScrambleText`, `TypeText`) use SplitText `smartWrap` (no mid-word breaks, D15).
 - Hero sequence: `HERO_DELAY` in `pages/home/config/hero.ts` (greeting 0.1, name 0.5, role 1.1, code 1.7, panel 1.9, bolts 2.3 s; reads in ~2.5 s). `ui/hero-code.tsx` is the code-style intro.
 - Snake panel motion: `lib/use-panel-motion.ts` runs on `matchMotion` with `condition: DESKTOP_QUERY` (`(min-width: 1200px)`, `shared/lib/motion/tokens.ts`). Keys: `config/keys.ts` (`KEY_DIRECTIONS`, arrows + WASD) → `lib/key-to-direction.ts`; `lib/key-press.ts` is a Zustand signal `{direction, id}` that flashes the on-screen arrows without re-rendering the board. Food, game-overlay and keyboard-arrow tweens use `revertOnUpdate`. Snake tick: `TICK_START` 200 ms − `TICK_STEP` 5 ms per food eaten (owner OK with the speed).
@@ -23,7 +25,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Next
 
-- Pages in PLAN order, markup + content before motion: About (2.3, 2.4, 3.3) → Projects (2.1, 3.4) → Contact
+- Pages in PLAN order, markup + content before motion: About (2.4, 3.3) → Projects (2.1, 3.4) → Contact
   (2.2, 3.5) → 2.5, 2.6, 2.0 → 3.6, 3.7; tests last (1.12, 1.13).
   A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D17.
 

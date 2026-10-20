@@ -4,7 +4,7 @@ import type { FC } from "react";
 import type { IContentWithCodeLinesProps } from "./content-with-code-lines.types";
 
 // Soft-wrapped like an editor: one grid row per logical line; a wrapped line continues in the
-// text cell without a number.
+// text cell without a number, hung under the comment's ` * ` prefix.
 const ContentWithCodeLines: FC<IContentWithCodeLinesProps> = ({ content }) => {
   const lines = content.split("\n");
 
@@ -13,7 +13,9 @@ const ContentWithCodeLines: FC<IContentWithCodeLinesProps> = ({ content }) => {
       {lines.map((line, index) => (
         <Fragment key={index}>
           <div className="text-right">{index + 1}</div>
-          <div className="break-words whitespace-pre-wrap">{line || " "}</div>
+          <div className="pl-[3ch] -indent-[3ch] break-words whitespace-pre-wrap">
+            {line || " "}
+          </div>
         </Fragment>
       ))}
     </div>
