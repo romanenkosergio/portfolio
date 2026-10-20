@@ -5,20 +5,20 @@ import type { FC } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 
 import {
-  DURATION,
-  EASE,
   SCRAMBLE_CHARS,
+  WAVE,
   matchMotion,
-  registerMotion
+  registerScrambleText
 } from "@/shared/lib/motion";
 
 import type { MotionHostType } from "../motion.types";
 
 import type { IScrambleTextProps } from "./scramble-text.types";
 
-registerMotion();
+registerScrambleText();
 
 /**
  * Scrambles into its text like a terminal decoding it. Never hidden: the real
@@ -31,8 +31,7 @@ const ScrambleText: FC<IScrambleTextProps> = ({
   className,
   children,
   chars = SCRAMBLE_CHARS,
-  delay = 0,
-  duration = DURATION.scramble
+  delay = 0
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -42,12 +41,27 @@ const ScrambleText: FC<IScrambleTextProps> = ({
       if (!animated) return;
       const mm = matchMotion(animated, {
         full: () => {
-          gsap.to(animated, {
-            duration,
-            delay,
-            ease: EASE.soft,
-            scrambleText: { text: children, chars, speed: 0.6 }
+          const instance = SplitText.create(animated, {
+            type: "chars",
+            aria: "none",
+            onSplit: self => {
+              const wave = gsap.timeline({ delay });
+              self.chars.forEach((char, index) => {
+                const letter = char.textContent ?? "";
+                if (letter.trim() === "") return;
+                wave.to(
+                  char,
+                  {
+                    duration: WAVE.char,
+                    scrambleText: { text: letter, chars, speed: 1 }
+                  },
+                  index * WAVE.stagger
+                );
+              });
+              return wave;
+            }
           });
+          return () => instance.revert();
         }
       });
       return () => mm.revert();

@@ -1,18 +1,25 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
-let registered = false;
+const done = new Set<object>();
+
+const register = (...plugins: object[]): void => {
+  if (typeof window === "undefined") return;
+  const fresh = plugins.filter(plugin => !done.has(plugin));
+  if (fresh.length === 0) return;
+  fresh.forEach(plugin => done.add(plugin));
+  gsap.registerPlugin(...fresh);
+};
 
 /**
- * Registers every GSAP plugin the site uses, once. Called from the motion
- * primitives (client components) before their first `useGSAP`; add Flip and the
- * like here. Idempotent and a no-op on the server.
+ * Plugins register per primitive, at module scope of the client component that
+ * needs them, so a page only ships the plugins of the primitives it uses.
+ * Add Flip, ScrollTrigger and the like the same way. Idempotent, no-op on the
+ * server.
  */
-export const registerMotion = (): void => {
-  if (registered || typeof window === "undefined") return;
-  registered = true;
-  gsap.registerPlugin(useGSAP, SplitText, ScrambleTextPlugin, ScrollTrigger);
-};
+export const registerMotion = (): void => register(useGSAP);
+export const registerSplitText = (): void => register(useGSAP, SplitText);
+export const registerScrambleText = (): void =>
+  register(useGSAP, SplitText, ScrambleTextPlugin);

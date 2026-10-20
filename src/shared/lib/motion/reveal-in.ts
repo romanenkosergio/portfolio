@@ -1,13 +1,19 @@
 import gsap from "gsap";
 
-import { DISTANCE, DURATION, EASE, PENDING_ATTR, SCROLL_START } from "./tokens";
+import {
+  DISTANCE,
+  DURATION,
+  EASE,
+  PENDING_ATTR,
+  SCROLL_MARGIN
+} from "./tokens";
 
 export interface IRevealInOptions {
   delay?: number;
   duration?: number;
   y?: number;
   stagger?: number;
-  /** Start when the element scrolls into view (once) instead of on mount. */
+  /** Start when the element scrolls into view (once, via IntersectionObserver) instead of on mount. */
   scroll?: boolean;
 }
 
@@ -38,19 +44,27 @@ export const revealIn = (
     stagger = 0,
     scroll = false
   }: IRevealInOptions
-): void => {
+): void | (() => void) => {
   if (isAlreadyVisible(host)) return;
-  const scrollTrigger = scroll
-    ? { trigger: host, start: SCROLL_START, once: true }
-    : undefined;
-  gsap.from(targets, {
+  const tween = gsap.from(targets, {
     opacity: 0,
     y: reduced ? 0 : y,
     duration: reduced ? DURATION.fast : duration,
     delay: reduced ? 0 : delay,
     stagger: reduced ? 0 : stagger,
     ease: EASE.out,
-    scrollTrigger
+    paused: scroll
   });
   host.removeAttribute(PENDING_ATTR);
+  if (!scroll) return;
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry?.isIntersecting) return;
+      observer.disconnect();
+      tween.play();
+    },
+    { rootMargin: SCROLL_MARGIN }
+  );
+  observer.observe(host);
+  return () => observer.disconnect();
 };

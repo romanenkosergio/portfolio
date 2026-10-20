@@ -14,14 +14,14 @@ import {
   STAGGER,
   isAlreadyVisible,
   matchMotion,
-  registerMotion
+  registerSplitText
 } from "@/shared/lib/motion";
 
 import type { MotionHostType } from "../motion.types";
 
 import type { ISplitRevealProps } from "./split-reveal.types";
 
-registerMotion();
+registerSplitText();
 
 /**
  * Reveals text unit by unit. Screen readers read an sr-only copy once; the
