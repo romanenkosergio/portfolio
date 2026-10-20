@@ -4,15 +4,14 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.11, 1.14–1.16, 3.1
+Done: 1.1–1.11, 1.14–1.16, 3.1, 3.2
 
 ## Phase 3 — redesign with motion (D8; Figma in AGENTS.md)
 
-- [ ] 3.2 Home: hero (typed/scrambled name, code-style intro), the snake game polished
 - [ ] 3.3 About: sidebar/explorer tree transitions, file tabs, code-lines content
 - [ ] 3.4 Projects: filter by tech with Flip transitions, project cards; the real page (closes 2.1)
 - [ ] 3.5 Contact: form with live code preview, success state; the real page (closes 2.2)
-- [ ] 3.6 Mobile (375) for every page, menu animation; about sidebar unreachable at 375; the shell is fixed-height (`h-[calc(100dvh-90px)]` main), so below ~540 px tall the footer overlaps the content — let it grow (`min-h`)
+- [ ] 3.6 Mobile (375) for every page, menu animation; about sidebar unreachable at 375; the shell is fixed-height (`h-[calc(100dvh-90px)]` main), so below ~540 px tall the footer overlaps the content — let it grow (`min-h`); the GitHub link string `"https://github.com/…"` is clipped at 375 in the hero code block
 - [ ] 3.7 Motion performance and a11y pass (Lighthouse, reduced motion, keyboard)
 
 ## Phase 2 — content

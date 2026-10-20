@@ -36,7 +36,7 @@ Imports: `@/*` → `src/*`, `@/public/*` → `public/*`. Files and folders kebab
 - Motion: GSAP + `@gsap/react` (`useGSAP`, cleanup on unmount); transforms and opacity only; every animation
   honours `prefers-reduced-motion` (`gsap.matchMedia()`); client components only where motion needs them.
   CSS transitions only on colour properties; transform/opacity belong to GSAP (or an explicit local transition).
-  Toolkit: tokens, plugin registration and the reduced-motion guard in `shared/lib/motion`, primitives (`Reveal`, `Stagger`, `SplitReveal`, `ScrambleText`) in `shared/ui/motion`; new animations use them.
+  Toolkit: tokens, plugin registration and the reduced-motion guard in `shared/lib/motion`, primitives (`Reveal`, `Stagger`, `SplitReveal`, `ScrambleText`, `TypeText`) in `shared/ui/motion`; new animations use them.
 - Skills in `.claude/skills`: official GreenSock `gsap-*` (core, timeline, scrolltrigger, plugins, react,
   performance, utils; MIT), and from common-next `frontend-design`, `scroll-experience`,
   `fixing-motion-performance`, `baseline-ui`, `fixing-accessibility`. Their install commands say `npm` — use `yarn add`.
