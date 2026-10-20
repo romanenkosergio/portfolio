@@ -16,6 +16,21 @@ import Markdown from "@/public/assets/icons/markdown.svg";
 import SidebarHobbies from "@/public/assets/icons/sidebar/hobbies.svg";
 import SidebarPersonalInfo from "@/public/assets/icons/sidebar/personal-info.svg";
 import SidebarProfessionalInfo from "@/public/assets/icons/sidebar/professional-info.svg";
+import TechAstro from "@/public/assets/icons/tech/astro.svg";
+import TechDjango from "@/public/assets/icons/tech/django.svg";
+import TechExpo from "@/public/assets/icons/tech/expo.svg";
+import TechGodot from "@/public/assets/icons/tech/godot.svg";
+import TechGulp from "@/public/assets/icons/tech/gulp.svg";
+import TechJavascript from "@/public/assets/icons/tech/javascript.svg";
+import TechNestjs from "@/public/assets/icons/tech/nestjs.svg";
+import TechNextjs from "@/public/assets/icons/tech/nextjs.svg";
+import TechReact from "@/public/assets/icons/tech/react.svg";
+import TechSass from "@/public/assets/icons/tech/sass.svg";
+import TechShopify from "@/public/assets/icons/tech/shopify.svg";
+import TechTelegram from "@/public/assets/icons/tech/telegram.svg";
+import TechTypescript from "@/public/assets/icons/tech/typescript.svg";
+import TechVue from "@/public/assets/icons/tech/vue.svg";
+import TechWebpack from "@/public/assets/icons/tech/webpack.svg";
 
 import type { SVGComponent } from "./icon.types";
 
@@ -38,5 +53,20 @@ export const ICONS = {
   "game/food": GameFood,
   "sidebar/hobbies": SidebarHobbies,
   "sidebar/personal-info": SidebarPersonalInfo,
-  "sidebar/professional-info": SidebarProfessionalInfo
+  "sidebar/professional-info": SidebarProfessionalInfo,
+  "tech/astro": TechAstro,
+  "tech/django": TechDjango,
+  "tech/godot": TechGodot,
+  "tech/gulp": TechGulp,
+  "tech/javascript": TechJavascript,
+  "tech/nestjs": TechNestjs,
+  "tech/nextjs": TechNextjs,
+  "tech/react": TechReact,
+  "tech/sass": TechSass,
+  "tech/shopify": TechShopify,
+  "tech/telegram": TechTelegram,
+  "tech/typescript": TechTypescript,
+  "tech/vue": TechVue,
+  "tech/webpack": TechWebpack,
+  "tech/expo": TechExpo
 } satisfies Record<string, SVGComponent>;

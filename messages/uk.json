@@ -142,6 +142,78 @@
     "continue": "Перейти на сайт",
     "title": "Перенаправлення"
   },
+  "projects": {
+    "heading": "Projects",
+    "filter": {
+      "title": "projects",
+      "label": "Filter by technology",
+      "all": "all",
+      "clear": "Show all projects"
+    },
+    "card": {
+      "label": "Project {n}",
+      "separator": "//",
+      "personal": "personal",
+      "stack": "Stack"
+    },
+    "empty": "// no projects use these technologies",
+    "items": {
+      "saas-platform": {
+        "title": "_saas-platform",
+        "domain": "B2B SaaS platform",
+        "role": "Frontend Lead",
+        "summary": "Set the frontend architecture and standards for a multi-module SaaS product, and mentored the engineers building on it."
+      },
+      "startup-products": {
+        "title": "_startup-products",
+        "domain": "Startup and SaaS products",
+        "role": "Frontend Team Lead",
+        "summary": "Led frontend on several early-stage products. Designed reusable app structures and wrote the internal tooling that sped up project setup."
+      },
+      "web3-product-ui": {
+        "title": "_web3-product-ui",
+        "domain": "Web3 / blockchain product",
+        "role": "Front-End Developer",
+        "summary": "Redesigned product pages and built interactive components with complex custom charts and visualizations. Reworked user flows and business logic."
+      },
+      "shopify-marketplace": {
+        "title": "_shopify-marketplace",
+        "domain": "E-commerce marketplace",
+        "role": "Development Team Lead",
+        "summary": "Led frontend for Shopify-based marketplaces and built reusable React project templates for faster onboarding and project setup."
+      },
+      "client-apps": {
+        "title": "_client-apps",
+        "domain": "Agency client applications",
+        "role": "Front-End Developer",
+        "summary": "Frontend for several client products in React and Vue on Django backends. Built shared UI pieces and mentored junior developers."
+      },
+      "crm-automation": {
+        "title": "_crm-automation",
+        "domain": "Sales and lead management",
+        "role": "Front-End Developer",
+        "summary": "Connected company sites to a CRM, automated lead handling and built Telegram bots for lead processing. Also tuned site performance."
+      },
+      "vue-client-sites": {
+        "title": "_vue-client-sites",
+        "domain": "Responsive client websites",
+        "role": "Front-End Developer",
+        "summary": "Responsive client websites in Vue with a reusable component set and a scalable styling architecture, built alongside designers."
+      },
+      "tiny-coop": {
+        "title": "_tiny-coop",
+        "domain": "Desktop game",
+        "role": "Solo developer",
+        "summary": "A cozy idle game about a hen living in a coop on a transparent strip at the bottom of your screen. Steam, Windows and macOS. In development."
+      },
+      "dareboard": {
+        "title": "_dareboard",
+        "domain": "Mobile party game",
+        "role": "Solo developer",
+        "summary": "Party game app: truth or dare, never have I ever, spin the bottle. Expo client, NestJS API and an Astro landing page. Coming to the App Store and Google Play."
+      }
+    }
+  },
   "titles": {
     "home": "Ласкаво просимо до мого портфоліо",
     "aboutMe": "Про мене",
