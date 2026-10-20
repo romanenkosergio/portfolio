@@ -6,8 +6,6 @@ import { getTranslations } from "next-intl/server";
 import { E_ROUTES } from "@/shared/config";
 import { pageMetadata } from "@/shared/lib";
 
-import { ContentLayout } from "@/widgets/content-layout";
-
 import { AboutView, HOBBIES_TYPES, isHobbiesType } from "@/pages/about";
 
 import { resolveLocale } from "@/app/lib";
@@ -35,11 +33,7 @@ const HobbiesItem = async ({ params }: ILocaleTypeProps) => {
   if (!isHobbiesType(type)) {
     notFound();
   }
-  return (
-    <ContentLayout type="about" subType="hobbies">
-      <AboutView type={type} />
-    </ContentLayout>
-  );
+  return <AboutView type={type} />;
 };
 
 export default HobbiesItem;

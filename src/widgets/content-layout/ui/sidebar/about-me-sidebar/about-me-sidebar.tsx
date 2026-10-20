@@ -10,12 +10,12 @@ import {
   ABOUT_ME_PERSONAL_ITEMS,
   ABOUT_ME_PROFESSIONAL_ITEMS
 } from "@/widgets/content-layout/config";
+import type { AboutSection } from "@/widgets/content-layout/lib";
 
 import { ContentLink } from "../content-link";
 import { Rail } from "../rail";
+import { SectionPanels } from "../section-panels";
 import { SidebarContentItem } from "../sidebar-content-item";
-
-import type { IAboutMeSidebarProps } from "./about-me-sidebar.types";
 
 const SIDEBAR_ITEMS = {
   "personal-info": ABOUT_ME_PERSONAL_ITEMS,
@@ -23,13 +23,27 @@ const SIDEBAR_ITEMS = {
   "hobbies": ABOUT_ME_HOBBIES_ITEMS
 };
 
-const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
+const AboutMeSidebar: FC = () => {
   const t = useTranslations("sidebar");
-  const items = SIDEBAR_ITEMS[type];
+  const renderItems = (items: (typeof SIDEBAR_ITEMS)[AboutSection]) =>
+    items.map(item => (
+      <SidebarContentItem
+        title={t(`groups.${item.groupKey}`)}
+        key={item.groupKey}
+        blockClass="first:border-b-line first:border-b"
+      >
+        {item.content.map(contentItem => (
+          <ContentLink
+            key={contentItem.titleKey ?? contentItem.title}
+            item={contentItem}
+          />
+        ))}
+      </SidebarContentItem>
+    ));
 
   return (
     <div className="flex h-full">
-      <Rail section={type}>
+      <Rail>
         {ABOUT_ME_NAVIGATION.map(item => (
           <NavLink
             href={item.href}
@@ -42,22 +56,13 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
           </NavLink>
         ))}
       </Rail>
-      <div className="min-w-0 flex-1 overflow-y-auto">
-        {items.map(item => (
-          <SidebarContentItem
-            title={t(`groups.${item.groupKey}`)}
-            key={item.groupKey}
-            blockClass="first:border-b-line first:border-b"
-          >
-            {item.content.map(contentItem => (
-              <ContentLink
-                key={contentItem.titleKey ?? contentItem.title}
-                item={contentItem}
-              />
-            ))}
-          </SidebarContentItem>
-        ))}
-      </div>
+      <SectionPanels
+        panels={{
+          "personal-info": renderItems(SIDEBAR_ITEMS["personal-info"]),
+          "professional-info": renderItems(SIDEBAR_ITEMS["professional-info"]),
+          "hobbies": renderItems(SIDEBAR_ITEMS.hobbies)
+        }}
+      />
     </div>
   );
 };

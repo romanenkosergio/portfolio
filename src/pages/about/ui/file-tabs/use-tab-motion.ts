@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import type { RefObject } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -13,54 +14,51 @@ import {
 
 import type { AboutType } from "@/pages/about/config";
 
-// Tabs that already entered this visit: the bar remounts per file, so it is kept here.
-const entered = new Set<AboutType>();
-
-// A tab opened after the first one fades in from above; the first (or any, under reduced motion) just appears.
-const enterTab = (list: HTMLElement, current: AboutType, reduced: boolean) => {
-  const tab = list.querySelector(`[data-tab="${current}"]`);
-  if (!tab || entered.has(current)) return;
-  const first = entered.size === 0;
-  if (first || reduced) {
-    entered.add(current);
-    return;
-  }
-  gsap.from(tab, {
+/** Fades in the tabs that were not in the bar on the previous run. */
+const enterTabs = (list: HTMLElement, added: AboutType[]) => {
+  const tabs = added.flatMap(
+    type => list.querySelector(`[data-tab="${type}"]`) ?? []
+  );
+  gsap.from(tabs, {
     opacity: 0,
     y: -SHIFT.tab,
     duration: DURATION.fast,
-    ease: EASE.soft,
-    onComplete: () => {
-      entered.add(current);
-    }
+    ease: EASE.soft
   });
 };
 
-/** The underline slides to the current tab; a newly opened tab fades in. */
-export const useTabMotion = (current: AboutType, count: number) => {
-  const listRef = useRef<HTMLUListElement>(null);
+/**
+ * The underline slides to the current tab (and follows tabs that shift); a tab
+ * added after the first render fades in. Returns the underline's ref.
+ */
+export const useTabMotion = (
+  listRef: RefObject<HTMLUListElement | null>,
+  current: AboutType,
+  shown: AboutType[]
+) => {
   const barRef = useRef<HTMLLIElement>(null);
+  const previous = useRef<AboutType[] | null>(null);
 
   useSlideIndicator(listRef, barRef, {
-    id: "tabs",
     axis: "x",
     active: "[aria-current]",
     value: current,
-    deps: [count]
+    deps: [shown.join()]
   });
 
   useGSAP(
     () => {
       const list = listRef.current;
-      if (!list) return;
-      const mm = matchMotion(list, {
-        full: () => enterTab(list, current, false),
-        reduced: () => enterTab(list, current, true)
-      });
+      const before = previous.current;
+      previous.current = shown;
+      if (!list || !before) return;
+      const added = shown.filter(type => !before.includes(type));
+      if (added.length === 0) return;
+      const mm = matchMotion(list, { full: () => enterTabs(list, added) });
       return () => mm.revert();
     },
-    { scope: listRef, dependencies: [current] }
+    { scope: listRef, dependencies: [shown.join()] }
   );
 
-  return { listRef, barRef };
+  return barRef;
 };

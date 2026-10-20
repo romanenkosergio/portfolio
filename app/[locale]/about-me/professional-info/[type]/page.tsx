@@ -5,8 +5,6 @@ import type { Metadata } from "next";
 import { E_ROUTES } from "@/shared/config";
 import { pageMetadata } from "@/shared/lib";
 
-import { ContentLayout } from "@/widgets/content-layout";
-
 import {
   AboutView,
   PROFESSIONAL_INFO_TYPES,
@@ -37,11 +35,7 @@ const ProfessionalItemInfo = async ({ params }: ILocaleTypeProps) => {
   if (!isProfessionalInfoType(type)) {
     notFound();
   }
-  return (
-    <ContentLayout type="about" subType="professional-info">
-      <AboutView type={type} />
-    </ContentLayout>
-  );
+  return <AboutView type={type} />;
 };
 
 export default ProfessionalItemInfo;

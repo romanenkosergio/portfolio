@@ -3,19 +3,22 @@
 import { useRef } from "react";
 import type { FC } from "react";
 
+import { usePathname } from "@/shared/i18n";
 import { registerMotion, useSlideIndicator } from "@/shared/lib/motion";
+
+import { aboutSectionOf } from "@/widgets/content-layout/lib";
 
 import type { IRailProps } from "./rail.types";
 
 registerMotion();
 
 // The icon rail of the explorer; one bar marks the current section and slides between icons.
-const Rail: FC<IRailProps> = ({ section, children }) => {
+const Rail: FC<IRailProps> = ({ children }) => {
   const hostRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLSpanElement>(null);
+  const section = aboutSectionOf(usePathname());
 
   useSlideIndicator(hostRef, barRef, {
-    id: "rail",
     axis: "y",
     active: "[aria-current]",
     value: section
