@@ -12,6 +12,7 @@ import {
   EASE,
   PENDING_ATTR,
   STAGGER,
+  isAlreadyVisible,
   matchMotion,
   registerMotion
 } from "@/shared/lib/motion";
@@ -22,7 +23,11 @@ import type { ISplitRevealProps } from "./split-reveal.types";
 
 registerMotion();
 
-/** Reveals text unit by unit; the original text is restored on unmount. */
+/**
+ * Reveals text unit by unit. Screen readers read an sr-only copy once; the
+ * split copy is aria-hidden. The split reverts on unmount and re-runs when
+ * the text changes, and `lines` re-split after fonts load or on resize.
+ */
 const SplitReveal: FC<ISplitRevealProps> = ({
   as = "span",
   className,
@@ -32,26 +37,31 @@ const SplitReveal: FC<ISplitRevealProps> = ({
   duration = DURATION.base,
   stagger = split === "chars" ? STAGGER.chars : STAGGER.words
 }) => {
-  const ref = useRef<HTMLElement>(null);
+  const hostRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
-      const host = ref.current;
-      if (!host) return;
+      const host = hostRef.current;
+      const text = textRef.current;
+      if (!host || !text) return;
       const mm = matchMotion(host, {
         full: () => {
-          const instance = SplitText.create(host, {
+          if (isAlreadyVisible(host)) return;
+          const instance = SplitText.create(text, {
             type: split,
-            aria: "auto",
-            mask: split === "lines" ? "lines" : undefined
-          });
-          gsap.from(instance[split], {
-            yPercent: 100,
-            opacity: 0,
-            duration,
-            delay,
-            stagger,
-            ease: EASE.out
+            aria: "none",
+            autoSplit: true,
+            mask: split === "lines" ? "lines" : undefined,
+            onSplit: self =>
+              gsap.from(self[split], {
+                yPercent: 100,
+                opacity: 0,
+                duration,
+                delay,
+                stagger,
+                ease: EASE.out
+              })
           });
           host.removeAttribute(PENDING_ATTR);
           return () => instance.revert();
@@ -62,13 +72,16 @@ const SplitReveal: FC<ISplitRevealProps> = ({
       });
       return () => mm.revert();
     },
-    { scope: ref }
+    { scope: hostRef, dependencies: [children], revertOnUpdate: true }
   );
 
   const Tag = as as MotionHostType;
   return (
-    <Tag ref={ref} className={className} {...{ [PENDING_ATTR]: "" }}>
-      {children}
+    <Tag ref={hostRef} className={className} {...{ [PENDING_ATTR]: "" }}>
+      <span className="sr-only">{children}</span>
+      <span ref={textRef} aria-hidden="true" className="block">
+        {children}
+      </span>
     </Tag>
   );
 };

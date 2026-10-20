@@ -9,7 +9,6 @@ import gsap from "gsap";
 import {
   DURATION,
   EASE,
-  PENDING_ATTR,
   SCRAMBLE_CHARS,
   matchMotion,
   registerMotion
@@ -21,7 +20,12 @@ import type { IScrambleTextProps } from "./scramble-text.types";
 
 registerMotion();
 
-/** Scrambles into its text like a terminal decoding it; the text is in the HTML from the start. */
+/**
+ * Scrambles into its text like a terminal decoding it. Never hidden: the real
+ * text is in the HTML and readable from first paint. Screen readers get an
+ * sr-only copy; the animated copy is aria-hidden and overlays an invisible
+ * copy of the final text, so the box never changes size.
+ */
 const ScrambleText: FC<IScrambleTextProps> = ({
   as = "span",
   className,
@@ -30,35 +34,37 @@ const ScrambleText: FC<IScrambleTextProps> = ({
   delay = 0,
   duration = DURATION.scramble
 }) => {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
-      const host = ref.current;
-      if (!host) return;
-      const mm = matchMotion(host, {
+      const animated = ref.current;
+      if (!animated) return;
+      const mm = matchMotion(animated, {
         full: () => {
-          gsap.to(host, {
+          gsap.to(animated, {
             duration,
             delay,
             ease: EASE.soft,
             scrambleText: { text: children, chars, speed: 0.6 }
           });
-          host.removeAttribute(PENDING_ATTR);
-        },
-        reduced: () => {
-          host.removeAttribute(PENDING_ATTR);
         }
       });
       return () => mm.revert();
     },
-    { scope: ref, dependencies: [children] }
+    { scope: ref, dependencies: [children], revertOnUpdate: true }
   );
 
   const Tag = as as MotionHostType;
   return (
-    <Tag ref={ref} className={className} {...{ [PENDING_ATTR]: "" }}>
-      {children}
+    <Tag className={className}>
+      <span className="sr-only">{children}</span>
+      <span aria-hidden="true" className="inline-grid">
+        <span className="invisible col-start-1 row-start-1">{children}</span>
+        <span ref={ref} className="col-start-1 row-start-1">
+          {children}
+        </span>
+      </span>
     </Tag>
   );
 };

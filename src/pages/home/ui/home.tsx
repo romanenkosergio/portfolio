@@ -3,13 +3,8 @@ import type { FC } from "react";
 import { useTranslations } from "next-intl";
 
 import { GITHUB_URL } from "@/shared/config";
-import {
-  Container,
-  Reveal,
-  ScrambleText,
-  SplitReveal,
-  Stagger
-} from "@/shared/ui";
+import { Container } from "@/shared/ui";
+import { Reveal, ScrambleText, SplitReveal, Stagger } from "@/shared/ui/motion";
 
 import { SnakeGame } from "./snake-game";
 
