@@ -75,7 +75,7 @@ const ScrambleText: FC<IScrambleTextProps> = ({
       <span className="sr-only">{children}</span>
       <span aria-hidden="true" className="inline-grid">
         <span className="invisible col-start-1 row-start-1">{children}</span>
-        <span ref={ref} className="col-start-1 row-start-1">
+        <span key={children} ref={ref} className="col-start-1 row-start-1">
           {children}
         </span>
       </span>

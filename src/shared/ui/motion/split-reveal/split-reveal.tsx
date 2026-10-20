@@ -79,7 +79,7 @@ const SplitReveal: FC<ISplitRevealProps> = ({
   return (
     <Tag ref={hostRef} className={className} {...{ [PENDING_ATTR]: "" }}>
       <span className="sr-only">{children}</span>
-      <span ref={textRef} aria-hidden="true" className="block">
+      <span key={children} ref={textRef} aria-hidden="true" className="block">
         {children}
       </span>
     </Tag>
