@@ -7,6 +7,7 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Current state (2026-10-20)
 
+- PLAN 2.4 done: hobbies section = third explorer group (gamepad rail), files `games`, `learning` at `about-me/hobbies/[type]` (`HOBBIES_TYPES`, `isHobbiesType`; `hobbies/page.tsx` redirects to games; sitemap lists the two files). Copy (en): `interests` rewritten from the CV; `games` names the owner's unreleased Tiny Coop (Godot 4, Steam) and Dareboard (Expo/React Native party game) — their repos are private, no links; `learning`: self-taught, lectured JS/React at Hillel IT School. Both also go on /projects as personal projects (D17).
 - PLAN 2.3 done: About markup per Figma (spec + screenshots were in a session scratchpad; Figma has only the personal-info desktop frame). Explorer in `widgets/content-layout` (rail: terminal/person/gamepad, folder tones rose/mint/indigo, contacts = email only — no phone on the site, owner 2026-10-20). File tabs: `pages/about/model/tabs-store.ts` (in-memory; close → left, else right, else bio; × hidden on the last tab). `ContentWithCodeLines` soft-wraps per logical line. Snippet showcase: `pages/about/config/snippets.ts` = verbatim excerpts of this repo (`// …` cuts), `yarn snippets` (in `gate`) checks them against their files; `shared/ui/code-block` = shiki `codeToTokens` at build, server-only, imported by path, never via the `shared/ui` barrel. CSS is at 9.75/10 kB.
 - `gh` for this repo: `GH_TOKEN=$(gh auth token -u romanenkosergio) gh …` (global gh stays the work account).
 - PLAN 3.2 done: home hero and snake polish. `TypeText` (`shared/ui/motion/type-text`): `caret`, `keepCaret` (default true; the hero passes false), `speed` in chars/s (default `TYPE.speed` 30), `delay`. Split-based primitives (`SplitReveal`, `ScrambleText`, `TypeText`) use SplitText `smartWrap` (no mid-word breaks, D15).
@@ -25,9 +26,9 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Next
 
-- Pages in PLAN order, markup + content before motion: About (2.4, 3.3) → Projects (2.1, 3.4) → Contact
+- Pages in PLAN order, markup + content before motion: About (3.3) → Projects (2.1, 3.4) → Contact
   (2.2, 3.5) → 2.5, 2.6, 2.0 → 3.6, 3.7; tests last (1.12, 1.13).
-  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D17.
+  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D18.
 
 ## Environment
 

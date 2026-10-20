@@ -6,14 +6,15 @@ import type { Locale } from "@/shared/i18n";
 
 export const dynamic = "force-static";
 
-// The pages that render; /about-me and the two *-info folders only redirect.
+// The pages that render; /about-me and its three folders only redirect.
 const PAGES: E_ROUTES[] = [
   E_ROUTES.HOME,
   E_ROUTES.ABOUT_PERSONAL_BIO,
   E_ROUTES.ABOUT_PERSONAL_INTERESTS,
   E_ROUTES.ABOUT_PROFESSIONAL_SKILLS,
   E_ROUTES.ABOUT_PROFESSIONAL_EXPERIENCE,
-  E_ROUTES.ABOUT_HOBBIES,
+  E_ROUTES.ABOUT_HOBBIES_GAMES,
+  E_ROUTES.ABOUT_HOBBIES_LEARNING,
   E_ROUTES.PROJECTS,
   E_ROUTES.CONTACT
 ];
