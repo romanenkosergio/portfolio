@@ -7,7 +7,7 @@ interface INavLinkBaseProps extends Omit<
   "href"
 > {
   exact?: boolean;
-  variant?: "header" | "sidebar";
+  variant?: "header" | "rail" | "file";
   activeClass?: string;
 }
 

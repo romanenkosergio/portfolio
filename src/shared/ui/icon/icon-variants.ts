@@ -6,7 +6,11 @@ export const iconVariants = cva("inline-block select-none", {
     tone: {
       inherit: "",
       muted: "text-secondary-1",
-      active: "text-primary-6"
+      active: "text-primary-6",
+      // Folder colours of the file explorer.
+      rose: "text-accent-3",
+      mint: "text-accent-2",
+      indigo: "text-secondary-3"
     },
     // Turns white while the surrounding `group` is hovered (desktop only, like Button).
     interactive: { true: "desktop:group-hover:text-white", false: "" },

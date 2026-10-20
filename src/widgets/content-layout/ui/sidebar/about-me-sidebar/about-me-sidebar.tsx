@@ -27,21 +27,20 @@ const AboutMeSidebar: FC<IAboutMeSidebarProps> = ({ type }) => {
 
   return (
     <div className="flex h-full">
-      <div className="flex h-full w-auto flex-col gap-8.5 border-r border-r-line px-5.5 pt-4">
+      <div className="flex h-full w-auto flex-col gap-10 border-r border-r-line px-5.5 pt-5">
         {ABOUT_ME_NAVIGATION.map(item => (
           <NavLink
             href={item.href}
             title={t(`sections.${item.titleKey}`)}
             key={item.titleKey}
-            variant="sidebar"
+            variant="rail"
             exact={false}
-            activeClass={item.activeClass}
           >
             <Icon name={item.icon} className="h-6 w-6" />
           </NavLink>
         ))}
       </div>
-      <div className="w-full">
+      <div className="min-w-0 flex-1 overflow-y-auto">
         {items.map(item => (
           <SidebarContentItem
             title={t(`groups.${item.groupKey}`)}

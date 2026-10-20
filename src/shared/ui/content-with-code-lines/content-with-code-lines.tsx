@@ -6,18 +6,16 @@ const ContentWithCodeLines: FC<IContentWithCodeLinesProps> = ({ content }) => {
   const lines = content.split("\n");
 
   return (
-    <div className="flex w-full gap-10 border-t border-t-line py-3.5 pl-9.5">
+    <div className="flex w-max min-w-full gap-10 py-3.5 pl-9.5 text-lg leading-normal">
       <div className="text-right text-secondary-1">
         {lines.map((_, index) => (
-          <div key={index} className="leading-6">
-            {index + 1}
-          </div>
+          <div key={index}>{index + 1}</div>
         ))}
       </div>
 
       <div className="text-secondary-1">
         {lines.map((line, index) => (
-          <div key={index} className="leading-6">
+          <div key={index} className="whitespace-pre">
             {line || "\u00A0"}
           </div>
         ))}
