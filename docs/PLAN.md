@@ -11,7 +11,7 @@ Done: 1.1–1.11, 1.14–1.16, 3.1, 3.2
 - [ ] 3.3 About: sidebar/explorer tree transitions, file tabs, code-lines content
 - [ ] 3.4 Projects: filter by tech with Flip transitions, project cards; the real page (closes 2.1)
 - [ ] 3.5 Contact: form with live code preview, success state; the real page (closes 2.2)
-- [ ] 3.6 Mobile (375) for every page, menu animation; about sidebar unreachable at 375; the shell is fixed-height (`h-[calc(100dvh-90px)]` main), so below ~540 px tall the footer overlaps the content — let it grow (`min-h`); the GitHub link string `"https://github.com/…"` is clipped at 375 in the hero code block
+- [ ] 3.6 Mobile (375) for every page, menu animation; about sidebar unreachable at 375; the shell is fixed-height (`h-[calc(100dvh-90px)]` main), so below ~540 px tall the footer overlaps the content — let it grow (`min-h`); the GitHub link string `"https://github.com/…"` is clipped at 375 in the hero code block; uk role at 375 breaks after `>` alone; hero text ~4 px under the header
 - [ ] 3.7 Motion performance and a11y pass (Lighthouse, reduced motion, keyboard)
 
 ## Phase 2 — content
