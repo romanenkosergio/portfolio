@@ -1,10 +1,11 @@
 import type { KeyboardEvent, RefObject } from "react";
 import { useEffect, useRef } from "react";
 
-import { TIME_DELAY } from "../config";
+import { FOOD_TOTAL, TICK_START, TICK_STEP } from "../config";
 import {
   selectDirection,
   selectFood,
+  selectFoodLeft,
   selectSnake,
   selectReset,
   selectStart,
@@ -37,6 +38,7 @@ export const useGame = (): IUseGame => {
   const food = useSnakeStore(selectFood);
   const direction = useSnakeStore(selectDirection);
   const status = useSnakeStore(selectStatus);
+  const foodLeft = useSnakeStore(selectFoodLeft);
   const start = useSnakeStore(selectStart);
   const reset = useSnakeStore(selectReset);
   const tick = useSnakeStore(selectTick);
@@ -45,7 +47,8 @@ export const useGame = (): IUseGame => {
   // The store outlives the page; a fresh visit starts idle.
   useEffect(() => reset, [reset]);
 
-  useInterval(tick, status === "playing" ? TIME_DELAY : null);
+  const delay = TICK_START - TICK_STEP * (FOOD_TOTAL - foodLeft);
+  useInterval(tick, status === "playing" ? delay : null);
 
   useEffect(() => {
     const ctx = canvasRef.current?.getContext("2d");
