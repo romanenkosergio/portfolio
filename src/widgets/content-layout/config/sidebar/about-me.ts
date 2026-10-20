@@ -14,14 +14,14 @@ interface IAboutMeSidebarItem {
 
 export const ABOUT_ME_NAVIGATION: IAboutMeSidebarItem[] = [
   {
-    icon: "sidebar/personal-info",
-    titleKey: "personalInfo",
-    href: E_ROUTES.ABOUT_PERSONAL
-  },
-  {
     icon: "sidebar/professional-info",
     titleKey: "professionalInfo",
     href: E_ROUTES.ABOUT_PROFESSIONAL
+  },
+  {
+    icon: "sidebar/personal-info",
+    titleKey: "personalInfo",
+    href: E_ROUTES.ABOUT_PERSONAL
   },
   {
     icon: "sidebar/hobbies",

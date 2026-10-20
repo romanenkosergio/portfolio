@@ -22,8 +22,13 @@ const AboutView: FC<IAboutViewProps> = ({ type }) => {
   return (
     <div className="flex min-w-0 flex-1 flex-col overflow-y-auto desktop:min-h-0 desktop:flex-row desktop:overflow-hidden">
       <div className="flex min-w-0 flex-none flex-col desktop:min-h-0 desktop:flex-1 desktop:border-r desktop:border-r-line">
-        <FileTabs current={type} labels={labels} closeLabels={closeLabels} />
-        <div className="scrollbar-pane desktop:min-h-0 desktop:flex-1 desktop:overflow-auto">
+        <FileTabs
+          current={type}
+          labels={labels}
+          closeLabels={closeLabels}
+          navLabel={t("tabs.label")}
+        />
+        <div className="scrollbar-pane desktop:min-h-0 desktop:flex-1 desktop:overflow-x-hidden desktop:overflow-y-auto">
           <ContentWithCodeLines content={t(`content.${type}`, { years })} />
         </div>
       </div>

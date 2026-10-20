@@ -1,25 +1,21 @@
+import { Fragment } from "react";
 import type { FC } from "react";
 
 import type { IContentWithCodeLinesProps } from "./content-with-code-lines.types";
 
+// Soft-wrapped like an editor: one grid row per logical line; a wrapped line continues in the
+// text cell without a number.
 const ContentWithCodeLines: FC<IContentWithCodeLinesProps> = ({ content }) => {
   const lines = content.split("\n");
 
   return (
-    <div className="flex w-max min-w-full gap-10 py-3.5 pl-9.5 text-lg leading-normal">
-      <div className="text-right text-secondary-1">
-        {lines.map((_, index) => (
-          <div key={index}>{index + 1}</div>
-        ))}
-      </div>
-
-      <div className="text-secondary-1">
-        {lines.map((line, index) => (
-          <div key={index} className="whitespace-pre">
-            {line || "\u00A0"}
-          </div>
-        ))}
-      </div>
+    <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-10 py-3.5 pr-6 pl-9.5 text-lg leading-normal text-secondary-1">
+      {lines.map((line, index) => (
+        <Fragment key={index}>
+          <div className="text-right">{index + 1}</div>
+          <div className="break-words whitespace-pre-wrap">{line || " "}</div>
+        </Fragment>
+      ))}
     </div>
   );
 };

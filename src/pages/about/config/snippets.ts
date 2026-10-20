@@ -5,22 +5,25 @@ export const SNIPPET_BLOB_URL = `${GITHUB_URL}/portfolio/blob/main`;
 
 export const SNIPPET_AUTHOR = "@romanenkosergio";
 
-// Real excerpts from this repository (nothing from client work, D16). The explanation of
+// Real excerpts from this repository (nothing from client work, D16): every line is verbatim
+// from `path`, cuts are `// …` (checked by `yarn snippets`). The explanation of
 // each is the `about.snippets.items.<id>.details` message.
 export const SNIPPETS = [
   {
     id: "step",
     path: "src/pages/home/model/snake.ts",
-    code: `export const step = (state: SnakeState, random: RandomSource) => {
-  if (state.status !== "playing") return state;
-
+    code: `export const step = (state: SnakeState, random: RandomSource): SnakeState => {
   const [dx, dy] = VECTORS[state.direction];
   const head: Cell = [state.snake[0][0] + dx, state.snake[0][1] + dy];
-
+  // …
   if (sameCell(head, state.food)) {
-    return { ...state, snake: [head, ...state.snake], food: placeFood(random) };
+    return {
+      ...state,
+      snake: [head, ...state.snake],
+      food: placeFood(random),
+      // …
+    };
   }
-  return { ...state, snake: [head, ...state.snake.slice(0, -1)] };
 };`
   },
   {

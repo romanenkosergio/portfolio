@@ -1,8 +1,11 @@
 import type { ThemeRegistrationRaw } from "shiki";
 
+// Plain text colour; tokens in it need no inline style.
+export const CODE_TEXT_COLOR = "var(--color-secondary-1)";
+
 // Colours are the palette tokens (`styles.css`), so the code follows the site, not a copy of it.
 const COLORS = {
-  text: "var(--color-secondary-1)",
+  text: CODE_TEXT_COLOR,
   keyword: "var(--color-accent-3)",
   type: "var(--color-accent-1)",
   func: "var(--color-accent-4)",

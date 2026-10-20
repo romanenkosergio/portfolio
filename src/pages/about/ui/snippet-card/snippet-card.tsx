@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import type { FC } from "react";
 
 import { cn } from "@/shared/lib";
@@ -22,12 +22,20 @@ const SnippetCard: FC<ISnippetCardProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const detailsId = useId();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Closing from the panel hides the focused ×, so focus goes back to the toggle.
+  const closeDetails = () => {
+    setOpen(false);
+    toggleRef.current?.focus();
+  };
 
   return (
     <article className="flex flex-col gap-4.5">
       <header className="flex items-center justify-between gap-4">
         <SnippetAuthor author={author} path={path} url={url} />
         <button
+          ref={toggleRef}
           type="button"
           title={detailsLabel}
           aria-expanded={open}
@@ -41,7 +49,7 @@ const SnippetCard: FC<ISnippetCardProps> = ({
           {detailsLabel}
         </button>
       </header>
-      <div className="rounded-[15px] border border-line bg-primary-3 px-7.5 py-6">
+      <div className="rounded-[15px] border border-line bg-primary-3 px-5 py-5">
         {children}
       </div>
       <div
@@ -52,7 +60,7 @@ const SnippetCard: FC<ISnippetCardProps> = ({
         <p>{details}</p>
         <Icon
           name="close"
-          onClick={() => setOpen(false)}
+          onClick={closeDetails}
           label={closeLabel}
           interactive
           className="mt-0.5 h-3.5 w-3.5 flex-none"

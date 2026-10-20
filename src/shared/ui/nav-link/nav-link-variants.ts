@@ -7,7 +7,7 @@ export const navLinkVariants = cva(
       variant: {
         header: "desktop:aria-[current]:text-white",
         // Icon rail of the explorer: dim until current or hovered.
-        rail: "gap-2 desktop:text-secondary-1/50 desktop:hover:text-white",
+        rail: "gap-2 desktop:text-secondary-1/40 desktop:hover:text-secondary-1",
         // A row of the explorer tree.
         file: "gap-3 py-1"
       }
@@ -19,6 +19,6 @@ export const navLinkVariants = cva(
 // Colour of the current page on desktop; a link may bring its own (`activeClass`).
 export const navLinkActiveClass = {
   header: "desktop:aria-[current]:border-b-accent-1",
-  rail: "desktop:aria-[current]:text-secondary-1",
+  rail: "desktop:aria-[current]:text-white",
   file: "desktop:aria-[current]:text-white"
 } as const;

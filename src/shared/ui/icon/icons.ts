@@ -13,7 +13,6 @@ import GameFood from "@/public/assets/icons/game/food.svg";
 import KeyboardArrow from "@/public/assets/icons/keyboard-arrow.svg";
 import Mail from "@/public/assets/icons/mail.svg";
 import Markdown from "@/public/assets/icons/markdown.svg";
-import Phone from "@/public/assets/icons/phone.svg";
 import SidebarHobbies from "@/public/assets/icons/sidebar/hobbies.svg";
 import SidebarPersonalInfo from "@/public/assets/icons/sidebar/personal-info.svg";
 import SidebarProfessionalInfo from "@/public/assets/icons/sidebar/professional-info.svg";
@@ -28,7 +27,6 @@ export const ICONS = {
   "keyboard-arrow": KeyboardArrow,
   "mail": Mail,
   "markdown": Markdown,
-  "phone": Phone,
   "bolts/bolt-down-left": BoltsBoltDownLeft,
   "bolts/bolt-down-right": BoltsBoltDownRight,
   "bolts/bolt-up-left": BoltsBoltUpLeft,

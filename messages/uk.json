@@ -91,7 +91,8 @@
       "experience": "/**\n * Досвід\n *\n * Frontend Lead — MetaProject\n * 11.2025 – зараз\n * Архітектура й стандарти фронтенду SaaS-платформи;\n * прийшов як Front-End Developer у 07.2025.\n *\n * Frontend Team Lead — You are launched\n * 01.2024 – 06.2025\n * Вів фронтенд стартапів і SaaS-продуктів; зробив\n * внутрішні інструменти, документацію й онбординг.\n *\n * Front-End Developer — DFINITY\n * 01.2023 – 07.2023\n * Сторінки Web3-продуктів, власні графіки й візуалізації.\n *\n * Frontend Lecturer — HILLEL IT SCHOOL\n * 01.2022 – 01.2023\n * Викладав JavaScript і React початківцям.\n *\n * Front-End Developer — GoWombat\n * 03.2022 – 09.2022\n * Клієнтські проєкти на React, Vue і Django; менторив джунів.\n *\n * Development Team Lead — Fourmeta\n * 01.2020 – 03.2022\n * Shopify-маркетплейси. За 4 місяці підвищений до Team Lead;\n * інтерв’ю, код-рев’ю та шаблони проєктів.\n *\n * Front-End Developer — EXSY\n * 09.2019 – 04.2020\n * React-застосунки з Redux і Material UI.\n *\n * Front-End Developer — HEXIDE DIGITAL\n * 05.2019 – 08.2019\n * Сайти для клієнтів на Vue.js.\n *\n * Front-End Developer — TURBOINSTA\n * 05.2017 – 04.2019\n * Сайти компанії, інтеграції CRM, Telegram-боти.\n */"
     },
     "tabs": {
-      "close": "Close {name}"
+      "close": "Close {name}",
+      "label": "Open files"
     },
     "snippets": {
       "title": "// Code snippet showcase:",

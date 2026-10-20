@@ -22,7 +22,7 @@ const ContentLink: FC<IContentLinkProps> = ({ item }) => {
         className="h-3.5 w-4 shrink-0"
         interactive={!item.tone}
       />
-      <span className="truncate text-base desktop:group-hover:text-white">
+      <span className="text-base break-all desktop:group-hover:text-white">
         {title}
       </span>
     </>
