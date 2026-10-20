@@ -16,9 +16,7 @@ const DIRECTIVES: Record<string, string[]> = {
   "connect-src": ["'self'", ...(isDev ? ["ws:"] : [])],
   "object-src": ["'none'"],
   "base-uri": ["'self'"],
-  "form-action": ["'self'"],
-  // Dev serves plain http on localhost, where upgrading would break every asset.
-  ...(isDev ? {} : { "upgrade-insecure-requests": [] })
+  "form-action": ["'self'"]
 };
 
 export const CSP = Object.entries(DIRECTIVES)

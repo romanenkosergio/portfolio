@@ -17,6 +17,7 @@
     "gate": "yarn format:check && yarn lint && yarn typecheck && yarn fsd && yarn egress && yarn dup",
     "egress": "node scripts/egress-check.mjs",
     "dup": "jscpd",
+    "postbuild": "node scripts/csp-first.mjs",
     "size": "size-limit",
     "gate:push": "yarn gate && yarn build && yarn size"
   },

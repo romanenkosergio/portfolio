@@ -27,7 +27,7 @@ const ALLOWED = [
 ];
 
 const SKIP_DIR = new Set(["node_modules", ".next", "out"]);
-const SOURCE = /\.(ts|tsx|js|jsx|mjs|cjs|json)$/;
+const SOURCE = /\.(ts|tsx|js|jsx|mjs|cjs|json|css)$/;
 
 function* sourceFiles(dir) {
   let entries;
@@ -46,16 +46,24 @@ function* sourceFiles(dir) {
   }
 }
 
+// An absolute http(s)/ws(s) URL, or a protocol-relative //host right after a quote or "(".
+const URL_HOST =
+  /(?:(?:https?|wss?):\/\/|["'`(]\/\/)(?:\$\{[^}]*\}|[a-zA-Z0-9._-])+/g;
+const CONFIG_HOST = /^\$\{[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*\}/;
+
 const findings = [];
 
 for (const root of ROOTS) {
   for (const file of sourceFiles(root)) {
     const lines = readFileSync(file, "utf8").split("\n");
     lines.forEach((line, index) => {
-      for (const url of line.match(/https?:\/\/[a-zA-Z0-9.$_{}-]+/g) ?? []) {
-        const host = url.replace(/^https?:\/\//, "");
-        // Built from configuration rather than written down: that is the wanted shape.
-        if (host.includes("${")) continue;
+      for (const url of line.match(URL_HOST) ?? []) {
+        const host = url
+          .replace(/^["'`(]/, "")
+          .replace(/^(?:(?:https?|wss?):)?\/\//, "");
+        // Built from configuration rather than written down: that is the wanted shape. Only a
+        // plain identifier or member expression counts; a string literal inside ${} does not.
+        if (CONFIG_HOST.test(host)) continue;
         if (
           ALLOWED.some(
             ({ host: allowed }) =>
