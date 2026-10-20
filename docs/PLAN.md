@@ -4,15 +4,14 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.11, 1.14–1.16, 2.3, 2.4, 3.1–3.3
+Done: 1.1–1.11, 1.14–1.16, 2.1, 2.3, 2.4, 3.1–3.3
 
 ## Pages — markup, content, motion (D8; Figma in AGENTS.md)
 
 Each page: markup and content first (2.x), then its motion (3.x). Copy via `copywriter`, en first.
 
-- [ ] 2.1 `/projects` markup + content: tech filter sidebar, card grid (image, `// _name`, text, view button); `project` entity; commercial projects from the CV, NDA-safe per D16, plus personal Tiny Coop and Dareboard (D17); a commercial/personal filter or badge (no client names, logos, screenshots, metrics; owner approves each card); abstract images
 - [ ] 3.4 Projects motion: filter with Flip transitions, card hover/entrance
-- [ ] 2.2 `/contact` markup + content: contacts sidebar (email, LinkedIn, GitHub; no phone), form name/email/message with validation, live code preview, success/error states; sends via Formspree or Web3Forms (owner, 2026-10-20; pick → D18, endpoint in `shared/config`, host in egress allow-list + CSP `connect-src`)
+- [ ] 2.2 `/contact` markup + content: contacts sidebar (email, LinkedIn, GitHub; no phone), form name/email/message with validation, live code preview, success/error states; sends via Formspree or Web3Forms (owner, 2026-10-20; pick → D20, endpoint in `shared/config`, host in egress allow-list + CSP `connect-src`)
 - [ ] 3.5 Contact motion: preview typing in sync with the form, submit/success transitions
 - [ ] 2.5 uk/ru: translate every `messages/*.json` key (now English copies; uk/ru `interests` is still the old template text, en was rewritten in 2.4)
 - [ ] 2.6 404 page: designed markup in the site's style, all locales (`global-not-found` + `[locale]` not-found)

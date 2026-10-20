@@ -87,12 +87,12 @@
       "learning": "learning"
     },
     "content": {
-      "bio": "/**\n * Про мене\n * Я Frontend Lead у MetaProject. Роблю SaaS-продукти\n * на React, Next.js і TypeScript.\n *\n * {years, plural, one {# рік} few {# роки} many {# років} other {# року}} у фронтенді. Почав інженером\n * і виріс до тімліда. Виводив продукти від MVP\n * до продакшену в стартапах і продуктових командах\n * та вів людей, які їх будують.\n *\n * Мені важливі: архітектура фронтенду, досвід розробника,\n * продуктивність і чисті UI-системи. Вибудовую стандарти\n * й процеси, щоб команда могла випускати сама.\n * Менторю через код-рев’ю та обговорення дизайну.\n */",
+      "bio": "/**\n * Про мене\n * Я Frontend Lead у SaaS-компанії. Роблю SaaS-продукти\n * на React, Next.js і TypeScript.\n *\n * {years, plural, one {# рік} few {# роки} many {# років} other {# року}} у фронтенді. Почав інженером\n * і виріс до тімліда. Виводив продукти від MVP\n * до продакшену в стартапах і продуктових командах\n * та вів людей, які їх будують.\n *\n * Мені важливі: архітектура фронтенду, досвід розробника,\n * продуктивність і чисті UI-системи. Вибудовую стандарти\n * й процеси, щоб команда могла випускати сама.\n * Менторю через код-рев’ю та обговорення дизайну.\n */",
       "interests": "/**\n * Інтереси\n * Я проактивна людина, орієнтована на ріст. \n * Люблю розв’язувати складні задачі та будувати \n * співпрацю в командах. Переконаний, що підтримуюче \n * середовище, яке дає людям силу діяти, — запорука \n * успіху і в житті, і в роботі.\n *\n * Мій фокус — постійний саморозвиток, інновації \n * та гнучкість. Мені подобаються складні проблеми, \n * нові технології й творчі рішення, до яких я \n * заохочую команду.\n *\n * Я ціную відкрите спілкування, довіру й прозорість \n * і дбаю про атмосферу, де кожен може запропонувати \n * ідею та рости.\n *\n * Мене рухають цікавість, любов до роботи, що має \n * вплив, і бажання змінювати речі на краще — \n * і як лідера, і як людини.\n */",
       "skills": "/**\n * Навички\n *\n * Frontend\n * React, Next.js, TypeScript, Redux Toolkit,\n * TanStack Query, Zustand, Tailwind\n *\n * Архітектура\n * Архітектура фронтенду, FSD (Feature-Sliced Design),\n * дизайн-системи, SSR, оптимізація продуктивності\n *\n * Лідерство\n * Керування командою, менторинг, найм, код-рев’ю\n *\n * Інструменти\n * AWS, CI/CD, Jest, GraphQL\n */",
-      "experience": "/**\n * Досвід\n *\n * Frontend Lead — MetaProject\n * 11.2025 – зараз\n * Архітектура й стандарти фронтенду SaaS-платформи;\n * прийшов як Front-End Developer у 07.2025.\n *\n * Frontend Team Lead — You are launched\n * 01.2024 – 06.2025\n * Вів фронтенд стартапів і SaaS-продуктів; зробив\n * внутрішні інструменти, документацію й онбординг.\n *\n * Front-End Developer — DFINITY\n * 01.2023 – 07.2023\n * Сторінки Web3-продуктів, власні графіки й візуалізації.\n *\n * Frontend Lecturer — HILLEL IT SCHOOL\n * 01.2022 – 01.2023\n * Викладав JavaScript і React початківцям.\n *\n * Front-End Developer — GoWombat\n * 03.2022 – 09.2022\n * Клієнтські проєкти на React, Vue і Django; менторив джунів.\n *\n * Development Team Lead — Fourmeta\n * 01.2020 – 03.2022\n * Shopify-маркетплейси. За 4 місяці підвищений до Team Lead;\n * інтерв’ю, код-рев’ю та шаблони проєктів.\n *\n * Front-End Developer — EXSY\n * 09.2019 – 04.2020\n * React-застосунки з Redux і Material UI.\n *\n * Front-End Developer — HEXIDE DIGITAL\n * 05.2019 – 08.2019\n * Сайти для клієнтів на Vue.js.\n *\n * Front-End Developer — TURBOINSTA\n * 05.2017 – 04.2019\n * Сайти компанії, інтеграції CRM, Telegram-боти.\n */",
+      "experience": "/**\n * Досвід\n *\n * Frontend Lead — SaaS-компанія\n * 11.2025 – зараз\n * Архітектура й стандарти фронтенду SaaS-платформи;\n * прийшов як Front-End Developer у 07.2025.\n *\n * Frontend Team Lead — Продуктова студія\n * 01.2024 – 06.2025\n * Вів фронтенд стартапів і SaaS-продуктів; зробив\n * внутрішні інструменти, документацію й онбординг.\n *\n * Front-End Developer — Tech-компанія\n * 01.2023 – 07.2023\n * Сторінки продуктів, власні графіки й візуалізації.\n *\n * Frontend Lecturer — IT-школа\n * 01.2022 – 01.2023\n * Викладав JavaScript і React початківцям.\n *\n * Front-End Developer — Софтверна агенція\n * 03.2022 – 09.2022\n * Клієнтські проєкти на React, Vue і Django; менторив джунів.\n *\n * Development Team Lead — E-commerce компанія\n * 01.2020 – 03.2022\n * E-commerce платформи. За 4 місяці підвищений до Team Lead;\n * інтерв’ю, код-рев’ю та шаблони проєктів.\n *\n * Front-End Developer — Продуктова компанія\n * 09.2019 – 04.2020\n * React-застосунки з Redux і Material UI.\n *\n * Front-End Developer — Digital-агенція\n * 05.2019 – 08.2019\n * Сайти для клієнтів на Vue.js.\n *\n * Front-End Developer — Продуктова компанія\n * 05.2017 – 04.2019\n * Сайти компанії, інтеграції CRM, Telegram-боти.\n */",
       "games": "/**\n * Games\n * I play World of Warcraft and whatever is new on\n * my PS5. I also like how games are built: a tight\n * loop of input, state and feedback is good practice\n * for frontend thinking.\n *\n * I am building two of my own:\n * Tiny Coop, a cozy idle desktop game about a hen,\n * made in Godot 4 and heading to Steam.\n * Dareboard, a party game app (truth or dare, never\n * have I ever, spin the bottle) in Expo and React\n * Native, coming to the App Store and Google Play.\n *\n * The snake on the home page is a small one: a pure\n * state engine, testable without a canvas.\n */",
-      "learning": "/**\n * Learning\n * I am self-taught. I learned frontend from\n * documentation, source code and real projects,\n * and I still learn the same way.\n *\n * Frontend changes fast, and so does the way teams\n * work. I try new ideas in small side projects\n * before they reach a team.\n *\n * This site is one of them: Feature-Sliced Design,\n * strict lint rules and a GSAP motion toolkit.\n *\n * Later I taught others: I lectured JavaScript and\n * React to students at Hillel IT School.\n */"
+      "learning": "/**\n * Learning\n * I am self-taught. I learned frontend from\n * documentation, source code and real projects,\n * and I still learn the same way.\n *\n * Frontend changes fast, and so does the way teams\n * work. I try new ideas in small side projects\n * before they reach a team.\n *\n * This site is one of them: Feature-Sliced Design,\n * strict lint rules and a GSAP motion toolkit.\n *\n * Later I taught others: I lectured JavaScript and\n * React to students at an IT school.\n */"
     },
     "tabs": {
       "close": "Close {name}",
@@ -141,6 +141,78 @@
   "root": {
     "continue": "Перейти на сайт",
     "title": "Перенаправлення"
+  },
+  "projects": {
+    "heading": "Projects",
+    "filter": {
+      "title": "projects",
+      "label": "Filter by technology",
+      "all": "all",
+      "clear": "Show all projects"
+    },
+    "card": {
+      "label": "Project {n}",
+      "separator": "//",
+      "personal": "personal",
+      "stack": "Stack"
+    },
+    "empty": "// no projects use these technologies",
+    "items": {
+      "saas-platform": {
+        "title": "_saas-platform",
+        "domain": "Multi-tenant business software",
+        "role": "Frontend lead",
+        "summary": "Owned frontend direction for a product split into several modules. Agreed shared conventions and coached the engineers shipping features."
+      },
+      "early-stage-products": {
+        "title": "_early-stage-products",
+        "domain": "Early-stage web products",
+        "role": "Team lead",
+        "summary": "Headed the frontend side of a few young products. Shaped app foundations they could share and scripted the repetitive parts of starting a project."
+      },
+      "data-heavy-ui": {
+        "title": "_data-heavy-ui",
+        "domain": "Analytics-heavy web product",
+        "role": "Frontend engineer",
+        "summary": "Rebuilt key screens and wrote interactive widgets that draw custom graphics from live data. Simplified how users move through the product."
+      },
+      "ecommerce-platform": {
+        "title": "_ecommerce-platform",
+        "domain": "E-commerce platforms",
+        "role": "Team lead",
+        "summary": "Ran frontend for online storefronts with many sellers. Packaged a starter setup in React so new projects began from a working base."
+      },
+      "client-apps": {
+        "title": "_client-apps",
+        "domain": "Custom apps for clients",
+        "role": "Frontend engineer",
+        "summary": "Delivered interfaces for several customer products on top of Python backends. Extracted common UI parts and helped newer colleagues get productive."
+      },
+      "lead-automation": {
+        "title": "_lead-automation",
+        "domain": "Sales operations tooling",
+        "role": "Frontend engineer",
+        "summary": "Wired company websites to the sales pipeline so inquiries were routed without manual work, added chat-bot helpers for the team, and sped up page loads."
+      },
+      "marketing-sites": {
+        "title": "_marketing-sites",
+        "domain": "Responsive marketing websites",
+        "role": "Frontend engineer",
+        "summary": "Built mobile-friendly sites for agency customers from design files. Kept a library of reusable blocks and an organised style system as sites grew."
+      },
+      "tiny-coop": {
+        "title": "_tiny-coop",
+        "domain": "Desktop game",
+        "role": "Solo developer",
+        "summary": "A cozy idle game about a hen living in a coop on a transparent strip at the bottom of your screen. Steam, Windows and macOS. In development."
+      },
+      "dareboard": {
+        "title": "_dareboard",
+        "domain": "Mobile party game",
+        "role": "Solo developer",
+        "summary": "Party game app: truth or dare, never have I ever, spin the bottle. Expo client, NestJS API and an Astro landing page. Coming to the App Store and Google Play."
+      }
+    }
   },
   "titles": {
     "home": "Ласкаво просимо до мого портфоліо",
