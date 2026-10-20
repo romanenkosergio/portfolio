@@ -23,8 +23,9 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 
 ## Next
 
-- Phase 3 next: 3.3 (About), then 3.4, 3.5, 3.6, 3.7; phase 2 after; tests last (1.12, 1.13).
-  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D16.
+- Pages in PLAN order, markup + content before motion: About (2.3, 2.4, 3.3) → Projects (2.1, 3.4) → Contact
+  (2.2, 3.5) → 2.5, 2.6, 2.0 → 3.6, 3.7; tests last (1.12, 1.13).
+  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D17.
 
 ## Environment
 
