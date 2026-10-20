@@ -35,7 +35,6 @@ const TechFilter: FC<ITechFilterProps> = ({
         {title}
       </h2>
       <ul
-        role="group"
         aria-labelledby={`${prefix}-title`}
         className="flex flex-wrap gap-x-6 gap-y-4 px-5.5 py-4.5 desktop:flex-col desktop:gap-y-4.25"
       >
