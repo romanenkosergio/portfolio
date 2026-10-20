@@ -1,0 +1,168 @@
+"use client";
+
+import { useRef } from "react";
+import type { FC } from "react";
+
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+
+import {
+  DURATION,
+  EASE,
+  PENDING_ATTR,
+  TYPE,
+  isAlreadyVisible,
+  matchMotion,
+  registerTypeText
+} from "@/shared/lib/motion";
+
+import type { MotionHostType } from "../motion.types";
+
+import type { ITypeTextProps } from "./type-text.types";
+
+registerTypeText();
+
+interface ITypingOptions {
+  chars: HTMLElement[];
+  caret: HTMLElement | null;
+  keepCaret: boolean;
+  speed: number;
+  delay: number;
+}
+
+/**
+ * Reveals the chars one by one, moving the caret to each char's right edge.
+ * Afterwards the caret blinks (kept) or fades out. All of it is created
+ * synchronously, so the surrounding matchMedia context reverts it.
+ */
+const typeChars = ({
+  chars,
+  caret,
+  keepCaret,
+  speed,
+  delay
+}: ITypingOptions): gsap.core.Timeline => {
+  const timeline = gsap.timeline({ delay });
+  gsap.set(chars, { opacity: 0 });
+  if (caret) gsap.set(caret, { opacity: 1, x: 0, y: 0 });
+  const blink = caret
+    ? gsap.to(caret, {
+        opacity: 0,
+        duration: TYPE.blink,
+        repeat: -1,
+        yoyo: true,
+        ease: EASE.blink,
+        paused: true
+      })
+    : null;
+  chars.forEach((char, index) => {
+    const at = index / speed;
+    timeline.set(char, { opacity: 1 }, at);
+    if (caret) {
+      timeline.set(
+        caret,
+        { x: char.offsetLeft + char.offsetWidth, y: char.offsetTop },
+        at
+      );
+    }
+  });
+  if (!caret || !blink) return timeline;
+  if (keepCaret) return timeline.add(() => void blink.play(), `+=${TYPE.hold}`);
+  return timeline.to(
+    caret,
+    { opacity: 0, duration: DURATION.fast },
+    `+=${TYPE.hold}`
+  );
+};
+
+interface IPlayTyping extends Omit<ITypingOptions, "chars"> {
+  host: HTMLElement;
+  text: HTMLElement;
+}
+
+/** Splits the text and types it (full motion), or shows it at once (reduced); returns the context to revert. */
+const playTyping = ({ host, text, ...options }: IPlayTyping): gsap.MatchMedia =>
+  matchMotion(host, {
+    full: () => {
+      if (isAlreadyVisible(host)) return;
+      const instance = SplitText.create(text, {
+        type: "chars",
+        aria: "none",
+        onSplit: self =>
+          typeChars({ ...options, chars: self.chars as HTMLElement[] })
+      });
+      host.removeAttribute(PENDING_ATTR);
+      return () => instance.revert();
+    },
+    reduced: () => {
+      host.removeAttribute(PENDING_ATTR);
+      const { caret, keepCaret } = options;
+      if (caret && keepCaret) {
+        gsap.set(caret, { opacity: 1, x: text.offsetWidth });
+      }
+    }
+  });
+
+/**
+ * Types its text char by char, like a terminal. The real text is in the HTML
+ * (sr-only copy for screen readers); the animated copy is aria-hidden, its
+ * chars occupy their final space from the start, so the box never shifts.
+ * The caret is an absolutely placed block that never takes part in layout.
+ * Reduced motion: the final text, with a static caret when it is kept.
+ */
+const TypeText: FC<ITypeTextProps> = ({
+  as = "span",
+  className,
+  children,
+  caret = false,
+  keepCaret = true,
+  speed = TYPE.speed,
+  delay = 0
+}) => {
+  const hostRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const caretRef = useRef<HTMLSpanElement>(null);
+
+  useGSAP(
+    () => {
+      const host = hostRef.current;
+      const text = textRef.current;
+      if (!host || !text) return;
+      const mm = playTyping({
+        host,
+        text,
+        caret: caretRef.current,
+        keepCaret,
+        speed,
+        delay
+      });
+      return () => mm.revert();
+    },
+    {
+      scope: hostRef,
+      dependencies: [children, caret, keepCaret, speed, delay],
+      revertOnUpdate: true
+    }
+  );
+
+  const Tag = as as MotionHostType;
+  return (
+    <Tag ref={hostRef} className={className} {...{ [PENDING_ATTR]: "" }}>
+      <span className="sr-only">{children}</span>
+      <span aria-hidden="true" className="relative inline-block">
+        <span key={children} ref={textRef}>
+          {children}
+        </span>
+        {caret && (
+          <span
+            ref={caretRef}
+            className="absolute top-0 left-0 h-full w-[0.55em] bg-current opacity-0"
+          />
+        )}
+      </span>
+    </Tag>
+  );
+};
+
+export default TypeText;
