@@ -4,12 +4,7 @@ Open items only, one line each, ≤ 8000 bytes (`pr-handoff-guard`). A finished 
 number goes to «Done»; details — DECISIONS and git. Sections in working order; format `- [ ] N.M`
 (read by `session-brief.sh`).
 
-Done: 1.1–1.4, 1.6–1.11, 1.15, 1.16
-
-## Phase 1 — tooling
-
-- [ ] 1.14 size-limit on `out/`, jscpd, egress check, gitleaks, meta referrer/CSP (D6)
-- [ ] 1.5 Repository private? GitHub Pages from a private repo needs GitHub Pro (owner)
+Done: 1.1–1.11, 1.14–1.16
 
 ## Phase 3 — redesign with motion (D8; Figma in AGENTS.md)
 
