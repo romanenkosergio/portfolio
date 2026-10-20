@@ -1,0 +1,16 @@
+{
+  "path": ["src", "app", "eslint", "scripts"],
+  "format": ["typescript", "tsx", "javascript", "jsx"],
+  "min-tokens": 70,
+  "min-lines": 8,
+  "threshold": 0,
+  "absolute": true,
+  "gitignore": true,
+  "reporters": ["console"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/out/**",
+    "app/[[]locale]/**/page.tsx"
+  ]
+}

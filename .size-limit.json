@@ -1,0 +1,14 @@
+[
+  {
+    "name": "JS (all chunks)",
+    "path": "out/_next/static/**/*.js",
+    "limit": "280 kB",
+    "gzip": true
+  },
+  {
+    "name": "CSS",
+    "path": "out/_next/static/**/*.css",
+    "limit": "10 kB",
+    "gzip": true
+  }
+]

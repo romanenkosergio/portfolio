@@ -5,7 +5,7 @@ import type { AbstractIntlMessages } from "next-intl";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 
-import { APP_CONFIG, OPEN_GRAPH } from "@/shared/config";
+import { APP_CONFIG, CSP, OPEN_GRAPH, REFERRER_POLICY } from "@/shared/config";
 import { LOCALES, OG_LOCALES } from "@/shared/i18n";
 
 import { Footer } from "@/widgets/footer";
@@ -45,6 +45,7 @@ export async function generateMetadata({
       description: t("ogDescription"),
       locale: OG_LOCALES[locale]
     },
+    referrer: REFERRER_POLICY,
     icons: generateIcons()
   };
 }
@@ -57,7 +58,9 @@ const Layout: FC<PropsWithChildren<ILocaleProps>> = async ({
   const messages = await getMessages({ locale });
   return (
     <html lang={locale} className={fonts}>
-      <head />
+      <head>
+        <meta httpEquiv="Content-Security-Policy" content={CSP} />
+      </head>
       <body>
         <NextIntlClientProvider messages={pickMessages(messages)}>
           <LayoutShell header={<Header />} footer={<Footer />}>

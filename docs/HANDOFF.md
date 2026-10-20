@@ -5,8 +5,13 @@ right: ≤ 8000 bytes (`wc -c`; the `pr-handoff-guard` hook denies a PR over it)
 «Current state» is the last finished theme — replace it at each hand-off, don't append. Anything
 durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted here; git is the history.
 
-## Current state (2026-10-19)
+## Current state (2026-10-20)
 
+- PLAN 1.14 done: `gate` adds `egress` (`scripts/egress-check.mjs`, allow-listed hosts with a reason, roots src/app/messages)
+  and `dup` (jscpd, threshold 0; `app/[locale]/**/page.tsx` stubs ignored until they get real views); `gate:push` adds
+  `size` (size-limit on `out/_next/static`, JS 280 kB / CSS 10 kB gzip). gitleaks: `ci.yml` `secrets` job on PRs and in
+  `pages.yml` before the gate. CSP + referrer are `<meta>` tags built in `shared/config/csp.ts` (dev adds `unsafe-eval`, `ws:`).
+- Repo stays public (D13, PLAN 1.5 closed).
 - About content (bio, skills, experience) rewritten from the owner's CV in en/uk/ru; `interests` unchanged. Years of
   experience are never written: `{years, plural, …}` in messages, `yearsSince(CAREER_START)` (`shared/config`, May 2017)
   passed by `about-view.tsx` at build time — the number refreshes with each deploy. The CV PDF is local only
@@ -51,8 +56,8 @@ path, title?})` adds canonical, hreflang + x-default. Header has a shadcn `Selec
 
 ## Next
 
-- 1.14 → phase 3 (3.1 …) → phase 2 → tests last (1.12, 1.13).
-  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D13.
+- Phase 3 (3.1 …) → phase 2 → tests last (1.12, 1.13).
+  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D14.
 
 ## Environment
 
