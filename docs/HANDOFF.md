@@ -1,7 +1,6 @@
 # Hand-off — where the work is
 
-Read first in a fresh chat; it is re-read at every session start, so its size is part of being
-right: ≤ 8000 bytes (`wc -c`; the `pr-handoff-guard` hook denies a PR over it). Only the current:
+Read first in a fresh chat; it is re-read at every session start, so its size matters: ≤ 8000 bytes (`wc -c`; the `pr-handoff-guard` hook denies a PR over it). Only the current:
 «Current state» is the last finished theme — replace it at each hand-off, don't append. Anything
 durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted here; git is the history.
 

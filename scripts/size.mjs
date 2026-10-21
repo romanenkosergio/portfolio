@@ -5,9 +5,9 @@ import { readFileSync, rmSync, writeFileSync } from "node:fs";
 
 const OUT = "out";
 const html = readFileSync(`${OUT}/en/index.html`, "utf8");
-const polyfill = /<script[^>]*src="\/?([^"]+\.js)"[^>]*noModule/.exec(
-  html
-)?.[1];
+// The deploy build prefixes `src` with the base path (`/portfolio/_next/…`); out/ has no such folder.
+const tag = /<script[^>]*\bnoModule\b[^>]*>/i.exec(html)?.[0] ?? "";
+const polyfill = /\bsrc="[^"]*?(_next\/[^"]+\.js)"/.exec(tag)?.[1];
 if (!polyfill) throw new Error("size: no noModule script in out/en/index.html");
 
 const config = JSON.parse(readFileSync(".size-limit.json", "utf8")).map(
