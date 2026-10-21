@@ -12,11 +12,11 @@ import Navigation from "./navigation";
 const Header: FC = () => {
   const t = useTranslations("header");
   return (
-    <header className="flex items-center justify-between border border-line p-4.5 tablet:px-5.5 desktop:justify-start desktop:py-0">
+    <header className="sticky top-0 z-30 flex items-center justify-between border border-line bg-primary-2 p-4.5 tablet:px-5.5 desktop:static desktop:justify-start desktop:py-0">
       <Link
         title={t("homeTitle")}
         href={E_ROUTES.HOME}
-        className="text-md flex-none text-secondary-1 desktop:mr-38.5 desktop:w-38.5 desktop:py-4.5 desktop:hover:text-white"
+        className="text-md -my-2.5 flex-none py-2.5 text-secondary-1 desktop:my-0 desktop:mr-38.5 desktop:w-38.5 desktop:py-4.5 desktop:hover:text-white"
       >
         {t("brand")}
       </Link>

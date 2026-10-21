@@ -1,61 +1,57 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useId, useRef, useState } from "react";
 
 import { useTranslations } from "next-intl";
 
-import { cn } from "@/shared/lib";
+import { usePathname } from "@/shared/i18n";
+
+import { MENU_BAR, MENU_PANEL, useMenuBehavior, useMenuMotion } from "../lib";
 
 import LanguageSwitcher from "./language-switcher";
 import Navigation from "./navigation";
 
-const BAR_CLASSES = [
-  "translate-y-1.5 rotate-45",
-  "opacity-0",
-  "-translate-y-1.5 -rotate-45"
-];
+const BARS = [0, 1, 2];
 
+// Below `desktop`: the burger opens a full-screen list of the pages and the language switcher.
 const Burger = () => {
   const t = useTranslations("header");
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [openedAt, setOpenedAt] = useState(pathname);
   const menuId = useId();
+  const hostRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const close = useCallback(() => setIsOpen(false), []);
 
-  const closeMenu = () => setIsOpen(false);
+  // Navigating (a link, the browser's back button) closes the menu.
+  if (openedAt !== pathname) {
+    setOpenedAt(pathname);
+    setIsOpen(false);
+  }
 
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-        buttonRef.current?.focus();
-      }
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [isOpen]);
+  // The motion effect runs first: the panel is visible before focus moves into it.
+  useMenuMotion(hostRef, isOpen);
+  useMenuBehavior(hostRef, buttonRef, isOpen, close);
 
   return (
-    <>
+    <div ref={hostRef} className="desktop:hidden">
       <button
         ref={buttonRef}
         type="button"
         aria-expanded={isOpen}
         aria-controls={menuId}
         aria-label={isOpen ? t("closeMenu") : t("openMenu")}
-        className="flex cursor-pointer flex-col gap-1 desktop:hidden"
+        title={isOpen ? t("closeMenu") : t("openMenu")}
+        className="-my-2.5 -mr-3.5 flex size-11 cursor-pointer flex-col items-center justify-center gap-1 focus-visible:outline-2 focus-visible:outline-accent-1"
         onClick={() => setIsOpen(open => !open)}
       >
-        {BAR_CLASSES.map((className, index) => (
+        {BARS.map(bar => (
           <span
-            key={className}
+            key={bar}
             aria-hidden="true"
-            className={cn(
-              "h-0.5 w-4.5 transform bg-secondary-1 transition-[transform,translate,rotate,opacity] duration-300 ease-in-out",
-              isOpen ? className : index === 1 && "opacity-100"
-            )}
+            {...{ [MENU_BAR]: "" }}
+            className="h-0.5 w-4.5 bg-secondary-1"
           />
         ))}
       </button>
@@ -63,20 +59,18 @@ const Burger = () => {
       <div
         id={menuId}
         inert={!isOpen}
-        className={cn(
-          "absolute top-15.5 left-0 flex h-[calc(100dvh-62px)] w-full flex-col bg-primary-2 transition-opacity duration-700 ease-in-out",
-          isOpen ? "z-10 opacity-100" : "-z-1 opacity-0"
-        )}
+        {...{ [MENU_PANEL]: "" }}
+        className="invisible absolute top-full -left-px flex h-[calc(100dvh-100%)] w-[calc(100%+2px)] flex-col overflow-y-auto bg-primary-2 opacity-0"
       >
         <Navigation
-          className="flex flex-col gap-5 text-white desktop:hidden"
+          className="flex flex-col text-white"
           linkClassName="border-b-line border-b p-4.5"
-          onClick={closeMenu}
+          onClick={close}
           isMobile
         />
-        <LanguageSwitcher className="p-4.5 text-secondary-1 desktop:hidden" />
+        <LanguageSwitcher className="p-4.5 text-secondary-1" />
       </div>
-    </>
+    </div>
   );
 };
 

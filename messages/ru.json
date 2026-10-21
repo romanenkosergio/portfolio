@@ -47,7 +47,7 @@
   "home": {
     "greeting": "Привет, я",
     "name": "Serhii Romanenko",
-    "role": "> Front-end разработчик",
+    "role": ">\u00a0Front-end разработчик",
     "hint": "// пройди игру, чтобы продолжить",
     "constKeyword": "const",
     "linkName": "githubLink",

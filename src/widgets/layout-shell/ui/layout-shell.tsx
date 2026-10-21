@@ -23,7 +23,7 @@ const LayoutShell: FC<PropsWithChildren<ILayoutShellProps>> = ({
       <main
         id="main"
         tabIndex={-1}
-        className="flex h-[calc(100dvh-90px)] flex-col"
+        className="flex flex-1 flex-col desktop:h-[calc(100dvh-90px)] desktop:flex-initial"
       >
         {children}
       </main>

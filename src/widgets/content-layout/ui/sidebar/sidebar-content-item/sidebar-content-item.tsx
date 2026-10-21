@@ -3,6 +3,7 @@
 import { useId, useRef, useState } from "react";
 import type { FC } from "react";
 
+import { usePathname } from "@/shared/i18n";
 import { cn } from "@/shared/lib";
 import {
   FOLD_ARROW,
@@ -13,6 +14,8 @@ import {
 } from "@/shared/lib/motion";
 import { Icon } from "@/shared/ui";
 
+import { aboutSectionOf } from "@/widgets/content-layout/lib";
+
 import type { ISidebarContentItemProps } from "./sidebar-content-item.types";
 
 registerMotion();
@@ -22,9 +25,15 @@ const SidebarContentItem: FC<ISidebarContentItemProps> = ({
   title,
   children,
   className,
-  blockClass
+  blockClass,
+  openOn
 }) => {
-  const [open, setOpen] = useState(true);
+  const pathname = usePathname();
+  // Open on mount unless `openOn` says otherwise; `hidden` is then the hook's.
+  const [startsOpen] = useState(
+    () => openOn === undefined || openOn === aboutSectionOf(pathname)
+  );
+  const [open, setOpen] = useState(startsOpen);
   const listId = useId();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -43,11 +52,17 @@ const SidebarContentItem: FC<ISidebarContentItemProps> = ({
           className
         )}
       >
-        <Icon name="arrow-down" {...{ [FOLD_ARROW]: "" }} />
+        <Icon
+          name="arrow-down"
+          // A group that starts closed shows the turned arrow; GSAP reads this transform.
+          style={startsOpen ? undefined : { transform: "rotate(-90deg)" }}
+          {...{ [FOLD_ARROW]: "" }}
+        />
         {title}
       </button>
       <div
         id={listId}
+        hidden={!startsOpen}
         {...{ [FOLD_PANEL]: "" }}
         className="flex flex-col gap-2 pt-4.5 pb-7.5 pl-3.5"
       >

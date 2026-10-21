@@ -50,7 +50,7 @@ const ProjectsExplorer: FC<IProjectsExplorerProps> = ({
   };
 
   return (
-    <section className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-y-auto desktop:flex-row desktop:overflow-hidden">
+    <section className="flex w-full min-w-0 flex-1 flex-col desktop:min-h-0 desktop:flex-row desktop:overflow-hidden">
       <h1 className="sr-only">{copy.heading}</h1>
       <TechFilter
         title={copy.filterTitle}

@@ -12,7 +12,7 @@ const ContentLink: FC<IContentLinkProps> = ({ item }) => {
   const linkProps = {
     variant: "file",
     title,
-    className: "group flex cursor-pointer items-center"
+    className: "group flex min-h-11 cursor-pointer items-center desktop:min-h-0"
   } as const;
   const children = (
     <>
