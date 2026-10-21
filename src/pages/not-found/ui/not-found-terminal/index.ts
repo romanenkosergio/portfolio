@@ -1,1 +1,4 @@
-export { default as NotFoundTerminal, typingTime } from "./not-found-terminal";
+export {
+  default as NotFoundTerminal,
+  terminalPlan
+} from "./not-found-terminal";

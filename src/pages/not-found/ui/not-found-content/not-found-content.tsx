@@ -9,7 +9,7 @@ import { DISTANCE, DURATION } from "@/shared/lib/motion";
 import { Button } from "@/shared/ui";
 import { Reveal, ScrambleText } from "@/shared/ui/motion";
 
-import { NotFoundTerminal, typingTime } from "../not-found-terminal";
+import { NotFoundTerminal, terminalPlan } from "../not-found-terminal";
 
 import type { INotFoundContentProps } from "./not-found-content.types";
 
@@ -19,9 +19,12 @@ const TERMINAL_DELAY = DURATION.base;
 // The 404 decodes, a terminal types the failed lookup, then the way back rises in.
 const NotFoundContent: FC<INotFoundContentProps> = ({ path }) => {
   const t = useTranslations("notFound");
-  const command = `${t("command")} ${path ?? ""}`;
-  const errorDelay = TERMINAL_DELAY + typingTime(command) + DURATION.fast;
-  const afterError = errorDelay + typingTime(t("error"));
+  const afterError = terminalPlan(
+    t("command"),
+    path,
+    t("error"),
+    TERMINAL_DELAY
+  ).end;
 
   return (
     <section className="container flex flex-1 flex-col justify-center gap-6 py-12">

@@ -9,8 +9,19 @@ import { TypeText } from "@/shared/ui/motion";
 
 import type { INotFoundTerminalProps } from "./not-found-terminal.types";
 
-/** Seconds a line takes to type. */
-export const typingTime = (text: string) => text.length / TYPE.speed;
+const typingTime = (text: string) => text.length / TYPE.speed;
+
+/** The command line and the seconds at which the error starts and the whole terminal ends. */
+export const terminalPlan = (
+  label: string,
+  path: string | null,
+  error: string,
+  delay: number
+) => {
+  const command = `${label} ${path ?? ""}`;
+  const errorDelay = delay + typingTime(command) + DURATION.fast;
+  return { command, errorDelay, end: errorDelay + typingTime(error) };
+};
 
 /** The failed lookup, typed like a shell: the command, then its error. */
 const NotFoundTerminal: FC<INotFoundTerminalProps> = ({
@@ -19,8 +30,12 @@ const NotFoundTerminal: FC<INotFoundTerminalProps> = ({
   className
 }) => {
   const t = useTranslations("notFound");
-  const command = `${t("command")} ${path ?? ""}`;
-  const errorDelay = delay + typingTime(command) + DURATION.fast;
+  const { command, errorDelay } = terminalPlan(
+    t("command"),
+    path,
+    t("error"),
+    delay
+  );
   return (
     <div role="status" className={className}>
       {path !== null && (

@@ -5,12 +5,22 @@ import type { Locale } from "@/shared/i18n";
 /** Longest path echoed into the terminal; a longer one is cut. */
 const MAX_PATH_LENGTH = 80;
 
+/** Percent-escapes back to text (Cyrillic reads as such); a malformed escape stays as typed. */
+const readable = (path: string): string => {
+  try {
+    return decodeURI(path);
+  } catch {
+    return path;
+  }
+};
+
 /** The path as typed, without the deploy base path. */
 export const requestedPath = (pathname: string): string => {
-  const path = pathname.startsWith(BASE_PATH)
-    ? pathname.slice(BASE_PATH.length)
-    : pathname;
-  const shown = path || "/";
+  const inBase =
+    BASE_PATH !== "" &&
+    (pathname === BASE_PATH || pathname.startsWith(`${BASE_PATH}/`));
+  const path = inBase ? pathname.slice(BASE_PATH.length) : pathname;
+  const shown = readable(path || "/");
   return shown.length > MAX_PATH_LENGTH
     ? `${shown.slice(0, MAX_PATH_LENGTH)}…`
     : shown;

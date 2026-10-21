@@ -31,6 +31,7 @@ const NotFoundView: FC<INotFoundViewProps> = ({ locale, messages }) => {
   return (
     <NextIntlClientProvider
       locale={current}
+      timeZone="UTC"
       messages={{ notFound: messages[current] }}
     >
       <NotFoundContent
