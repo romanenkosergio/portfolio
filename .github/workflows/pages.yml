@@ -37,6 +37,7 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - run: yarn install --frozen-lockfile
+      # `gate` ends with `yarn test:coverage`: the jest suite and its coverage floor stand before the build (D6).
       - run: yarn gate
       - run: yarn build
         env:

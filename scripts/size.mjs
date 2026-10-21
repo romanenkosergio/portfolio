@@ -3,11 +3,11 @@
 import { spawnSync } from "node:child_process";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 
+import { polyfillPath } from "./polyfill-path.mjs";
+
 const OUT = "out";
 const html = readFileSync(`${OUT}/en/index.html`, "utf8");
-// The deploy build prefixes `src` with the base path (`/portfolio/_next/…`); out/ has no such folder.
-const tag = /<script[^>]*\bnoModule\b[^>]*>/i.exec(html)?.[0] ?? "";
-const polyfill = /\bsrc="[^"]*?(_next\/[^"]+\.js)"/.exec(tag)?.[1];
+const polyfill = polyfillPath(html);
 if (!polyfill) throw new Error("size: no noModule script in out/en/index.html");
 
 const config = JSON.parse(readFileSync(".size-limit.json", "utf8")).map(

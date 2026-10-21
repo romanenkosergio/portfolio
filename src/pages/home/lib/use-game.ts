@@ -1,7 +1,6 @@
 import type { KeyboardEvent, RefObject } from "react";
 import { useEffect, useRef } from "react";
 
-import { FOOD_TOTAL, TICK_START, TICK_STEP } from "../config";
 import {
   selectDirection,
   selectFood,
@@ -12,6 +11,7 @@ import {
   selectStatus,
   selectTick,
   selectSteer,
+  tickDelay,
   useSnakeStore
 } from "../model";
 
@@ -47,7 +47,7 @@ export const useGame = (): IUseGame => {
   // The store outlives the page; a fresh visit starts idle.
   useEffect(() => reset, [reset]);
 
-  const delay = TICK_START - TICK_STEP * (FOOD_TOTAL - foodLeft);
+  const delay = tickDelay(foodLeft);
   // A hidden tab keeps its timers alive (throttled): the snake waits there instead of dying unseen.
   useInterval(
     () => {
