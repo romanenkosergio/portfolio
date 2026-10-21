@@ -34,7 +34,12 @@ const ProjectsView: FC = () => {
           number: t("card.label", { n: index + 1 }),
           separator: t("card.separator"),
           personal: t("card.personal"),
-          stack: t("card.stack")
+          stack: t("card.stack"),
+          view: t("card.view"),
+          viewTitle: t("card.viewTitle", {
+            // The card title is file-like ("_dareboard"); the link title wants the plain name.
+            title: t(`items.${project.slug}.title`).replace(/^_/, "")
+          })
         }}
       />
     )

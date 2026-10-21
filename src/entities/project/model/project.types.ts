@@ -6,7 +6,7 @@ export interface IProject {
   slug: string;
   kind: ProjectKind;
   stack: readonly Tech[];
-  // Public link (store, Steam, demo); none exists yet, the card shows a button once one does.
+  // Public link (site, store, Steam, demo); the card shows a view-project button when set.
   href?: string;
 }
 

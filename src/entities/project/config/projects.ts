@@ -1,7 +1,7 @@
 import type { IProject } from "../model/project.types";
 
 // Commercial work is NDA-safe (D16): generic domain, no names, links or numbers. The copy of each
-// slug is `projects.items.<slug>` in messages. Personal projects (D17) have no public links yet.
+// slug is `projects.items.<slug>` in messages. Personal projects (D17) link only what is public (D20).
 export const PROJECTS = [
   {
     slug: "saas-platform",
@@ -42,6 +42,7 @@ export const PROJECTS = [
   {
     slug: "dareboard",
     kind: "personal",
-    stack: ["react-native", "expo", "nestjs", "typescript", "astro"]
+    stack: ["react-native", "expo", "nestjs", "typescript", "astro"],
+    href: "https://dareboard.app"
   }
 ] as const satisfies readonly IProject[];

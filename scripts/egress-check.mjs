@@ -23,7 +23,11 @@ const ALLOWED = [
     why: "profile link the visitor opens, not a request"
   },
   { host: "medium.com", why: "profile link the visitor opens, not a request" },
-  { host: "x.com", why: "profile link the visitor opens, not a request" }
+  { host: "x.com", why: "profile link the visitor opens, not a request" },
+  {
+    host: "dareboard.app",
+    why: "project site the visitor opens, not a request"
+  }
 ];
 
 const SKIP_DIR = new Set(["node_modules", ".next", "out"]);

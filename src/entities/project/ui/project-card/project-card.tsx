@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
+import { Button } from "@/shared/ui/button";
+
 import { badgeTechs } from "@/entities/project/lib";
 
 import { ProjectCover } from "../project-cover";
@@ -10,7 +12,7 @@ import type { IProjectCardProps } from "./project-card.types";
 // The title sits above the card, like a file name over its preview. `h-full` + the flex column
 // let cards of one grid row share a height.
 const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
-  const { slug, kind, stack, title, domain, role, summary } = project;
+  const { slug, kind, stack, title, domain, role, summary, href } = project;
 
   return (
     <article className="flex min-w-0 flex-1 flex-col gap-3.5">
@@ -41,6 +43,17 @@ const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
             <span className="text-white">{role}</span>
             <span>{domain}</span>
           </p>
+          {href !== undefined && (
+            <Button
+              variant="primary"
+              isExternalLink
+              target="_blank"
+              href={href}
+              title={labels.viewTitle}
+              text={labels.view}
+              className="self-start"
+            />
+          )}
         </div>
       </div>
     </article>
