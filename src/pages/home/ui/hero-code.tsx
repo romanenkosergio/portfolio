@@ -30,7 +30,7 @@ const CodeLine: FC<{
 const HeroCode: FC = () => {
   const t = useTranslations("home");
   return (
-    <Stagger className="mt-20" delay={HERO_DELAY.code}>
+    <Stagger className="mt-12 desktop:mt-14" delay={HERO_DELAY.code}>
       <CodeLine number={1}>
         <span className="text-md text-secondary-1">{t("hint")}</span>
       </CodeLine>
@@ -41,7 +41,7 @@ const HeroCode: FC = () => {
           title={t("linkTitle")}
           rel="nofollow noreferrer"
           target="_blank"
-          className="relative break-all text-accent-1 underline-offset-4 before:absolute before:bottom-0 before:left-0 before:block before:h-0.25 before:w-full before:origin-left before:scale-x-0 before:bg-accent-1 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-1 focus-visible:before:scale-x-100 motion-reduce:before:transition-none"
+          className="relative block text-xs break-all text-accent-1 underline-offset-4 before:absolute before:bottom-0 before:left-0 before:block before:h-0.25 before:w-full before:origin-left before:scale-x-0 before:bg-accent-1 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-1 focus-visible:before:scale-x-100 motion-reduce:before:transition-none tablet:inline tablet:text-base"
           href={GITHUB_URL}
         >
           {GITHUB_LINK_TEXT}

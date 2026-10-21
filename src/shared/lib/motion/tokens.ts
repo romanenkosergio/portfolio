@@ -23,7 +23,7 @@ export const DISTANCE = { y: 24, small: 12 } as const;
 export const STAGGER = { children: 0.12, chars: 0.03, words: 0.08 } as const;
 
 /** Characters the scramble effect cycles through: code punctuation and bits. */
-export const SCRAMBLE_CHARS = "01{}[]<>/\\=;:+*#";
+export const SCRAMBLE_CHARS = "01{}<>=+*#";
 
 /** Decode wave of ScrambleText: each char glitches for `char` s, a new one starts every `stagger` s. */
 export const WAVE = { char: 0.15, stagger: 0.05 } as const;
@@ -41,7 +41,12 @@ export const DESKTOP_QUERY = "(min-width: 1200px)";
 export const BELOW_DESKTOP_QUERY = "(max-width: 1199.98px)";
 
 /** Typing: `speed` in chars per second, caret `blink` half-period and the `hold` before it leaves, in seconds. */
-export const TYPE = { speed: 30, quick: 50, blink: 0.5, hold: 0.35 } as const;
+export const TYPE = {
+  speed: 30,
+  quick: 50,
+  blink: 0.5,
+  hold: 0.35
+} as const;
 
 /** Scale factors: panel entrance, food pop, key press. */
 export const SCALE = { enter: 0.96, pop: 1.4, press: 0.88 } as const;
