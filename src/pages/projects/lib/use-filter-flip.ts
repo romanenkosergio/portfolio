@@ -123,11 +123,13 @@ export const useFilterFlip = (
 
   return () => {
     const root = rootRef.current;
-    if (!root || !flip.current) return;
+    if (!root) return;
     // Settle the running flip and any entrance still waiting for scroll, so the capture is final.
     running.current?.progress(1).kill();
     running.current = null;
     settle(root);
+    // Flip not loaded yet: the layout changes at once.
+    if (!flip.current) return;
     state.current = flip.current.getState(cardsOf(root));
   };
 };

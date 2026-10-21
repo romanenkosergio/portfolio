@@ -12,7 +12,7 @@ import {
   PENDING_ATTR,
   TYPE,
   isAlreadyVisible,
-  loadSplitText,
+  loadScrambleText,
   matchMotion,
   playAfterLoad
 } from "@/shared/lib/motion";
@@ -105,7 +105,8 @@ const playTyping = ({ host, text, ...options }: IPlayTyping): gsap.MatchMedia =>
   matchMotion(host, {
     full: contextSafe =>
       playAfterLoad(
-        loadSplitText,
+        // The same loader as ScrambleText, so both hero lines start together and keep HERO_DELAY.
+        loadScrambleText,
         SplitText => {
           if (isAlreadyVisible(host)) return;
           const instance = SplitText.create(text, {

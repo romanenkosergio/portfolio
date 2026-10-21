@@ -52,3 +52,30 @@ describe("playAfterLoad", () => {
     expect(safe).toHaveBeenCalledTimes(1);
   });
 });
+
+describe("a failed import", () => {
+  it("rejects, is forgotten and succeeds on the next call", async () => {
+    jest.resetModules();
+    jest.doMock("gsap/Flip", () => {
+      throw new Error("offline");
+    });
+    const fresh = await import("./load-plugins");
+    await expect(fresh.loadFlip()).rejects.toThrow("offline");
+
+    jest.dontMock("gsap/Flip");
+    jest.resetModules();
+    const again = await import("./load-plugins");
+    await expect(again.loadFlip()).resolves.toBeDefined();
+  });
+
+  it("playAfterLoad swallows it", async () => {
+    const play = jest.fn();
+    playAfterLoad(
+      () => Promise.reject(new Error("offline")),
+      play,
+      run => run
+    );
+    await Promise.resolve();
+    expect(play).not.toHaveBeenCalled();
+  });
+});

@@ -3,7 +3,7 @@
 import { useId } from "react";
 import type { FC } from "react";
 
-import { cn } from "@/shared/lib";
+import { cn, useHydrated } from "@/shared/lib";
 import { Icon } from "@/shared/ui";
 
 import { TechCheckbox } from "../tech-checkbox";
@@ -21,6 +21,7 @@ const TechFilter: FC<ITechFilterProps> = ({
   firstRef
 }) => {
   const prefix = useId();
+  const hydrated = useHydrated();
 
   return (
     <aside
@@ -46,6 +47,7 @@ const TechFilter: FC<ITechFilterProps> = ({
                 ref={index === 0 ? firstRef : undefined}
                 id={`${prefix}-${tech}`}
                 checked={isChecked}
+                disabled={!hydrated}
                 onChange={() => onToggle(tech)}
               />
               <label

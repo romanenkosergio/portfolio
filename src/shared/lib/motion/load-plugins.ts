@@ -1,6 +1,3 @@
-import type { Flip } from "gsap/Flip";
-import type { SplitText } from "gsap/SplitText";
-
 import { register, registerMotion } from "./register";
 
 /**
@@ -9,33 +6,41 @@ import { register, registerMotion } from "./register";
  * its plugins once and hands back the one the caller calls; the promise is
  * shared, so concurrent callers fetch once.
  */
-let splitText: Promise<typeof SplitText> | undefined;
-let scrambleText: Promise<typeof SplitText> | undefined;
-let flip: Promise<typeof Flip> | undefined;
+/** Shares one promise per loader; a failed import is forgotten so a later call retries. */
+const once = <T>(load: () => Promise<T>): (() => Promise<T>) => {
+  let pending: Promise<T> | undefined;
+  return () =>
+    (pending ??= load().catch((error: unknown) => {
+      pending = undefined;
+      throw error;
+    }));
+};
 
-export const loadSplitText = (): Promise<typeof SplitText> =>
-  (splitText ??= import("gsap/SplitText").then(({ SplitText: plugin }) => {
+export const loadSplitText = once(() =>
+  import("gsap/SplitText").then(({ SplitText: plugin }) => {
     registerMotion();
     register(plugin);
     return plugin;
-  }));
+  })
+);
 
-/** SplitText and the scramble plugin; resolves with SplitText. */
-export const loadScrambleText = (): Promise<typeof SplitText> =>
-  (scrambleText ??= Promise.all([
-    loadSplitText(),
-    import("gsap/ScrambleTextPlugin")
-  ]).then(([plugin, { ScrambleTextPlugin }]) => {
-    register(ScrambleTextPlugin);
-    return plugin;
-  }));
+/** SplitText and the scramble plugin; resolves with SplitText. The hero's text primitives all load this, so they start together. */
+export const loadScrambleText = once(() =>
+  Promise.all([loadSplitText(), import("gsap/ScrambleTextPlugin")]).then(
+    ([plugin, { ScrambleTextPlugin }]) => {
+      register(ScrambleTextPlugin);
+      return plugin;
+    }
+  )
+);
 
-export const loadFlip = (): Promise<typeof Flip> =>
-  (flip ??= import("gsap/Flip").then(({ Flip: plugin }) => {
+export const loadFlip = once(() =>
+  import("gsap/Flip").then(({ Flip: plugin }) => {
     registerMotion();
     register(plugin);
     return plugin;
-  }));
+  })
+);
 
 /**
  * Runs `play` once `load` resolves, if the setup was not reverted meanwhile.
@@ -50,12 +55,16 @@ export const playAfterLoad = <T>(
 ): (() => void) => {
   let live = true;
   let cleanup: void | (() => void);
-  void load().then(plugin => {
-    if (!live) return;
-    contextSafe(() => {
-      cleanup = play(plugin);
-    })();
-  });
+  // A failed import leaves the text plain; the failsafe CSS shows anything still pending.
+  load().then(
+    plugin => {
+      if (!live) return;
+      contextSafe(() => {
+        cleanup = play(plugin);
+      })();
+    },
+    () => undefined
+  );
   return () => {
     live = false;
     if (cleanup) cleanup();

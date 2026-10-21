@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import type { FC } from "react";
 
 import { useLocale, useTranslations } from "next-intl";
@@ -22,12 +23,21 @@ import {
 import type { ILanguageSelectProps } from "./language-select.types";
 
 // Picking a language replaces the URL with the same page in that locale.
-const LanguageSelect: FC<ILanguageSelectProps> = ({ defaultOpen }) => {
+const LanguageSelect: FC<ILanguageSelectProps> = ({
+  defaultOpen,
+  focusTrigger
+}) => {
   const t = useTranslations("languageSwitcher");
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const label = `${t("label")}: ${isLocale(locale) ? LOCALE_NAMES[locale] : locale}`;
+
+  // An open list takes focus itself; a closed one hands it on from the stand-in.
+  useEffect(() => {
+    if (focusTrigger && !defaultOpen) triggerRef.current?.focus();
+  }, [focusTrigger, defaultOpen]);
 
   const onChange = (value: string) => {
     if (isLocale(value)) {
@@ -37,7 +47,12 @@ const LanguageSelect: FC<ILanguageSelectProps> = ({ defaultOpen }) => {
 
   return (
     <Select value={locale} onValueChange={onChange} defaultOpen={defaultOpen}>
-      <SelectTrigger size="nav" aria-label={label} title={label}>
+      <SelectTrigger
+        ref={triggerRef}
+        size="nav"
+        aria-label={label}
+        title={label}
+      >
         <SelectValue />
       </SelectTrigger>
       <SelectContent position="popper" align="end">

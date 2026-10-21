@@ -7,6 +7,7 @@ const TechCheckbox: FC<ITechCheckboxProps> = ({
   id,
   checked,
   onChange,
+  disabled,
   ref
 }) => (
   <span className="relative flex flex-none">
@@ -16,6 +17,7 @@ const TechCheckbox: FC<ITechCheckboxProps> = ({
       id={id}
       checked={checked}
       onChange={onChange}
+      disabled={disabled}
       className="peer size-4.75 cursor-pointer appearance-none rounded-xs border border-secondary-1/40 transition-colors duration-300 outline-none checked:border-secondary-1 checked:bg-secondary-1 focus-visible:ring-[3px] focus-visible:ring-ring/50"
     />
     <svg
