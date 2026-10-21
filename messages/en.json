@@ -73,6 +73,8 @@
     "foodLeft": "// food left",
     "useKeyboard": "// use keyboard",
     "swipeBoard": "// swipe the board",
+    "paused": "Paused: swipe or tap an arrow to continue",
+    "pausedHint": "Paused: swipe or tap an arrow to continue",
     "orTapArrows": "// or tap arrows",
     "arrowsToPlay": "// arrows to play",
     "moveUp": "Move up",

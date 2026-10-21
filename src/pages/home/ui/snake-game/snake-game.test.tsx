@@ -4,6 +4,7 @@ import { axe } from "jest-axe";
 
 import { renderWithIntl } from "@/shared/lib/test";
 
+import { usePause } from "@/pages/home/lib";
 import { useSnakeStore } from "@/pages/home/model";
 
 import SnakeGame from "./snake-game";
@@ -32,7 +33,12 @@ const swipe = (board: HTMLElement, dx: number, dy: number) => {
   fireEvent.pointerUp(board, { pointerType: "touch" });
 };
 
-beforeEach(() => act(() => useSnakeStore.getState().reset()));
+beforeEach(() =>
+  act(() => {
+    useSnakeStore.getState().reset();
+    usePause.getState().resume();
+  })
+);
 
 describe("SnakeGame", () => {
   it("renders the board, the four arrow buttons and the skip link at any width", () => {
@@ -71,6 +77,24 @@ describe("SnakeGame", () => {
   it("ignores a swipe before the game starts", () => {
     renderWithIntl(<SnakeGame />);
     swipe(screen.getByRole("application"), 0, 40);
+    expect(useSnakeStore.getState().steered).toBe(false);
+  });
+
+  it("shows a paused hint, and the next input resumes", async () => {
+    renderWithIntl(<SnakeGame />);
+    act(() => useSnakeStore.getState().start());
+    act(() => usePause.getState().pause());
+    // The status region announces it; the hint on the board shows it.
+    expect(
+      screen.getAllByText(/swipe or tap an arrow to continue/)
+    ).toHaveLength(2);
+    await userEvent.click(screen.getByRole("button", { name: "Move down" }));
+    expect(usePause.getState().paused).toBe(false);
+  });
+
+  it("does not flash or steer an arrow tap while no game runs", async () => {
+    renderWithIntl(<SnakeGame />);
+    await userEvent.click(screen.getByRole("button", { name: "Move down" }));
     expect(useSnakeStore.getState().steered).toBe(false);
   });
 });

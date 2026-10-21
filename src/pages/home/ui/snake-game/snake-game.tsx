@@ -39,7 +39,7 @@ const SnakeGame: FC = () => {
       <div
         ref={panelRef}
         {...{ [PENDING_ATTR]: "" }}
-        className="relative mx-auto w-full max-w-127.5 rounded-lg shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] outline-1 outline-primary-4 backdrop-blur-[32px] desktop:mx-0 desktop:h-118.75"
+        className="relative mx-auto w-full max-w-127.5 rounded-lg shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] outline-1 outline-primary-4 backdrop-blur-[32px] desktop:mx-0 desktop:h-118.75 desktop:w-127.5"
       >
         <div
           aria-hidden="true"

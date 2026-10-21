@@ -1,5 +1,5 @@
 import type { KeyboardEvent, RefObject } from "react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import type { Direction } from "../model";
 import {
@@ -19,8 +19,9 @@ import {
 import { drawBoard } from "./draw-board";
 import { useKeyPress } from "./key-press";
 import { keyToDirection } from "./key-to-direction";
+import { selectPaused, usePause } from "./pause";
 import useInterval from "./use-interval";
-import { useOnScreen } from "./use-on-screen";
+import { useAway } from "./use-on-screen";
 import type { ISwipeHandlers } from "./use-swipe";
 import { useSwipe } from "./use-swipe";
 
@@ -50,18 +51,26 @@ export const useGame = (): IUseGame => {
   const steer = useSnakeStore(selectSteer);
 
   // The store outlives the page; a fresh visit starts idle.
-  useEffect(() => reset, [reset]);
+  useEffect(
+    () => () => {
+      reset();
+      usePause.getState().resume();
+    },
+    [reset]
+  );
 
   const delay = tickDelay(foodLeft);
-  const onScreen = useOnScreen(boardRef);
-  // A hidden tab keeps its timers alive (throttled), and a board scrolled away is not watched:
-  // the snake waits in both cases instead of dying unseen.
-  useInterval(
-    () => {
-      if (!document.hidden && onScreen.current) tick();
-    },
-    status === "playing" ? delay : null
+  const paused = usePause(selectPaused);
+  const isPlaying = status === "playing";
+  // A hidden tab or a board scrolled mostly away pauses the round until the next input.
+  useAway(
+    boardRef,
+    useCallback(() => {
+      if (useSnakeStore.getState().status === "playing")
+        usePause.getState().pause();
+    }, [])
   );
+  useInterval(tick, isPlaying && !paused ? delay : null);
 
   useEffect(() => {
     const ctx = canvasRef.current?.getContext("2d");
@@ -71,12 +80,14 @@ export const useGame = (): IUseGame => {
   }, [snake, food, direction]);
 
   const onStartGame = () => {
+    usePause.getState().resume();
     start();
     boardRef.current?.focus();
   };
 
   const steerBoard = (next: Direction) => {
     if (status !== "playing") return;
+    usePause.getState().resume();
     steer(next);
     useKeyPress.getState().press(next);
   };
