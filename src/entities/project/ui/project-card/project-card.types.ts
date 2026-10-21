@@ -15,6 +15,4 @@ export interface IProjectCardLabels {
 export interface IProjectCardProps {
   project: IProjectItem;
   labels: IProjectCardLabels;
-  // The project's place in the list: it picks the cover pattern.
-  index: number;
 }

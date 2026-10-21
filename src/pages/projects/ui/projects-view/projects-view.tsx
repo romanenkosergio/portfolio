@@ -20,10 +20,10 @@ const ProjectsView: FC = () => {
 
   const cards = PROJECTS.map((project, index) => ({
     slug: project.slug,
+    featured: "featured" in project,
     stack: project.stack,
     node: (
       <ProjectCard
-        index={index}
         project={{
           ...project,
           title: t(`items.${project.slug}.title`),

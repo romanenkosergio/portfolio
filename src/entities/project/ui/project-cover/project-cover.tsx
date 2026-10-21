@@ -1,11 +1,13 @@
 import type { FC } from "react";
 
+import { COVER_PATTERN_ATTR } from "@/entities/project/config";
 import { COVER_HEIGHT, COVER_WIDTH, coverOf } from "@/entities/project/lib";
 
 import type { IProjectCoverProps } from "./project-cover.types";
 
 const RING_RADII = [30, 56, 82, 108] as const;
-const PATTERN_COUNT = 4;
+// The tiled rect is wider than the banner so the hover shift never shows its edge.
+const PATTERN_BLEED = 24;
 
 interface IPatternProps {
   id: string;
@@ -44,7 +46,13 @@ const Tile: FC<IPatternProps> = ({ id, variant, accent }) => {
 };
 
 const Rings: FC<{ accent: string }> = ({ accent }) => (
-  <g fill="none" stroke={accent} strokeWidth="1" opacity="0.3">
+  <g
+    {...{ [COVER_PATTERN_ATTR]: "" }}
+    fill="none"
+    stroke={accent}
+    strokeWidth="1"
+    opacity="0.3"
+  >
     {RING_RADII.map(radius => (
       <ellipse
         key={radius}
@@ -62,11 +70,10 @@ const Rings: FC<{ accent: string }> = ({ accent }) => (
 const ProjectCover: FC<IProjectCoverProps> = ({
   slug,
   accent,
-  variant,
+  pattern,
   className
 }) => {
   const { glows } = coverOf(slug);
-  const pattern = variant % PATTERN_COUNT;
   const patternId = `${slug}-pattern`;
 
   return (
@@ -106,7 +113,9 @@ const ProjectCover: FC<IProjectCoverProps> = ({
       ))}
       {pattern < 3 ? (
         <rect
-          width={COVER_WIDTH}
+          {...{ [COVER_PATTERN_ATTR]: "" }}
+          x={-PATTERN_BLEED}
+          width={COVER_WIDTH + 2 * PATTERN_BLEED}
           height={COVER_HEIGHT}
           fill={`url(#${patternId})`}
           opacity="0.22"

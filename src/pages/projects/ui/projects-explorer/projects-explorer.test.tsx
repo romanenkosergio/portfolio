@@ -16,9 +16,14 @@ const copy = {
 };
 
 const cards = [
-  { slug: "a", stack: ["react", "typescript"], node: <p>Card A</p> },
-  { slug: "b", stack: ["vue"], node: <p>Card B</p> },
-  { slug: "c", stack: ["django"], node: <p>Card C</p> }
+  {
+    slug: "a",
+    featured: false,
+    stack: ["react", "typescript"],
+    node: <p>Card A</p>
+  },
+  { slug: "b", featured: false, stack: ["vue"], node: <p>Card B</p> },
+  { slug: "c", featured: false, stack: ["django"], node: <p>Card C</p> }
 ] as const;
 
 const filters = (["react", "vue", "django"] as const).map(tech => ({

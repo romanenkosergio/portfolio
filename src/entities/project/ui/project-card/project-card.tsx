@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import { cn } from "@/shared/lib";
 import { Button } from "@/shared/ui/button";
 
 import { badgeTechs } from "@/entities/project/lib";
@@ -12,15 +13,24 @@ import type { IProjectCardProps } from "./project-card.types";
 // One box: a generated banner (the main tech's logo large on its own colour and pattern, or a
 // screenshot once the project has one), then the title, role, summary and a footer pinned to the
 // bottom so cards of one grid row share a height without a gap in the middle.
-const ProjectCard: FC<IProjectCardProps> = ({ project, labels, index }) => {
-  const { kind, stack, title, domain, role, summary, href } = project;
+const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
+  const { kind, stack, title, domain, role, summary, href, featured } = project;
 
   return (
-    <article className="flex min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-primary-3 transition-colors focus-within:border-accent-1 hover:border-accent-1">
+    <article
+      className={cn(
+        "flex min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-primary-3 transition-colors focus-within:border-accent-1 hover:border-accent-1",
+        featured && "@2xl:flex-row"
+      )}
+    >
       <ProjectBanner
         project={project}
         badge={kind === "personal" ? labels.personal : labels.commercial}
-        index={index}
+        className={
+          featured
+            ? "@2xl:h-auto @2xl:w-2/5 @2xl:border-r @2xl:border-b-0"
+            : undefined
+        }
       />
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div className="flex flex-col gap-1">
