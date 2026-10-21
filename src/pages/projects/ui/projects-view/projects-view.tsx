@@ -6,6 +6,7 @@ import { TechIcon, TechIconSprite } from "@/shared/ui/tech-icon";
 
 import {
   PROJECTS,
+  featuredFirst,
   ProjectCard,
   TECHS,
   usedFilterTechs
@@ -20,6 +21,7 @@ const ProjectsView: FC = () => {
 
   const cards = PROJECTS.map((project, index) => ({
     slug: project.slug,
+    featured: "featured" in project,
     stack: project.stack,
     node: (
       <ProjectCard
@@ -34,6 +36,7 @@ const ProjectsView: FC = () => {
           number: t("card.label", { n: index + 1 }),
           separator: t("card.separator"),
           personal: t("card.personal"),
+          commercial: t("card.commercial"),
           stack: t("card.stack"),
           view: t("card.view"),
           viewTitle: t("card.viewTitle", {
@@ -59,7 +62,7 @@ const ProjectsView: FC = () => {
     <>
       <TechIconSprite />
       <ProjectsExplorer
-        cards={cards}
+        cards={featuredFirst(cards)}
         filters={filters}
         copy={{
           heading: t("heading"),

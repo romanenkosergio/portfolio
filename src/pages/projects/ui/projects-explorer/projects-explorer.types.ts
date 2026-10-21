@@ -15,6 +15,8 @@ export interface IProjectsCopy {
 export interface IProjectSlot {
   slug: string;
   stack: readonly Tech[];
+  // Spans the whole grid row.
+  featured: boolean;
   node: ReactNode;
 }
 

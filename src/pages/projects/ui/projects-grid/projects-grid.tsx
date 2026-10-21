@@ -37,7 +37,11 @@ const ProjectsGrid: FC<IProjectsGridProps> = ({
               [CARD_ATTR]: "",
               ...(isEagerCard(index) ? {} : { [PENDING_ATTR]: "" })
             }}
-            className={cn("flex", !visible.includes(card) && "hidden")}
+            className={cn(
+              "@container flex",
+              card.featured && "col-span-full",
+              !visible.includes(card) && "hidden"
+            )}
           >
             {card.node}
           </div>

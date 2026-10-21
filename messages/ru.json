@@ -281,6 +281,7 @@
       "label": "Проект {n}",
       "separator": "//",
       "personal": "личный",
+      "commercial": "коммерческий · NDA",
       "stack": "Стек",
       "view": "view-project",
       "viewTitle": "Открыть сайт {title} (новая вкладка)"

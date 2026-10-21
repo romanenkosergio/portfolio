@@ -1,4 +1,5 @@
-// Deterministic abstract cover art: the same slug always draws the same shapes. Colours are
+// Deterministic abstract cover art: the same slug always places the same glows
+// (the cover colours the first one with the project's main tech). Colours are
 // palette tokens (CSS variables), so a retheme reaches the covers too.
 const PALETTE = [
   "var(--color-accent-1)",
@@ -20,17 +21,8 @@ export interface ICoverGlow {
   color: string;
 }
 
-export interface ICoverLine {
-  x: number;
-  y: number;
-  length: number;
-  angle: number;
-  color: string;
-}
-
 export interface ICover {
   glows: ICoverGlow[];
-  lines: ICoverLine[];
 }
 
 // FNV-1a hash of the slug seeds mulberry32.
@@ -63,13 +55,6 @@ export const coverOf = (slug: string): ICover => {
     r: tenth(60 + next() * 70),
     color: color()
   }));
-  const lines = Array.from({ length: 9 }, () => ({
-    x: tenth(next() * COVER_WIDTH),
-    y: tenth(next() * COVER_HEIGHT),
-    length: tenth(40 + next() * 120),
-    angle: tenth(-60 + next() * 120),
-    color: color()
-  }));
 
-  return { glows, lines };
+  return { glows };
 };

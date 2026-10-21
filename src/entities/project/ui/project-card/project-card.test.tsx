@@ -7,6 +7,7 @@ const project = {
   slug: "saas-platform",
   kind: "personal",
   stack: ["react", "typescript"],
+  cover: { tech: "react", pattern: 0 },
   title: "_dareboard",
   domain: "Games",
   role: "Author",
@@ -18,6 +19,7 @@ const labels = {
   number: "Project 1",
   separator: "//",
   personal: "personal",
+  commercial: "commercial · NDA",
   stack: "Stack",
   view: "view-project",
   viewTitle: "Open dareboard website"
@@ -57,6 +59,7 @@ describe("ProjectCard", () => {
       />
     );
     expect(screen.queryByText("personal")).not.toBeInTheDocument();
+    expect(screen.getByText("commercial · NDA")).toBeInTheDocument();
   });
 
   it("lists one badge per distinct icon under the stack label", () => {

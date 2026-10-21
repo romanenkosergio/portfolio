@@ -11,6 +11,8 @@ import {
   registerMotion
 } from "@/shared/lib/motion";
 
+import { COVER_LOGO_ATTR, COVER_PATTERN_ATTR } from "@/entities/project/config";
+
 import { CARD_ATTR } from "./card-markers";
 
 registerMotion();
@@ -21,6 +23,16 @@ const rise = (card: HTMLElement, raised: boolean): void => {
   gsap.to(card.querySelectorAll("svg circle"), {
     scale: raised ? HOVER.glow : 1,
     x: raised ? HOVER.drift : 0,
+    transformOrigin: "50% 50%",
+    ...options
+  });
+  gsap.to(card.querySelectorAll(`[${COVER_PATTERN_ATTR}]`), {
+    x: raised ? -HOVER.drift * 2 : 0,
+    ...options
+  });
+  gsap.to(card.querySelectorAll(`[${COVER_LOGO_ATTR}]`), {
+    x: raised ? HOVER.drift : 0,
+    scale: raised ? HOVER.glow : 1,
     transformOrigin: "50% 50%",
     ...options
   });
@@ -47,8 +59,8 @@ const bind = (wrapper: HTMLElement): (() => void) | undefined => {
 };
 
 /**
- * On hover and keyboard focus a card lifts and its cover's glows drift and
- * swell (transforms only; the border colour is CSS). Pointer devices with
+ * On hover and keyboard focus a card lifts, its cover's glows drift and
+ * swell, the pattern slides and the logo leans in (parallax) (transforms only; the border colour is CSS). Pointer devices with
  * motion allowed only: touch and reduced motion get the colour change alone.
  */
 export const useCardHover = (rootRef: RefObject<HTMLElement | null>): void => {
