@@ -7,6 +7,7 @@ import { DEFAULT_LOCALE } from "@/shared/i18n";
 import { NotFound } from "@/pages/not-found";
 
 import { fonts } from "@/app/config";
+import { generateIcons } from "@/app/lib";
 import "@/app/styles";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,7 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("appName"),
     robots: { index: false },
-    referrer: REFERRER_POLICY
+    referrer: REFERRER_POLICY,
+    icons: generateIcons()
   };
 }
 
@@ -30,7 +32,9 @@ const GlobalNotFound = () => {
         <meta httpEquiv="Content-Security-Policy" content={CSP} />
       </head>
       <body>
-        <NotFound locale={DEFAULT_LOCALE} />
+        <main className="flex min-h-dvh flex-col">
+          <NotFound locale={DEFAULT_LOCALE} />
+        </main>
       </body>
     </html>
   );

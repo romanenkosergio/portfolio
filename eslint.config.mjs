@@ -24,6 +24,7 @@ import {
 
 const IGNORE_PATTERNS = [
   "**/node_modules/**",
+  "**/.claude/**",
   "**/.next/**",
   "**/out/**",
   "**/build/**",

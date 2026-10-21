@@ -136,8 +136,16 @@
   },
   "notFound": {
     "title": "404",
-    "description": "Такой страницы нет.",
-    "backHome": "На главную"
+    "pageTitle": "Страница не найдена",
+    "description": "Такой страницы нет. Возможно, её перенесли, или в ссылке опечатка.",
+    "command": "$ open",
+    "error": "Error: ENOENT: no such file or directory",
+    "home": "_hello",
+    "projects": "_projects",
+    "contact": "_contact-me",
+    "homeTitle": "На главную",
+    "projectsTitle": "К проектам",
+    "contactTitle": "К контактам"
   },
   "root": {
     "continue": "Перейти на сайт",
