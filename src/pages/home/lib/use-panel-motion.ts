@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import {
+  BELOW_DESKTOP_QUERY,
   DESKTOP_QUERY,
   DISTANCE,
   DRIFT,
@@ -13,7 +14,8 @@ import {
   PENDING_ATTR,
   SCALE,
   matchMotion,
-  registerMotion
+  registerMotion,
+  revealIn
 } from "@/shared/lib/motion";
 
 import { HERO_DELAY } from "../config";
@@ -90,7 +92,16 @@ export const usePanelMotion = (
           panel.removeAttribute(PENDING_ATTR);
         }
       });
-      return () => mm.revert();
+      // Below the fold on small screens: no hero timing, the panel rises when scrolled to.
+      const below = matchMotion(scope, {
+        condition: BELOW_DESKTOP_QUERY,
+        full: () => revealIn(panel, panel, false, { scroll: true }),
+        reduced: () => revealIn(panel, panel, true, {})
+      });
+      return () => {
+        mm.revert();
+        below.revert();
+      };
     },
     { scope: scopeRef }
   );

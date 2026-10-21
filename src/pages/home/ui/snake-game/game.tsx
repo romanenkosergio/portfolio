@@ -15,7 +15,7 @@ import {
   CANVAS_WIDTH,
   FOOD_TOTAL
 } from "@/pages/home/config";
-import { useGame } from "@/pages/home/lib";
+import { selectPaused, useGame, usePause } from "@/pages/home/lib";
 import {
   selectFoodLeft,
   selectStatus,
@@ -23,17 +23,22 @@ import {
 } from "@/pages/home/model";
 
 import GameOverlay from "./game-overlay";
+import PausedHint from "./paused-hint";
 
 const Game: FC = () => {
   const t = useTranslations("game");
-  const { canvasRef, foodRef, boardRef, onStartGame, onKeyDown } = useGame();
+  const { canvasRef, foodRef, boardRef, onStartGame, onKeyDown, swipe } =
+    useGame();
   const status = useSnakeStore(selectStatus);
   const foodLeft = useSnakeStore(selectFoodLeft);
+  const paused = usePause(selectPaused) && status === "playing";
   const instructionsId = useId();
 
   const announcement = {
     idle: "",
-    playing: t("progress", { eaten: FOOD_TOTAL - foodLeft, total: FOOD_TOTAL }),
+    playing: paused
+      ? t("paused")
+      : t("progress", { eaten: FOOD_TOTAL - foodLeft, total: FOOD_TOTAL }),
     win: t("won"),
     lose: t("lost")
   }[status];
@@ -48,7 +53,8 @@ const Game: FC = () => {
       aria-label={t("title")}
       aria-describedby={instructionsId}
       onKeyDown={onKeyDown}
-      className="relative rounded-lg"
+      {...swipe}
+      className="relative touch-none rounded-lg select-none"
     >
       <p id={instructionsId} className="sr-only">
         {t("instructions", { total: FOOD_TOTAL })}
@@ -73,6 +79,7 @@ const Game: FC = () => {
         aria-hidden="true"
         className="relative flex h-full w-60 items-center justify-center rounded-lg bg-primary-2/84 shadow-[inset_1px_5px_11px_rgba(2,18,27,0.71)]"
       />
+      {paused && <PausedHint />}
       <GameOverlay status={status} onStart={onStartGame} />
     </div>
   );

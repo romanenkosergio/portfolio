@@ -1,6 +1,7 @@
 import type { KeyboardEvent, RefObject } from "react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
+import type { Direction } from "../model";
 import {
   selectDirection,
   selectFood,
@@ -18,7 +19,11 @@ import {
 import { drawBoard } from "./draw-board";
 import { useKeyPress } from "./key-press";
 import { keyToDirection } from "./key-to-direction";
+import { selectPaused, usePause } from "./pause";
 import useInterval from "./use-interval";
+import { useAway } from "./use-on-screen";
+import type { ISwipeHandlers } from "./use-swipe";
+import { useSwipe } from "./use-swipe";
 
 interface IUseGame {
   canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -26,6 +31,7 @@ interface IUseGame {
   boardRef: RefObject<HTMLDivElement | null>;
   onStartGame: () => void;
   onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => void;
+  swipe: ISwipeHandlers;
 }
 
 /** Wires the pure model to the browser: tick interval, board keys, canvas painting. */
@@ -45,16 +51,26 @@ export const useGame = (): IUseGame => {
   const steer = useSnakeStore(selectSteer);
 
   // The store outlives the page; a fresh visit starts idle.
-  useEffect(() => reset, [reset]);
+  useEffect(
+    () => () => {
+      reset();
+      usePause.getState().resume();
+    },
+    [reset]
+  );
 
   const delay = tickDelay(foodLeft);
-  // A hidden tab keeps its timers alive (throttled): the snake waits there instead of dying unseen.
-  useInterval(
-    () => {
-      if (!document.hidden) tick();
-    },
-    status === "playing" ? delay : null
+  const paused = usePause(selectPaused);
+  const isPlaying = status === "playing";
+  // A hidden tab or a board scrolled mostly away pauses the round until the next input.
+  useAway(
+    boardRef,
+    useCallback(() => {
+      if (useSnakeStore.getState().status === "playing")
+        usePause.getState().pause();
+    }, [])
   );
+  useInterval(tick, isPlaying && !paused ? delay : null);
 
   useEffect(() => {
     const ctx = canvasRef.current?.getContext("2d");
@@ -64,18 +80,26 @@ export const useGame = (): IUseGame => {
   }, [snake, food, direction]);
 
   const onStartGame = () => {
+    usePause.getState().resume();
     start();
     boardRef.current?.focus();
+  };
+
+  const steerBoard = (next: Direction) => {
+    if (status !== "playing") return;
+    usePause.getState().resume();
+    steer(next);
+    useKeyPress.getState().press(next);
   };
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     const next = keyToDirection(event);
     if (!next) return;
     event.preventDefault();
-    if (status !== "playing") return;
-    steer(next);
-    useKeyPress.getState().press(next);
+    steerBoard(next);
   };
 
-  return { canvasRef, foodRef, boardRef, onStartGame, onKeyDown };
+  const swipe = useSwipe(steerBoard);
+
+  return { canvasRef, foodRef, boardRef, onStartGame, onKeyDown, swipe };
 };

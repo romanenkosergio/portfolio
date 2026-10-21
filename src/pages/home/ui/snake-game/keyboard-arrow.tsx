@@ -18,10 +18,11 @@ import {
 import { Icon } from "@/shared/ui";
 
 import { BOARD_ID } from "@/pages/home/config";
-import { useKeyPress } from "@/pages/home/lib";
+import { useKeyPress, usePause } from "@/pages/home/lib";
 import type { Direction } from "@/pages/home/model";
 import {
   selectActiveArrow,
+  selectStatus,
   selectSteer,
   useSnakeStore
 } from "@/pages/home/model";
@@ -48,6 +49,7 @@ const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
   const t = useTranslations("game");
   const isActive = useSnakeStore(selectActiveArrow) === direction;
   const steer = useSnakeStore(selectSteer);
+  const status = useSnakeStore(selectStatus);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // A board key that steers the game presses its on-screen arrow.
@@ -81,11 +83,15 @@ const KeyboardArrow: FC<IKeyboardArrowProps> = ({ direction }) => {
       aria-label={t(arrowLabels[direction])}
       title={t(arrowLabels[direction])}
       onClick={() => {
-        steer(direction);
-        document.getElementById(BOARD_ID)?.focus();
+        if (status === "playing") {
+          usePause.getState().resume();
+          steer(direction);
+          useKeyPress.getState().press(direction);
+        }
+        document.getElementById(BOARD_ID)?.focus({ preventScroll: true });
       }}
       className={cn(
-        "flex h-7.25 w-12.25 items-center justify-center rounded-lg border border-line transition-[background-color,border-color] duration-300 ease-in-out",
+        "flex h-7.25 w-12.25 touch-manipulation items-center justify-center rounded-lg border border-line transition-[background-color,border-color] duration-300 ease-in-out",
         isActive ? "bg-white" : "bg-primary-6 text-white"
       )}
     >
