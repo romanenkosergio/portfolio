@@ -30,8 +30,17 @@ const FIELD_ROWS = [
 const ContactForm: FC = () => {
   const t = useTranslations("contact");
   const prefix = useId();
-  const { values, errors, status, register, change, check, submit, again } =
-    useContactForm();
+  const {
+    values,
+    errors,
+    status,
+    attempt,
+    register,
+    change,
+    check,
+    submit,
+    again
+  } = useContactForm();
 
   const fieldError = (field: FieldName) => {
     const key = errors[field];
@@ -76,7 +85,7 @@ const ContactForm: FC = () => {
         aria-label={t("botcheck")}
         className="hidden"
       />
-      <SubmitRow status={status} />
+      <SubmitRow status={status} attempt={attempt} />
     </form>
   );
 };

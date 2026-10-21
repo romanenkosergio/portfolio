@@ -251,12 +251,11 @@
     "sending": "sending...",
     "success": {
       "title": "Thank you! 🤘",
-      "text": "Your message has been accepted. You will receive answer really soon!",
+      "text": "Your message has been accepted. You will receive an answer really soon!",
       "again": "send-new-message"
     },
-    "failure": "The message was not sent. Check the connection and try again, or write to {email}.",
+    "failure": "The message was not sent. Check the connection and try again, or write to <mail>{email}</mail>.",
     "statusLabel": "Form status",
-    "previewLabel": "Live preview of the message as code",
     "botcheck": "Leave this field empty"
   }
 }

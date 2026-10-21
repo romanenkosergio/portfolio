@@ -1,12 +1,10 @@
-import { CONTACT_FORM, CONTACT_FORM_READY } from "@/shared/config";
+import { CONTACT_FORM } from "@/shared/config";
 
 import { MAIL_SUBJECT } from "../config";
 import type { IContactValues } from "../config";
 
-// True when Web3Forms accepted the message. While the access key is the placeholder (the owner
-// has not set it yet) nothing leaves the browser and the form lands in its error state.
+// True when Web3Forms accepted the message; a network error or a refusal lands in the error state.
 export const sendMessage = async (values: IContactValues): Promise<boolean> => {
-  if (!CONTACT_FORM_READY) return false;
   try {
     const response = await fetch(CONTACT_FORM.endpoint, {
       method: "POST",

@@ -8,7 +8,7 @@ import { Button } from "@/shared/ui";
 import type { ISubmitRowProps } from "./submit-row.types";
 
 // The submit button (disabled while sending) and the polite live region that carries a failure.
-const SubmitRow: FC<ISubmitRowProps> = ({ status }) => {
+const SubmitRow: FC<ISubmitRowProps> = ({ status, attempt }) => {
   const t = useTranslations("contact");
 
   return (
@@ -25,7 +25,22 @@ const SubmitRow: FC<ISubmitRowProps> = ({ status }) => {
         aria-label={t("statusLabel")}
         className="min-h-5 text-sm text-accent-3"
       >
-        {status === "error" && t("failure", { email: CONTACT_EMAIL })}
+        <span key={`${status}-${attempt}`}>
+          {status === "sending" && t("sending")}
+          {status === "error" &&
+            t.rich("failure", {
+              mail: chunks => (
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  title={CONTACT_EMAIL}
+                  className="underline"
+                >
+                  {chunks}
+                </a>
+              ),
+              email: CONTACT_EMAIL
+            })}
+        </span>
       </div>
     </div>
   );
