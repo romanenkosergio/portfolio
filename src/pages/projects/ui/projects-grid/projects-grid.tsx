@@ -5,7 +5,7 @@ import { PENDING_ATTR } from "@/shared/lib/motion";
 
 import { matchesTechs } from "@/entities/project/model";
 
-import { CARD_ATTR, EMPTY_ATTR } from "@/pages/projects/lib";
+import { CARD_ATTR, isEagerCard, EMPTY_ATTR } from "@/pages/projects/lib";
 
 import type { IProjectsGridProps } from "./projects-grid.types";
 
@@ -30,10 +30,13 @@ const ProjectsGrid: FC<IProjectsGridProps> = ({
         </p>
       )}
       <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,22rem),1fr))] gap-x-10 gap-y-12 p-7.5 desktop:px-17.5 desktop:py-20">
-        {cards.map(card => (
+        {cards.map((card, index) => (
           <div
             key={card.slug}
-            {...{ [CARD_ATTR]: "", [PENDING_ATTR]: "" }}
+            {...{
+              [CARD_ATTR]: "",
+              ...(isEagerCard(index) ? {} : { [PENDING_ATTR]: "" })
+            }}
             className={cn("flex", !visible.includes(card) && "hidden")}
           >
             {card.node}

@@ -10,14 +10,14 @@ import {
   revealIn
 } from "@/shared/lib/motion";
 
-import { CARD_ATTR } from "./card-markers";
+import { CARD_ATTR, isEagerCard } from "./card-markers";
 
 registerMotion();
 
 /**
  * Cards rise in with a stagger capped by `CAP.cards`; the ones below the fold
  * (of the inner pane on desktop, of the page on mobile) wait until they scroll
- * into view. Each card is pending (hidden by CSS) until GSAP owns it.
+ * into view. Each card but the first `EAGER_CARDS` is pending (hidden by CSS) until GSAP owns it.
  */
 export const useCardsEntrance = (
   rootRef: RefObject<HTMLElement | null>
@@ -34,6 +34,8 @@ export const useCardsEntrance = (
         full: () => {
           const stops = cards.map((card, index) =>
             revealIn(card, card, false, {
+              // The grid renders these cards visible (no pending attribute): lift only.
+              eager: isEagerCard(index),
               scroll: true,
               delay: index * step,
               clearProps: "opacity,transform"

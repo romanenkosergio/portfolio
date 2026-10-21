@@ -18,14 +18,14 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 - Tests (1.12): jest 30, RTL, jest-axe; `*.test.ts(x)` beside the code (`scripts/*.test.ts` too); helpers in `shared/lib/test` (`renderWithIntl` = real `en.json`, SVG stub); `jest.setup.ts` mocks `next/navigation` and `matchMedia` (reduced motion), so GSAP runs for real. `gate` runs `test:coverage`, floor in `jest.config.mjs`.
 - Gates (1.14): `dup` = jscpd, threshold 0 (stubs ignored); the rest of `gate` is in AGENTS.md. `gate:push` adds `size`: JS 300 kB without the noModule polyfill (`scripts/size.mjs`), CSS 12 kB gzip (D22). CSP and referrer are `<meta>` tags from `shared/config/csp.ts`.
 - i18n (1.11): routes `app/[locale]/…` (`dynamicParams = false`, `generateStaticParams` over `LOCALES`); every layout/page starts with `resolveLocale(params)`. `i18n.d.ts` types `AppConfig`, so a missing key fails `tsc`. Copy only in `messages/*.json`; uk/ru are translated (new keys get uk/ru in the same PR). Root `app/page.tsx` is a meta-refresh to `${BASE_PATH}/en/` (D12). Not checked in a browser: language switcher look and focus, dropdown over the burger menu.
-- PLAN 3.7 done: audit: no long tasks, CLS or `will-change` leaks. Fixed contrast (D22: secondary-1/3), About `h1`, snake pauses in a hidden tab. Mobile LCP ~3.8 s = JS-ready (content hides until GSAP runs). Variants: Icon `icon-variants.ts`, Button `concealed`, NavLink `variant`.
+- PLAN 3.7 done: audit: no long tasks, CLS or `will-change` leaks. Fixed contrast (D22: secondary-1/3), About `h1`, snake pauses in a hidden tab. Variants: Icon `icon-variants.ts`, Button `concealed`, NavLink `variant`.
 - About copy from the owner's CV (en/uk/ru). Years are `{years, plural}` via `yearsSince(CAREER_START)`; never hard-code them. The CV PDF is local only (`docs/serhii-romanenko-cv.pdf`, git-excluded: it has a phone number, never commit it).
 - `main` protected (PR; squash after `code-reviewer` + the owner's «да»). Pages deploy only on request (D11): `gh workflow run pages.yml --ref main`; static export (D3); repo stays public (D13). `gh` for this repo: `GH_TOKEN=$(gh auth token -u romanenkosergio) gh …` (global gh stays the work account).
 - Agents: `frontend-implementer`, then `code-reviewer` + `visual-checker` in parallel; one checkout, so each `next dev` gets its own port. `next dev` logs "missing param in generateStaticParams" for an unknown `[type]` with `output: export` — expected.
 
 ## Next
 
-- PLAN 4 in order, 4.2 next (4.1: preview `wrap-break-word`, 404 nav at `TERMINAL_DELAY`). Deployed 2026-10-21; OIDC timeout in `deploy` → rerun. Next decision: D24.
+- PLAN 4 in list order, 4.8 next. 4.2 (D24): `eager` on `revealIn`/`Reveal`/`Stagger`/`LinesReveal` = visible in SSR, `EAGER_SHIFT` transform; code rows, `isEagerCard`. Deployed 2026-10-21; OIDC timeout in `deploy` → rerun. Next decision: D25.
 
 ## Environment
 

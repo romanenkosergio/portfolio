@@ -23,15 +23,20 @@ const Stagger: FC<IStaggerProps> = ({
   children,
   selector,
   stagger = STAGGER.children,
+  eager = false,
   ...options
 }) => {
   const ref = useRef<HTMLElement>(null);
 
-  useReveal(ref, { ...options, selector, stagger, children: !selector });
+  useReveal(ref, { ...options, eager, selector, stagger, children: !selector });
 
   const Tag = as as MotionHostType;
   return (
-    <Tag ref={ref} className={className} {...{ [PENDING_ATTR]: "" }}>
+    <Tag
+      ref={ref}
+      className={className}
+      {...(eager ? {} : { [PENDING_ATTR]: "" })}
+    >
       {children}
     </Tag>
   );
