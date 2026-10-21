@@ -20,14 +20,21 @@ registerMotion();
 /** Bar offset that closes the 4 px gap between two 2 px bars into a cross. */
 const CROSS = 6;
 const ITEM_STAGGER = 0.06;
+/** Reduced motion: a zero-length timeline cannot be reversed, so «instant» is a millisecond. */
+const INSTANT = 0.001;
 
 const buildTimeline = (host: HTMLElement, reduced: boolean) => {
   const bars = host.querySelectorAll(`[${MENU_BAR}]`);
   const panel = host.querySelector(`[${MENU_PANEL}]`);
   const items = panel?.querySelectorAll("a, button") ?? [];
-  const duration = reduced ? 0 : DURATION.fast;
+  const duration = reduced ? INSTANT : DURATION.fast;
   const timeline = gsap.timeline({
     paused: true,
+    // Not autoAlpha: that hides the panel again on the first frame, dropping the focus just
+    // given. The effect below shows it; closing hides it once the reverse is done.
+    onReverseComplete: () => {
+      gsap.set(panel, { visibility: "hidden" });
+    },
     defaults: { ease: EASE.soft, duration }
   });
   timeline
@@ -37,7 +44,7 @@ const buildTimeline = (host: HTMLElement, reduced: boolean) => {
     .fromTo(
       panel,
       { opacity: 0, y: -DISTANCE.small },
-      { opacity: 1, y: 0, duration: reduced ? 0 : DURATION.base }
+      { opacity: 1, y: 0, duration: reduced ? INSTANT : DURATION.base }
     )
     .fromTo(
       items,
@@ -58,6 +65,7 @@ export const useMenuMotion = (
   isOpen: boolean
 ): void => {
   const timeline = useRef<gsap.core.Timeline | null>(null);
+  const open = useRef(isOpen);
 
   useGSAP(
     () => {
@@ -65,6 +73,8 @@ export const useMenuMotion = (
       if (!host) return;
       const setup = (reduced: boolean) => () => {
         timeline.current = buildTimeline(host, reduced);
+        // A rebuild (the motion preference changed) keeps an open menu open.
+        if (open.current) timeline.current.progress(1);
         return () => {
           timeline.current = null;
         };
@@ -79,7 +89,14 @@ export const useMenuMotion = (
   );
 
   useEffect(() => {
-    if (isOpen) timeline.current?.play();
-    else timeline.current?.reverse();
-  }, [isOpen]);
+    open.current = isOpen;
+    if (!isOpen) {
+      timeline.current?.reverse();
+      return;
+    }
+    // Visible now, not on the next tick: the first link takes focus right after.
+    const panel = hostRef.current?.querySelector(`[${MENU_PANEL}]`);
+    if (panel) gsap.set(panel, { visibility: "visible" });
+    timeline.current?.play();
+  }, [hostRef, isOpen]);
 };

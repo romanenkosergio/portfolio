@@ -30,8 +30,9 @@ const Burger = () => {
     setIsOpen(false);
   }
 
-  useMenuBehavior(hostRef, buttonRef, isOpen, close);
+  // The motion effect runs first: the panel is visible before focus moves into it.
   useMenuMotion(hostRef, isOpen);
+  useMenuBehavior(hostRef, buttonRef, isOpen, close);
 
   return (
     <div ref={hostRef} className="desktop:hidden">
@@ -57,12 +58,9 @@ const Burger = () => {
 
       <div
         id={menuId}
-        role="dialog"
-        aria-modal="true"
-        aria-label={t("menu")}
         inert={!isOpen}
         {...{ [MENU_PANEL]: "" }}
-        className="absolute top-full left-0 flex h-[calc(100dvh-100%)] w-full flex-col overflow-y-auto bg-primary-2 opacity-0"
+        className="invisible absolute top-full -left-px flex h-[calc(100dvh-100%)] w-[calc(100%+2px)] flex-col overflow-y-auto bg-primary-2 opacity-0"
       >
         <Navigation
           className="flex flex-col text-white"

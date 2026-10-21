@@ -16,17 +16,18 @@ const trapTab = (host: HTMLElement, event: KeyboardEvent): void => {
   const last = controls[controls.length - 1];
   if (event.shiftKey && target === first) {
     event.preventDefault();
-    last?.focus();
+    last?.focus({ preventScroll: true });
   } else if (!event.shiftKey && target === last) {
     event.preventDefault();
-    first?.focus();
+    first?.focus({ preventScroll: true });
   }
 };
 
 /**
  * While the menu is open: the page behind does not scroll, Tab stays inside
  * the burger and the panel, Esc and a widening to the desktop layout close it,
- * focus moves to the first link and returns to the burger when it closes.
+ * focus moves to the first link and returns to the burger when it closes (never
+ * scrolling: the panel sits in the sticky header, which the browser would chase).
  */
 export const useMenuBehavior = (
   hostRef: RefObject<HTMLElement | null>,
@@ -40,7 +41,9 @@ export const useMenuBehavior = (
     const root = document.documentElement;
     const previousOverflow = root.style.overflow;
     root.style.overflow = "hidden";
-    host.querySelector<HTMLElement>(`[${MENU_PANEL}] a`)?.focus();
+    host
+      .querySelector<HTMLElement>(`[${MENU_PANEL}] a`)
+      ?.focus({ preventScroll: true });
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Tab") trapTab(host, event);
@@ -58,7 +61,7 @@ export const useMenuBehavior = (
       root.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
       desktop.removeEventListener("change", onDesktop);
-      button?.focus();
+      button?.focus({ preventScroll: true });
     };
   }, [hostRef, buttonRef, isOpen, close]);
 };
