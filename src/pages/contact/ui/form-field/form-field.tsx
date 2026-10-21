@@ -2,14 +2,8 @@ import type { FC } from "react";
 
 import { cn } from "@/shared/lib";
 
+import { controlVariants } from "./form-field-variants";
 import type { IFormFieldProps } from "./form-field.types";
-
-const CONTROL =
-  "w-full rounded-lg border bg-primary-6 px-3.5 text-base text-white transition-colors duration-300 placeholder:text-secondary-1 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-accent-1/40";
-
-const BORDER_ERROR = "border-accent-3";
-const BORDER_IDLE =
-  "border-secondary-1/50 hover:border-secondary-1 focus-visible:border-accent-1";
 
 // A labelled input or textarea; the error sits under it and is tied to it with aria-describedby.
 const FormField: FC<IFormFieldProps> = ({
@@ -38,7 +32,7 @@ const FormField: FC<IFormFieldProps> = ({
     "aria-describedby": error ? errorId : undefined,
     "onFocus": onFocus,
     "onBlur": onBlur,
-    "className": cn(CONTROL, error ? BORDER_ERROR : BORDER_IDLE)
+    "className": controlVariants({ invalid: Boolean(error) })
   } as const;
 
   return (

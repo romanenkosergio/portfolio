@@ -6,6 +6,20 @@ import { Icon, NavLink } from "@/shared/ui";
 
 import type { IContentLinkProps } from "./content-link.types";
 
+// An address may wrap only before the @, never mid-word.
+const withBreakAtSign = (text = "") => {
+  const at = text.indexOf("@");
+  return at > 0 ? (
+    <>
+      {text.slice(0, at)}
+      <wbr />
+      {text.slice(at)}
+    </>
+  ) : (
+    text
+  );
+};
+
 const ContentLink: FC<IContentLinkProps> = ({ item }) => {
   const t = useTranslations("sidebar.items");
   const title = item.titleKey ? t(item.titleKey) : item.title;
@@ -22,8 +36,8 @@ const ContentLink: FC<IContentLinkProps> = ({ item }) => {
         className="h-3.5 w-4 shrink-0"
         interactive={!item.tone}
       />
-      <span className="min-w-0 truncate text-base desktop:group-hover:text-white">
-        {title}
+      <span className="min-w-0 text-base desktop:group-hover:text-white">
+        {withBreakAtSign(title)}
       </span>
     </>
   );
