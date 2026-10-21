@@ -25,8 +25,7 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 
 ## Next
 
-- PLAN empty: 1.13 dropped (D23). Deployed 2026-10-21 (`cd346ba`); OIDC timeout in `deploy` → rerun it.
-  New pending entries in `eslint/pending.config.mjs` name a PLAN item. Next decision: D24.
+- PLAN 4 in order, 4.2 next (4.1: preview `wrap-break-word`, 404 nav at `TERMINAL_DELAY`). Deployed 2026-10-21; OIDC timeout in `deploy` → rerun. Next decision: D24.
 
 ## Environment
 

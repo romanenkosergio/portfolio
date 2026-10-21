@@ -16,7 +16,7 @@ import type { INotFoundContentProps } from "./not-found-content.types";
 // Seconds the terminal waits before typing, so the 404 decodes first.
 const TERMINAL_DELAY = DURATION.base;
 
-// The 404 decodes, a terminal types the failed lookup, then the way back rises in.
+// The 404 decodes, a terminal types the failed lookup, the way back rises in with it, the description follows the error.
 const NotFoundContent: FC<INotFoundContentProps> = ({ path }) => {
   const t = useTranslations("notFound");
   const afterError = terminalPlan(
@@ -47,7 +47,7 @@ const NotFoundContent: FC<INotFoundContentProps> = ({ path }) => {
         <p className="text-base text-secondary-1">{t("description")}</p>
       </Reveal>
       <Reveal
-        delay={afterError + DURATION.fast}
+        delay={TERMINAL_DELAY}
         y={DISTANCE.small}
         clearProps="opacity,transform"
       >
