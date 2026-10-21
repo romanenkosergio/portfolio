@@ -48,7 +48,13 @@ export const useGame = (): IUseGame => {
   useEffect(() => reset, [reset]);
 
   const delay = TICK_START - TICK_STEP * (FOOD_TOTAL - foodLeft);
-  useInterval(tick, status === "playing" ? delay : null);
+  // A hidden tab keeps its timers alive (throttled): the snake waits there instead of dying unseen.
+  useInterval(
+    () => {
+      if (!document.hidden) tick();
+    },
+    status === "playing" ? delay : null
+  );
 
   useEffect(() => {
     const ctx = canvasRef.current?.getContext("2d");

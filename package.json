@@ -19,7 +19,7 @@
     "snippets": "node scripts/snippets-check.mjs",
     "dup": "jscpd",
     "postbuild": "node scripts/csp-first.mjs",
-    "size": "size-limit",
+    "size": "node scripts/size.mjs",
     "gate:push": "yarn gate && yarn build && yarn size"
   },
   "dependencies": {

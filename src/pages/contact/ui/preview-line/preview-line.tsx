@@ -49,7 +49,7 @@ const PreviewLine: FC<IPreviewLineProps> = ({
         data-preview-send={send ? "" : undefined}
         className={cn(
           "break-all whitespace-pre-wrap transition-colors duration-300",
-          lit && "bg-white/5"
+          lit && "bg-white/2"
         )}
       >
         {line.map((token, at) =>

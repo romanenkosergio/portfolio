@@ -78,6 +78,7 @@
     "moveRight": "Move right"
   },
   "about": {
+    "heading": "About me",
     "types": {
       "bio": "bio",
       "interests": "interests",

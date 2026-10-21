@@ -14,11 +14,11 @@ const C = {
   bg: "#011627",
   deep: "#010c15",
   line: "#1e2d3d",
-  muted: "#607b96",
+  muted: "#6781a0",
   orange: "#fea55f",
   teal: "#43d9ad",
   violet: "#c98bdf",
-  blue: "#4d5bce",
+  blue: "#6a78e8",
   text: "#e5e9f0"
 };
 

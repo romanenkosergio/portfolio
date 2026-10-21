@@ -2,7 +2,7 @@
   {
     "name": "JS (all chunks)",
     "path": "out/_next/static/**/*.js",
-    "limit": "335 kB",
+    "limit": "300 kB",
     "gzip": true
   },
   {

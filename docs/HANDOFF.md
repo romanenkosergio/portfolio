@@ -1,7 +1,6 @@
 # Hand-off — where the work is
 
-Read first in a fresh chat; it is re-read at every session start, so its size is part of being
-right: ≤ 8000 bytes (`wc -c`; the `pr-handoff-guard` hook denies a PR over it). Only the current:
+Read first in a fresh chat; it is re-read at every session start, so its size matters: ≤ 8000 bytes (`wc -c`; the `pr-handoff-guard` hook denies a PR over it). Only the current:
 «Current state» is the last finished theme — replace it at each hand-off, don't append. Anything
 durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted here; git is the history.
 
@@ -17,17 +16,17 @@ durable goes to `docs/DECISIONS.md` or `docs/PLAN.md` first, then is deleted her
 - PLAN 2.6 done: the export emits only `out/404.html` (global-not-found; no `/<locale>/404.html`), so `NotFoundView` (client) reads the locale and path from `location` via `useSyncExternalStore`, with all three `notFound` namespaces passed in; server paint is the default locale.
 - 2.0: og:image was always emitted, the assets were missing; `scripts/generate-meta-assets.mjs` (sharp from Next) builds them from `scripts/meta-assets/`; `OPEN_GRAPH.images` stays relative to `metadataBase`, never `BASE_PATH`.
 - Motion toolkit (3.1): `@/shared/lib/motion` stays out of `shared/lib/index.ts`, so server code never pulls GSAP. `registerMotion()` registers useGSAP; each primitive registers its own plugin. `matchMotion(scope, {full, reduced, condition?})` wraps `gsap.matchMedia()`. Tokens: `DURATION`, `EASE`, `STAGGER`, `WAVE`, `SCRAMBLE_CHARS`, `TYPE`. Hiding is `data-motion-pending` (opacity 0 under `@media (scripting: enabled)`, cleared in useGSAP, 3 s CSS fallback); "already visible → skip" once per host (D15). ScrambleText is never hidden (h1/LCP). JS budget 335 kB gzip (D14).
-- Gates (1.14): `gate` = format, lint, typecheck, fsd, `egress`, `dup` (jscpd, threshold 0; route stubs ignored). `gate:push` adds `size`: JS 335 kB, CSS 12 kB gzip (D18). CSP and referrer are `<meta>` tags from `shared/config/csp.ts`.
+- Gates (1.14): `gate` = format, lint, typecheck, fsd, `egress`, `dup` (jscpd, threshold 0; route stubs ignored). `gate:push` adds `size`: JS 300 kB without the noModule polyfill (`scripts/size.mjs`), CSS 12 kB gzip (D22). CSP and referrer are `<meta>` tags from `shared/config/csp.ts`.
 - i18n (1.11): routes `app/[locale]/…` (`dynamicParams = false`, `generateStaticParams` over `LOCALES`); every layout/page starts with `resolveLocale(params)`. `i18n.d.ts` types `AppConfig`, so a missing key fails `tsc`. Copy only in `messages/*.json`; uk/ru are translated (new keys get uk/ru in the same PR). Root `app/page.tsx` is a meta-refresh to `${BASE_PATH}/en/` (D12). Not checked in a browser: language switcher look and focus, dropdown over the burger menu.
-- shadcn (1.15/1.16): `yarn shadcn:add`; `pending.config.mjs` is empty. Treatments are variants: Icon (`icon-variants.ts`), Button `concealed`, NavLink `variant`. CSS transitions are colour-only; opacity/transform transitions are explicit local classes.
+- PLAN 3.7 done: audit: no long tasks, CLS or `will-change` leaks. Fixed contrast (D22: secondary-1/3), About `h1`, snake pauses in a hidden tab. Mobile LCP ~3.8 s = JS-ready (content hides until GSAP runs). Variants: Icon `icon-variants.ts`, Button `concealed`, NavLink `variant`.
 - About copy from the owner's CV (en/uk/ru). Years are `{years, plural}` via `yearsSince(CAREER_START)`; never hard-code them. The CV PDF is local only (`docs/serhii-romanenko-cv.pdf`, git-excluded: it has a phone number, never commit it).
 - Repo `git@github.com-personal:romanenkosergio/portfolio.git`, `main` protected (PR; squash after `code-reviewer` and the owner's «да»). Pages deploy only on request (D11): `gh workflow run pages.yml --ref main`; static export (D3); repo stays public (D13). `gh` for this repo: `GH_TOKEN=$(gh auth token -u romanenkosergio) gh …` (global gh stays the work account).
 - Agents: implement with `frontend-implementer`, then `code-reviewer` + `visual-checker` in parallel; one checkout, so each `next dev` gets its own port. `next dev` logs "missing param in generateStaticParams" for an unknown `[type]` with `output: export` — expected.
 
 ## Next
 
-- Pages in PLAN order, markup and content before motion: 3.7; tests last (1.12, 1.13).
-  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D22.
+- Remaining PLAN: tests (1.12, 1.13).
+  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D23.
 
 ## Environment
 

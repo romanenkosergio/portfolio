@@ -78,6 +78,7 @@
     "moveRight": "Праворуч"
   },
   "about": {
+    "heading": "Про мене",
     "types": {
       "bio": "bio",
       "interests": "interests",
