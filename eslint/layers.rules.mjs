@@ -10,7 +10,8 @@ import { FS_LAYERS } from "./fsd-elements.mjs";
 
 const lowerLayers = layer => FS_LAYERS.slice(FS_LAYERS.indexOf(layer) + 1);
 const upperLayers = layer => FS_LAYERS.slice(0, FS_LAYERS.indexOf(layer));
-const toAllowList = layers => layers.map(type => ({ to: { type } }));
+const toAllowList = layers =>
+  layers.map(type => ({ to: { element: { type } } }));
 
 export const LAYER_MESSAGE =
   'Layer "{{from.type}}" may not import layer "{{to.type}}". ' +
@@ -22,7 +23,7 @@ const slicedLayerRules = upperLayers("shared")
   // deliberately more restricted than its position in the list would imply.
   .filter(layer => layer !== "app")
   .map(layer => ({
-    from: { type: layer },
+    from: { element: { type: layer } },
     allow: toAllowList(lowerLayers(layer))
   }));
 
@@ -31,15 +32,21 @@ export const layerRules = [
 
   // `shared` is the foundation. It sees itself and nothing else — that is what
   // "business-logic agnostic" means operationally.
-  { from: { type: "shared" }, allow: [{ to: { type: "shared" } }] },
+  {
+    from: { element: { type: "shared" } },
+    allow: [{ to: { element: { type: "shared" } } }]
+  },
 
   // `src/app` holds providers, fonts, global styles and the composition root.
   //
   // FSD would let it reach every layer below, being the outermost. It may not:
   // route files compose the layers; the provider tree does not.
   {
-    from: { type: "app" },
-    allow: [{ to: { type: "app" } }, { to: { type: "shared" } }]
+    from: { element: { type: "app" } },
+    allow: [
+      { to: { element: { type: "app" } } },
+      { to: { element: { type: "shared" } } }
+    ]
   },
 
   // The Next.js route tree. Route files are one-line compositions — they name a
@@ -47,13 +54,13 @@ export const layerRules = [
   // is a widget) but never `features` or `entities` directly: a route that
   // renders a feature has become a page without being one.
   {
-    from: { type: "next-app" },
+    from: { element: { type: "next-app" } },
     allow: [
-      { to: { type: "next-app" } },
-      { to: { type: "app" } },
-      { to: { type: "pages" } },
-      { to: { type: "widgets" } },
-      { to: { type: "shared" } }
+      { to: { element: { type: "next-app" } } },
+      { to: { element: { type: "app" } } },
+      { to: { element: { type: "pages" } } },
+      { to: { element: { type: "widgets" } } },
+      { to: { element: { type: "shared" } } }
     ]
   }
 ];

@@ -6,7 +6,7 @@ import { LAYER_MESSAGE, layerRules } from "./layers.rules.mjs";
 /**
  * The architecture gate: FSD layers, in one `boundaries/dependencies` rule.
  *
- * `eslint-plugin-boundaries` v6 deprecates `entry-point` and `external`; the
+ * `eslint-plugin-boundaries` v6+ deprecates `entry-point` and `external`; the
  * public-API rule lives in `forbidden.config.mjs` as `no-restricted-imports`.
  */
 export const architectureConfig = {
@@ -31,9 +31,9 @@ export const architectureConfig = {
         // Required for the `origin: "external"` baseline below to be evaluated.
         checkAllOrigins: true,
 
-        rules: [
+        policies: [
           // A package is a decision made in package.json, not per import.
-          { allow: [{ to: { origin: ["external", "core"] } }] },
+          { allow: [{ to: { module: { origin: ["external", "core"] } } }] },
           ...layerRules
         ]
       }
@@ -41,7 +41,7 @@ export const architectureConfig = {
 
     // Every file under `src/` and `app/` must classify, every import resolve.
     "boundaries/no-unknown-files": "error",
-    "boundaries/no-unknown": "error",
+    "boundaries/no-unknown-dependencies": "error",
     "boundaries/no-ignored": "off"
   }
 };
