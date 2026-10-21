@@ -122,7 +122,8 @@
       "personalInfo": "personal-info",
       "professionalInfo": "professional-info",
       "hobbies": "hobbies",
-      "contacts": "contacts"
+      "contacts": "contacts",
+      "findMeAlsoIn": "find-me-also-in"
     },
     "items": {
       "bio": "bio",
@@ -228,5 +229,33 @@
     "learning": "Обучение",
     "projects": "Проекты",
     "contact": "Связаться со мной"
+  },
+  "contact": {
+    "heading": "Свяжись со мной",
+    "formLabel": "Форма связи",
+    "fields": {
+      "name": "_name",
+      "email": "_email",
+      "message": "_message"
+    },
+    "errors": {
+      "nameRequired": "Введи своё имя.",
+      "nameMax": "Имя — не длиннее {max} символов.",
+      "emailRequired": "Введи свою почту.",
+      "emailInvalid": "Это не похоже на адрес почты.",
+      "messageRequired": "Напиши сообщение.",
+      "messageMin": "В сообщении должно быть минимум {min} символов.",
+      "messageMax": "Сообщение — не длиннее {max} символов."
+    },
+    "submit": "submit-message",
+    "sending": "sending...",
+    "success": {
+      "title": "Спасибо! 🤘",
+      "text": "Твоё сообщение принято. Ответ придёт совсем скоро!",
+      "again": "send-new-message"
+    },
+    "failure": "Сообщение не отправлено. Проверь соединение и попробуй ещё раз или напиши на <mail>{email}</mail>.",
+    "statusLabel": "Состояние формы",
+    "botcheck": "Оставь это поле пустым"
   }
 }

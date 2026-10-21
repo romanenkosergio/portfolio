@@ -122,7 +122,8 @@
       "personalInfo": "personal-info",
       "professionalInfo": "professional-info",
       "hobbies": "hobbies",
-      "contacts": "contacts"
+      "contacts": "contacts",
+      "findMeAlsoIn": "find-me-also-in"
     },
     "items": {
       "bio": "bio",
@@ -228,5 +229,33 @@
     "learning": "Learning",
     "projects": "Projects",
     "contact": "Contact me"
+  },
+  "contact": {
+    "heading": "Contact me",
+    "formLabel": "Contact form",
+    "fields": {
+      "name": "_name",
+      "email": "_email",
+      "message": "_message"
+    },
+    "errors": {
+      "nameRequired": "Enter your name.",
+      "nameMax": "The name is limited to {max} characters.",
+      "emailRequired": "Enter your e-mail.",
+      "emailInvalid": "This does not look like an e-mail address.",
+      "messageRequired": "Write a message.",
+      "messageMin": "The message needs at least {min} characters.",
+      "messageMax": "The message is limited to {max} characters."
+    },
+    "submit": "submit-message",
+    "sending": "sending...",
+    "success": {
+      "title": "Thank you! 🤘",
+      "text": "Your message has been accepted. You will receive an answer really soon!",
+      "again": "send-new-message"
+    },
+    "failure": "The message was not sent. Check the connection and try again, or write to <mail>{email}</mail>.",
+    "statusLabel": "Form status",
+    "botcheck": "Leave this field empty"
   }
 }

@@ -1,3 +1,5 @@
+import { CONTACT_FORM } from "./contact-form";
+
 // Static export on Pages sends no headers, so the policy ships as a <meta http-equiv> tag
 // (frame-ancestors is ignored there and left out). Next's inline bootstrap/RSC scripts need
 // 'unsafe-inline'; the dev server also needs eval and the HMR websocket.
@@ -13,7 +15,7 @@ const DIRECTIVES: Record<string, string[]> = {
   "style-src": ["'self'", "'unsafe-inline'"],
   "img-src": ["'self'", "data:"],
   "font-src": ["'self'"],
-  "connect-src": ["'self'", ...(isDev ? ["ws:"] : [])],
+  "connect-src": ["'self'", CONTACT_FORM.endpoint, ...(isDev ? ["ws:"] : [])],
   "object-src": ["'none'"],
   "base-uri": ["'self'"],
   "form-action": ["'self'"]

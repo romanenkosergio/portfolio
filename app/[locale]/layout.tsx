@@ -17,8 +17,13 @@ import { generateIcons, resolveLocale } from "@/app/lib";
 import type { ILocaleProps } from "@/app/model";
 import "@/app/styles";
 
-// The namespaces client components read (header/burger/switcher, the game); the rest stays on the server.
-const CLIENT_NAMESPACES = ["header", "languageSwitcher", "game"] as const;
+// The namespaces client components read (header/burger/switcher, the game, the contact form); the rest stays on the server.
+const CLIENT_NAMESPACES = [
+  "header",
+  "languageSwitcher",
+  "game",
+  "contact"
+] as const;
 
 const pickMessages = (messages: AbstractIntlMessages) =>
   Object.fromEntries(

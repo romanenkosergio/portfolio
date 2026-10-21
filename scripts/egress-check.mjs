@@ -25,6 +25,10 @@ const ALLOWED = [
   { host: "medium.com", why: "profile link the visitor opens, not a request" },
   { host: "x.com", why: "profile link the visitor opens, not a request" },
   {
+    host: "api.web3forms.com",
+    why: "contact form submit endpoint, the site's only request"
+  },
+  {
     host: "dareboard.app",
     why: "project site the visitor opens, not a request"
   }

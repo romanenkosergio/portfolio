@@ -122,7 +122,8 @@
       "personalInfo": "personal-info",
       "professionalInfo": "professional-info",
       "hobbies": "hobbies",
-      "contacts": "contacts"
+      "contacts": "contacts",
+      "findMeAlsoIn": "find-me-also-in"
     },
     "items": {
       "bio": "bio",
@@ -228,5 +229,33 @@
     "learning": "Навчання",
     "projects": "Проєкти",
     "contact": "Зв’язатися зі мною"
+  },
+  "contact": {
+    "heading": "Зв'яжись зі мною",
+    "formLabel": "Форма зв'язку",
+    "fields": {
+      "name": "_name",
+      "email": "_email",
+      "message": "_message"
+    },
+    "errors": {
+      "nameRequired": "Введи своє ім'я.",
+      "nameMax": "Ім'я — не довше за {max} символів.",
+      "emailRequired": "Введи свою пошту.",
+      "emailInvalid": "Це не схоже на адресу пошти.",
+      "messageRequired": "Напиши повідомлення.",
+      "messageMin": "У повідомленні має бути щонайменше {min} символів.",
+      "messageMax": "Повідомлення — не довше за {max} символів."
+    },
+    "submit": "submit-message",
+    "sending": "sending...",
+    "success": {
+      "title": "Дякую! 🤘",
+      "text": "Твоє повідомлення прийнято. Відповідь надійде зовсім скоро!",
+      "again": "send-new-message"
+    },
+    "failure": "Повідомлення не надіслано. Перевір з'єднання й спробуй ще раз або напиши на <mail>{email}</mail>.",
+    "statusLabel": "Стан форми",
+    "botcheck": "Залиш це поле порожнім"
   }
 }
