@@ -3,9 +3,9 @@
 Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over it).
 «Current state» = the last finished theme; replace, don't append. Durable notes go to DECISIONS or PLAN first.
 
-## Current state (2026-10-20)
+## Current state (2026-10-21)
 
-- PLAN 3.4 done: Projects motion, hooks in `pages/projects/lib` (`useProjectsMotion` composes them; `ProjectsExplorer` owns the refs, calls `capture` before each filter change). `useFilterFlip`: Flip (`registerFlip`) glides staying cards, scales entering/leaving ones (`absoluteOnLeave`), fades the empty message; a second change completes the running flip first. `useCardsEntrance`: `revealIn` per card (pending attr, `CAP.cards` stagger, scroll-in for cards below the fold). `useCardHover`: lift + glow drift (`HOVER`), `(hover: hover)` + full motion only. `useTabSwap`: label fade/shift. Reduced motion: instant. Hidden cards keep the `hidden` class.
+- PLAN 3.4 done: Projects motion, hooks in `pages/projects/lib` (`useProjectsMotion`; `ProjectsExplorer` calls `capture` before each filter change). `useFilterFlip`: Flip (`registerFlip`) glides staying cards, scales entering/leaving ones (`absoluteOnLeave`), fades the empty message; a second change completes the running flip first. `useCardsEntrance`: `revealIn` per card (pending attr, `CAP.cards` stagger, scroll-in for cards below the fold). `useCardHover`: lift + glow drift (`HOVER`), `(hover: hover)` + full motion only. `useTabSwap`: label fade. Hidden cards keep `hidden`.
 - Projects (2.1): `shared/ui/tech-icon` is server-only, imported by path, never via the barrel (keeps tech SVGs out of the client chunk). Filter is ANY; `Project N` = index in `PROJECTS`. Server `ProjectsView` renders the cards; client `ProjectsExplorer` holds the checked set, tab, hidden state, motion.
 - PLAN 3.3 done: About motion. `about-me/layout.tsx` keeps the shell (explorer, `AboutShell` tabs + snippets) mounted; `[type]` pages render only the pane; section and type come from `usePathname`. `shared/lib/motion`: `useFold`, `useSlideIndicator` (rail bar / tab underline; `data-ready` hands the CSS `aria-current` border to the JS bar), `useLinesReveal` / `LinesReveal`, `exitOut`. Tab close → right neighbour, else left; focus follows the active tab.
 - PLAN 2.4 done: hobbies = third explorer group (gamepad rail), files `games` and `learning` at `about-me/hobbies/[type]` (`HOBBIES_TYPES`, `isHobbiesType`; `hobbies/page.tsx` redirects to games; sitemap lists both). `games` names the owner's unreleased Tiny Coop (Godot 4, Steam) and Dareboard (Expo/React Native), private repos, no links in the copy; `learning`: self-taught, lectured JS/React at an IT school (D19). Both also on /projects as personal (D17); the Dareboard card links to dareboard.app (D20). `interests` rewritten from the CV.
@@ -25,7 +25,7 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 
 ## Next
 
-- Remaining PLAN: 1.13.
+- PLAN done but 1.13 (deferred by owner, 2026-10-21). Not deployed since #31 (D11).
   A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D23.
 
 ## Environment
