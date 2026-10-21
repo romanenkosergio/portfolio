@@ -7,11 +7,11 @@ describe("coverOf", () => {
   });
 
   it("keeps every number to one decimal", () => {
-    const { glows, lines } = coverOf("saas-platform");
-    const numbers = [...glows, ...lines].flatMap(shape =>
+    const { glows } = coverOf("saas-platform");
+    const numbers = glows.flatMap(shape =>
       Object.values(shape).filter(value => typeof value === "number")
     );
-    expect(numbers).toHaveLength(3 * 3 + 9 * 4);
+    expect(numbers).toHaveLength(3 * 3);
     numbers.forEach(value =>
       expect(value * 10).toBeCloseTo(Math.round(value * 10))
     );

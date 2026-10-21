@@ -8,6 +8,8 @@ export interface IProject {
   stack: readonly Tech[];
   // Public link (site, store, Steam, demo); the card shows a view-project button when set.
   href?: string;
+  // A screenshot for the banner, drawn over the generated cover; none is set yet.
+  image?: { src: string; alt: string };
 }
 
 // The translated texts of a project (`projects.items.<slug>`).

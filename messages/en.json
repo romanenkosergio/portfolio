@@ -263,6 +263,7 @@
       "label": "Project {n}",
       "separator": "//",
       "personal": "personal",
+      "commercial": "commercial · NDA",
       "stack": "Stack",
       "view": "view-project",
       "viewTitle": "Open the {title} website (new tab)"

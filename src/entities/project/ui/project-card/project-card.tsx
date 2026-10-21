@@ -4,45 +4,45 @@ import { Button } from "@/shared/ui/button";
 
 import { badgeTechs } from "@/entities/project/lib";
 
-import { ProjectCover } from "../project-cover";
+import { ProjectBanner } from "../project-banner";
 import { TechBadge } from "../tech-badge";
 
 import type { IProjectCardProps } from "./project-card.types";
 
-// The title sits above the card, like a file name over its preview. `h-full` + the flex column
-// let cards of one grid row share a height.
-const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
-  const { slug, kind, stack, title, domain, role, summary, href } = project;
+// One box: a generated banner (the main tech's logo large on its own colour and pattern, or a
+// screenshot once the project has one), then the title, role, summary and a footer pinned to the
+// bottom so cards of one grid row share a height without a gap in the middle.
+const ProjectCard: FC<IProjectCardProps> = ({ project, labels, index }) => {
+  const { kind, stack, title, domain, role, summary, href } = project;
 
   return (
-    <article className="flex min-w-0 flex-1 flex-col gap-3.5">
-      <h2 className="text-base font-normal text-secondary-1">
-        <span className="font-bold text-secondary-3">{labels.number}</span>{" "}
-        {labels.separator} {title}
-      </h2>
-      <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-primary-3 transition-colors focus-within:border-accent-1 hover:border-accent-1">
-        <div className="relative h-36 flex-none border-b border-b-line">
-          <ProjectCover slug={slug} className="size-full" />
-          {kind === "personal" && (
-            <span className="absolute top-4.5 left-4 rounded-sm border border-line bg-primary-3/80 px-2 py-0.5 text-xs text-secondary-1">
-              {labels.personal}
-            </span>
-          )}
-          <ul
-            aria-label={labels.stack}
-            className="absolute top-4.5 right-4 flex gap-1.5"
-          >
+    <article className="flex min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-primary-3 transition-colors focus-within:border-accent-1 hover:border-accent-1">
+      <ProjectBanner
+        project={project}
+        badge={kind === "personal" ? labels.personal : labels.commercial}
+        index={index}
+      />
+      <div className="flex flex-1 flex-col gap-3 p-6">
+        <div className="flex flex-col gap-1">
+          <p className="text-xs text-secondary-1">
+            <span className="font-bold text-secondary-3">{labels.number}</span>{" "}
+            {labels.separator}
+          </p>
+          <h2 className="text-2xl leading-tight font-bold break-words text-white">
+            {title}
+          </h2>
+        </div>
+        <p className="flex flex-wrap gap-x-3 gap-y-0.5 text-sm text-secondary-1">
+          <span className="text-white">{role}</span>
+          <span>{domain}</span>
+        </p>
+        <p className="text-base leading-normal text-secondary-1">{summary}</p>
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-2">
+          <ul aria-label={labels.stack} className="flex flex-wrap gap-1.5">
             {badgeTechs(stack).map(tech => (
               <TechBadge key={tech} tech={tech} />
             ))}
           </ul>
-        </div>
-        <div className="flex flex-1 flex-col gap-5 p-7.5">
-          <p className="text-lg leading-normal text-secondary-1">{summary}</p>
-          <p className="mt-auto flex flex-wrap gap-x-3 gap-y-1 text-sm text-secondary-1">
-            <span className="text-white">{role}</span>
-            <span>{domain}</span>
-          </p>
           {href !== undefined && (
             <Button
               variant="primary"
@@ -51,7 +51,6 @@ const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
               href={href}
               title={labels.viewTitle}
               text={labels.view}
-              className="self-start"
             />
           )}
         </div>

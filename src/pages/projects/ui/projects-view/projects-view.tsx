@@ -23,6 +23,7 @@ const ProjectsView: FC = () => {
     stack: project.stack,
     node: (
       <ProjectCard
+        index={index}
         project={{
           ...project,
           title: t(`items.${project.slug}.title`),
@@ -34,6 +35,7 @@ const ProjectsView: FC = () => {
           number: t("card.label", { n: index + 1 }),
           separator: t("card.separator"),
           personal: t("card.personal"),
+          commercial: t("card.commercial"),
           stack: t("card.stack"),
           view: t("card.view"),
           viewTitle: t("card.viewTitle", {

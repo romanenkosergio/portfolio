@@ -18,6 +18,7 @@ const labels = {
   number: "Project 1",
   separator: "//",
   personal: "personal",
+  commercial: "commercial · NDA",
   stack: "Stack",
   view: "view-project",
   viewTitle: "Open dareboard website"
@@ -26,7 +27,7 @@ const labels = {
 describe("ProjectCard", () => {
   it("links out safely, with a title, when the project has a href", async () => {
     const { container } = render(
-      <ProjectCard project={project} labels={labels} />
+      <ProjectCard project={project} labels={labels} index={0} />
     );
 
     const link = screen.getByRole("link", { name: "view-project" });
@@ -39,14 +40,18 @@ describe("ProjectCard", () => {
 
   it("has no link without a href", () => {
     render(
-      <ProjectCard project={{ ...project, href: undefined }} labels={labels} />
+      <ProjectCard
+        project={{ ...project, href: undefined }}
+        labels={labels}
+        index={0}
+      />
     );
     expect(screen.queryByRole("link")).not.toBeInTheDocument();
   });
 
   it("marks personal projects only", () => {
     const { rerender } = render(
-      <ProjectCard project={project} labels={labels} />
+      <ProjectCard project={project} labels={labels} index={0} />
     );
     expect(screen.getByText("personal")).toBeInTheDocument();
 
@@ -54,13 +59,15 @@ describe("ProjectCard", () => {
       <ProjectCard
         project={{ ...project, kind: "commercial" }}
         labels={labels}
+        index={0}
       />
     );
     expect(screen.queryByText("personal")).not.toBeInTheDocument();
+    expect(screen.getByText("commercial · NDA")).toBeInTheDocument();
   });
 
   it("lists one badge per distinct icon under the stack label", () => {
-    render(<ProjectCard project={project} labels={labels} />);
+    render(<ProjectCard project={project} labels={labels} index={0} />);
     expect(screen.getByRole("list", { name: "Stack" })).toBeInTheDocument();
   });
 });
