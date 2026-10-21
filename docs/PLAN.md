@@ -8,4 +8,4 @@ Done: 1.1–1.12, 1.14–1.16, 2.0–2.6, 3.1–3.7
 
 ## Last — tests
 
-- [ ] 1.13 Playwright + axe against `out/` (incl. a `/portfolio` basePath build), separate CI job, not blocking the deploy (D6)
+- [ ] 1.13 Playwright + axe against `out/` (incl. a `/portfolio` basePath build), separate CI job, not blocking the deploy (D6) — deferred by the owner (2026-10-21), start only on request
