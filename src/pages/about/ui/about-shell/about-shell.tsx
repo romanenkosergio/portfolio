@@ -2,6 +2,8 @@ import type { FC, PropsWithChildren } from "react";
 
 import { useTranslations } from "next-intl";
 
+import { AboutMobileExplorer } from "@/widgets/content-layout";
+
 import { byType } from "@/pages/about/lib";
 
 import { FileTabs } from "../file-tabs";
@@ -15,7 +17,8 @@ const AboutShell: FC<PropsWithChildren> = ({ children }) => {
   const closeLabels = byType(item => t("tabs.close", { name: labels[item] }));
 
   return (
-    <div className="flex min-w-0 flex-1 flex-col overflow-y-auto desktop:min-h-0 desktop:flex-row desktop:overflow-hidden">
+    <div className="flex min-w-0 flex-1 flex-col desktop:min-h-0 desktop:flex-row desktop:overflow-hidden">
+      <AboutMobileExplorer />
       <div className="flex min-w-0 flex-none flex-col desktop:min-h-0 desktop:flex-1 desktop:border-r desktop:border-r-line">
         <FileTabs
           labels={labels}

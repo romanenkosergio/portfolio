@@ -16,7 +16,7 @@ const SnippetAuthor: FC<ISnippetAuthorProps> = ({ author, path, url }) => (
         title={path}
         target="_blank"
         rel="noopener noreferrer"
-        className="truncate text-xs text-secondary-1 hover:text-white"
+        className="-my-2.5 truncate py-2.5 text-xs text-secondary-1 hover:text-white"
       >
         {path}
       </a>

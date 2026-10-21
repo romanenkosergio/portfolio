@@ -11,6 +11,7 @@
   "header": {
     "brand": "serhii-romanenko",
     "homeTitle": "Go to Home",
+    "menu": "Menu",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "nav": {
@@ -47,7 +48,7 @@
   "home": {
     "greeting": "Hi all. I am",
     "name": "Serhii Romanenko",
-    "role": "> Front-end developer",
+    "role": ">\u00a0Front-end developer",
     "hint": "// complete the game to continue",
     "constKeyword": "const",
     "linkName": "githubLink",

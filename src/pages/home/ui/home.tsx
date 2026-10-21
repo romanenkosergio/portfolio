@@ -13,7 +13,7 @@ import { SnakeGame } from "./snake-game";
 const HomeView: FC = () => {
   const t = useTranslations("home");
   return (
-    <section className="flex-1 overflow-x-clip desktop:flex desktop:min-h-fit desktop:shrink-0 desktop:items-center desktop:overflow-clip">
+    <section className="flex-1 overflow-x-clip py-6 desktop:flex desktop:min-h-fit desktop:shrink-0 desktop:items-center desktop:overflow-clip desktop:py-0">
       <Container className="desktop:w-full">
         <div className="desktop:flex desktop:items-center desktop:justify-between">
           <div className="text-white">

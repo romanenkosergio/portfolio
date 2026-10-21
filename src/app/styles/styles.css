@@ -148,8 +148,13 @@
     @apply outline-hidden;
   }
 
+  /* The header is sticky below `desktop`: anything scrolled into view stops under it. */
+  html {
+    @apply scroll-pt-16;
+  }
+
   body {
-    @apply flex h-dvh flex-col justify-between bg-primary-2;
+    @apply flex min-h-dvh flex-col justify-between bg-primary-2 desktop:h-dvh;
   }
 }
 
