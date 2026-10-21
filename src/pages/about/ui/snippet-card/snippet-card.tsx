@@ -37,7 +37,7 @@ const SnippetCard: FC<ISnippetCardProps> = ({
           aria-controls={detailsId}
           onClick={toggle}
           className={cn(
-            "min-h-11 flex-none text-sm hover:text-white desktop:min-h-0",
+            "min-h-11 flex-none rounded-md border border-line px-3 text-sm hover:border-secondary-1 hover:text-white desktop:min-h-0 desktop:py-1",
             open ? "text-white" : "text-secondary-1"
           )}
         >

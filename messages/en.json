@@ -48,7 +48,7 @@
   "home": {
     "greeting": "Hi all. I am",
     "name": "Serhii Romanenko",
-    "role": ">\u00a0Frontend Lead",
+    "role": "> Frontend Lead",
     "summary": "{years, plural, one {# year} other {# years}} in frontend · React · Next.js · TypeScript",
     "hint": "// play while you’re here",
     "ctaProjects": "View projects",
@@ -123,6 +123,24 @@
         },
         "keyToDirection": {
           "details": "Maps a key press to a snake direction. Arrow keys and WASD both work, and shortcuts with Ctrl, Cmd or Alt held are ignored so the game never steals browser shortcuts."
+        },
+        "routing": {
+          "details": "The whole site's routing in four lines: three locales, English as the default and the prefix always in the URL, so a static export can serve each language from its own folder."
+        },
+        "hasNonEmptyChildren": {
+          "details": "From my own ESLint rule that backs the accessibility policy (every link has content and a title). It treats a comment-only expression as empty, which the stock rule missed."
+        },
+        "matchMotion": {
+          "details": "Every animation on the site goes through this one function: gsap.matchMedia picks the full or the reduced variant by prefers-reduced-motion and re-picks it live if the setting changes."
+        },
+        "yearsSince": {
+          "details": "The years of experience in these texts are never typed by hand: this counts full years, month-accurate, from the first job, so the number stays right without edits."
+        },
+        "closeTab": {
+          "details": "Closing a file tab, VS Code style: the right neighbour takes over, else the left one. A pure function over a list, so it is trivial to test."
+        },
+        "closeTabTest": {
+          "details": "The test beside it. I treat tests as the way I learn a rule down: write the behaviour as a sentence, then pin it."
         }
       }
     },
