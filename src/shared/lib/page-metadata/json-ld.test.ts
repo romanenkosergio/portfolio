@@ -20,6 +20,12 @@ describe("homeJsonLd", () => {
     expect(person.image).toMatch(/meta-picture\.png$/);
     expect(person.sameAs).toHaveLength(2);
     expect(person.knowsAbout.length).toBeGreaterThan(0);
-    expect(site).toMatchObject({ "@type": "WebSite", inLanguage: "en" });
+    expect(person["@id"]).toBe(`${person.url}#person`);
+    expect(site).toMatchObject({
+      "@type": "WebSite",
+      "@id": `${person.url}#website`,
+      inLanguage: "en",
+      author: { "@id": person["@id"] }
+    });
   });
 });

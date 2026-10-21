@@ -22,11 +22,13 @@ const KNOWS_ABOUT = [
 export const homeJsonLd = async (locale: Locale) => {
   const t = await getTranslations({ locale, namespace: "meta" });
   const url = `${APP_CONFIG.BASE_URL}${localizedPath(locale, "/")}`;
+  const person = { "@id": `${url}#person` };
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
+        ...person,
         name: t("appName"),
         jobTitle: t("jobTitle"),
         description: t("appDescription"),
@@ -35,7 +37,14 @@ export const homeJsonLd = async (locale: Locale) => {
         sameAs: [GITHUB_URL, LINKEDIN_URL],
         knowsAbout: KNOWS_ABOUT
       },
-      { "@type": "WebSite", name: t("appName"), url, inLanguage: locale }
+      {
+        "@type": "WebSite",
+        "@id": `${url}#website`,
+        name: t("appName"),
+        url,
+        inLanguage: locale,
+        author: person
+      }
     ]
   };
 };

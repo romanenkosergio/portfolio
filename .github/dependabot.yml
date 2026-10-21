@@ -6,7 +6,7 @@ updates:
       interval: weekly
     open-pull-requests-limit: 5
     commit-message:
-      prefix: "Deps: "
+      prefix: "Deps"
     groups:
       minor-and-patch:
         update-types: [minor, patch]
@@ -15,7 +15,7 @@ updates:
     schedule:
       interval: weekly
     commit-message:
-      prefix: "Deps: "
+      prefix: "Deps"
     groups:
       actions:
         patterns: ["*"]
