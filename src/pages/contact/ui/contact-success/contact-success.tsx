@@ -30,10 +30,18 @@ const ContactSuccess: FC<IContactSuccessProps> = ({ onAgain }) => {
       >
         <ScrambleText>{t("title")}</ScrambleText>
       </h2>
-      <Reveal delay={DURATION.fast} y={DISTANCE.small}>
+      <Reveal
+        delay={DURATION.fast}
+        y={DISTANCE.small}
+        clearProps="opacity,transform"
+      >
         <p className="text-base text-secondary-1">{t("text")}</p>
       </Reveal>
-      <Reveal delay={DURATION.base} y={DISTANCE.small}>
+      <Reveal
+        delay={DURATION.base}
+        y={DISTANCE.small}
+        clearProps="opacity,transform"
+      >
         <Button variant="primary" text={t("again")} onClick={onAgain} />
       </Reveal>
     </div>

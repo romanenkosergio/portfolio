@@ -24,7 +24,9 @@ interface IContactStore {
 const sharedLength = (a: string, b: string): number => {
   let at = 0;
   while (at < a.length && at < b.length && a[at] === b[at]) at += 1;
-  return at;
+  // Never split a surrogate pair (an emoji): step back to its start.
+  const low = b.charCodeAt(at);
+  return at > 0 && low >= 0xdc00 && low <= 0xdfff ? at - 1 : at;
 };
 
 // The form writes here and the code preview reads, so they stay in step without a shared parent.
@@ -40,7 +42,7 @@ export const useContactStore = create<IContactStore>()(set => ({
     })),
   setFocused: focused => set({ focused }),
   setSending: sending => set({ sending }),
-  reset: () => set({ values: EMPTY_VALUES, edit: null })
+  reset: () => set({ values: EMPTY_VALUES, edit: null, focused: null })
 }));
 
 export const selectValues = (s: IContactStore) => s.values;

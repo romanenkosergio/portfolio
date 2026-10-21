@@ -10,6 +10,7 @@ import type {
 } from "../config";
 import {
   selectReset,
+  selectSetFocused,
   selectSetSending,
   selectSetValue,
   selectValues,
@@ -63,10 +64,11 @@ export const useContactForm = () => {
   const setValue = useContactStore(selectSetValue);
   const reset = useContactStore(selectReset);
   const setSending = useContactStore(selectSetSending);
+  const setFocused = useContactStore(selectSetFocused);
   const [errors, setErrors] = useState<IContactErrors>({});
   const [status, setStatus] = useState<FormStatus>("idle");
   const [attempt, setAttempt] = useState(0);
-  // Counts submits that found invalid fields, so the form can shake them each time.
+  // Submits that found invalid fields: each one shakes them.
   const [rejected, setRejected] = useState(0);
   const { register, focusAfterRender } = useFieldFocus(errors, status);
   const inFlight = useRef(false);
@@ -84,7 +86,8 @@ export const useContactForm = () => {
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (inFlight.current) return;
+    // The form lingers while it fades out after a success: no second send.
+    if (inFlight.current || status === "success") return;
     const found = validateAll(values);
     setErrors(found);
     const invalid = FIELDS.find(field => found[field]);
@@ -99,6 +102,8 @@ export const useContactForm = () => {
     setStatus("sending");
     const sent = await deliver(values, Boolean(trap), setSending);
     inFlight.current = false;
+    // Enter unmounts the focused field without a blur: the preview must not keep its caret.
+    if (sent) setFocused(null);
     setAttempt(count => count + 1);
     setStatus(sent ? "success" : "error");
   };

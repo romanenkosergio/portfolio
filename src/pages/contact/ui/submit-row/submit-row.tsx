@@ -22,7 +22,7 @@ const SubmitRow: FC<ISubmitRowProps> = ({ status, attempt }) => {
       <Button
         type="submit"
         variant="default"
-        disabled={status === "sending"}
+        disabled={status === "sending" || status === "success"}
         text={status === "sending" ? t("sending") : t("submit")}
       />
       <div

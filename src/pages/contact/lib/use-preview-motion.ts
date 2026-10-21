@@ -19,6 +19,38 @@ import { pulse } from "./pulse";
 
 registerMotion();
 
+const useCaretBlink = (
+  rootRef: RefObject<HTMLElement | null>,
+  edit: IContactEdit | null,
+  focused: FieldName | null
+): void => {
+  useGSAP(
+    () => {
+      const root = rootRef.current;
+      const caret = root?.querySelector("[data-caret]");
+      if (!root || !caret) return;
+      const mm = matchMotion(root, {
+        full: () => {
+          gsap.fromTo(
+            caret,
+            { opacity: 1 },
+            {
+              opacity: 0,
+              duration: TYPE.blink,
+              delay: TYPE.hold,
+              repeat: -1,
+              yoyo: true,
+              ease: EASE.blink
+            }
+          );
+        }
+      });
+      return () => mm.revert();
+    },
+    { scope: rootRef, dependencies: [edit, focused], revertOnUpdate: true }
+  );
+};
+
 /**
  * Motion of the code preview, scoped to its root: the caret blinks like the hero's (solid while
  * typing, then after `TYPE.hold`), the freshly typed run fades in, and the `form.send` row pulses
@@ -31,39 +63,26 @@ export const usePreviewMotion = (
 ): void => {
   const sending = useContactStore(selectSending);
 
+  useCaretBlink(rootRef, edit, focused);
+
   useGSAP(
     () => {
       const root = rootRef.current;
-      if (!root) return;
+      const fresh = root?.querySelector("[data-fresh]");
+      if (!root || !fresh) return;
       const mm = matchMotion(root, {
         full: () => {
-          const fresh = root.querySelector("[data-fresh]");
-          const caret = root.querySelector("[data-caret]");
-          if (fresh)
-            gsap.from(fresh, {
-              opacity: 0,
-              duration: DURATION.quick,
-              ease: EASE.soft,
-              clearProps: "opacity"
-            });
-          if (caret)
-            gsap.fromTo(
-              caret,
-              { opacity: 1 },
-              {
-                opacity: 0,
-                duration: TYPE.blink,
-                delay: TYPE.hold,
-                repeat: -1,
-                yoyo: true,
-                ease: EASE.blink
-              }
-            );
+          gsap.from(fresh, {
+            opacity: 0,
+            duration: DURATION.quick,
+            ease: EASE.soft,
+            clearProps: "opacity"
+          });
         }
       });
       return () => mm.revert();
     },
-    { scope: rootRef, dependencies: [edit, focused], revertOnUpdate: true }
+    { scope: rootRef, dependencies: [edit], revertOnUpdate: true }
   );
 
   useGSAP(
