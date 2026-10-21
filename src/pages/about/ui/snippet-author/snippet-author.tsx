@@ -1,13 +1,15 @@
 import type { FC } from "react";
 
+import { Icon } from "@/shared/ui";
+
 import type { ISnippetAuthorProps } from "./snippet-author.types";
 
-// Abstract avatar (no photo) with the handle and the file the snippet comes from.
+// Neutral placeholder (the person icon) until there is a photo, with the handle and the file the snippet comes from.
 const SnippetAuthor: FC<ISnippetAuthorProps> = ({ author, path, url }) => (
   <div className="flex min-w-0 items-center gap-3">
-    <span
-      aria-hidden="true"
-      className="size-9 flex-none rounded-full bg-linear-to-br from-accent-3 via-accent-4 to-secondary-3"
+    <Icon
+      name="sidebar/personal-info"
+      className="size-9 flex-none rounded-full border border-line bg-primary-3 p-2"
     />
     <div className="flex min-w-0 flex-col">
       <p className="text-sm font-bold text-secondary-3">{author}</p>
@@ -16,7 +18,7 @@ const SnippetAuthor: FC<ISnippetAuthorProps> = ({ author, path, url }) => (
         title={path}
         target="_blank"
         rel="noopener noreferrer"
-        className="-my-2.5 truncate py-2.5 text-xs text-secondary-1 hover:text-white"
+        className="-my-2.5 break-all py-2.5 text-xs text-secondary-1 hover:text-white"
       >
         {path}
       </a>
