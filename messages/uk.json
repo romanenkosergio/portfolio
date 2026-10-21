@@ -1,9 +1,9 @@
 {
   "meta": {
-    "appName": "Сергій Романенко",
-    "appDescription": "Портфоліо фронтенд-розробника: проєкти, досвід і контакти.",
+    "appName": "Serhii Romanenko",
+    "appDescription": "Моє професійне портфоліо: проєкти, досвід і контакти.",
     "ogTitle": "Ласкаво просимо до мого портфоліо",
-    "ogDescription": "Перегляньте мої проєкти, дізнайтеся більше про мене та напишіть мені."
+    "ogDescription": "Мої проєкти, коротко про мене і як зі мною зв’язатися."
   },
   "layout": {
     "skipToContent": "Перейти до вмісту"
@@ -46,8 +46,8 @@
   },
   "home": {
     "greeting": "Привіт, я",
-    "name": "Сергій Романенко",
-    "role": "> Фронтенд-розробник",
+    "name": "Serhii Romanenko",
+    "role": "> Front-end розробник",
     "hint": "// пройди гру, щоб продовжити",
     "constKeyword": "const",
     "linkName": "githubLink",
@@ -74,8 +74,8 @@
     "arrowsToPlay": "// грай стрілками",
     "moveUp": "Вгору",
     "moveDown": "Вниз",
-    "moveLeft": "Вліво",
-    "moveRight": "Вправо"
+    "moveLeft": "Ліворуч",
+    "moveRight": "Праворуч"
   },
   "about": {
     "types": {
@@ -87,27 +87,27 @@
       "learning": "learning"
     },
     "content": {
-      "bio": "/**\n * Про мене\n * Я Frontend Lead у SaaS-компанії. Роблю SaaS-продукти\n * на React, Next.js і TypeScript.\n *\n * {years, plural, one {# рік} few {# роки} many {# років} other {# року}} у фронтенді. Почав інженером\n * і виріс до тімліда. Виводив продукти від MVP\n * до продакшену в стартапах і продуктових командах\n * та вів людей, які їх будують.\n *\n * Мені важливі: архітектура фронтенду, досвід розробника,\n * продуктивність і чисті UI-системи. Вибудовую стандарти\n * й процеси, щоб команда могла випускати сама.\n * Менторю через код-рев’ю та обговорення дизайну.\n */",
-      "interests": "/**\n * Інтереси\n * Я проактивна людина, орієнтована на ріст. \n * Люблю розв’язувати складні задачі та будувати \n * співпрацю в командах. Переконаний, що підтримуюче \n * середовище, яке дає людям силу діяти, — запорука \n * успіху і в житті, і в роботі.\n *\n * Мій фокус — постійний саморозвиток, інновації \n * та гнучкість. Мені подобаються складні проблеми, \n * нові технології й творчі рішення, до яких я \n * заохочую команду.\n *\n * Я ціную відкрите спілкування, довіру й прозорість \n * і дбаю про атмосферу, де кожен може запропонувати \n * ідею та рости.\n *\n * Мене рухають цікавість, любов до роботи, що має \n * вплив, і бажання змінювати речі на краще — \n * і як лідера, і як людини.\n */",
+      "bio": "/**\n * Про мене\n * Я Frontend Lead у SaaS-компанії. Створюю SaaS-\n * продукти на React, Next.js і TypeScript.\n *\n * {years, plural, one {# рік} few {# роки} many {# років} other {# року}} у фронтенді. Почав інженером і виріс\n * до тімліда. Доводив продукти від MVP до продакшну\n * в стартапах і продуктових командах та вів людей,\n * які їх роблять.\n *\n * Що для мене важливо: архітектура фронтенду, DX,\n * продуктивність і чисті UI-системи. Задаю стандарти\n * й процеси, щоб команда випускала сама. Менторю\n * через код-рев’ю та обговорення дизайну.\n */",
+      "interests": "/**\n * Інтереси\n * Інструменти, що прибирають рутину налаштування.\n * Шаблони проєктів, внутрішні CLI і документація,\n * з якою новий інженер релізить за перший тиждень.\n *\n * Викладання. Читав лекції з JavaScript і React і досі\n * люблю пояснювати складне, доки воно не стане простим.\n *\n * Найм і процеси в команді. Проводив технічні\n * співбесіди і люблю будувати команди, до яких\n * легко приєднатися.\n *\n * Дані на екрані. Власні графіки та візуалізації,\n * де інтерфейс має зробити цифри читабельними.\n *\n * Автоматизація. Невеликі боти та інтеграції, що\n * знімають з людей повторювану роботу.\n */",
       "skills": "/**\n * Навички\n *\n * Frontend\n * React, Next.js, TypeScript, Redux Toolkit,\n * TanStack Query, Zustand, Tailwind\n *\n * Архітектура\n * Архітектура фронтенду, FSD (Feature-Sliced Design),\n * дизайн-системи, SSR, оптимізація продуктивності\n *\n * Лідерство\n * Керування командою, менторинг, найм, код-рев’ю\n *\n * Інструменти\n * AWS, CI/CD, Jest, GraphQL\n */",
-      "experience": "/**\n * Досвід\n *\n * Frontend Lead — SaaS-компанія\n * 11.2025 – зараз\n * Архітектура й стандарти фронтенду SaaS-платформи;\n * прийшов як Front-End Developer у 07.2025.\n *\n * Frontend Team Lead — Продуктова студія\n * 01.2024 – 06.2025\n * Вів фронтенд стартапів і SaaS-продуктів; зробив\n * внутрішні інструменти, документацію й онбординг.\n *\n * Front-End Developer — Tech-компанія\n * 01.2023 – 07.2023\n * Сторінки продуктів, власні графіки й візуалізації.\n *\n * Frontend Lecturer — IT-школа\n * 01.2022 – 01.2023\n * Викладав JavaScript і React початківцям.\n *\n * Front-End Developer — Софтверна агенція\n * 03.2022 – 09.2022\n * Клієнтські проєкти на React, Vue і Django; менторив джунів.\n *\n * Development Team Lead — E-commerce компанія\n * 01.2020 – 03.2022\n * E-commerce платформи. За 4 місяці підвищений до Team Lead;\n * інтерв’ю, код-рев’ю та шаблони проєктів.\n *\n * Front-End Developer — Продуктова компанія\n * 09.2019 – 04.2020\n * React-застосунки з Redux і Material UI.\n *\n * Front-End Developer — Digital-агенція\n * 05.2019 – 08.2019\n * Сайти для клієнтів на Vue.js.\n *\n * Front-End Developer — Продуктова компанія\n * 05.2017 – 04.2019\n * Сайти компанії, інтеграції CRM, Telegram-боти.\n */",
-      "games": "/**\n * Games\n * I play World of Warcraft and whatever is new on\n * my PS5. I also like how games are built: a tight\n * loop of input, state and feedback is good practice\n * for frontend thinking.\n *\n * I am building two of my own:\n * Tiny Coop, a cozy idle desktop game about a hen,\n * made in Godot 4 and heading to Steam.\n * Dareboard, a party game app (truth or dare, never\n * have I ever, spin the bottle) in Expo and React\n * Native, coming to the App Store and Google Play.\n *\n * The snake on the home page is a small one: a pure\n * state engine, testable without a canvas.\n */",
-      "learning": "/**\n * Learning\n * I am self-taught. I learned frontend from\n * documentation, source code and real projects,\n * and I still learn the same way.\n *\n * Frontend changes fast, and so does the way teams\n * work. I try new ideas in small side projects\n * before they reach a team.\n *\n * This site is one of them: Feature-Sliced Design,\n * strict lint rules and a GSAP motion toolkit.\n *\n * Later I taught others: I lectured JavaScript and\n * React to students at an IT school.\n */"
+      "experience": "/**\n * Досвід\n *\n * Frontend Lead — SaaS-компанія\n * 11.2025 – тепер\n * Архітектура і стандарти фронтенду SaaS-платформи;\n * прийшов Front-End розробником у 07.2025.\n *\n * Frontend Team Lead — продуктова студія\n * 01.2024 – 06.2025\n * Вів фронтенд стартап- і SaaS-продуктів; створив\n * внутрішні інструменти, документацію й онбординг.\n *\n * Front-End розробник — технологічна компанія\n * 01.2023 – 07.2023\n * Сторінки продукту, власні графіки та візуалізації.\n *\n * Викладач фронтенду — IT-школа\n * 01.2022 – 01.2023\n * Навчав початківців JavaScript і React.\n *\n * Front-End розробник — софтверна агенція\n * 03.2022 – 09.2022\n * Клієнтські проєкти на React, Vue і Django;\n * менторив джунів.\n *\n * Development Team Lead — e-commerce компанія\n * 01.2020 – 03.2022\n * E-commerce платформи. За 4 місяці виріс до тімліда;\n * проводив співбесіди, рев’ю і шаблони проєктів.\n *\n * Front-End розробник — продуктова компанія\n * 09.2019 – 04.2020\n * React-застосунки з Redux і Material UI.\n *\n * Front-End розробник — діджитал-агенція\n * 05.2019 – 08.2019\n * Сайти для клієнтів на Vue.js.\n *\n * Front-End розробник — продуктова компанія\n * 05.2017 – 04.2019\n * Сайти компанії, інтеграції з CRM, Telegram-боти.\n */",
+      "games": "/**\n * Ігри\n * Граю у World of Warcraft і в усе нове на PS5.\n * Мені також цікаво, як ігри влаштовані: чіткий\n * цикл вводу, стану й відгуку — добра практика\n * для мислення фронтендера.\n *\n * Роблю дві власні:\n * Tiny Coop — затишна idle-гра для десктопа про\n * курку, на Godot 4, згодом вийде в Steam.\n * Dareboard — застосунок із вечірніми іграми (правда\n * чи дія, «я ніколи не…», пляшка) на Expo і React\n * Native, незабаром в App Store і Google Play.\n *\n * Змійка на головній — маленький приклад: чистий\n * рушій стану, який тестується без canvas.\n */",
+      "learning": "/**\n * Навчання\n * Я самоук. Фронтенд вивчив за документацією,\n * вихідним кодом і реальними проєктами та й\n * досі вчуся так само.\n *\n * Фронтенд швидко змінюється, як і те, як працюють\n * команди. Нові ідеї пробую в невеликих власних\n * проєктах, перш ніж нести їх у команду.\n *\n * Цей сайт — один із них: Feature-Sliced Design,\n * суворі lint-правила і GSAP-інструментарій анімацій.\n *\n * Згодом навчав інших: читав лекції з JavaScript\n * і React студентам IT-школи.\n */"
     },
     "tabs": {
-      "close": "Close {name}",
-      "label": "Open files"
+      "close": "Закрити {name}",
+      "label": "Відкриті файли"
     },
     "snippets": {
-      "title": "// Code snippet showcase:",
-      "details": "details",
-      "close": "Close details",
+      "title": "// Приклади коду:",
+      "details": "деталі",
+      "close": "Закрити деталі",
       "items": {
         "step": {
-          "details": "One tick of the snake engine: a pure function from the previous state to the next, so the game logic is testable without a canvas. It moves the head, grows on food and ends the round on a wall or self hit (the excerpt keeps the move and the eating)."
+          "details": "Один тік рушія змійки: чиста функція, що з попереднього стану робить наступний, тож логіку гри можна тестувати без canvas. Вона рухає голову, росте від їжі й завершує раунд при ударі об стіну чи себе (у фрагменті лишився рух і поїдання)."
         },
         "keyToDirection": {
-          "details": "Maps a key press to a snake direction. Arrow keys and WASD both work, and shortcuts with Ctrl, Cmd or Alt held are ignored so the game never steals browser shortcuts."
+          "details": "Перетворює натискання клавіші на напрямок змійки. Працюють і стрілки, і WASD; поєднання з Ctrl, Cmd чи Alt ігноруються, тож гра не перехоплює гарячі клавіші браузера."
         }
       }
     }
@@ -140,92 +140,92 @@
   },
   "root": {
     "continue": "Перейти на сайт",
-    "title": "Перенаправлення"
+    "title": "Переадресація"
   },
   "projects": {
-    "heading": "Projects",
+    "heading": "Проєкти",
     "filter": {
       "title": "projects",
-      "label": "Filter by technology",
-      "all": "all",
-      "clear": "Show all projects"
+      "label": "Фільтр за технологією",
+      "all": "усі",
+      "clear": "Показати всі проєкти"
     },
     "card": {
-      "label": "Project {n}",
+      "label": "Проєкт {n}",
       "separator": "//",
-      "personal": "personal",
-      "stack": "Stack",
+      "personal": "власний",
+      "stack": "Стек",
       "view": "view-project",
       "viewTitle": "Відкрити сайт {title} (нова вкладка)"
     },
-    "empty": "// no projects use these technologies",
+    "empty": "// немає проєктів із цими технологіями",
     "items": {
       "saas-platform": {
         "title": "_saas-platform",
-        "domain": "Multi-tenant business software",
+        "domain": "Мультитенантне бізнес-ПЗ",
         "role": "Frontend lead",
-        "summary": "Owned frontend direction for a product split into several modules. Agreed shared conventions and coached the engineers shipping features."
+        "summary": "Відповідав за напрям фронтенду продукту, розділеного на кілька модулів. Узгодив спільні конвенції та допомагав інженерам, які випускають фічі."
       },
       "early-stage-products": {
         "title": "_early-stage-products",
-        "domain": "Early-stage web products",
-        "role": "Team lead",
-        "summary": "Headed the frontend side of a few young products. Shaped app foundations they could share and scripted the repetitive parts of starting a project."
+        "domain": "Веб-продукти на ранній стадії",
+        "role": "Тімлід",
+        "summary": "Керував фронтендом кількох молодих продуктів. Зробив спільну основу застосунків і скриптами автоматизував рутину старту проєкту."
       },
       "data-heavy-ui": {
         "title": "_data-heavy-ui",
-        "domain": "Analytics-heavy web product",
-        "role": "Frontend engineer",
-        "summary": "Rebuilt key screens and wrote interactive widgets that draw custom graphics from live data. Simplified how users move through the product."
+        "domain": "Веб-продукт з аналітикою",
+        "role": "Frontend-інженер",
+        "summary": "Перебудував ключові екрани й написав інтерактивні віджети, що малюють власну графіку з живих даних. Спростив шлях користувача продуктом."
       },
       "ecommerce-platform": {
         "title": "_ecommerce-platform",
-        "domain": "E-commerce platforms",
-        "role": "Team lead",
-        "summary": "Ran frontend for online storefronts with many sellers. Packaged a starter setup in React so new projects began from a working base."
+        "domain": "E-commerce платформи",
+        "role": "Тімлід",
+        "summary": "Вів фронтенд інтернет-магазинів із багатьма продавцями. Зібрав стартовий набір на React, щоб нові проєкти починалися з робочої бази."
       },
       "client-apps": {
         "title": "_client-apps",
-        "domain": "Custom apps for clients",
-        "role": "Frontend engineer",
-        "summary": "Delivered interfaces for several customer products on top of Python backends. Extracted common UI parts and helped newer colleagues get productive."
+        "domain": "Індивідуальні застосунки для клієнтів",
+        "role": "Frontend-інженер",
+        "summary": "Робив інтерфейси кількох клієнтських продуктів поверх Python-бекендів. Виніс спільні UI-частини й допомагав новим колегам швидше увійти в роботу."
       },
       "lead-automation": {
         "title": "_lead-automation",
-        "domain": "Sales operations tooling",
-        "role": "Frontend engineer",
-        "summary": "Wired company websites to the sales pipeline so inquiries were routed without manual work, added chat-bot helpers for the team, and sped up page loads."
+        "domain": "Інструменти для відділу продажів",
+        "role": "Frontend-інженер",
+        "summary": "Підключив сайти компанії до воронки продажів, щоб звернення розподілялися без ручної роботи, додав чат-ботів для команди й пришвидшив завантаження сторінок."
       },
       "marketing-sites": {
         "title": "_marketing-sites",
-        "domain": "Responsive marketing websites",
-        "role": "Frontend engineer",
-        "summary": "Built mobile-friendly sites for agency customers from design files. Kept a library of reusable blocks and an organised style system as sites grew."
+        "domain": "Адаптивні маркетингові сайти",
+        "role": "Frontend-інженер",
+        "summary": "Верстав мобільні сайти для клієнтів агенції за макетами. Вів бібліотеку повторюваних блоків і впорядковану систему стилів, поки сайти росли."
       },
       "tiny-coop": {
         "title": "_tiny-coop",
-        "domain": "Desktop game",
-        "role": "Solo developer",
-        "summary": "A cozy idle game about a hen living in a coop on a transparent strip at the bottom of your screen. Steam, Windows and macOS. In development."
+        "domain": "Десктопна гра",
+        "role": "Соло-розробник",
+        "summary": "Затишна idle-гра про курку, що живе в курнику на прозорій смужці внизу екрана. Steam, Windows і macOS. У розробці."
       },
       "dareboard": {
         "title": "_dareboard",
-        "domain": "Mobile party game",
-        "role": "Solo developer",
-        "summary": "Party game app: truth or dare, never have I ever, spin the bottle. Expo client, NestJS API and an Astro landing page. Coming to the App Store and Google Play."
+        "domain": "Мобільна гра для компанії",
+        "role": "Соло-розробник",
+        "summary": "Застосунок із вечірніми іграми: правда чи дія, «я ніколи не…», пляшка. Клієнт на Expo, API на NestJS і лендинг на Astro. Незабаром в App Store і Google Play."
       }
     }
   },
   "titles": {
     "home": "Ласкаво просимо до мого портфоліо",
     "aboutMe": "Про мене",
-    "bio": "Біографія",
+    "bio": "Біо",
     "interests": "Інтереси",
     "skills": "Навички",
     "experience": "Досвід",
     "hobbies": "Хобі",
-    "games": "Games",
-    "learning": "Learning",
+    "games": "Ігри",
+    "learning": "Навчання",
     "projects": "Проєкти",
     "contact": "Зв’язатися зі мною"
   }
