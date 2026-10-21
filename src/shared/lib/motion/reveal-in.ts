@@ -72,7 +72,8 @@ export const revealIn = (
     delay,
     stagger,
     ease: EASE.out,
-    clearProps,
+    // GSAP throws on `clearProps: undefined` when the tween ends, so the key is left out unless set.
+    ...(clearProps ? { clearProps } : {}),
     paused: scroll
   });
   host.removeAttribute(PENDING_ATTR);
