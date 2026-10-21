@@ -4,10 +4,12 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
+// `sharp` is not a direct dependency: it resolves through the one Next ships with.
 import sharp from "sharp";
 
 const ICONS = "public/assets/icons/favicons";
 const IMAGES = "public/assets/images";
+const SOURCES = "scripts/meta-assets";
 const C = {
   bg: "#011627",
   deep: "#010c15",
@@ -97,8 +99,9 @@ const png = (svg, size) =>
 
 mkdirSync(ICONS, { recursive: true });
 mkdirSync(IMAGES, { recursive: true });
+mkdirSync(SOURCES, { recursive: true });
 writeFileSync(join(ICONS, "favicon.svg"), faviconSvg);
-writeFileSync(join(IMAGES, "meta-picture.svg"), pictureSvg);
+writeFileSync(join(SOURCES, "meta-picture.svg"), pictureSvg);
 writeFileSync(
   join(ICONS, "site.webmanifest"),
   `${JSON.stringify(manifest, null, 2)}\n`
@@ -110,6 +113,6 @@ writeFileSync(join(ICONS, "favicon.ico"), ico(frames));
 writeFileSync(join(ICONS, "apple-touch-icon.png"), await png(faviconSvg, 180));
 writeFileSync(join(ICONS, "icon-192.png"), await png(faviconSvg, 192));
 writeFileSync(join(ICONS, "icon-512.png"), await png(faviconSvg, 512));
-await sharp(Buffer.from(pictureSvg), { density: 96 })
+await sharp(Buffer.from(pictureSvg), { density: 72 })
   .png()
   .toFile(join(IMAGES, "meta-picture.png"));
