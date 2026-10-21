@@ -50,21 +50,24 @@ const random = (seed: number) => {
   };
 };
 
+// One decimal is far below a pixel; it keeps every number short in the HTML and in the flight data.
+const tenth = (value: number): number => Math.round(value * 10) / 10;
+
 export const coverOf = (slug: string): ICover => {
   const next = random(seedOf(slug));
   const color = () => PALETTE[Math.floor(next() * PALETTE.length)];
 
   const glows = Array.from({ length: 3 }, () => ({
-    cx: next() * COVER_WIDTH,
-    cy: next() * COVER_HEIGHT,
-    r: 60 + next() * 70,
+    cx: tenth(next() * COVER_WIDTH),
+    cy: tenth(next() * COVER_HEIGHT),
+    r: tenth(60 + next() * 70),
     color: color()
   }));
   const lines = Array.from({ length: 9 }, () => ({
-    x: next() * COVER_WIDTH,
-    y: next() * COVER_HEIGHT,
-    length: 40 + next() * 120,
-    angle: -60 + next() * 120,
+    x: tenth(next() * COVER_WIDTH),
+    y: tenth(next() * COVER_HEIGHT),
+    length: tenth(40 + next() * 120),
+    angle: tenth(-60 + next() * 120),
     color: color()
   }));
 

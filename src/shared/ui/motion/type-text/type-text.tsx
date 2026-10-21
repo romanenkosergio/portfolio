@@ -5,7 +5,6 @@ import type { FC } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
 
 import {
   DURATION,
@@ -13,15 +12,14 @@ import {
   PENDING_ATTR,
   TYPE,
   isAlreadyVisible,
+  loadScrambleText,
   matchMotion,
-  registerTypeText
+  playAfterLoad
 } from "@/shared/lib/motion";
 
 import type { MotionHostType } from "../motion.types";
 
 import type { ITypeTextProps } from "./type-text.types";
-
-registerTypeText();
 
 /** Caret box at a char's right edge (or its left edge), as long as the char is tall. */
 const edgeOf = (
@@ -105,18 +103,24 @@ interface IPlayTyping extends Omit<ITypingOptions, "chars"> {
 /** Splits the text and types it (full motion), or shows it at once (reduced); returns the context to revert. */
 const playTyping = ({ host, text, ...options }: IPlayTyping): gsap.MatchMedia =>
   matchMotion(host, {
-    full: () => {
-      if (isAlreadyVisible(host)) return;
-      const instance = SplitText.create(text, {
-        type: "chars",
-        smartWrap: true,
-        aria: "none",
-        onSplit: self =>
-          typeChars({ ...options, chars: self.chars as HTMLElement[] })
-      });
-      host.removeAttribute(PENDING_ATTR);
-      return () => instance.revert();
-    },
+    full: contextSafe =>
+      playAfterLoad(
+        // The same loader as ScrambleText, so both hero lines start together and keep HERO_DELAY.
+        loadScrambleText,
+        SplitText => {
+          if (isAlreadyVisible(host)) return;
+          const instance = SplitText.create(text, {
+            type: "chars",
+            smartWrap: true,
+            aria: "none",
+            onSplit: self =>
+              typeChars({ ...options, chars: self.chars as HTMLElement[] })
+          });
+          host.removeAttribute(PENDING_ATTR);
+          return () => instance.revert();
+        },
+        contextSafe
+      ),
     reduced: () => {
       host.removeAttribute(PENDING_ATTR);
       const { caret, keepCaret } = options;

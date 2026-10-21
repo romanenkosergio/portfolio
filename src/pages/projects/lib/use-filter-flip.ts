@@ -1,23 +1,22 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import type { RefObject } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Flip } from "gsap/Flip";
+import type { Flip } from "gsap/Flip";
 
+import { usePageLoaded } from "@/shared/lib";
 import {
   CAP,
   DURATION,
   EASE,
   SCALE,
   STAGGER,
-  matchMotion,
-  registerFlip
+  loadFlip,
+  matchMotion
 } from "@/shared/lib/motion";
 
 import { CARD_ATTR, EMPTY_ATTR } from "./card-markers";
-
-registerFlip();
 
 const cardsOf = (root: HTMLElement): HTMLElement[] =>
   Array.from(root.querySelectorAll<HTMLElement>(`[${CARD_ATTR}]`));
@@ -33,13 +32,14 @@ const settle = (root: HTMLElement): void => {
 };
 
 const glide = (
+  plugin: typeof Flip,
   root: HTMLElement,
   state: Flip.FlipState
 ): gsap.core.Timeline => {
   const cards = cardsOf(root);
   const shown = cards.filter(isShown);
   const hide = { opacity: 0, scale: SCALE.enter };
-  const flip = Flip.from(state, {
+  const glided = plugin.from(state, {
     targets: cards,
     duration: DURATION.base,
     ease: EASE.out,
@@ -69,7 +69,7 @@ const glide = (
       ease: EASE.out
     });
   }
-  return flip;
+  return glided;
 };
 
 /**
@@ -85,6 +85,20 @@ export const useFilterFlip = (
 ): (() => void) => {
   const state = useRef<Flip.FlipState | null>(null);
   const running = useRef<gsap.core.Animation | null>(null);
+  const flip = useRef<typeof Flip | null>(null);
+
+  // Flip stays out of the first load; it is fetched once the page has loaded.
+  // Until it arrives (or if it fails) a filter change simply re-lays out at once.
+  const loaded = usePageLoaded();
+  useEffect(() => {
+    if (!loaded) return;
+    void loadFlip().then(
+      plugin => {
+        flip.current = plugin;
+      },
+      () => undefined
+    );
+  }, [loaded]);
 
   useGSAP(
     () => {
@@ -94,7 +108,8 @@ export const useFilterFlip = (
       if (!root || !captured) return;
       const mm = matchMotion(root, {
         full: () => {
-          running.current = glide(root, captured);
+          if (flip.current)
+            running.current = glide(flip.current, root, captured);
         }
       });
       return () => {
@@ -113,6 +128,8 @@ export const useFilterFlip = (
     running.current?.progress(1).kill();
     running.current = null;
     settle(root);
-    state.current = Flip.getState(cardsOf(root));
+    // Flip not loaded yet: the layout changes at once.
+    if (!flip.current) return;
+    state.current = flip.current.getState(cardsOf(root));
   };
 };

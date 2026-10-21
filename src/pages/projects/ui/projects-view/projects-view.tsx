@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 import { useTranslations } from "next-intl";
 
-import { TechIcon } from "@/shared/ui/tech-icon";
+import { TechIcon, TechIconSprite } from "@/shared/ui/tech-icon";
 
 import {
   PROJECTS,
@@ -56,18 +56,21 @@ const ProjectsView: FC = () => {
   }));
 
   return (
-    <ProjectsExplorer
-      cards={cards}
-      filters={filters}
-      copy={{
-        heading: t("heading"),
-        filterTitle: t("filter.title"),
-        filterLabel: t("filter.label"),
-        all: t("filter.all"),
-        clear: t("filter.clear"),
-        empty: t("empty")
-      }}
-    />
+    <>
+      <TechIconSprite />
+      <ProjectsExplorer
+        cards={cards}
+        filters={filters}
+        copy={{
+          heading: t("heading"),
+          filterTitle: t("filter.title"),
+          filterLabel: t("filter.label"),
+          all: t("filter.all"),
+          clear: t("filter.clear"),
+          empty: t("empty")
+        }}
+      />
+    </>
   );
 };
 
