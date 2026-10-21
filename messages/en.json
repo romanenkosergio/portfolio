@@ -156,7 +156,7 @@
       "personal": "personal",
       "stack": "Stack",
       "view": "view-project",
-      "viewTitle": "Open {title} website"
+      "viewTitle": "Open the {title} website (new tab)"
     },
     "empty": "// no projects use these technologies",
     "items": {
