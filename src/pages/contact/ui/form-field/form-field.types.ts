@@ -11,5 +11,6 @@ export interface IFormFieldProps {
   maxLength?: number;
   inputRef: (element: HTMLInputElement | HTMLTextAreaElement | null) => void;
   onChange: (value: string) => void;
+  onFocus: () => void;
   onBlur: () => void;
 }

@@ -47,10 +47,13 @@ export const SCALE = { enter: 0.96, pop: 1.4, press: 0.88 } as const;
 export const DRIFT = { duration: 9, x: 28, y: 20, rotation: 10 } as const;
 
 /** Shifts in the IDE-like chrome (explorer, tabs, code rows), px. */
-export const SHIFT = { row: 8, tab: 6, note: 8 } as const;
+export const SHIFT = { row: 8, tab: 6, note: 8, shake: 5 } as const;
 
 /** Whole-set stagger budgets, s: a long list takes no longer than this to enter. */
-export const CAP = { files: 0.2, lines: 0.1, cards: 0.4 } as const;
+export const CAP = { files: 0.2, lines: 0.1, cards: 0.4, fields: 0.3 } as const;
 
 /** Pointer hover on a card: lift in px, glow scale and drift in px. */
 export const HOVER = { lift: 4, glow: 1.12, drift: 8 } as const;
+
+/** Opacity of a dimmed state: the low point of a «working» pulse. */
+export const DIM = 0.4;

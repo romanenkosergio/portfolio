@@ -2,9 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 
 import { FIELDS } from "../config";
-import type { FieldName, FormStatus, IContactErrors } from "../config";
+import type {
+  FieldName,
+  FormStatus,
+  IContactErrors,
+  IContactValues
+} from "../config";
 import {
   selectReset,
+  selectSetSending,
   selectSetValue,
   selectValues,
   useContactStore
@@ -38,15 +44,30 @@ const useFieldFocus = (errors: IContactErrors, status: FormStatus) => {
   return { register, focusAfterRender };
 };
 
+// Sends the values (a bot's honeypot counts as sent) and tells the preview while it is on its way.
+const deliver = async (
+  values: IContactValues,
+  bot: boolean,
+  setSending: (sending: boolean) => void
+) => {
+  setSending(true);
+  const sent = bot || (await sendMessage(values));
+  setSending(false);
+  return sent;
+};
+
 // State and handlers of the form. Validation runs on blur and on submit (then it follows typing
 // in a field that already shows an error); a failed submit focuses the first invalid field.
 export const useContactForm = () => {
   const values = useContactStore(selectValues);
   const setValue = useContactStore(selectSetValue);
   const reset = useContactStore(selectReset);
+  const setSending = useContactStore(selectSetSending);
   const [errors, setErrors] = useState<IContactErrors>({});
   const [status, setStatus] = useState<FormStatus>("idle");
   const [attempt, setAttempt] = useState(0);
+  // Counts submits that found invalid fields, so the form can shake them each time.
+  const [rejected, setRejected] = useState(0);
   const { register, focusAfterRender } = useFieldFocus(errors, status);
   const inFlight = useRef(false);
 
@@ -69,13 +90,14 @@ export const useContactForm = () => {
     const invalid = FIELDS.find(field => found[field]);
     if (invalid) {
       focusAfterRender(invalid);
+      setRejected(count => count + 1);
       return;
     }
     // The honeypot: a filled hidden checkbox is a bot, which is told the message went through.
     const trap = new FormData(event.currentTarget).get("botcheck");
     inFlight.current = true;
     setStatus("sending");
-    const sent = trap ? true : await sendMessage(values);
+    const sent = await deliver(values, Boolean(trap), setSending);
     inFlight.current = false;
     setAttempt(count => count + 1);
     setStatus(sent ? "success" : "error");
@@ -93,6 +115,7 @@ export const useContactForm = () => {
     errors,
     status,
     attempt,
+    rejected,
     register,
     change,
     check,
@@ -100,3 +123,5 @@ export const useContactForm = () => {
     again
   };
 };
+
+export type ContactFormState = ReturnType<typeof useContactForm>;

@@ -30,3 +30,6 @@ export const EMPTY_VALUES: IContactValues = {
 
 // The Web3Forms subject line the owner sees in the inbox.
 export const MAIL_SUBJECT = "New message from the portfolio";
+
+// A typed run longer than this (a paste) lands in the preview without the fade-in.
+export const FRESH_MAX = 8;
