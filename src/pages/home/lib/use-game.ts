@@ -1,6 +1,7 @@
 import type { KeyboardEvent, RefObject } from "react";
 import { useEffect, useRef } from "react";
 
+import type { Direction } from "../model";
 import {
   selectDirection,
   selectFood,
@@ -19,6 +20,9 @@ import { drawBoard } from "./draw-board";
 import { useKeyPress } from "./key-press";
 import { keyToDirection } from "./key-to-direction";
 import useInterval from "./use-interval";
+import { useOnScreen } from "./use-on-screen";
+import type { ISwipeHandlers } from "./use-swipe";
+import { useSwipe } from "./use-swipe";
 
 interface IUseGame {
   canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -26,6 +30,7 @@ interface IUseGame {
   boardRef: RefObject<HTMLDivElement | null>;
   onStartGame: () => void;
   onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => void;
+  swipe: ISwipeHandlers;
 }
 
 /** Wires the pure model to the browser: tick interval, board keys, canvas painting. */
@@ -48,10 +53,12 @@ export const useGame = (): IUseGame => {
   useEffect(() => reset, [reset]);
 
   const delay = tickDelay(foodLeft);
-  // A hidden tab keeps its timers alive (throttled): the snake waits there instead of dying unseen.
+  const onScreen = useOnScreen(boardRef);
+  // A hidden tab keeps its timers alive (throttled), and a board scrolled away is not watched:
+  // the snake waits in both cases instead of dying unseen.
   useInterval(
     () => {
-      if (!document.hidden) tick();
+      if (!document.hidden && onScreen.current) tick();
     },
     status === "playing" ? delay : null
   );
@@ -68,14 +75,20 @@ export const useGame = (): IUseGame => {
     boardRef.current?.focus();
   };
 
-  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const next = keyToDirection(event);
-    if (!next) return;
-    event.preventDefault();
+  const steerBoard = (next: Direction) => {
     if (status !== "playing") return;
     steer(next);
     useKeyPress.getState().press(next);
   };
 
-  return { canvasRef, foodRef, boardRef, onStartGame, onKeyDown };
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const next = keyToDirection(event);
+    if (!next) return;
+    event.preventDefault();
+    steerBoard(next);
+  };
+
+  const swipe = useSwipe(steerBoard);
+
+  return { canvasRef, foodRef, boardRef, onStartGame, onKeyDown, swipe };
 };

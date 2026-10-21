@@ -26,7 +26,8 @@ import GameOverlay from "./game-overlay";
 
 const Game: FC = () => {
   const t = useTranslations("game");
-  const { canvasRef, foodRef, boardRef, onStartGame, onKeyDown } = useGame();
+  const { canvasRef, foodRef, boardRef, onStartGame, onKeyDown, swipe } =
+    useGame();
   const status = useSnakeStore(selectStatus);
   const foodLeft = useSnakeStore(selectFoodLeft);
   const instructionsId = useId();
@@ -48,7 +49,8 @@ const Game: FC = () => {
       aria-label={t("title")}
       aria-describedby={instructionsId}
       onKeyDown={onKeyDown}
-      className="relative rounded-lg"
+      {...swipe}
+      className="relative touch-none rounded-lg select-none"
     >
       <p id={instructionsId} className="sr-only">
         {t("instructions", { total: FOOD_TOTAL })}

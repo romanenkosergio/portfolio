@@ -57,7 +57,7 @@
   },
   "game": {
     "title": "Snake game",
-    "instructions": "Press Start, then steer the snake with the arrow keys or W, A, S, D while this board has focus. Eat {total} pieces of food to win.",
+    "instructions": "Press Start, then steer the snake with the arrow keys or W, A, S, D while this board has focus. On a touch screen, swipe across the board or tap the arrow buttons. Eat {total} pieces of food to win.",
     "progress": "{eaten} of {total} food eaten",
     "won": "Well done! You won.",
     "lost": "Game over.",
@@ -72,6 +72,8 @@
     "aboutMeTitle": "About me",
     "foodLeft": "// food left",
     "useKeyboard": "// use keyboard",
+    "swipeBoard": "// swipe the board",
+    "orTapArrows": "// or tap arrows",
     "arrowsToPlay": "// arrows to play",
     "moveUp": "Move up",
     "moveDown": "Move down",

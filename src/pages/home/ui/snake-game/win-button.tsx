@@ -18,7 +18,7 @@ const WinButton: FC = () => {
       title={t("aboutMeTitle")}
       text={isVin ? t("next") : t("skip")}
       variant="ghost"
-      className="mt-auto ml-auto"
+      className="mt-5 ml-auto tablet:mt-auto"
     />
   );
 };

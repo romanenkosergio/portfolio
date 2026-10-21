@@ -37,6 +37,9 @@ export const PENDING_ATTR = "data-motion-pending";
 /** `desktop` breakpoint as a media condition; keep in sync with `--breakpoint-desktop` in styles.css. */
 export const DESKTOP_QUERY = "(min-width: 1200px)";
 
+/** Everything below `desktop` (the complement of `DESKTOP_QUERY`). */
+export const BELOW_DESKTOP_QUERY = "(max-width: 1199.98px)";
+
 /** Typing: `speed` in chars per second, caret `blink` half-period and the `hold` before it leaves, in seconds. */
 export const TYPE = { speed: 30, quick: 50, blink: 0.5, hold: 0.35 } as const;
 

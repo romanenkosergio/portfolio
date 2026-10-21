@@ -41,3 +41,5 @@ export const TICK_START = 200;
 export const TICK_STEP = 5;
 export const FOOD_TOTAL = 10;
 export const BOARD_ID = "snake-board";
+/** Finger travel in px on the board before a drag counts as a swipe. */
+export const SWIPE_THRESHOLD = 24;

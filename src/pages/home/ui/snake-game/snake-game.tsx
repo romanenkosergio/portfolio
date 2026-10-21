@@ -15,17 +15,17 @@ import Game from "./game";
 import KeyboardHelp from "./keyboard-help";
 import WinButton from "./win-button";
 
-// Figma has no game on the 375 frame, so the whole block (glows included) exists from `desktop` up.
-// The glows sit behind the panel so its backdrop blur frosts them.
+// Figma has no game on the 375 frame: below `desktop` the panel sits under the code lines, the
+// board above its controls until `tablet`. The glows (desktop only) sit behind the panel so its backdrop blur frosts them.
 const BLOB =
-  "pointer-events-none absolute h-123 w-113.5 rounded-full opacity-40 blur-[87px]";
+  "pointer-events-none absolute hidden desktop:block h-123 w-113.5 rounded-full opacity-40 blur-[87px]";
 
 const SnakeGame: FC = () => {
   const scopeRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   usePanelMotion(scopeRef, panelRef);
   return (
-    <div ref={scopeRef} className="relative hidden desktop:block">
+    <div ref={scopeRef} className="relative mt-12 desktop:mt-0">
       <div
         aria-hidden="true"
         data-blob=""
@@ -39,15 +39,15 @@ const SnakeGame: FC = () => {
       <div
         ref={panelRef}
         {...{ [PENDING_ATTR]: "" }}
-        className="relative h-118.75 w-127.5 rounded-lg shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] outline-1 outline-primary-4 backdrop-blur-[32px]"
+        className="relative mx-auto w-full max-w-127.5 rounded-lg shadow-[inset_0px_2px_0px_rgba(255,255,255,0.3)] outline-1 outline-primary-4 backdrop-blur-[32px] desktop:mx-0 desktop:h-118.75"
       >
         <div
           aria-hidden="true"
           className="absolute inset-0 rounded-lg bg-linear-to-br from-game-glow to-accent-2/13 opacity-70"
         />
-        <div className="relative z-10 flex h-full gap-6 px-7.5 py-8.5">
+        <div className="relative z-10 flex h-full flex-col items-center gap-6 px-4 py-8.5 tablet:flex-row tablet:items-stretch tablet:px-7.5">
           <Game />
-          <div className="flex flex-col">
+          <div className="flex w-full max-w-45.25 flex-col tablet:w-auto tablet:max-w-none">
             <KeyboardHelp />
             <Food />
             <WinButton />

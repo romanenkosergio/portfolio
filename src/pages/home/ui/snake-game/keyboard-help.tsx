@@ -8,8 +8,18 @@ const KeyboardHelp: FC = () => {
   const t = useTranslations("game");
   return (
     <div className="h-35.5 w-45.25 rounded-lg bg-primary-5/19 px-3 py-4">
-      <p className="text-sm leading-4.5 text-white">{t("useKeyboard")}</p>
-      <p className="text-sm leading-4.5 text-white">{t("arrowsToPlay")}</p>
+      <p className="text-sm leading-4.5 text-white pointer-coarse:hidden">
+        {t("useKeyboard")}
+      </p>
+      <p className="text-sm leading-4.5 text-white pointer-coarse:hidden">
+        {t("arrowsToPlay")}
+      </p>
+      <p className="hidden text-sm leading-4.5 text-white pointer-coarse:block">
+        {t("swipeBoard")}
+      </p>
+      <p className="hidden text-sm leading-4.5 text-white pointer-coarse:block">
+        {t("orTapArrows")}
+      </p>
       <div className="mt-4 flex flex-col gap-1.25">
         <div className="flex w-full items-center justify-center">
           <KeyboardArrow direction="UP" />
