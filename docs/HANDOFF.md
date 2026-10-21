@@ -25,7 +25,7 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 
 ## Next
 
-- PLAN 4 in list order, 4.8 next. 4.2 (D24): `eager` on `revealIn`/`Reveal`/`Stagger`/`LinesReveal` = visible in SSR, `EAGER_SHIFT` transform; code rows, `isEagerCard`. Deployed 2026-10-21; OIDC timeout in `deploy` → rerun. Next decision: D25.
+- PLAN 4 in list order, 4.3 next. 4.2 (D24): `eager` = visible in SSR, `EAGER_SHIFT` transform; 4.8 (D25): plugins via `load-plugins.ts`, lazy language select, tech-icon sprite, filters off until hydrated. Deployed 2026-10-21, OIDC timeout → rerun. Next: D26.
 
 ## Environment
 
