@@ -13,7 +13,7 @@ import { Header } from "@/widgets/header";
 import { LayoutShell } from "@/widgets/layout-shell";
 
 import { fonts } from "@/app/config";
-import { generateIcons, resolveLocale } from "@/app/lib";
+import { generateIcons, MANIFEST_URL, resolveLocale } from "@/app/lib";
 import type { ILocaleProps } from "@/app/model";
 import "@/app/styles";
 
@@ -50,8 +50,10 @@ export async function generateMetadata({
       description: t("ogDescription"),
       locale: OG_LOCALES[locale]
     },
+    twitter: { card: "summary_large_image" },
     referrer: REFERRER_POLICY,
-    icons: generateIcons()
+    icons: generateIcons(),
+    manifest: MANIFEST_URL
   };
 }
 
