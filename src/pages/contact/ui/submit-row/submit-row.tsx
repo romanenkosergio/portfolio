@@ -21,7 +21,7 @@ const SubmitRow: FC<ISubmitRowProps> = ({ status, attempt }) => {
     <div ref={rootRef} className="flex flex-col items-start gap-4">
       <Button
         type="submit"
-        variant="default"
+        variant="primary"
         disabled={status === "sending" || status === "success"}
         text={status === "sending" ? t("sending") : t("submit")}
       />

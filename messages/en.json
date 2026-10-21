@@ -245,6 +245,7 @@
     "contact": "Contact me"
   },
   "contact": {
+    "availability": "Open to new opportunities. I usually reply within a day.",
     "heading": "Contact me",
     "formLabel": "Contact form",
     "fields": {

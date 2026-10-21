@@ -16,7 +16,7 @@ const Footer: FC = () => {
       <div className="flex h-full items-center desktop:w-full">
         {SOCIALS.map(item => (
           <a
-            className="group flex h-full w-13 items-center justify-start border-r border-r-line px-3.5 max-tablet:first:border-l max-tablet:first:border-l-line max-tablet:last:border-r-0 desktop:last:ml-auto desktop:last:w-auto desktop:last:border-l desktop:last:border-l-line"
+            className="group flex h-full w-14 items-center justify-start border-r border-r-line px-3.5 max-tablet:first:border-l max-tablet:first:border-l-line max-tablet:last:border-r-0 desktop:last:ml-auto desktop:last:w-auto desktop:last:border-l desktop:last:border-l-line"
             key={item.titleKey}
             title={t(`socials.${item.titleKey}`)}
             href={item.href}
@@ -28,7 +28,7 @@ const Footer: FC = () => {
             </span>
             <Icon
               name={item.icon}
-              className="h-6 w-6"
+              className="h-7 w-7"
               tone="muted"
               interactive
             />
