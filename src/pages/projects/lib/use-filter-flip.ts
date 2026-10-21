@@ -25,6 +25,13 @@ const cardsOf = (root: HTMLElement): HTMLElement[] =>
 const isShown = (card: HTMLElement): boolean =>
   getComputedStyle(card).display !== "none";
 
+/** Ends every tween on the cards and strips what Flip and the entrance left inline, so each flip starts and ends clean. */
+const settle = (root: HTMLElement): void => {
+  const cards = cardsOf(root);
+  gsap.getTweensOf(cards).forEach(tween => tween.progress(1).kill());
+  gsap.set(cards, { clearProps: "all" });
+};
+
 const glide = (
   root: HTMLElement,
   state: Flip.FlipState
@@ -33,11 +40,12 @@ const glide = (
   const shown = cards.filter(isShown);
   const hide = { opacity: 0, scale: SCALE.enter };
   const flip = Flip.from(state, {
-    targets: shown,
+    targets: cards,
     duration: DURATION.base,
     ease: EASE.out,
     stagger: Math.min(STAGGER.chars, CAP.cards / Math.max(shown.length, 1)),
     absoluteOnLeave: true,
+    onComplete: () => settle(root),
     onEnter: entering =>
       gsap.fromTo(entering, hide, {
         opacity: 1,
@@ -50,8 +58,7 @@ const glide = (
       gsap.to(leaving, {
         ...hide,
         duration: DURATION.fast,
-        ease: EASE.soft,
-        clearProps: "opacity,transform"
+        ease: EASE.soft
       })
   });
   const empty = root.querySelector(`[${EMPTY_ATTR}]`);
@@ -90,7 +97,11 @@ export const useFilterFlip = (
           running.current = glide(root, captured);
         }
       });
-      return () => mm.revert();
+      return () => {
+        settle(root);
+        mm.revert();
+        settle(root);
+      };
     },
     { scope: rootRef, dependencies: [filter], revertOnUpdate: true }
   );
@@ -99,9 +110,9 @@ export const useFilterFlip = (
     const root = rootRef.current;
     if (!root) return;
     // Settle the running flip and any entrance still waiting for scroll, so the capture is final.
-    running.current?.progress(1);
+    running.current?.progress(1).kill();
     running.current = null;
-    gsap.getTweensOf(cardsOf(root)).forEach(tween => tween.progress(1));
-    state.current = Flip.getState(cardsOf(root).filter(isShown));
+    settle(root);
+    state.current = Flip.getState(cardsOf(root));
   };
 };

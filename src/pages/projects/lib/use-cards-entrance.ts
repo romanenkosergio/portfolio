@@ -33,7 +33,11 @@ export const useCardsEntrance = (
       const mm = matchMotion(root, {
         full: () => {
           const stops = cards.map((card, index) =>
-            revealIn(card, card, false, { scroll: true, delay: index * step })
+            revealIn(card, card, false, {
+              scroll: true,
+              delay: index * step,
+              clearProps: "opacity,transform"
+            })
           );
           return () => stops.forEach(stop => stop?.());
         },
