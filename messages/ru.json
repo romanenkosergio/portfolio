@@ -78,6 +78,7 @@
     "moveRight": "Вправо"
   },
   "about": {
+    "heading": "Обо мне",
     "types": {
       "bio": "bio",
       "interests": "interests",

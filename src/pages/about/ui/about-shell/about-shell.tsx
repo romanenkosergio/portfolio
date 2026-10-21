@@ -18,6 +18,7 @@ const AboutShell: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div className="flex min-w-0 flex-1 flex-col desktop:min-h-0 desktop:flex-row desktop:overflow-hidden">
+      <h1 className="sr-only">{t("heading")}</h1>
       <AboutMobileExplorer />
       <div className="flex min-w-0 flex-none flex-col desktop:min-h-0 desktop:flex-1 desktop:border-r desktop:border-r-line">
         <FileTabs
