@@ -13,8 +13,8 @@ export const register = (...plugins: object[]): void => {
 };
 
 /**
- * Plugins register per primitive, each in its own module (`register-*.ts`), so
- * a page only ships the plugins of the primitives it uses. Add Flip,
- * ScrollTrigger and the like the same way.
+ * Plugins are not registered here: `load-plugins.ts` fetches them with
+ * `import()` when a primitive first needs them, so they stay out of the
+ * first-load bundle. Add ScrollTrigger and the like the same way.
  */
 export const registerMotion = (): void => register(useGSAP);

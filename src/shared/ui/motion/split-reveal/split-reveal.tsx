@@ -5,7 +5,6 @@ import type { FC } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
 
 import {
   DURATION,
@@ -13,15 +12,14 @@ import {
   PENDING_ATTR,
   STAGGER,
   isAlreadyVisible,
+  loadSplitText,
   matchMotion,
-  registerSplitText
+  playAfterLoad
 } from "@/shared/lib/motion";
 
 import type { MotionHostType } from "../motion.types";
 
 import type { ISplitRevealProps } from "./split-reveal.types";
-
-registerSplitText();
 
 /**
  * Reveals text unit by unit. Screen readers read an sr-only copy once; the
@@ -46,26 +44,31 @@ const SplitReveal: FC<ISplitRevealProps> = ({
       const text = textRef.current;
       if (!host || !text) return;
       const mm = matchMotion(host, {
-        full: () => {
-          if (isAlreadyVisible(host)) return;
-          const instance = SplitText.create(text, {
-            type: split,
-            aria: "none",
-            autoSplit: true,
-            mask: split === "lines" ? "lines" : undefined,
-            onSplit: self =>
-              gsap.from(self[split], {
-                yPercent: 100,
-                opacity: 0,
-                duration,
-                delay,
-                stagger,
-                ease: EASE.out
-              })
-          });
-          host.removeAttribute(PENDING_ATTR);
-          return () => instance.revert();
-        },
+        full: contextSafe =>
+          playAfterLoad(
+            loadSplitText,
+            SplitText => {
+              if (isAlreadyVisible(host)) return;
+              const instance = SplitText.create(text, {
+                type: split,
+                aria: "none",
+                autoSplit: true,
+                mask: split === "lines" ? "lines" : undefined,
+                onSplit: self =>
+                  gsap.from(self[split], {
+                    yPercent: 100,
+                    opacity: 0,
+                    duration,
+                    delay,
+                    stagger,
+                    ease: EASE.out
+                  })
+              });
+              host.removeAttribute(PENDING_ATTR);
+              return () => instance.revert();
+            },
+            contextSafe
+          ),
         reduced: () => {
           host.removeAttribute(PENDING_ATTR);
         }

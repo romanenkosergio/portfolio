@@ -5,7 +5,10 @@ const QUERIES = {
   reduced: "(prefers-reduced-motion: reduce)"
 } as const;
 
-type MotionSetup = () => void | (() => void);
+/** Wraps a callback that runs later (after a lazy import) so the animations it creates join, and are reverted with, the matchMedia context. */
+export type ContextSafe = <T extends () => void | (() => void)>(play: T) => T;
+
+type MotionSetup = (contextSafe: ContextSafe) => void | (() => void);
 
 interface IMotionVariants {
   /** Full animation, for visitors who allow motion. */
@@ -29,8 +32,12 @@ export const matchMotion = (
   const mm = gsap.matchMedia(scope);
   const query = (base: string): string =>
     condition ? `${base} and ${condition}` : base;
-  mm.add(query(QUERIES.full), full);
-  mm.add(query(QUERIES.reduced), () => reduced?.());
+  const run =
+    (setup: MotionSetup | undefined) =>
+    (_: gsap.Context, safe?: gsap.ContextSafeFunc) =>
+      setup?.((safe ?? (play => play)) as ContextSafe);
+  mm.add(query(QUERIES.full), run(full));
+  mm.add(query(QUERIES.reduced), run(reduced));
   return mm;
 };
 
