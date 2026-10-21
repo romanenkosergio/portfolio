@@ -1,6 +1,7 @@
 import { E_ROUTES } from "@/shared/config";
 
-// The text of each section is the `about.content.<type>` message.
+// The text of each section is the `about.content.<type>` message; `experience` is the exception:
+// a timeline built from the `about.timeline` messages.
 export const PERSONAL_INFO_TYPES = ["bio", "interests"] as const;
 export const PROFESSIONAL_INFO_TYPES = ["skills", "experience"] as const;
 export const HOBBIES_TYPES = ["games", "learning"] as const;

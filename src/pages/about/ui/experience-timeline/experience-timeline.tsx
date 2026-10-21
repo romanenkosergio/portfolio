@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import type { FC } from "react";
 
 import { useMessages, useTranslations } from "next-intl";
@@ -7,27 +6,8 @@ import { Stagger } from "@/shared/ui/motion";
 
 import { EXPERIENCE_IDS } from "@/pages/about/config";
 
-import type { IHighlightedProps } from "./experience-timeline.types";
-import TimelineRail from "./timeline-rail";
-
-// The metric of an entry (set per locale) stands out from its bullet.
-const Highlighted: FC<IHighlightedProps> = ({ text, highlight }) => {
-  const [before, ...rest] = text.split(highlight);
-  if (rest.length === 0) return text;
-  return (
-    <>
-      {before}
-      {rest.map((part, index) => (
-        <Fragment key={index}>
-          <mark className="bg-transparent font-bold text-accent-2">
-            {highlight}
-          </mark>
-          {part}
-        </Fragment>
-      ))}
-    </>
-  );
-};
+import { Highlighted } from "./highlighted";
+import { TimelineRail } from "./timeline-rail";
 
 // Experience as a timeline: a rail with a node per job, the role in accent, company and period
 // muted, the bullets at body contrast. The comment header keeps the IDE flavour.
@@ -63,7 +43,7 @@ const ExperienceTimeline: FC = () => {
               <h3 className="text-xl font-bold text-accent-1">
                 {t(`entries.${id}.role`)}
               </h3>
-              <p className="mt-1 flex flex-wrap gap-x-3 text-secondary-1">
+              <p className="mt-1 flex flex-col text-secondary-1 tablet:flex-row tablet:flex-wrap tablet:gap-x-3">
                 <span>{t(`entries.${id}.company`)}</span>
                 <span className="font-mono text-sm leading-7">
                   {t(`entries.${id}.period`)}
