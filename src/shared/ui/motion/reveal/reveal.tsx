@@ -17,11 +17,12 @@ const Reveal: FC<IRevealProps> = ({
   className,
   children,
   eager = false,
+  afterLoad = false,
   ...options
 }) => {
   const ref = useRef<HTMLElement>(null);
 
-  useReveal(ref, { ...options, eager });
+  useReveal(ref, { ...options, eager, afterLoad });
 
   const Tag = as as MotionHostType;
   return (

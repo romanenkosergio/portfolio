@@ -2,7 +2,7 @@ import type { ElementType, PropsWithChildren, Ref } from "react";
 
 /** Elements a primitive may render as. */
 export type MotionTag =
-  "div" | "span" | "p" | "h1" | "h2" | "h3" | "section" | "li";
+  "div" | "span" | "p" | "h1" | "h2" | "h3" | "section" | "ul" | "li";
 
 export type IMotionBaseProps = PropsWithChildren<{
   /** Rendered element, `div` by default. */

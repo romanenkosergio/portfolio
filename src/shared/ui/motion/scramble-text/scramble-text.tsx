@@ -19,6 +19,31 @@ import type { MotionHostType } from "../motion.types";
 import type { IScrambleTextProps } from "./scramble-text.types";
 
 /**
+ * One glitch per char, a new one every `WAVE.stagger`. Chars the wave has not
+ * reached yet start as noise, not as their final letter, so the whole string
+ * reads as scrambled from the first frame.
+ */
+const buildWave = (
+  split: Element[],
+  chars: string,
+  delay: number
+): gsap.core.Timeline => {
+  const wave = gsap.timeline({ delay });
+  split.forEach((char, index) => {
+    const letter = char.textContent ?? "";
+    if (letter.trim() === "") return;
+    char.textContent =
+      chars[Math.floor(Math.random() * chars.length)] ?? letter;
+    wave.to(
+      char,
+      { duration: WAVE.char, scrambleText: { text: letter, chars, speed: 1 } },
+      index * WAVE.stagger
+    );
+  });
+  return wave;
+};
+
+/**
  * Scrambles into its text like a terminal decoding it (the plugins load
  * lazily, the text is plain until they arrive). Never hidden: the real
  * text is in the HTML and readable from first paint. Screen readers get an
@@ -48,20 +73,7 @@ const ScrambleText: FC<IScrambleTextProps> = ({
                 smartWrap: true,
                 aria: "none",
                 onSplit: self => {
-                  const wave = gsap.timeline({ delay });
-                  self.chars.forEach((char, index) => {
-                    const letter = char.textContent ?? "";
-                    if (letter.trim() === "") return;
-                    wave.to(
-                      char,
-                      {
-                        duration: WAVE.char,
-                        scrambleText: { text: letter, chars, speed: 1 }
-                      },
-                      index * WAVE.stagger
-                    );
-                  });
-                  return wave;
+                  return buildWave(self.chars, chars, delay);
                 }
               });
               return () => instance.revert();

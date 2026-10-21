@@ -17,8 +17,8 @@ const WinButton: FC = () => {
       href={E_ROUTES.ABOUT_ME}
       title={t("aboutMeTitle")}
       text={isVin ? t("next") : t("skip")}
-      variant="ghost"
-      className="mt-5 ml-auto tablet:mt-auto"
+      variant="default"
+      className="mt-5 tablet:mt-auto"
     />
   );
 };

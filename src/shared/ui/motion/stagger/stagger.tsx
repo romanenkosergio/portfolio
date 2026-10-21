@@ -24,11 +24,19 @@ const Stagger: FC<IStaggerProps> = ({
   selector,
   stagger = STAGGER.children,
   eager = false,
+  afterLoad = false,
   ...options
 }) => {
   const ref = useRef<HTMLElement>(null);
 
-  useReveal(ref, { ...options, eager, selector, stagger, children: !selector });
+  useReveal(ref, {
+    ...options,
+    eager,
+    afterLoad,
+    selector,
+    stagger,
+    children: !selector
+  });
 
   const Tag = as as MotionHostType;
   return (
