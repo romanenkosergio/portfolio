@@ -15,6 +15,8 @@ export interface IRevealInOptions {
   stagger?: number;
   /** Start when the element scrolls into view (once, via IntersectionObserver) instead of on mount. */
   scroll?: boolean;
+  /** Inline props to strip once the entrance ends (GSAP's `clearProps`). */
+  clearProps?: string;
 }
 
 /**
@@ -53,7 +55,8 @@ export const revealIn = (
     duration = DURATION.base,
     y = DISTANCE.y,
     stagger = 0,
-    scroll = false
+    scroll = false,
+    clearProps
   }: IRevealInOptions
 ): void | (() => void) => {
   if (isAlreadyVisible(host)) return;
@@ -69,6 +72,8 @@ export const revealIn = (
     delay,
     stagger,
     ease: EASE.out,
+    // GSAP throws on `clearProps: undefined` when the tween ends, so the key is left out unless set.
+    ...(clearProps ? { clearProps } : {}),
     paused: scroll
   });
   host.removeAttribute(PENDING_ATTR);

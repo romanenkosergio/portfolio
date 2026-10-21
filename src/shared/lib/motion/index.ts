@@ -1,6 +1,7 @@
 export * from "./exit-out";
 export * from "./reduced-motion";
 export * from "./register";
+export * from "./register-flip";
 export * from "./register-scramble-text";
 export * from "./register-split-text";
 export * from "./register-type-text";

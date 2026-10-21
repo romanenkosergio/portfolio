@@ -50,4 +50,7 @@ export const DRIFT = { duration: 9, x: 28, y: 20, rotation: 10 } as const;
 export const SHIFT = { row: 8, tab: 6, note: 8 } as const;
 
 /** Whole-set stagger budgets, s: a long list takes no longer than this to enter. */
-export const CAP = { files: 0.2, lines: 0.1 } as const;
+export const CAP = { files: 0.2, lines: 0.1, cards: 0.4 } as const;
+
+/** Pointer hover on a card: lift in px, glow scale and drift in px. */
+export const HOVER = { lift: 4, glow: 1.12, drift: 8 } as const;

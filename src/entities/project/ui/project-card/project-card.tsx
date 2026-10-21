@@ -20,7 +20,7 @@ const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
         <span className="font-bold text-secondary-3">{labels.number}</span>{" "}
         {labels.separator} {title}
       </h2>
-      <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-primary-3">
+      <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-primary-3 transition-colors focus-within:border-accent-1 hover:border-accent-1">
         <div className="relative h-36 flex-none border-b border-b-line">
           <ProjectCover slug={slug} className="size-full" />
           {kind === "personal" && (
