@@ -48,7 +48,7 @@ const CodePreview: FC = () => {
       aria-hidden="true"
       className="py-3.5 pr-6 pl-9.5 text-lg leading-normal"
     >
-      <LinesReveal className="grid grid-cols-[auto_minmax(0,1fr)]">
+      <LinesReveal eager className="grid grid-cols-[auto_minmax(0,1fr)]">
         {previewLines(values, date).map((line, index) => (
           <PreviewLine
             key={index}

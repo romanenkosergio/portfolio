@@ -11,7 +11,24 @@ import { CAP, DURATION, EASE, PENDING_ATTR, SHIFT } from "./tokens";
 export const LINE_NUMBER = "data-line-number";
 export const LINE_TEXT = "data-line-text";
 
-const revealLines = (host: HTMLElement, reduced: boolean): void => {
+const revealLines = (
+  host: HTMLElement,
+  reduced: boolean,
+  eager: boolean
+): void => {
+  if (eager) {
+    // Painted visible in the server HTML: the rows only slide in, nothing fades.
+    if (!reduced) {
+      gsap.from(host.querySelectorAll(`[${LINE_TEXT}]`), {
+        x: SHIFT.row,
+        duration: DURATION.quick,
+        ease: EASE.soft,
+        clearProps: "transform",
+        stagger: { amount: CAP.lines }
+      });
+    }
+    return;
+  }
   if (isAlreadyVisible(host)) return;
   if (reduced) {
     host.removeAttribute(PENDING_ATTR);
@@ -40,15 +57,18 @@ const revealLines = (host: HTMLElement, reduced: boolean): void => {
   host.removeAttribute(PENDING_ATTR);
 };
 
-/** Line numbers, then the text rows, fade in fast (~0.35 s for any length); reduced motion shows the file. */
-export const useLinesReveal = (ref: RefObject<HTMLElement | null>): void => {
+/** Line numbers, then the text rows, fade in fast (~0.35 s for any length); `eager` paints the file visible at once and only slides the text; reduced motion shows the file. */
+export const useLinesReveal = (
+  ref: RefObject<HTMLElement | null>,
+  eager = false
+): void => {
   useGSAP(
     () => {
       const host = ref.current;
       if (!host) return;
       const mm = matchMotion(host, {
-        full: () => revealLines(host, false),
-        reduced: () => revealLines(host, true)
+        full: () => revealLines(host, false, eager),
+        reduced: () => revealLines(host, true, eager)
       });
       return () => mm.revert();
     },

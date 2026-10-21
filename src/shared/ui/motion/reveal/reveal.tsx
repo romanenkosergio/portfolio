@@ -16,15 +16,20 @@ const Reveal: FC<IRevealProps> = ({
   as = "div",
   className,
   children,
+  eager = false,
   ...options
 }) => {
   const ref = useRef<HTMLElement>(null);
 
-  useReveal(ref, options);
+  useReveal(ref, { ...options, eager });
 
   const Tag = as as MotionHostType;
   return (
-    <Tag ref={ref} className={className} {...{ [PENDING_ATTR]: "" }}>
+    <Tag
+      ref={ref}
+      className={className}
+      {...(eager ? {} : { [PENDING_ATTR]: "" })}
+    >
       {children}
     </Tag>
   );

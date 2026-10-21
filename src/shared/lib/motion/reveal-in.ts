@@ -17,6 +17,12 @@ export interface IRevealInOptions {
   scroll?: boolean;
   /** Inline props to strip once the entrance ends (GSAP's `clearProps`). */
   clearProps?: string;
+  /**
+   * Above the fold: the host is painted visible in the server HTML (the primitive
+   * renders no pending attribute) and only lifts, so the paint does not wait for
+   * GSAP (Chrome ignores opacity-0 paints for LCP). Reduced motion: no motion at all.
+   */
+  eager?: boolean;
 }
 
 /**
@@ -28,7 +34,7 @@ const visibleAtStart = new WeakMap<HTMLElement, boolean>();
 
 /**
  * True when the host is already on screen although it is still pending (the
- * hiding CSS did not apply, or its 3 s failsafe fired): an entrance would
+ * hiding CSS did not apply, or its 2 s failsafe fired): an entrance would
  * only hide it and replay. Then the caller just clears the attribute.
  */
 export const isAlreadyVisible = (host: HTMLElement): boolean => {
@@ -56,9 +62,23 @@ export const revealIn = (
     y = DISTANCE.y,
     stagger = 0,
     scroll = false,
-    clearProps
+    clearProps,
+    eager = false
   }: IRevealInOptions
 ): void | (() => void) => {
+  if (eager) {
+    if (!reduced) {
+      gsap.from(targets, {
+        y,
+        duration,
+        delay,
+        stagger,
+        ease: EASE.out,
+        ...(clearProps ? { clearProps } : {})
+      });
+    }
+    return;
+  }
   if (isAlreadyVisible(host)) return;
   // Reduced motion: the final state at once, no fade.
   if (reduced) {
