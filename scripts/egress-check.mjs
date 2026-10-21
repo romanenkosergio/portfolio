@@ -17,6 +17,10 @@ const ROOTS = process.argv.slice(2).length
 /** Each entry is a host that may appear in source, and the reason it is not egress. */
 const ALLOWED = [
   { host: "localhost", why: "the local dev server" },
+  {
+    host: "schema.org",
+    why: "JSON-LD vocabulary id inside an inline data block, never requested"
+  },
   { host: "github.com", why: "profile link the visitor opens, not a request" },
   {
     host: "linkedin.com",

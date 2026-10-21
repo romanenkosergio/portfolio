@@ -9,7 +9,7 @@ import { TypeText } from "@/shared/ui/motion";
 
 import type { INotFoundTerminalProps } from "./not-found-terminal.types";
 
-const typingTime = (text: string) => text.length / TYPE.speed;
+const typingTime = (text: string) => text.length / TYPE.quick;
 
 /** The command line and the seconds at which the error starts and the whole terminal ends. */
 export const terminalPlan = (
@@ -41,10 +41,12 @@ const NotFoundTerminal: FC<INotFoundTerminalProps> = ({
       {path !== null && (
         <>
           <p className="text-white">
-            <TypeText delay={delay}>{command}</TypeText>
+            <TypeText delay={delay} speed={TYPE.quick}>
+              {command}
+            </TypeText>
           </p>
           <p className="text-accent-1">
-            <TypeText delay={errorDelay} caret>
+            <TypeText delay={errorDelay} speed={TYPE.quick} caret>
               {t("error")}
             </TypeText>
           </p>
