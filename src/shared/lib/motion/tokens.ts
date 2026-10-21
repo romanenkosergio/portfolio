@@ -38,7 +38,7 @@ export const PENDING_ATTR = "data-motion-pending";
 export const DESKTOP_QUERY = "(min-width: 1200px)";
 
 /** Typing: `speed` in chars per second, caret `blink` half-period and the `hold` before it leaves, in seconds. */
-export const TYPE = { speed: 30, blink: 0.5, hold: 0.35 } as const;
+export const TYPE = { speed: 30, quick: 50, blink: 0.5, hold: 0.35 } as const;
 
 /** Scale factors: panel entrance, food pop, key press. */
 export const SCALE = { enter: 0.96, pop: 1.4, press: 0.88 } as const;

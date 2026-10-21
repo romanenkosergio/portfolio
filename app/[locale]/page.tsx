@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { E_ROUTES } from "@/shared/config";
-import { pageMetadata } from "@/shared/lib";
+import { homeJsonLd, pageMetadata } from "@/shared/lib";
+import { JsonLd } from "@/shared/ui";
 
 import { HomeView } from "@/pages/home";
 
@@ -20,8 +21,13 @@ export async function generateMetadata({
 }
 
 const Home: FC<ILocaleProps> = async ({ params }) => {
-  await resolveLocale(params);
-  return <HomeView />;
+  const locale = await resolveLocale(params);
+  return (
+    <>
+      <JsonLd data={await homeJsonLd(locale)} />
+      <HomeView />
+    </>
+  );
 };
 
 export default Home;

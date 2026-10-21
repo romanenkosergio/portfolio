@@ -14,7 +14,7 @@ interface IPageMetadataOptions {
 }
 
 // `trailingSlash: true` serves every page under a path ending in "/".
-const localizedPath = (locale: Locale, path: string): string =>
+export const localizedPath = (locale: Locale, path: string): string =>
   path === "/" ? `/${locale}/` : `/${locale}${path.replace(/\/+$/, "")}/`;
 
 // Sets the page's own canonical, og:url and hreflang alternates (x-default → the
