@@ -42,3 +42,6 @@ next-env.d.ts
 .sud/
 .claude/settings.local.json
 __pycache__/
+
+# agent git worktrees
+.claude/worktrees/

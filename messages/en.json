@@ -136,8 +136,16 @@
   },
   "notFound": {
     "title": "404",
-    "description": "This page does not exist.",
-    "backHome": "Back to home"
+    "pageTitle": "Page not found",
+    "description": "This page does not exist. Maybe it was moved, or the link has a typo.",
+    "command": "$ open",
+    "error": "Error: ENOENT: no such file or directory",
+    "home": "_hello",
+    "projects": "_projects",
+    "contact": "_contact-me",
+    "homeTitle": "Go to home",
+    "projectsTitle": "Go to projects",
+    "contactTitle": "Go to contacts"
   },
   "root": {
     "continue": "Continue to the site",

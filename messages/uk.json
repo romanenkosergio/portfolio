@@ -136,8 +136,16 @@
   },
   "notFound": {
     "title": "404",
-    "description": "Такої сторінки не існує.",
-    "backHome": "На головну"
+    "pageTitle": "Сторінку не знайдено",
+    "description": "Такої сторінки не існує. Можливо, її перенесли, або в посиланні друкарська помилка.",
+    "command": "$ open",
+    "error": "Error: ENOENT: no such file or directory",
+    "home": "_hello",
+    "projects": "_projects",
+    "contact": "_contact-me",
+    "homeTitle": "На головну",
+    "projectsTitle": "До проєктів",
+    "contactTitle": "До контактів"
   },
   "root": {
     "continue": "Перейти на сайт",
