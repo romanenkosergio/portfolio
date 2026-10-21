@@ -5,11 +5,14 @@ import type { FC } from "react";
 
 import { useTranslations } from "next-intl";
 
+import { DISTANCE, DURATION } from "@/shared/lib/motion";
 import { Button } from "@/shared/ui";
+import { Reveal, ScrambleText } from "@/shared/ui/motion";
 
 import type { IContactSuccessProps } from "./contact-success.types";
 
-// Replaces the form once the message is accepted; the button starts a fresh one.
+// Replaces the form once the message is accepted: the heading decodes, the text and the button rise
+// in behind it; the button starts a fresh message.
 const ContactSuccess: FC<IContactSuccessProps> = ({ onAgain }) => {
   const t = useTranslations("contact.success");
 
@@ -25,10 +28,22 @@ const ContactSuccess: FC<IContactSuccessProps> = ({ onAgain }) => {
         tabIndex={-1}
         className="text-lg font-normal text-white"
       >
-        {t("title")}
+        <ScrambleText>{t("title")}</ScrambleText>
       </h2>
-      <p className="text-base text-secondary-1">{t("text")}</p>
-      <Button variant="primary" text={t("again")} onClick={onAgain} />
+      <Reveal
+        delay={DURATION.fast}
+        y={DISTANCE.small}
+        clearProps="opacity,transform"
+      >
+        <p className="text-base text-secondary-1">{t("text")}</p>
+      </Reveal>
+      <Reveal
+        delay={DURATION.base}
+        y={DISTANCE.small}
+        clearProps="opacity,transform"
+      >
+        <Button variant="primary" text={t("again")} onClick={onAgain} />
+      </Reveal>
     </div>
   );
 };

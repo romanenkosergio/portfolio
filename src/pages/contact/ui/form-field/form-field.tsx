@@ -20,6 +20,7 @@ const FormField: FC<IFormFieldProps> = ({
   maxLength,
   inputRef,
   onChange,
+  onFocus,
   onBlur
 }) => {
   const errorId = `${id}-error`;
@@ -31,6 +32,7 @@ const FormField: FC<IFormFieldProps> = ({
     maxLength,
     "aria-invalid": error ? true : undefined,
     "aria-describedby": error ? errorId : undefined,
+    "onFocus": onFocus,
     "onBlur": onBlur,
     "className": cn(
       CONTROL,

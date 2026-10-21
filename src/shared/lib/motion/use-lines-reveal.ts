@@ -22,10 +22,19 @@ const revealLines = (host: HTMLElement, reduced: boolean): void => {
   // Stagger `amount` is the whole spread, so a long file takes as long as a short one.
   gsap
     .timeline({ defaults: { ease: EASE.soft, duration: DURATION.quick } })
-    .from(numbers, { opacity: 0, stagger: { amount: CAP.lines } })
+    .from(numbers, {
+      opacity: 0,
+      clearProps: "opacity",
+      stagger: { amount: CAP.lines }
+    })
     .from(
       texts,
-      { opacity: 0, x: SHIFT.row, stagger: { amount: CAP.lines } },
+      {
+        opacity: 0,
+        x: SHIFT.row,
+        clearProps: "opacity,transform",
+        stagger: { amount: CAP.lines }
+      },
       0.05
     );
   host.removeAttribute(PENDING_ATTR);

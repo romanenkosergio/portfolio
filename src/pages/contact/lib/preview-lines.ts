@@ -1,14 +1,22 @@
-import type { IContactValues } from "../config";
+import type { FieldName, IContactValues } from "../config";
 
 export type TokenKind = "text" | "keyword" | "value" | "func" | "string";
 
 export interface IToken {
   text: string;
   kind: TokenKind;
+  /** Set on the quoted value of a form field: the preview marks it and puts the caret in it. */
+  field?: FieldName;
 }
 
 const tk = (text: string, kind: TokenKind = "text"): IToken => ({ text, kind });
-const str = (value: string): IToken => tk(JSON.stringify(value), "string");
+const str = (value: string, field?: FieldName): IToken => ({
+  ...tk(JSON.stringify(value), "string"),
+  field
+});
+
+/** The row of `form.send(message);`, which glows while the message is on its way. */
+export const SEND_LINE = 8;
 
 // The snippet from the design, with the form's values (and today's date) in the object.
 export const previewLines = (
@@ -28,9 +36,9 @@ export const previewLines = (
     tk(");")
   ],
   [tk("const", "keyword"), tk(" "), tk("message", "value"), tk(" = {")],
-  [tk("  name", "value"), tk(": "), str(values.name), tk(",")],
-  [tk("  email", "value"), tk(": "), str(values.email), tk(",")],
-  [tk("  message", "value"), tk(": "), str(values.message), tk(",")],
+  [tk("  name", "value"), tk(": "), str(values.name, "name"), tk(",")],
+  [tk("  email", "value"), tk(": "), str(values.email, "email"), tk(",")],
+  [tk("  message", "value"), tk(": "), str(values.message, "message"), tk(",")],
   [tk("  date", "value"), tk(": "), str(date)],
   [tk("}")],
   [

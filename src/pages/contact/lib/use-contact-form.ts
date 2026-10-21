@@ -2,9 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 
 import { FIELDS } from "../config";
-import type { FieldName, FormStatus, IContactErrors } from "../config";
+import type {
+  FieldName,
+  FormStatus,
+  IContactErrors,
+  IContactValues
+} from "../config";
 import {
   selectReset,
+  selectSetFocused,
+  selectSetSending,
   selectSetValue,
   selectValues,
   useContactStore
@@ -38,15 +45,31 @@ const useFieldFocus = (errors: IContactErrors, status: FormStatus) => {
   return { register, focusAfterRender };
 };
 
+// Sends the values (a bot's honeypot counts as sent) and tells the preview while it is on its way.
+const deliver = async (
+  values: IContactValues,
+  bot: boolean,
+  setSending: (sending: boolean) => void
+) => {
+  setSending(true);
+  const sent = bot || (await sendMessage(values));
+  setSending(false);
+  return sent;
+};
+
 // State and handlers of the form. Validation runs on blur and on submit (then it follows typing
 // in a field that already shows an error); a failed submit focuses the first invalid field.
 export const useContactForm = () => {
   const values = useContactStore(selectValues);
   const setValue = useContactStore(selectSetValue);
   const reset = useContactStore(selectReset);
+  const setSending = useContactStore(selectSetSending);
+  const setFocused = useContactStore(selectSetFocused);
   const [errors, setErrors] = useState<IContactErrors>({});
   const [status, setStatus] = useState<FormStatus>("idle");
   const [attempt, setAttempt] = useState(0);
+  // Submits that found invalid fields: each one shakes them.
+  const [rejected, setRejected] = useState(0);
   const { register, focusAfterRender } = useFieldFocus(errors, status);
   const inFlight = useRef(false);
 
@@ -63,20 +86,24 @@ export const useContactForm = () => {
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (inFlight.current) return;
+    // The form lingers while it fades out after a success: no second send.
+    if (inFlight.current || status === "success") return;
     const found = validateAll(values);
     setErrors(found);
     const invalid = FIELDS.find(field => found[field]);
     if (invalid) {
       focusAfterRender(invalid);
+      setRejected(count => count + 1);
       return;
     }
     // The honeypot: a filled hidden checkbox is a bot, which is told the message went through.
     const trap = new FormData(event.currentTarget).get("botcheck");
     inFlight.current = true;
     setStatus("sending");
-    const sent = trap ? true : await sendMessage(values);
+    const sent = await deliver(values, Boolean(trap), setSending);
     inFlight.current = false;
+    // Enter unmounts the focused field without a blur: the preview must not keep its caret.
+    if (sent) setFocused(null);
     setAttempt(count => count + 1);
     setStatus(sent ? "success" : "error");
   };
@@ -93,6 +120,7 @@ export const useContactForm = () => {
     errors,
     status,
     attempt,
+    rejected,
     register,
     change,
     check,
@@ -100,3 +128,5 @@ export const useContactForm = () => {
     again
   };
 };
+
+export type ContactFormState = ReturnType<typeof useContactForm>;
