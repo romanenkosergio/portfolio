@@ -25,8 +25,8 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 
 ## Next
 
-- PLAN done but 1.13 (deferred by owner, 2026-10-21). Not deployed since #31 (D11).
-  A new pending entry in `eslint/pending.config.mjs` names its PLAN item. Next decision number: D23.
+- PLAN empty: 1.13 dropped (D23). Deployed 2026-10-21 (`cd346ba`); OIDC timeout in `deploy` → rerun it.
+  New pending entries in `eslint/pending.config.mjs` name a PLAN item. Next decision: D24.
 
 ## Environment
 
