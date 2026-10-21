@@ -7,6 +7,13 @@ updates:
     open-pull-requests-limit: 5
     commit-message:
       prefix: "Deps"
+    # eslint 10 / @eslint/js 10 are blocked: eslint-plugin-import, eslint-plugin-react
+    # and eslint-plugin-jsx-a11y peer-depend on eslint <= 9. Bump both together once they do.
+    ignore:
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@eslint/js"
+        update-types: ["version-update:semver-major"]
     groups:
       minor-and-patch:
         update-types: [minor, patch]
