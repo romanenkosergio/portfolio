@@ -14,6 +14,7 @@ const config = {
     "^@/(.*)$": "<rootDir>/src/$1"
   },
   coverageProvider: "v8",
+  coverageReporters: ["text-summary", "lcov"],
   collectCoverageFrom: [
     "src/**/*.{ts,tsx}",
     "!src/**/*.d.ts",
