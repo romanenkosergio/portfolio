@@ -16,15 +16,15 @@
     <path d="M700 630L1200 130M800 630L1200 230"/>
   </g>
   <rect x="860" y="120" width="150" height="150" rx="26" fill="none" stroke="#c98bdf" stroke-width="3" opacity=".55" transform="rotate(14 935 195)"/>
-  <circle cx="1060" cy="420" r="46" fill="#4d5bce" opacity=".5"/>
+  <circle cx="1060" cy="420" r="46" fill="#6a78e8" opacity=".5"/>
   <path d="M860 470l40 30-40 30" fill="none" stroke="#fea55f" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
   <path d="M930 530h50" fill="none" stroke="#43d9ad" stroke-width="12" stroke-linecap="round" opacity=".9"/>
   <g font-family="'Fira Code', monospace">
-    <text x="80" y="150" font-size="30" fill="#607b96">// portfolio</text>
+    <text x="80" y="150" font-size="30" fill="#6781a0">// portfolio</text>
     <text x="80" y="290" font-size="84" font-weight="700" fill="#e5e9f0">Serhii</text>
     <text x="80" y="385" font-size="84" font-weight="700" fill="#e5e9f0">Romanenko</text>
     <text x="80" y="480" font-size="40" fill="#fea55f">&gt;</text>
     <text x="130" y="480" font-size="40" fill="#43d9ad">Front-end developer</text>
-    <text x="80" y="560" font-size="26" fill="#607b96">React · Next.js · TypeScript</text>
+    <text x="80" y="560" font-size="26" fill="#6781a0">React · Next.js · TypeScript</text>
   </g>
 </svg>
