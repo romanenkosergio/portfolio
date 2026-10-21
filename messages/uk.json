@@ -154,7 +154,9 @@
       "label": "Project {n}",
       "separator": "//",
       "personal": "personal",
-      "stack": "Stack"
+      "stack": "Stack",
+      "view": "view-project",
+      "viewTitle": "Open {title} website"
     },
     "empty": "// no projects use these technologies",
     "items": {

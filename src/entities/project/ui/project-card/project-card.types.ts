@@ -6,6 +6,9 @@ export interface IProjectCardLabels {
   separator: string;
   personal: string;
   stack: string;
+  // The view-project button text and its link title («Open {title} website»).
+  view: string;
+  viewTitle: string;
 }
 
 export interface IProjectCardProps {
