@@ -13,10 +13,16 @@ export const LINKEDIN_URL = "https://www.linkedin.com/in/romanenkosergio/";
 export const CONTACT_EMAIL = "sergromanenko97@gmail.com";
 
 // Next replaces `openGraph` wholesale per page, so every page spreads this base first
-// (its texts come from the `meta` messages).
+// (its texts come from the `meta` messages). The image path is resolved against `metadataBase`
+// (host + base path), so it carries no BASE_PATH of its own.
 export const OPEN_GRAPH = {
   type: "website",
-  images: "/assets/images/meta-picture.png"
+  images: {
+    url: "/assets/images/meta-picture.png",
+    width: 1200,
+    height: 630,
+    alt: "Serhii Romanenko, front-end developer"
+  }
 } as const;
 
 // First job in the CV; the years of experience in the about texts are counted from it.
