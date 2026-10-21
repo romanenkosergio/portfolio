@@ -16,7 +16,7 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 - 2.0: `scripts/generate-meta-assets.mjs` (sharp from Next) builds them from `scripts/meta-assets/`; `OPEN_GRAPH.images` stays relative to `metadataBase`, never `BASE_PATH`.
 - Motion toolkit (3.1): `@/shared/lib/motion` stays out of `shared/lib/index.ts`, so server code never pulls GSAP. `registerMotion()` registers useGSAP; each primitive registers its own plugin. `matchMotion(scope, {full, reduced, condition?})` wraps `gsap.matchMedia()`. Tokens: `DURATION`, `EASE`, `STAGGER`, `WAVE`, `SCRAMBLE_CHARS`, `TYPE`. Hiding is `data-motion-pending` (opacity 0 under `@media (scripting: enabled)`, cleared in useGSAP, 3 s CSS fallback); "already visible → skip" once per host (D15). ScrambleText is never hidden (h1/LCP). JS budget 335 kB gzip (D14).
 - Tests (1.12): jest 30, RTL, jest-axe; `*.test.ts(x)` beside the code (`scripts/*.test.ts` too); helpers in `shared/lib/test` (`renderWithIntl` = real `en.json`, SVG stub); `jest.setup.ts` mocks `next/navigation` and `matchMedia` (reduced motion), so GSAP runs for real. `gate` runs `test:coverage`, floor in `jest.config.mjs`.
-- Gates (1.14): `dup` = jscpd, threshold 0 (stubs ignored); the rest of `gate` is in AGENTS.md. `gate:push` adds `size`: JS 300 kB without the noModule polyfill (`scripts/size.mjs`), CSS 12 kB gzip (D22). CSP and referrer are `<meta>` tags from `shared/config/csp.ts`.
+- Gates (1.14): CI: `gate:push` checks on every PR. `dup` = jscpd, threshold 0 (stubs ignored); the rest of `gate` is in AGENTS.md. `gate:push` adds `size`: JS 300 kB without the noModule polyfill (`scripts/size.mjs`), CSS 12 kB gzip (D22). CSP and referrer are `<meta>` tags from `shared/config/csp.ts`.
 - i18n (1.11): routes `app/[locale]/…` (`dynamicParams = false`, `generateStaticParams` over `LOCALES`); every layout/page starts with `resolveLocale(params)`. `i18n.d.ts` types `AppConfig`, so a missing key fails `tsc`. Copy only in `messages/*.json`; uk/ru are translated (new keys get uk/ru in the same PR). Root `app/page.tsx` is a meta-refresh to `${BASE_PATH}/en/` (D12). Not checked in a browser: language switcher look and focus, dropdown over the burger menu.
 - PLAN 3.7: contrast (D22: secondary-1/3), About `h1`, snake pauses in a hidden tab. Variants: Icon `icon-variants.ts`, Button `concealed`, NavLink `variant`.
 - About copy from the owner's CV (en/uk/ru). Years are `{years, plural}` via `yearsSince(CAREER_START)`; never hard-code them. The CV PDF is local only (`docs/serhii-romanenko-cv.pdf`, git-excluded: it has a phone number, never commit it).
@@ -25,7 +25,7 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 
 ## Next
 
-- PLAN 4 in list order, 4.9 next (UI/UX «wow», Figma = a start) in a fresh chat; 4.4/4.6 wait for the owner. 4.10: home JSON-LD (`homeJsonLd`), 404 `TYPE.quick`, dependabot. 4.2 (D24): `eager` = visible in SSR, `EAGER_SHIFT` transform; 4.8 (D25): plugins via `load-plugins.ts`, lazy language select, tech-icon sprite, filters off until hydrated. Deployed 2026-10-21, OIDC timeout → rerun. Next: D26.
+- PLAN 4 in list order, 4.9 next (UI/UX «wow», Figma = a start); 4.4/4.6 wait for the owner. 4.10: home JSON-LD (`homeJsonLd`), 404 `TYPE.quick`. 4.2 (D24): `eager` = visible in SSR, `EAGER_SHIFT` transform; 4.8 (D25): plugins via `load-plugins.ts`, lazy language select, tech-icon sprite, filters off until hydrated. Deployed 2026-10-21, OIDC timeout → rerun. Next: D26.
 
 ## Environment
 

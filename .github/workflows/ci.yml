@@ -24,3 +24,18 @@ jobs:
           tar -xzf "gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" gitleaks
           sudo install -m 755 gitleaks /usr/local/bin/gitleaks
       - run: gitleaks git --redact --verbose
+
+  # The same checks as the pre-push hook (`yarn gate:push`), so PRs nobody pushed by hand
+  # (Dependabot) are verified too.
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn gate
+      - run: yarn build
+      - run: yarn size
