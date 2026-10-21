@@ -48,7 +48,7 @@ const PreviewLine: FC<IPreviewLineProps> = ({
         data-line-text=""
         data-preview-send={send ? "" : undefined}
         className={cn(
-          "break-all whitespace-pre-wrap transition-colors duration-300",
+          "wrap-break-word whitespace-pre-wrap transition-colors duration-300",
           lit && "bg-white/2"
         )}
       >
