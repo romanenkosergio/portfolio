@@ -106,7 +106,6 @@
       "bio": "/**\n * About me\n * I’m a Frontend Lead at a SaaS company. I build SaaS\n * products with React, Next.js and TypeScript.\n *\n * {years, plural, one {# year} other {# years}} in frontend. I started as an engineer\n * and grew into a team lead. I have shipped products\n * from MVP to production in startups and product teams,\n * and I have led the people who build them.\n *\n * What I care about: frontend architecture, developer\n * experience, performance and clean UI systems. I set\n * standards and workflows so a team can ship on its own.\n * I mentor through code review and design discussions.\n */",
       "interests": "/**\n * Interests\n * Tooling that removes setup work. Project templates,\n * internal CLIs and docs that let a new engineer ship\n * in the first week.\n *\n * Teaching. I lectured JavaScript and React, and I still\n * like explaining a hard idea until it becomes simple.\n *\n * Hiring and team process. I have run technical\n * interviews and I like building teams that stay\n * easy to join.\n *\n * Data on screen. Custom charts and visualizations,\n * where the interface has to make numbers readable.\n *\n * Automation. Small bots and integrations that take\n * repetitive work off people.\n */",
       "skills": "/**\n * Skills\n *\n * Frontend\n * React, Next.js, TypeScript, Redux Toolkit,\n * TanStack Query, Zustand, Tailwind\n *\n * Architecture\n * Frontend architecture, FSD (Feature-Sliced Design),\n * design systems, SSR, performance optimization\n *\n * Leadership\n * Team leadership, mentoring, hiring, code review\n *\n * Tools\n * AWS, CI/CD, Jest, GraphQL\n */",
-      "experience": "/**\n * Experience\n *\n * Frontend Lead — SaaS company\n * 11.2025 – now\n * Frontend architecture and standards for a SaaS platform;\n * joined as Front-End Developer in 07.2025.\n *\n * Frontend Team Lead — Product studio\n * 01.2024 – 06.2025\n * Led frontend for startup and SaaS products; built\n * internal tooling, docs and onboarding.\n *\n * Front-End Developer — Tech company\n * 01.2023 – 07.2023\n * Product pages, custom charts and visualizations.\n *\n * Frontend Lecturer — IT school\n * 01.2022 – 01.2023\n * Taught JavaScript and React to beginners.\n *\n * Front-End Developer — Software agency\n * 03.2022 – 09.2022\n * React, Vue and Django client projects; mentored juniors.\n *\n * Development Team Lead — E-commerce company\n * 01.2020 – 03.2022\n * E-commerce platforms. Promoted to Team Lead within\n * 4 months; ran interviews and reviews, kept project templates.\n *\n * Front-End Developer — Product company\n * 09.2019 – 04.2020\n * React web apps with Redux and Material UI.\n *\n * Front-End Developer — Digital agency\n * 05.2019 – 08.2019\n * Vue.js sites for clients.\n *\n * Front-End Developer — Product company\n * 05.2017 – 04.2019\n * Company sites, CRM integrations, Telegram bots.\n */",
       "games": "/**\n * Games\n * I play World of Warcraft and whatever is new on\n * my PS5. I also like how games are built: a tight\n * loop of input, state and feedback is good practice\n * for frontend thinking.\n *\n * I am building two of my own:\n * Tiny Coop, a cozy idle desktop game about a hen,\n * made in Godot 4 and heading to Steam.\n * Dareboard, a party game app (truth or dare, never\n * have I ever, spin the bottle) in Expo and React\n * Native, coming to the App Store and Google Play.\n *\n * The snake on the home page is a small one: a pure\n * state engine, testable without a canvas.\n */",
       "learning": "/**\n * Learning\n * I am self-taught. I learned frontend from\n * documentation, source code and real projects,\n * and I still learn the same way.\n *\n * Frontend changes fast, and so does the way teams\n * work. I try new ideas in small side projects\n * before they reach a team.\n *\n * This site is one of them: Feature-Sliced Design,\n * strict lint rules and a GSAP motion toolkit.\n *\n * Later I taught others: I lectured JavaScript and\n * React to students at an IT school.\n */"
     },
@@ -124,6 +123,91 @@
         },
         "keyToDirection": {
           "details": "Maps a key press to a snake direction. Arrow keys and WASD both work, and shortcuts with Ctrl, Cmd or Alt held are ignored so the game never steals browser shortcuts."
+        }
+      }
+    },
+    "timeline": {
+      "marker": "//",
+      "heading": "Experience",
+      "highlight": "4 months",
+      "entries": {
+        "lead": {
+          "role": "Frontend Lead",
+          "company": "SaaS company",
+          "period": "11.2025 – now",
+          "bullets": {
+            "b1": "Frontend architecture and standards for a SaaS platform.",
+            "b2": "Joined as Front-End Developer in 07.2025."
+          }
+        },
+        "teamLead": {
+          "role": "Frontend Team Lead",
+          "company": "Product studio",
+          "period": "01.2024 – 06.2025",
+          "bullets": {
+            "b1": "Led frontend for startup and SaaS products.",
+            "b2": "Built internal tooling, docs and onboarding."
+          }
+        },
+        "dev2023": {
+          "role": "Front-End Developer",
+          "company": "Tech company",
+          "period": "01.2023 – 07.2023",
+          "bullets": {
+            "b1": "Product pages.",
+            "b2": "Custom charts and visualizations."
+          }
+        },
+        "lecturer": {
+          "role": "Frontend Lecturer",
+          "company": "IT school",
+          "period": "01.2022 – 01.2023",
+          "bullets": {
+            "b1": "Taught JavaScript and React to beginners."
+          }
+        },
+        "dev2022": {
+          "role": "Front-End Developer",
+          "company": "Software agency",
+          "period": "03.2022 – 09.2022",
+          "bullets": {
+            "b1": "React, Vue and Django client projects.",
+            "b2": "Mentored juniors."
+          }
+        },
+        "ecomLead": {
+          "role": "Development Team Lead",
+          "company": "E-commerce company",
+          "period": "01.2020 – 03.2022",
+          "bullets": {
+            "b1": "E-commerce platforms.",
+            "b2": "Promoted to Team Lead within 4 months.",
+            "b3": "Ran interviews and reviews, kept project templates."
+          }
+        },
+        "dev2019b": {
+          "role": "Front-End Developer",
+          "company": "Product company",
+          "period": "09.2019 – 04.2020",
+          "bullets": {
+            "b1": "React web apps with Redux and Material UI."
+          }
+        },
+        "dev2019a": {
+          "role": "Front-End Developer",
+          "company": "Digital agency",
+          "period": "05.2019 – 08.2019",
+          "bullets": {
+            "b1": "Vue.js sites for clients."
+          }
+        },
+        "dev2017": {
+          "role": "Front-End Developer",
+          "company": "Product company",
+          "period": "05.2017 – 04.2019",
+          "bullets": {
+            "b1": "Company sites, CRM integrations, Telegram bots."
+          }
         }
       }
     }
