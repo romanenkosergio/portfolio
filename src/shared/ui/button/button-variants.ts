@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "flex items-center justify-center px-3.5 h-11 desktop:h-9.5 rounded-lg border border-transparent transition-[color,background-color,border-color,outline-color,opacity,visibility] duration-300 ease-in-out disabled:cursor-not-allowed disabled:opacity-60",
+  "flex items-center justify-center px-3.5 h-11 desktop:h-9.5 rounded-lg border border-transparent transition-[color,background-color,border-color,outline-color] duration-300 ease-in-out disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       variant: {
@@ -10,11 +10,13 @@ export const buttonVariants = cva(
         ghost: "bg-transparent border-white desktop:hover:border-white/50"
       },
       concealed: {
-        true: "pointer-events-none -z-1 invisible opacity-0",
-        false: ""
+        // Only a button that can hide fades; transitioning opacity on every button would fight GSAP entrances.
+        true: "pointer-events-none -z-1 invisible opacity-0 transition-[color,background-color,border-color,outline-color,opacity,visibility]",
+        false:
+          "transition-[color,background-color,border-color,outline-color,opacity,visibility]"
       }
     },
-    defaultVariants: { variant: "default", concealed: false }
+    defaultVariants: { variant: "default" }
   }
 );
 

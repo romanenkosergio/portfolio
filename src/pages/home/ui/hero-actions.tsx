@@ -13,7 +13,7 @@ const HeroActions: FC = () => {
   const t = useTranslations("home");
   return (
     <div className="mt-8 flex flex-wrap gap-4">
-      <Stagger delay={HERO_DELAY.actions}>
+      <Stagger afterLoad delay={HERO_DELAY.actions}>
         <Button
           href={E_ROUTES.PROJECTS}
           title={t("ctaProjectsTitle")}
@@ -21,7 +21,7 @@ const HeroActions: FC = () => {
           variant="primary"
         />
       </Stagger>
-      <Stagger delay={HERO_DELAY.actions + HERO_STEP}>
+      <Stagger afterLoad delay={HERO_DELAY.actions + HERO_STEP}>
         <Button
           href={E_ROUTES.CONTACT}
           title={t("ctaContactTitle")}
