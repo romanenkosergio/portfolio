@@ -5,6 +5,19 @@ export const PERSONAL_INFO_TYPES = ["bio", "interests"] as const;
 export const PROFESSIONAL_INFO_TYPES = ["skills", "experience"] as const;
 export const HOBBIES_TYPES = ["games", "learning"] as const;
 
+/** Entries of the experience timeline, newest first: the `about.timeline.entries.<id>` messages. */
+export const EXPERIENCE_IDS = [
+  "lead",
+  "teamLead",
+  "dev2023",
+  "lecturer",
+  "dev2022",
+  "ecomLead",
+  "dev2019b",
+  "dev2019a",
+  "dev2017"
+] as const;
+
 export type PersonalInfoType = (typeof PERSONAL_INFO_TYPES)[number];
 export type ProfessionalInfoType = (typeof PROFESSIONAL_INFO_TYPES)[number];
 export type HobbiesType = (typeof HOBBIES_TYPES)[number];
