@@ -18,6 +18,13 @@ const ContactView: FC = () => {
         <ContactSidebar className="h-auto flex-none border-b border-b-line desktop:hidden" />
         <div className="flex-none scrollbar-pane px-5.5 py-6 desktop:min-h-0 desktop:flex-1 desktop:overflow-y-auto desktop:border-r desktop:border-r-line desktop:px-10 desktop:py-12">
           <ContactForm />
+          <p className="mt-8 flex max-w-135 items-center gap-2.5 border-t border-t-line pt-6 text-base text-secondary-1">
+            <span
+              aria-hidden="true"
+              className="size-2 flex-none rounded-full bg-accent-2"
+            />
+            {t("availability")}
+          </p>
         </div>
         <div className="hidden scrollbar-pane desktop:block desktop:min-h-0 desktop:w-[45%] desktop:max-w-187.5 desktop:overflow-y-auto">
           <CodePreview />

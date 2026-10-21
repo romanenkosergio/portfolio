@@ -15,7 +15,7 @@ const AboutView: FC<IAboutViewProps> = ({ type }) => {
   const years = yearsSince(CAREER_START);
 
   return (
-    <div className="scrollbar-pane desktop:min-h-0 desktop:flex-1 desktop:overflow-x-hidden desktop:overflow-y-auto">
+    <div className="scrollbar-pane pb-10 desktop:min-h-0 desktop:flex-1 desktop:overflow-x-hidden desktop:overflow-y-auto">
       <ContentWithCodeLines content={t(`content.${type}`, { years })} />
     </div>
   );
