@@ -1,9 +1,14 @@
-import { E_ROUTES } from "@/shared/config";
+import {
+  CONTACT_EMAIL,
+  E_ROUTES,
+  GITHUB_URL,
+  LINKEDIN_URL
+} from "@/shared/config";
 import type { IconName, IconTone } from "@/shared/ui";
 
 export type SectionKey = "personalInfo" | "professionalInfo" | "hobbies";
 export type GroupKey =
-  "personalInfo" | "professionalInfo" | "hobbies" | "contacts";
+  "personalInfo" | "professionalInfo" | "hobbies" | "contacts" | "findMeAlsoIn";
 export type ItemKey =
   "bio" | "interests" | "skills" | "experience" | "games" | "learning";
 
@@ -60,12 +65,12 @@ interface IAboutItem {
 }
 
 // The owner's phone number is not published here (it lives in the private CV only).
-const CONTACTS: IAboutItem = {
+export const CONTACTS: IAboutItem = {
   groupKey: "contacts",
   content: [
     {
-      title: "sergromanenko97@gmail.com",
-      href: "mailto:sergromanenko97@gmail.com",
+      title: CONTACT_EMAIL,
+      href: `mailto:${CONTACT_EMAIL}`,
       icon: "mail",
       external: true
     }
@@ -134,3 +139,22 @@ export const ABOUT_ME_HOBBIES_ITEMS: IAboutItem[] = [
   },
   CONTACTS
 ];
+
+// The /contact page's own explorer: the same e-mail, plus the profiles the footer links to.
+export const FIND_ME_ALSO_IN: IAboutItem = {
+  groupKey: "findMeAlsoIn",
+  content: [
+    {
+      title: "romanenkosergio",
+      href: LINKEDIN_URL,
+      icon: "footer/linkedin",
+      external: true
+    },
+    {
+      title: "@romanenkosergio",
+      href: GITHUB_URL,
+      icon: "footer/github",
+      external: true
+    }
+  ]
+};

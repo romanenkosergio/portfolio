@@ -6,7 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { E_ROUTES } from "@/shared/config";
 import { pageMetadata } from "@/shared/lib";
 
-import { HomeView } from "@/pages/home";
+import { ContactView } from "@/pages/contact";
 
 import { resolveLocale } from "@/app/lib";
 import type { ILocaleProps } from "@/app/model";
@@ -21,7 +21,7 @@ export async function generateMetadata({
 
 const Contact: FC<ILocaleProps> = async ({ params }) => {
   await resolveLocale(params);
-  return <HomeView />;
+  return <ContactView />;
 };
 
 export default Contact;

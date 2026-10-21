@@ -1,4 +1,4 @@
-import { GITHUB_URL } from "@/shared/config";
+import { GITHUB_URL, LINKEDIN_URL } from "@/shared/config";
 import type { IconName } from "@/shared/ui";
 
 type SocialKey = "linkedin" | "twitter" | "medium" | "github";
@@ -13,7 +13,7 @@ interface ISocial {
 export const SOCIALS: ISocial[] = [
   {
     titleKey: "linkedin",
-    href: "https://www.linkedin.com/in/romanenkosergio/",
+    href: LINKEDIN_URL,
     icon: "footer/linkedin"
   },
 

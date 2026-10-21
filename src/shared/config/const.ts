@@ -9,6 +9,8 @@ export const APP_CONFIG = {
 };
 
 export const GITHUB_URL = "https://github.com/romanenkosergio";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/romanenkosergio/";
+export const CONTACT_EMAIL = "sergromanenko97@gmail.com";
 
 // Next replaces `openGraph` wholesale per page, so every page spreads this base first
 // (its texts come from the `meta` messages).
