@@ -28,7 +28,7 @@ const ProjectCard: FC<IProjectCardProps> = ({ project, labels }) => {
         badge={kind === "personal" ? labels.personal : labels.commercial}
         className={
           featured
-            ? "@2xl:h-auto @2xl:w-2/5 @2xl:border-r @2xl:border-b-0"
+            ? "@2xl:h-auto @2xl:w-2/5 @2xl:border-r @2xl:border-b-0 @2xl:border-r-line"
             : undefined
         }
       />

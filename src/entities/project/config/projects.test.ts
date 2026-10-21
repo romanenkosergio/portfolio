@@ -1,3 +1,5 @@
+import { featuredFirst } from "../model/order";
+
 import { PROJECTS } from "./projects";
 
 describe("PROJECTS covers", () => {
@@ -5,9 +7,10 @@ describe("PROJECTS covers", () => {
     PROJECTS.forEach(({ cover, stack }) => expect(stack).toContain(cover.tech));
   });
 
-  it("never repeat a logo or a pattern on neighbouring cards", () => {
-    PROJECTS.slice(1).forEach((project, index) => {
-      const previous = PROJECTS[index].cover;
+  it("never repeat a logo or a pattern on neighbouring cards, in the order shown", () => {
+    const shown = featuredFirst(PROJECTS);
+    shown.slice(1).forEach((project, index) => {
+      const previous = shown[index].cover;
       expect(project.cover.tech).not.toBe(previous.tech);
       expect(project.cover.pattern).not.toBe(previous.pattern);
     });

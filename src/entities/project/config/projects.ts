@@ -54,7 +54,7 @@ export const PROJECTS = [
   {
     slug: "dareboard",
     kind: "personal",
-    cover: { tech: "astro", pattern: 0 },
+    cover: { tech: "astro", pattern: 3 },
     stack: ["react-native", "expo", "nestjs", "typescript", "astro"],
     href: "https://dareboard.app",
     featured: true

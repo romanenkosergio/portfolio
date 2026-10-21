@@ -6,6 +6,7 @@ import { TechIcon, TechIconSprite } from "@/shared/ui/tech-icon";
 
 import {
   PROJECTS,
+  featuredFirst,
   ProjectCard,
   TECHS,
   usedFilterTechs
@@ -46,11 +47,6 @@ const ProjectsView: FC = () => {
       />
     )
   }));
-  // The featured card spans a full row; first in the DOM, it leaves no hole at any column count
-  // (the label keeps its place in PROJECTS, so «Project 9» stays 9).
-  const ordered = [...cards].sort(
-    (a, b) => Number(b.featured) - Number(a.featured)
-  );
 
   const filters = usedFilterTechs().map(tech => ({
     tech,
@@ -66,7 +62,7 @@ const ProjectsView: FC = () => {
     <>
       <TechIconSprite />
       <ProjectsExplorer
-        cards={ordered}
+        cards={featuredFirst(cards)}
         filters={filters}
         copy={{
           heading: t("heading"),
