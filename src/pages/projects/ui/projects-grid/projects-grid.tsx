@@ -5,7 +5,7 @@ import { PENDING_ATTR } from "@/shared/lib/motion";
 
 import { matchesTechs } from "@/entities/project/model";
 
-import { CARD_ATTR, EAGER_CARDS, EMPTY_ATTR } from "@/pages/projects/lib";
+import { CARD_ATTR, isEagerCard, EMPTY_ATTR } from "@/pages/projects/lib";
 
 import type { IProjectsGridProps } from "./projects-grid.types";
 
@@ -35,7 +35,7 @@ const ProjectsGrid: FC<IProjectsGridProps> = ({
             key={card.slug}
             {...{
               [CARD_ATTR]: "",
-              ...(index < EAGER_CARDS ? {} : { [PENDING_ATTR]: "" })
+              ...(isEagerCard(index) ? {} : { [PENDING_ATTR]: "" })
             }}
             className={cn("flex", !visible.includes(card) && "hidden")}
           >

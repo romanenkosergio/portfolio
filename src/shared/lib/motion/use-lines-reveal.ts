@@ -5,7 +5,14 @@ import gsap from "gsap";
 
 import { matchMotion } from "./reduced-motion";
 import { isAlreadyVisible } from "./reveal-in";
-import { CAP, DURATION, EASE, PENDING_ATTR, SHIFT } from "./tokens";
+import {
+  CAP,
+  DURATION,
+  EAGER_SHIFT,
+  EASE,
+  PENDING_ATTR,
+  SHIFT
+} from "./tokens";
 
 /** Markers on the cells of a code grid: the line number and the line text. */
 export const LINE_NUMBER = "data-line-number";
@@ -20,7 +27,7 @@ const revealLines = (
     // Painted visible in the server HTML: the rows only slide in, nothing fades.
     if (!reduced) {
       gsap.from(host.querySelectorAll(`[${LINE_TEXT}]`), {
-        x: SHIFT.row,
+        x: EAGER_SHIFT,
         duration: DURATION.quick,
         ease: EASE.soft,
         clearProps: "transform",

@@ -22,6 +22,8 @@ import {
 
 import { PreviewLine } from "../preview-line";
 
+const DATE_PLACEHOLDER = "\u00a0".repeat(10);
+
 const noop = () => () => undefined;
 
 // The form as code, updated while the visitor types: the focused field's line is lit and carries
@@ -33,11 +35,12 @@ const CodePreview: FC = () => {
   const edit = useContactStore(selectEdit);
   const focused = useContactStore(selectFocused);
   const rootRef = useRef<HTMLDivElement>(null);
-  // Empty on the server so the build-time date never meets a different one on hydration.
+  // Blanks on the server so the build-time date never meets a different one on hydration; the
+  // row is painted at once (LCP), and blanks of a date's length keep it from shifting.
   const date = useSyncExternalStore(
     noop,
     () => previewDate(locale, new Date()),
-    () => ""
+    () => DATE_PLACEHOLDER
   );
 
   usePreviewMotion(rootRef, edit, focused);

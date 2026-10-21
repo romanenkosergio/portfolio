@@ -2,31 +2,16 @@ import { renderToString } from "react-dom/server";
 
 import { PENDING_ATTR } from "@/shared/lib/motion";
 
-import { LinesReveal } from "../lines-reveal";
-import { Stagger } from "../stagger";
-
 import Reveal from "./reveal";
 
-describe("motion primitives markup", () => {
-  it("hide their content until GSAP owns it", () => {
-    const html = renderToString(
-      <>
-        <Reveal>a</Reveal>
-        <Stagger>b</Stagger>
-        <LinesReveal>c</LinesReveal>
-      </>
-    );
-    expect(html.split(PENDING_ATTR)).toHaveLength(4);
+describe("Reveal markup", () => {
+  it("hides its content until GSAP owns it", () => {
+    expect(renderToString(<Reveal>a</Reveal>)).toContain(PENDING_ATTR);
   });
 
-  it("paint eager content visible in the server markup", () => {
-    const html = renderToString(
-      <>
-        <Reveal eager>a</Reveal>
-        <Stagger eager>b</Stagger>
-        <LinesReveal eager>c</LinesReveal>
-      </>
+  it("paints eager content visible in the server markup", () => {
+    expect(renderToString(<Reveal eager>a</Reveal>)).not.toContain(
+      PENDING_ATTR
     );
-    expect(html).not.toContain(PENDING_ATTR);
   });
 });

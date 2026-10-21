@@ -4,14 +4,13 @@ import { useGSAP } from "@gsap/react";
 
 import {
   CAP,
-  PENDING_ATTR,
   STAGGER,
   matchMotion,
   registerMotion,
   revealIn
 } from "@/shared/lib/motion";
 
-import { CARD_ATTR } from "./card-markers";
+import { CARD_ATTR, isEagerCard } from "./card-markers";
 
 registerMotion();
 
@@ -35,8 +34,8 @@ export const useCardsEntrance = (
         full: () => {
           const stops = cards.map((card, index) =>
             revealIn(card, card, false, {
-              // No pending attribute in the markup = painted visible = lift only.
-              eager: !card.hasAttribute(PENDING_ATTR),
+              // The grid renders these cards visible (no pending attribute): lift only.
+              eager: isEagerCard(index),
               scroll: true,
               delay: index * step,
               clearProps: "opacity,transform"

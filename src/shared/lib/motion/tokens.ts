@@ -47,6 +47,8 @@ export const SCALE = { enter: 0.96, pop: 1.4, press: 0.88 } as const;
 export const DRIFT = { duration: 9, x: 28, y: 20, rotation: 10 } as const;
 
 /** Shifts in the IDE-like chrome (explorer, tabs, code rows), px. */
+/** Start offset (px) of an eager entrance: small, as the element is already painted and jumps there in one frame. */
+export const EAGER_SHIFT = 6;
 export const SHIFT = { row: 8, tab: 6, note: 8, shake: 5 } as const;
 
 /** Whole-set stagger budgets, s: a long list takes no longer than this to enter. */

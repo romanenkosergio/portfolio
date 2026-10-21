@@ -3,6 +3,7 @@ import gsap from "gsap";
 import {
   DISTANCE,
   DURATION,
+  EAGER_SHIFT,
   EASE,
   PENDING_ATTR,
   SCROLL_MARGIN
@@ -69,7 +70,7 @@ export const revealIn = (
   if (eager) {
     if (!reduced) {
       gsap.from(targets, {
-        y,
+        y: EAGER_SHIFT,
         duration,
         delay,
         stagger,
