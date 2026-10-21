@@ -4,7 +4,9 @@ import {
   CELL_SIZE,
   FOOD_TOTAL,
   INITIAL_FOOD,
-  INITIAL_SNAKE
+  INITIAL_SNAKE,
+  TICK_START,
+  TICK_STEP
 } from "../config";
 
 export type Direction = "UP" | "DOWN" | "LEFT" | "RIGHT";
@@ -60,6 +62,10 @@ export const startGame = (): SnakeState => ({
   ...createInitialState(),
   status: "playing"
 });
+
+/** Milliseconds between ticks: a calm start, a little faster with each food eaten. */
+export const tickDelay = (foodLeft: number): number =>
+  TICK_START - TICK_STEP * (FOOD_TOTAL - foodLeft);
 
 export const placeFood = (random: RandomSource): Cell => [
   Math.floor(random() * COLUMNS),

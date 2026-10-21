@@ -36,6 +36,8 @@ const ALLOWED = [
 
 const SKIP_DIR = new Set(["node_modules", ".next", "out"]);
 const SOURCE = /\.(ts|tsx|js|jsx|mjs|cjs|json|css)$/;
+// Tests never ship, and their fixtures are placeholders (example.com).
+const TEST_FILE = /\.test\.[a-z]+$/;
 
 function* sourceFiles(dir) {
   let entries;
@@ -48,7 +50,7 @@ function* sourceFiles(dir) {
     const path = join(dir, entry);
     if (statSync(path).isDirectory()) {
       if (!SKIP_DIR.has(entry)) yield* sourceFiles(path);
-    } else if (SOURCE.test(entry)) {
+    } else if (SOURCE.test(entry) && !TEST_FILE.test(entry)) {
       yield path;
     }
   }

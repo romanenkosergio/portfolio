@@ -12,6 +12,7 @@ import {
   pendingConfigs,
   scriptsConfig,
   shadcnComponentsConfig,
+  testsConfig,
   typescriptConfig
 } from "./eslint/index.mjs";
 
@@ -66,6 +67,8 @@ export default [
   scriptsConfig,
 
   shadcnComponentsConfig,
+
+  testsConfig,
 
   ...pendingConfigs
 ];

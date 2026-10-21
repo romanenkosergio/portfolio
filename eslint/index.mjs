@@ -8,6 +8,7 @@ import {
 } from "./base.config.mjs";
 import { forbiddenConfigs } from "./forbidden.config.mjs";
 import { pendingConfigs } from "./pending.config.mjs";
+import { testsConfig } from "./tests.config.mjs";
 
 export {
   architectureConfig,
@@ -17,5 +18,6 @@ export {
   pendingConfigs,
   scriptsConfig,
   shadcnComponentsConfig,
+  testsConfig,
   typescriptConfig
 };

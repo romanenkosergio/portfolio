@@ -51,7 +51,8 @@ Node 24 (`nvm use`; the git hooks switch to it themselves), yarn only.
 ```bash
 yarn dev            # next dev
 yarn lint | lint:fix | format | format:check | typecheck | fsd
-yarn gate           # format:check + lint + typecheck + fsd + egress (allow-listed hosts) + dup (jscpd; route page.tsx stubs ignored)
+yarn test | test:coverage  # jest (RTL, jest-axe); coverage floor is in the gate
+yarn gate           # format:check + lint + typecheck + fsd + egress (allow-listed hosts) + dup (jscpd; route page.tsx stubs ignored) + test:coverage
 yarn gate:push      # gate + next build + size (size-limit on out/; pre-push)
 ```
 
