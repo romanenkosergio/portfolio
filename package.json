@@ -78,7 +78,7 @@
     "postcss": "^8.5.28",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "shadcn": "^3.8.5",
+    "shadcn": "^4.22.1",
     "size-limit": "^14.2.0",
     "steiger": "^0.7.0",
     "tailwindcss": "^4.3.3",
