@@ -8,7 +8,7 @@ import ContactSidebar from "./contact-sidebar";
 describe("ContactSidebar", () => {
   it("offers the English CV as a download", () => {
     renderWithIntl(<ContactSidebar />);
-    const link = screen.getByRole("link", { name: "serhii-romanenko-cv.pdf" });
+    const link = screen.getByRole("link", { name: "Download CV" });
     expect(link).toHaveAttribute(
       "href",
       expect.stringContaining("/assets/cv/serhii-romanenko-cv.pdf")

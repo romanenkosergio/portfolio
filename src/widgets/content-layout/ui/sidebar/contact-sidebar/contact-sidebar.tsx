@@ -25,7 +25,7 @@ const ContactSidebar: FC<IContactSidebarProps> = ({ className }) => {
           blockClass="first:border-b-line first:border-b"
         >
           {group.content.map(item => (
-            <ContentLink key={item.title} item={item} />
+            <ContentLink key={item.titleKey ?? item.title} item={item} />
           ))}
         </SidebarContentItem>
       ))}

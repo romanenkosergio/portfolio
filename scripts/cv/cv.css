@@ -97,3 +97,7 @@ li {
 li::marker {
   color: #2f5fd0;
 }
+
+.item {
+  white-space: nowrap;
+}

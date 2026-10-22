@@ -181,7 +181,7 @@
         },
         "dropshoes": {
           "role": "Development Team Lead",
-          "company": "E-commerce платформа",
+          "company": "E-commerce-платформа",
           "period": "09.2022 – 01.2023",
           "bullets": {
             "b1": "Керував крос-функціональною командою, працював напряму зі стейкхолдерами.",
@@ -191,7 +191,7 @@
         },
         "lecturer": {
           "role": "Викладач фронтенду",
-          "company": "IT-школа (part-time)",
+          "company": "IT-школа (частково)",
           "period": "06.2022 – 01.2023",
           "bullets": {
             "b1": "Навчав початківців JavaScript і React."
@@ -207,7 +207,7 @@
           }
         },
         "ecomLead": {
-          "role": "Development Team Lead",
+          "role": "Front-End розробник → Team Lead",
           "company": "E-commerce компанія",
           "period": "04.2020 – 03.2022",
           "bullets": {
@@ -263,7 +263,7 @@
       "experience": "experience",
       "games": "games",
       "learning": "learning",
-      "cv": "serhii-romanenko-cv.pdf"
+      "cv": "Завантажити CV (EN)"
     }
   },
   "notFound": {

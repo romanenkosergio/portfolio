@@ -207,7 +207,7 @@
           }
         },
         "ecomLead": {
-          "role": "Development Team Lead",
+          "role": "Frontend Developer → Team Lead",
           "company": "E-commerce company",
           "period": "04.2020 – 03.2022",
           "bullets": {
@@ -263,7 +263,7 @@
       "experience": "experience",
       "games": "games",
       "learning": "learning",
-      "cv": "serhii-romanenko-cv.pdf"
+      "cv": "Download CV"
     }
   },
   "notFound": {
