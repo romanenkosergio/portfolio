@@ -43,7 +43,12 @@ const ContentLink: FC<IContentLinkProps> = ({ item }) => {
   );
 
   return item.external ? (
-    <NavLink {...linkProps} href={item.href} isExternal>
+    <NavLink
+      {...linkProps}
+      href={item.href}
+      download={item.download}
+      isExternal
+    >
       {children}
     </NavLink>
   ) : (

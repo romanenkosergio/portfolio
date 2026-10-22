@@ -26,6 +26,6 @@ describe("ExperienceTimeline", () => {
 
   it("highlights the promotion metric", () => {
     renderWithIntl(<ExperienceTimeline />);
-    expect(screen.getByText("4 months").tagName).toBe("MARK");
+    expect(screen.getByText("two months").tagName).toBe("MARK");
   });
 });

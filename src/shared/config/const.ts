@@ -10,6 +10,8 @@ export const APP_CONFIG = {
 
 export const GITHUB_URL = "https://github.com/romanenkosergio";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/romanenkosergio/";
+// The CV is generated from scripts/cv/cv-en.md by `yarn cv`, English only (D26).
+export const CV_URL = `${BASE_PATH}/assets/cv/serhii-romanenko-cv.pdf`;
 export const CONTACT_EMAIL = "sergromanenko97@gmail.com";
 
 // Next replaces `openGraph` wholesale per page, so every page spreads this base first

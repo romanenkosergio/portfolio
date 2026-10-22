@@ -55,6 +55,8 @@
     "ctaProjectsTitle": "See my projects",
     "ctaContact": "Contact me",
     "ctaContactTitle": "Get in touch",
+    "ctaCv": "Download CV",
+    "ctaCvTitle": "Download my CV as a PDF",
     "stackLabel": "// stack",
     "statsLabel": "Highlights",
     "statProjects": "{count, plural, one {# project} other {# projects}} in the portfolio",
@@ -147,7 +149,7 @@
     "timeline": {
       "marker": "//",
       "heading": "Experience",
-      "highlight": "4 months",
+      "highlight": "two months",
       "entries": {
         "lead": {
           "role": "Frontend Lead",
@@ -163,8 +165,9 @@
           "company": "Product studio",
           "period": "01.2024 – 06.2025",
           "bullets": {
-            "b1": "Led frontend for startup and SaaS products.",
-            "b2": "Built internal tooling, docs and onboarding."
+            "b1": "Led a team of up to 10 engineers on startup and SaaS products.",
+            "b2": "Features shipped up to 2× faster after reworking sprint planning.",
+            "b3": "Built internal tooling, docs and onboarding."
           }
         },
         "dev2023": {
@@ -176,10 +179,20 @@
             "b2": "Custom charts and visualizations."
           }
         },
+        "dropshoes": {
+          "role": "Development Team Lead",
+          "company": "E-commerce platform",
+          "period": "09.2022 – 01.2023",
+          "bullets": {
+            "b1": "Led a cross-functional team and worked directly with stakeholders.",
+            "b2": "Designed the frontend architecture.",
+            "b3": "Introduced testing and code-quality practices, set up an Agile release process."
+          }
+        },
         "lecturer": {
           "role": "Frontend Lecturer",
-          "company": "IT school",
-          "period": "01.2022 – 01.2023",
+          "company": "IT school (part-time)",
+          "period": "06.2022 – 01.2023",
           "bullets": {
             "b1": "Taught JavaScript and React to beginners."
           }
@@ -196,10 +209,10 @@
         "ecomLead": {
           "role": "Development Team Lead",
           "company": "E-commerce company",
-          "period": "01.2020 – 03.2022",
+          "period": "04.2020 – 03.2022",
           "bullets": {
             "b1": "E-commerce platforms.",
-            "b2": "Promoted to Team Lead within 4 months.",
+            "b2": "Promoted to Team Lead within two months.",
             "b3": "Ran interviews and reviews, kept project templates."
           }
         },
@@ -249,7 +262,8 @@
       "skills": "skills",
       "experience": "experience",
       "games": "games",
-      "learning": "learning"
+      "learning": "learning",
+      "cv": "serhii-romanenko-cv.pdf"
     }
   },
   "notFound": {

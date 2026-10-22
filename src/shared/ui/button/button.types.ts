@@ -4,11 +4,15 @@ import type { VariantProps } from "class-variance-authority";
 
 import type { E_ROUTES } from "@/shared/config";
 
+import type { IconName } from "../icon";
+
 import type { buttonVariants } from "./button-variants";
 
 interface IBaseButtonProps extends VariantProps<typeof buttonVariants> {
   textClassName?: string;
   text: string;
+  /** Decorative icon before the label. */
+  icon?: IconName;
   className?: string;
   disabled?: boolean;
 }
@@ -34,6 +38,8 @@ interface IButtonAsExternalLink extends IBaseButtonProps {
   target?: HTMLAttributeAnchorTarget;
   onClick?: never;
   isExternalLink: true;
+  /** Saves the file instead of opening it. */
+  download?: boolean;
 }
 
 export type IButtonProps =
