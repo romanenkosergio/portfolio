@@ -26,7 +26,7 @@ Read first in a fresh chat; ≤ 8000 bytes (`pr-handoff-guard` denies a PR over 
 
 ## Next
 
-- PLAN 4: 4.4/4.6 wait for the owner (CV PDF; analytics pick); then 4.3, 4.7 (deferred). Open from 4.9: owner to confirm «Open to new opportunities…» and «commercial · NDA» copy; Flip/hover glide not eyeballed; experience has no metrics (owner may add); avatar photo later. Not deployed since 4.9. 4.10: home JSON-LD (`homeJsonLd`), 404 `TYPE.quick`. 4.2 (D24): `eager` = visible in SSR, `EAGER_SHIFT` transform; 4.8 (D25): plugins via `load-plugins.ts`, lazy language select, tech-icon sprite, filters off until hydrated. Next: D26.
+- PLAN 4: 4.4/4.6 wait for the owner (CV PDF; analytics pick); then 4.3, 4.7 (deferred). Open from 4.9: Flip/hover glide not eyeballed; experience has no metrics (owner may add); avatar photo later. Owner confirmed the availability and «commercial · NDA» copy; deployed 2026-10-22. 4.10: home JSON-LD (`homeJsonLd`), 404 `TYPE.quick`. 4.2 (D24): `eager` = visible in SSR, `EAGER_SHIFT` transform; 4.8 (D25): plugins via `load-plugins.ts`, lazy language select, tech-icon sprite, filters off until hydrated. Next: D26.
 
 ## Environment
 
