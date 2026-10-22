@@ -41,8 +41,6 @@ _Joined as a developer, moved to lead in four months._
 - Hired engineers for the team; ran 1-on-1s and performance reviews and grew mid-level engineers into seniors.
 - Built internal tooling, documentation and standards that speed up project setup.
 
-### Freelance and own projects · Jul 2023 – Dec 2023
-
 ### DFINITY — Web3, Internet Computer ecosystem · Remote (contract)
 
 **Front-End Developer** · Jan 2023 – Jul 2023
@@ -86,7 +84,7 @@ _Promoted to lead within two months after taking ownership of frontend processes
 
 - **EXSY** · Front-End Developer · Sep 2019 – Apr 2020 — React web apps with Redux, Material UI, React Bootstrap and PUG.
 - **Hexide Digital** · Front-End Developer · May 2019 – Aug 2019 — Vue.js client sites with Vuex, SCSS, Webpack and Gulp.
-- **Turboinsta** (Odesa, Ukraine) · Front-End Developer · May 2017 – Apr 2019 — company sites, CRM integrations and lead automation, Telegram bots; BEM, SASS, Gulp.
+- **Turboinsta** (Odesa, Ukraine) · Front-End Developer (HTML, CSS, JavaScript) · May 2017 – Apr 2019 — markup for company sites, CRM integrations and lead automation, Telegram bots; BEM, SASS, Gulp.
 
 ## Languages
 
