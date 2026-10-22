@@ -4,6 +4,7 @@ import BoltsBoltDownRight from "@/public/assets/icons/bolts/bolt-down-right.svg"
 import BoltsBoltUpLeft from "@/public/assets/icons/bolts/bolt-up-left.svg";
 import BoltsBoltUpRight from "@/public/assets/icons/bolts/bolt-up-right.svg";
 import Close from "@/public/assets/icons/close.svg";
+import Download from "@/public/assets/icons/download.svg";
 import Folder from "@/public/assets/icons/folder.svg";
 import FooterGithub from "@/public/assets/icons/footer/github.svg";
 import FooterLinkedin from "@/public/assets/icons/footer/linkedin.svg";
@@ -23,6 +24,7 @@ import type { SVGComponent } from "./icon.types";
 export const ICONS = {
   "arrow-down": ArrowDown,
   "close": Close,
+  "download": Download,
   "folder": Folder,
   "keyboard-arrow": KeyboardArrow,
   "mail": Mail,

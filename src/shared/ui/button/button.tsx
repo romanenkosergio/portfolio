@@ -1,11 +1,14 @@
 import { Link } from "@/shared/i18n";
 import { cn } from "@/shared/lib";
 
+import { Icon } from "../icon";
+
 import { buttonTextVariants, buttonVariants } from "./button-variants";
 import type { IButtonProps } from "./button.types";
 
 const Button = ({
   text,
+  icon,
   className,
   textClassName,
   variant,
@@ -14,9 +17,14 @@ const Button = ({
 }: IButtonProps) => {
   const buttonClassName = cn(buttonVariants({ variant, concealed }), className);
   const label = (
-    <span className={cn(buttonTextVariants({ variant }), textClassName)}>
-      {text}
-    </span>
+    <>
+      {icon && (
+        <Icon name={icon} Tag="span" className="mr-2 size-4 flex-none" />
+      )}
+      <span className={cn(buttonTextVariants({ variant }), textClassName)}>
+        {text}
+      </span>
+    </>
   );
 
   if (rest.href === undefined) {
@@ -34,6 +42,7 @@ const Button = ({
         title={rest.title}
         className={buttonClassName}
         target={rest.target}
+        download={rest.download}
         rel="noopener noreferrer"
       >
         {label}

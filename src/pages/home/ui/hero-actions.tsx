@@ -2,13 +2,13 @@ import type { FC } from "react";
 
 import { useTranslations } from "next-intl";
 
-import { E_ROUTES } from "@/shared/config";
+import { CV_URL, E_ROUTES } from "@/shared/config";
 import { Button } from "@/shared/ui";
 import { Stagger } from "@/shared/ui/motion";
 
 import { HERO_DELAY, HERO_STEP } from "@/pages/home/config";
 
-/** The two calls to action under the hero text: projects first, contact second. */
+/** The calls to action under the hero text: projects first, contact second, the CV download last. */
 const HeroActions: FC = () => {
   const t = useTranslations("home");
   return (
@@ -26,6 +26,17 @@ const HeroActions: FC = () => {
           href={E_ROUTES.CONTACT}
           title={t("ctaContactTitle")}
           text={t("ctaContact")}
+          variant="ghost"
+        />
+      </Stagger>
+      <Stagger afterLoad delay={HERO_DELAY.actions + HERO_STEP * 2}>
+        <Button
+          href={CV_URL}
+          isExternalLink
+          download
+          icon="download"
+          title={t("ctaCvTitle")}
+          text={t("ctaCv")}
           variant="ghost"
         />
       </Stagger>

@@ -11,6 +11,7 @@ export const EXPERIENCE_IDS = [
   "lead",
   "teamLead",
   "dev2023",
+  "dropshoes",
   "lecturer",
   "dev2022",
   "ecomLead",

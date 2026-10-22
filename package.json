@@ -13,6 +13,7 @@
     "format:check": "prettier --check . --cache --log-level=warn",
     "typecheck": "next typegen >/dev/null && tsc --noEmit",
     "fsd": "steiger ./src",
+    "cv": "node scripts/generate-cv.mjs",
     "shadcn:add": "node scripts/shadcn-add.mjs",
     "gate": "yarn format:check && yarn lint && yarn typecheck && yarn fsd && yarn egress && yarn snippets && yarn dup && yarn test:coverage",
     "egress": "node scripts/egress-check.mjs",

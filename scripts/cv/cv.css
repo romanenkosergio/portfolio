@@ -1,0 +1,103 @@
+@page {
+  size: A4;
+  margin: 14mm 16mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #1c1f26;
+  font:
+    9.6pt/1.42 "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0.5pt solid #9aa3b2;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24pt;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+h1 + p {
+  margin: 2pt 0 0;
+  color: #2f5fd0;
+  font-size: 12pt;
+  font-weight: 600;
+}
+
+h1 + p + p,
+h1 + p + p + p {
+  margin: 3pt 0 0;
+  color: #4a5160;
+  font-size: 8.8pt;
+}
+
+h2 {
+  margin: 13pt 0 5pt;
+  padding-bottom: 2pt;
+  border-bottom: 0.75pt solid #1c1f26;
+  font-size: 9.6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  break-after: avoid;
+}
+
+h3 {
+  margin: 9pt 0 2pt;
+  font-size: 10.4pt;
+  break-after: avoid;
+}
+
+p {
+  margin: 0 0 3pt;
+}
+
+.role {
+  display: flex;
+  justify-content: space-between;
+  gap: 12pt;
+  break-after: avoid;
+}
+
+.role .dates {
+  flex: none;
+  color: #4a5160;
+}
+
+.note {
+  color: #4a5160;
+  font-style: italic;
+}
+
+ul {
+  margin: 2pt 0 0;
+  padding-left: 12pt;
+}
+
+li {
+  margin: 0 0 1.6pt;
+  padding-left: 1pt;
+  break-inside: avoid;
+}
+
+li::marker {
+  color: #2f5fd0;
+}
+
+.item {
+  white-space: nowrap;
+}

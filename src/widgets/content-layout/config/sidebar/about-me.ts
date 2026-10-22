@@ -1,5 +1,6 @@
 import {
   CONTACT_EMAIL,
+  CV_URL,
   E_ROUTES,
   GITHUB_URL,
   LINKEDIN_URL
@@ -10,7 +11,7 @@ export type SectionKey = "personalInfo" | "professionalInfo" | "hobbies";
 export type GroupKey =
   "personalInfo" | "professionalInfo" | "hobbies" | "contacts" | "findMeAlsoIn";
 export type ItemKey =
-  "bio" | "interests" | "skills" | "experience" | "games" | "learning";
+  "bio" | "interests" | "skills" | "experience" | "games" | "learning" | "cv";
 
 // Titles are the `sidebar.sections|groups|items.<key>` messages.
 interface IAboutMeSidebarItem {
@@ -44,6 +45,8 @@ interface IContentItemBase {
   icon?: IconName;
   /** Colour of the folder icon; a file without one is a plain markdown file. */
   tone?: IconTone;
+  /** Saves the file instead of opening it. */
+  download?: boolean;
 }
 
 interface IInternalContentItem extends IContentItemBase {
@@ -73,6 +76,13 @@ export const CONTACTS: IAboutItem = {
       href: `mailto:${CONTACT_EMAIL}`,
       icon: "mail",
       external: true
+    },
+    {
+      titleKey: "cv",
+      href: CV_URL,
+      icon: "download",
+      external: true,
+      download: true
     }
   ]
 };

@@ -29,6 +29,16 @@ describe("HomeView", () => {
     );
   });
 
+  it("offers the English CV as a download", () => {
+    renderWithIntl(<HomeView />);
+    const link = screen.getByRole("link", { name: "Download CV" });
+    expect(link).toHaveAttribute(
+      "href",
+      expect.stringContaining("/assets/cv/serhii-romanenko-cv.pdf")
+    );
+    expect(link).toHaveAttribute("download");
+  });
+
   it("lists the stack and has no axe violations", async () => {
     const { container } = renderWithIntl(<HomeView />);
     expect(screen.getByText("Next.js")).toBeInTheDocument();
